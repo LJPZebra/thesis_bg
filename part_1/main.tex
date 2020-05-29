@@ -5,6 +5,20 @@
 
 	\section{Outils utilisés}
 	
+	Le choix des outils et bibiothèques utilisés dans la conception d'un logiciel est primordial et plusieurs facteurs de selection doivent être pris en compte.
+	Le premier critère à considéré est celui de la licence, j'ai fait le choix de mettre le logiciel FastTrack sous licence libre (GPL3) ce qui implique que le langage utilisé ainsi que les bibliothèques soient elles aussi sous des licences compatibles (MIT, GPL, etc...). Le choix d'une licence open-source est évident dans le cas d'un logiciel scientifique, l'utilisateur pouvant alors vérifier comment le logiciel fonctionne, le modifier pour l'adapter à ses besoins ainsi que le partager.
+	Le deuxième critère est de bien choisir les bibliothèques utilisées en envisageant le futur du logiciel de manière à ne pas avoir à changer de bibliothèques si ses capacités s'avèrent insuffisante à mesure que le logiciel évolue. On privilégiera les bibliothèques matures offant un support sur le long terme.\\
+	
+	Dans cette perspective, FastTrack a été implémenter en C++ en utilisant les bibliothèques Qt et OpenCV respectivement pour l'interface graphique et l'analyse d'image. Les tests unitaires sont réalisés à partir de la bibliothèque Google Test.\\
+	
+	Le C++ est un language informatique créer par Bjarne Stroustrup en 1985. Offrant de grandes performances, il est standardisé par l'International Organization for Standardization (ISO) et est le language de choix pour les applications d'analyse d'images ainsi que la création d'interfaces graphiques complexes.\\
+	
+	Qt est une bibliothèque d'interface graphique open-source créée par Haavard Nord et Eirik Chambe-Eng, tous deux physiciens, en 1991 alors qu'il réalisaient un logiciel d'analyse d'images ultrasoniques. Très mature, possédant une vaste documentation, une très grande communauté, elle permet de réaliser des interfaces graphique pour Linux, Mac et Windows avec le même code source.\\
+	
+	OpenCV est une bibilothèque d'analyse d'images open-source créée par Intel en 2020. Très complète et efficace, elle est devenue la référence en matière d'analyse d'images aussi bien en recherche que pour la réalisation d'applications commerciales.\\
+	
+	Google test est une suite permettant d'automatiser les tests unitaires en C++, elle est notamment utilisée par OpenCV. Le but des tests unitaires est de vérifier que chaque partie du programme fonctionne comme attendu. Cette pratique présente plusieurs avantages, les principaux étant étant de détecter plus facilement d'éventuelle erreurs lors de l'implémentation de nouvelles fonctionnalités, et de faciliter le développement du logiciel quand celui-ci grandit en taille pour éviter toutes inclusions d'erreurs. Cette série de tests est automatiquement effectuée à chaque nouveau commit, voir section~\ref{}.
+	
 	\section{Implémentation}
 		\subsection{Détection}
 		\subsection{Association}

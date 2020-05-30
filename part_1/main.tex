@@ -54,7 +54,7 @@
 		
 		
 		\paragraph{Binarisation}
-		Chaque image est ensuite binarisée en y soustrayant l'image de fond puis en définissant une valeur seuil. Dans le mode interactif, l'utilisateur peut voir l'impact des paramètres sur l'image binarisée ce qui permet d'ajuster facilement le seuil de binarisation. Le logiciel détecte également si le fond est plus foncé (resp. clair) que les objets permettant d'avoir à la fin de cette opération une image binaire  où les pixels appartenant à l’objet sont égaux à  et les pixels appartenant au fond sont égaux à 0.
+		Chaque image est ensuite binariséecd  en y soustrayant l'image de fond puis en définissant une valeur seuil. Dans le mode interactif, l'utilisateur peut voir l'impact des paramètres sur l'image binarisée ce qui permet d'ajuster facilement le seuil de binarisation. Le logiciel détecte également si le fond est plus foncé (resp. clair) que les objets permettant d'avoir à la fin de cette opération une image binaire  où les pixels appartenant à l’objet sont égaux à  et les pixels appartenant au fond sont égaux à 0.
 		
 		
 		\paragraph{Opération morphologique}
@@ -81,7 +81,20 @@
 		
 	\section{Déploiement}
 		\subsection{CI/CD}
+		Le déploiement est une partie à ne pas négliger dans la conception d'un logiciel et deux aspects sont tout particulièrement importants à considérer. Du point de vue de l'utilisateur, le logiciel doit pouvoir être installé facilement sur les plateformes supportées. Du point de vue du mainteneur, la partie de déploiement doit être facilement réalisable et reproductible de manière à pouvoir intégrer rapidement les correctifs et nouvelles fonctionnalités développées. C'est dans cette optique que FastTrack suit la philosophie CI/CD en tirant partie du nouveau système GitHub Action.\\
+		
+		L'intégration continue (CI) est un ensemble de pratiques qui a pour but d'intégrer rapidement les changements au projet de manière automatisée. Elle est couplée avec une automatisation des tests unitaires. FastTrack tire partie du système CI/CD de GitHub nommé Action, à chaque nouveau changement (commit\footnote{Action d'envoyer la liste de modifications effectuées dans le système de gestion de version}) ou nouvelle collaboration (pull-request \footnote{Action de demander l'ajout de modifications effectuer dans une branche au projet}), une série de tests est automatiquement déclenchée. Ces tests vont vérifier le bon fonctionnement de l'algorithme de tracking ainsi que le formatage du code source. Seul les changements qui passent les tests peuvent être intégrés au projet se qui garantie la reproductibilité des analyses ainsi que la cohérence du code source et de la documentation.\\
+		
+		La livraison continue (CD) quant à elle automatise la livraison du logiciel dans sa forme finale. Elle permet d'intégrer rapidement les changements au logiciel sans avoir à le faire manuellement pour chaque plateforme supportée. Dans le cas de FastTrack, le CD est implémenter grâce à GitHub Action et une nouvelle version du logiciel est compilée pour Linux, MacOs et Windows à chaque nouveau commit qui est intégré à la branche principale. Des version stables du logiciel sont quand à elle compilée à chaque palier de développement. Ce système est un gain de temps majeur pour un logiciel multi-plateformes comme FastTrack, et il permet à l'utilisateur de toujours disposer des derniers correctifs et des dernières fonctionnalités.\\
+		
+		FastTrack supporte nativement les trois plateformes majoritairement utilisées : les systèmes Linux avec une AppImage qui supportent toutes les distributions et un PPA pour Ubuntu uniquement, Windows avec un installateur, MacOS avec une App. La dernière version stable peut-être téléchargé sur le site web http://www.fasttrack.sh, la dernière version CD sur https://github.com/bgallois/FastTrack/releases. La procédure pour compiler soit même le logiciel est disponible dans la documentation du développeur pour les autres plateformes.
+		
 		\subsection{Documentation}
+		Une documentation extensive est disponible, elle se sépare en deux parties : une à l'usage des utilisateurs et une autre à l'usage des développeurs.
+		
+		\paragraph{Utilisateur} La documentation utilisateur est disponible à l'adresse https://www.fasttrack.sh/UserManual/docs/intro.html. Cette documentation est mise en forme à partir du logiciel Docusaurus et les utilisateurs peuvent y contribuer https://github.com/bgallois/FastTrack/. Elle regroupe l'ensemble des informations nécessaires à l'utilisation du logiciel ainsi que des vidéos d'explication pour aider à prendre le logiciel en mains.
+		
+		\paragraph{Développer} La documentation du développeur est disponible à l'adresse https://www.fasttrack.sh/API/index.html. Elle est automatiquement générée grâce au logiciel Doxygen à partir de la documentation présente dans le code source de FastTrack. Elle regroupe l'ensemble des informations nécessaires aux développeurs voulant modifier ou contribuer à FastTrack.
 
 		
 \chapter{Base de données de films}

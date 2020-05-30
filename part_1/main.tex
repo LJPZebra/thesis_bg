@@ -5,22 +5,77 @@
 
 	\section{Outils utilisés}
 	
-	Le choix des outils et bibiothèques utilisés dans la conception d'un logiciel est primordial et plusieurs facteurs de selection doivent être pris en compte.
+	Le choix des outils et bibliothèques utilisés dans la conception d'un logiciel est primordial et plusieurs facteurs de sélection doivent être pris en compte.
 	Le premier critère à considéré est celui de la licence, j'ai fait le choix de mettre le logiciel FastTrack sous licence libre (GPL3) ce qui implique que le langage utilisé ainsi que les bibliothèques soient elles aussi sous des licences compatibles (MIT, GPL, etc...). Le choix d'une licence open-source est évident dans le cas d'un logiciel scientifique, l'utilisateur pouvant alors vérifier comment le logiciel fonctionne, le modifier pour l'adapter à ses besoins ainsi que le partager.
-	Le deuxième critère est de bien choisir les bibliothèques utilisées en envisageant le futur du logiciel de manière à ne pas avoir à changer de bibliothèques si ses capacités s'avèrent insuffisante à mesure que le logiciel évolue. On privilégiera les bibliothèques matures offant un support sur le long terme.\\
+	Le deuxième critère est de bien choisir les bibliothèques utilisées en envisageant le futur du logiciel de manière à ne pas avoir à changer de bibliothèques si ses capacités s'avèrent insuffisante à mesure que le logiciel évolue. On privilégiera les bibliothèques matures offrant un support sur le long terme.\\
 	
 	Dans cette perspective, FastTrack a été implémenter en C++ en utilisant les bibliothèques Qt et OpenCV respectivement pour l'interface graphique et l'analyse d'image. Les tests unitaires sont réalisés à partir de la bibliothèque Google Test.\\
 	
-	Le C++ est un language informatique créer par Bjarne Stroustrup en 1985. Offrant de grandes performances, il est standardisé par l'International Organization for Standardization (ISO) et est le language de choix pour les applications d'analyse d'images ainsi que la création d'interfaces graphiques complexes.\\
+	Le C++ est un langage informatique créer par Bjarne Stroustrup en 1985. Offrant de grandes performances, il est standardisé par l'International Organization for Standardization (ISO) et est le language de choix pour les applications d'analyse d'images ainsi que la création d'interfaces graphiques complexes.\\
 	
 	Qt est une bibliothèque d'interface graphique open-source créée par Haavard Nord et Eirik Chambe-Eng, tous deux physiciens, en 1991 alors qu'il réalisaient un logiciel d'analyse d'images ultrasoniques. Très mature, possédant une vaste documentation, une très grande communauté, elle permet de réaliser des interfaces graphique pour Linux, Mac et Windows avec le même code source.\\
 	
-	OpenCV est une bibilothèque d'analyse d'images open-source créée par Intel en 2020. Très complète et efficace, elle est devenue la référence en matière d'analyse d'images aussi bien en recherche que pour la réalisation d'applications commerciales.\\
+	OpenCV est une bibliothèque d'analyse d'images open-source créée par Intel en 2020. Très complète et efficace, elle est devenue la référence en matière d'analyse d'images aussi bien en recherche que pour la réalisation d'applications commerciales.\\
 	
 	Google test est une suite permettant d'automatiser les tests unitaires en C++, elle est notamment utilisée par OpenCV. Le but des tests unitaires est de vérifier que chaque partie du programme fonctionne comme attendu. Cette pratique présente plusieurs avantages, les principaux étant étant de détecter plus facilement d'éventuelle erreurs lors de l'implémentation de nouvelles fonctionnalités, et de faciliter le développement du logiciel quand celui-ci grandit en taille pour éviter toutes inclusions d'erreurs. Cette série de tests est automatiquement effectuée à chaque nouveau commit, voir section~\ref{}.
 	
 	\section{Implémentation}
+	
+	Le fonctionnement de FastTrack peut être séparé en trois parties que sont: la détection des objets, l'association des objets d'une image sur l'autre, et enfin une étape de correction.\\
+	
+	Chaque analyse commence par l'ouverture d'une séquence d'images, ou d'un film qui peut être automatiquement converti en séquence d'images. L'utilisateur a le choix entre deux types d'interfaces, une interface interactive où il ne peut ouvrir qu'un seul film à la fois. Elle permet de voir en temps réel l'impact des paramètres sur les images ce qui facilite la détermination des paramètres optimaux d'analyse. Une deuxième interface permet d'ouvrir simultanément une grande quantité de films, soit en donnant un fichier de paramètres ou en sélectionnant les paramètres dans l'interface. Elle est utile quand l'utilisateur veut analyser un grand nombre de films dont il connaît déjà les paramètres optimaux d'analyse.\\
+	
+	Les deux interfaces peuvent être utilisé de manière complémentaire. L'utilisateur peut trouver les paramètres optimaux avec l'interface interactive et ensuite automatiser l'analyse d'un grand nombre de films en les ajoutant par lots dans le logiciel.
+	
+	
 		\subsection{Détection}
+		
+		L'étape de détection a pour but d'extraire les paramètres cinématiques de chaque objet qui seront ensuite utilisé dans l'étape d'association. FastTrack inclut une collection de filtres d'analyse d'images permettant à l'utilisateur d'optimiser la détection des objets sans avoir à recourir à un logiciel externe.
+		
+		
+		\paragraph{Calcul du fond}
+		Chaque analyse commence par calculer une image de fond. Si l'utilisateur possède déjà une image de fond préalablement enregistré, il peut directement l'ouvrir dans le logiciel. Sinon trois méthodes de calcul sont possibles :
+		\begin{itemize}
+			\item Projection du maximum d'intensité.
+			\item Projection du minimum d'intensité.
+			\item Projection de la moyenne d'intensité.		
+		\end{itemize}
+		Les trois méthodes reposent sur le même principe. L'utilisateur choisit $n$ images dans la séquence, le logiciel va projeter dans la direction perpendiculaire à l'image soit le maximum, soit le minimum ou bien la moyenne de la séquence. En pratique, on projettera le maximum (resp. minimum) si les objets sont plus foncés (resp. clairs) que le fond de manière à faire disparaître les objects et ainsi obtenir le fond. L'utilisateur peut effectuer une registration de chaque images avant projection de manière à corriger un éventuel mouvement de la caméra.
+		
+		
+		\paragraph{Registration}
+		L'utilisateur peut choisir d'effectuer une registration des images, trois méthodes sont proposées dans le logiciel. Chaque méthode est implémenté de manière pyramidale, c'est à dire que la registration est d'abord effectuée sur une image dégradée pour corriger de manière grossière le déplacement, puis la correction est affinée en augmentant la qualité de l'image jusqu'à arriver à l'image originel. Cela permet d'accélérer le processus, la registration étant souvent un procédé relativement coûteux en temps de calculs.\\
+		
+		La première méthode proposé est la corrélation de phase. Elle permet de corriger les mouvements de translation entre deux images en utilisant le théorème de Fourier dans le domaine fréquentiel. Cette méthode est très rapide mais reste limité à de petits mouvements de translation uniquement.\\
+		
+		La deuxième méthode proposées est la méthode Enhanced Correlation Coefficient (ECC). Dans FastTrack, elle est restreinte à corriger les mouvements de translation et de rotation uniquement. Elle consiste à utiliser le coefficient de corrélation comme mesure pour trouver la meilleure transformation entre deux images. Cette méthode a pour avantage d'être relativement rapide, le problème d'optimisation non linéaire pouvant être résolue de manière linéaire. Elle est performante pour des images bruités et ayant des distorsions photométrique (contraste, luminosité).\\
+		
+		La troisième méthode est une méthode basée sur le repérage de points clefs. Elle permet de corriger les mouvements et les déformations (homographie). Les points clefs (environ 500) sont automatiquement déterminé sur deux images grâce à l'algorithme ORB. Ces points sont ensuite associés deux à deux en utilisant l’algorithme RANSAC permettant de trouver la meilleure transformation entre les deux images. Cette méthode, plus précise nécessite une qualité d'image suffisante pour pouvoir discerner des points clefs.
+		
+		
+		\paragraph{Binarisation}
+		Chaque image est ensuite binarisée en y soustrayant l'image de fond puis en définissant une valeur seuil. Dans le mode interactif, l'utilisateur peut voir l'impact des paramètres sur l'image binarisée ce qui permet d'ajuster facilement le seuil de binarisation. Le logiciel détecte également si le fond est plus foncé (resp. clair) que les objets permettant d'avoir à la fin de cette opération une image binaire  où les pixels appartenant à l’objet sont égaux à  et les pixels appartenant au fond sont égaux à 0.
+		
+		
+		\paragraph{Opération morphologique}
+		Un ensemble d'opérations morphologiques (dilatation, érosion, ouverture etc...) peut-être effectué sur l'image binaire pour améliorer la détection et éliminer d'éventuels artefacts. Différentes formes et tailles de kernels sont disponibles.
+		
+		
+		\paragraph{ROI}
+		L'utilisateur peut sélectionner une région D’intérêt et exclure le reste de l'image de l'analyse. Cela permet d'accélérer le processus d'analyse et d'éviter la détection d’objets parasites. En mode interactif, cette ROI peut être dessiné directement sur l'image.
+		
+		
+		\paragraph{Tri}
+		Pour exclure les objets trop petits correspondant à du bruit ou trop gros comme par exemple deux objets superposés, l’utilisateur doit sélectionner deux tailles caractéristiques. En mode interactif, les objets sont coloriés soit en rouge, soit en vert suivant si leur taille appartient à la gamme de tailles sélectionnée.
+		
+		\paragraph{Extraction des paramètres cinématique}
+		Sur la base des images binaires, le logiciel va détecter le contour de chaque objet. Une étape importante de toutes procédure de tracking est l'extraction des paramètres qui serviront dans l'étape d'association. C'est en générale dans le choix de ses quantités que les algorithme de tracking diffère pour se spécialiser à un type d'objet donné. Dans FastTrack, les paramètres extraient sont la positions du centre de masse ainsi que l'orientation de l’objet, dans quantité rapidement calculées et assez généralistes pour s'adapter à une grande diversité de type d'objets.\\
+		
+		Pour cela, FastTrack calcule l'ellipse équivalente de l'objet à partir des moments d'ordre deux de l'image binaire. Cette procédure est accélérée en utilisant directement le contour grâce à la formule de Green. L'orientation de l'objet est donnée par l'axe majeur de l'ellipse équivalente. Sa direction est déterminée en projetant chaque pixel de l'objet sur l'axe majeure de l'ellipse. On calcule ensuite la skewness de la distribution des distances des points projetés par rapport au centre de masse. Le signe de la skewness est un indicateur robuste de l’asymétrie de l'objet par rapport à son axe majeure à partir de laquelle on peut déterminer la direction de l'objet.\\
+		
+		Pour les objets déformables, la direction calculer précédemment peut être différente de la direction de déplacement de l'objet. Par exemple dans le cas du poisson zèbre, celui-ci déforme son corps de manière périodique pour se déplacer, seul la tête est dirigée dans la même direction que le mouvement. C'est pourquoi on décompose l'objet en deux ellipses équivalentes, l'utilisateur peut alors choisir quelle ellipse représente le mieux la direction de déplacement.
+		
+		
 		\subsection{Association}
 		\subsection{Correction}
 		

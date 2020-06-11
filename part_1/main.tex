@@ -77,7 +77,44 @@
 		
 		
 		\subsection{Association}
-		\subsection{Correction}
+		
+		L'étape d'association a pour but de conserver l'identité des objets d'une image sur l'autre. Pour se faire, FastTrack utilise une méthode dérivée de ?, qui tire partie du fait que la position et la direction de chaque objet change très peu d'une image sur l'autre.
+		Pour chaque pair d'objet (i,j) appartenant à deux images successives, deux coûts sont calculés.
+		Le coût "dur" calculé comme suit :
+        $$
+        \left\{
+        	\begin{array}{ll}
+        		h_{i,j} = 1 & \mbox{si } r_{i,j} < h_{d} \\
+        		h_{i,j} = \inf & \mbox{sinon }
+        	\end{array}
+        \right.       
+        $$
+        avec $r_{i,d}$ la distance entre les objets i et j, $h_{d}$ un seuil qui représente la distance maximale de déplacement autorisée entre deux images successives.
+		Le coût "mou" calculé comme suit:
+		$$
+        c_{i,j} = \frac{r_{i,j}}{s_d} + \frac{\delta\alpha_{i,j}}{s_{\alpha}}		
+		$$
+		où $\delta\alpha_{i,j}$ est la valeur absolue de la différence angulaire entre les directions de i et j, $s_{d}$ et $s_{\alpha}$ sont des coefficients de normalisation qui représente un déplacement et une réorientation typique du système étudié entre deux images successives.
+		Ces deux coûts sont ensuite multipliés élément par élément pour donner la matrice suivant :
+		$$
+        C_{i,j} = \left\{
+        	\begin{array}{ll}
+        		c_{i,j} & \mbox{si } r_{i,j} < h_{d} \\
+        		\inf & \mbox{sinon }
+        	\end{array}
+        \right.       
+        $$
+		La matrice de coup peut être rectangulaire si le nombre d'objets n'est pas constant comme lors d'occlusion ou d'ajout d'objets. Un paramètre de mémoire peut être sélectionner de manière à ne plus pouvoir assigner les objets si ceux-ci on disparu depuis plus de $n$ images.
+		Le meilleure association est celle dont la somme des coûts est minimale. Ce problème est appelé "the rectangular assignement problem" et peut être résolu de manière exacte en utilisant l’algorithme hongrois, FastTrack utilise l'implémentation Kuhn-Munkres en C++ pour résoudre rapidement ce problème.
+		
+		\subsection{Post-traitement}
+		
+		\paragraph{Correction manuelle}
+		FastTrack intègre un outil de correction manuel du tracking. Une fois une analyse terminée, le résultat peut être affiché dans une interface ergonomique créée à cet effet. L'utilisateur peut rejouer le film en y surperposant les résultats de l'analyse, il peut sélectionner un objet pour en consulter les paramètres (aire, contour, identité, etc...). L'utilisateur peut aussi directement corriger les erreurs en supprimant des objets ou en échangeant l'identité des objets. Cette interface est concu dans un soucis d'ergonomie et de performance. Des raccourcis claviers ainsi qu'une sélection à la volé des objets directement en cliquant sur la vidéo permette à l'utilisateur de rapidement vérifier et corriger les analyses. Il est aussi possible d'enregistrer, en plus des données brutes d'analyse, un film avec les résultats du tracking superposés.
+		Cette interface de correction manuel permet de déplacer la charge de travail qui est traditionnellement placé sur le pré-traitement des données, vers le post-traitement. Le logiciel reste alors général et peut s'adapter à une grande diversité d'objets et performant grâce à une interface spécialement pensée pour réduire le temps de post-traitement.
+		
+		\paragraph{Analyse}
+		L'analyse statistique des données n'est pas implémenté dans FastTrack. Après chaque analyse, le logiciel génère un dossier contenant les résultats. Le fichier principal est nommé tracking.txt et il contient les données brutes de l'analyse avec une image et un objet par ligne. Ce format est compatible avec tous les logiciels d'analyse les plus utilisés (R, Python, MATLAB), des exemples sont disponibles dans la documentation.
 		
 	\section{Déploiement}
 		\subsection{CI/CD}

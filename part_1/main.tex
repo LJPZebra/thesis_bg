@@ -27,6 +27,13 @@
 	
 	Les deux interfaces peuvent être utilisé de manière complémentaire. L'utilisateur peut trouver les paramètres optimaux avec l'interface interactive et ensuite automatiser l'analyse d'un grand nombre de films en les ajoutant par lots dans le logiciel.
 	
+	\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.75\textwidth]{part_1/assets/Figure_1.png}    
+    \caption{\textbf{FastTrack flux de traitement.} Il se divise en trois parties distinctes : la détection, l'association et le post-traitement.}
+    \label{part_1:fig_1}
+    \end{figure}
+	
 	
 		\subsection{Détection}
 		
@@ -51,6 +58,13 @@
 		La deuxième méthode proposées est la méthode Enhanced Correlation Coefficient (ECC). Dans FastTrack, elle est restreinte à corriger les mouvements de translation et de rotation uniquement. Elle consiste à utiliser le coefficient de corrélation comme mesure pour trouver la meilleure transformation entre deux images. Cette méthode a pour avantage d'être relativement rapide, le problème d'optimisation non linéaire pouvant être résolue de manière linéaire. Elle est performante pour des images bruités et ayant des distorsions photométrique (contraste, luminosité).\\
 		
 		La troisième méthode est une méthode basée sur le repérage de points clefs. Elle permet de corriger les mouvements et les déformations (homographie). Les points clefs (environ 500) sont automatiquement déterminé sur deux images grâce à l'algorithme ORB. Ces points sont ensuite associés deux à deux en utilisant l’algorithme RANSAC permettant de trouver la meilleure transformation entre les deux images. Cette méthode, plus précise nécessite une qualité d'image suffisante pour pouvoir discerner des points clefs.
+		
+	\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\textwidth]{part_1/assets/Figure_2.png}    
+    \caption{\textbf{Registrations.} Deux films avec une dérive sévère sont utilisés comme référence (DRO\_001 en hautn ULT\_001 en bas). (\textbf{A}) Comparaison entre une image (magenta) avec la première image (vert), avec agrandissement des détails en insert. (\textbf{B}) Déviation moyenne carrée (RMSD) de l'intensité des pixels avant et après registration, moyennée sur toutes les images et normalisée par la RMSD sans registration pour les trois méthodes. Barres d'erreur : déviation standard. (\textbf{C}) Temps moyen relatif pour les trois méthodes (unités arbitraires). Barres d'erreur : déviation standard.}
+    \label{part_1:fig_2}
+    \end{figure}
 		
 		
 		\paragraph{Binarisation}
@@ -140,6 +154,13 @@
 
     Un autre aspect important à considérer est le nombre d'objets par film ainsi que leurs éventuelles apparitions, disparitions et chevauchements. Dans 22 films sur 41, le nombre d'objets est variable et des objets sortent ou rentrent dans le champ de la caméra durant l'enregistrement. Dans 19 films sur 41, des objets peuvent se chevaucher créant un phénomène d'occlusion que le logiciel doit gérer pour retrouver l'identité des objets.
 
+	\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\textwidth]{part_1/assets/Figure_td2.png}    
+    \caption{\textbf{$TD^2$.}}
+    \label{part_1:fig_5}
+    \end{figure}
+
 
 \chapter{Résultats}
 
@@ -166,6 +187,13 @@
 	avec $N_{obj}$ le nombre total d'objet dans le films.
 	Chaque incursion ne résultant pas à une inversion de l'identité de deux objets, donc à une erreur, on gardera en tête que cette valeur représente la borne maximale possible d'erreurs. Dans $TD^2$, seulement 5 films on $n_{inc}>1$ ce qui suggère que pour la grande majorité des films, le post-traitement se résume à un simple contrôle. Les 5 films restants sont connus pour leur difficulté à analyser dont 2 (ACT\_003 et ACT\_004) ont nécessités le développement d'un algorithme spécifique, 2 autres (BAC\_001 et ZFA\_001) des logiciels dédiés pour être analysés.
 	
+	\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\textwidth]{part_1/assets/Figure_3.png}    
+    \caption{\textbf{Probabilité d'incursion} (\textbf{A}) Définition des incursions : objets faisant de petits déplacements à l'intérieur de leurs cellules de Voronoï (haut), grands déplacements générant des incursions dans les cellules de Voronoï voisines (bas). De telle incursions sont susceptibles de générer des erreurs de tracking. (\textbf{B}) Images extraient de 3 films avec le déplacement instantané des objets (rouge). La position initiale est marqué d'un point. (\textbf{C}) Probabilité géométrique d'incursion $p_{inc}$ en fonction du déplacement normalisé $\rho$ (noir) et de la densité de probabilité de $\rho$ (rouge) pour les trois films correspondant. La probabilité d'incursion $P_{inc}$ correspond à l'aire de recouvrement des deux courbes. (\textbf{D}) Probabilité d'incursion $P_{inc}$ (bleue) et nombre d'incursion $n_{inc}$ (orange) pour 19 films de $TD^2$. Le reste des films ayant $P_{inc}<10^{-20}$}
+    \label{part_1:fig_3}
+    \end{figure}
+	
 	\section{Optimisation des paramètres}
 	
 	L'optimisation des paramètres d'analyse peut parfois s'avérer être une tâche délicate, on présentera ici une méthode basée sur la minimisation du nombre d'inversion d'identités (swap). Les étapes suivies pour le calcul sont présentés figure~\ref{}. Pour compter le nombre d'inversions, il est seulement nécessaire d'avoir un seul film du système étudié parfaitement analysé, ce qui peut être réalisé par un post-traitement méticuleux. On peut ensuite définir la probabilité d'inversion $P_{swap}$ et varié la paramètre afin de la minimiser. Pour se faire, on utilisera l'interface en ligne de commande FastTrack\_cli qui permet d'appeller FastTrack directement à l'intérieur d'un script Python pour automatiser la minimisation. On définit la probabilité d'inversion :
@@ -183,14 +211,28 @@
 	
 	Pour résumer, on peut faire cette analyse pour un film parfaitement analysée grâce à FastTrack et à l'outil de post-traitement, puis en dérivé un jeu de paramètre optimaux à appliquer sur des films similaire de manière à réduire la charge de travail en post-traitement.\\
 	
+	\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\textwidth]{part_1/assets/Figure_4.png}    
+    \caption{\textbf{Optimisation des paramètres d'analyse basé sur $P_{swap}$} (\textbf{A}) Schéma du workflow d'optimisation : le résultat parfait de tracking est utilisée pour calculer $P_{swap}$ et créer une boucle de rétroaction sur les paramètres d'analyse. (\textbf{B}) $P_{swap}$ (noire) en fonction de la distance maximale $h_d$ (en pixels) pour trois films typiques. Les lignes verticales pour DRP\_001 indique que $P_{swap}$ descend à 0. Les distributions des déplacements entre deux images successives (bleue), et de distance aux voisins (orange) sont montrées pour comparaison. (\textbf{C}) $P_{swap}$ en fonction de la distance maximale $h_d$ et du temps de disparition maximal $h_t$ (en nombre d'images) pour PAR\_001 pour $s_d=95$ et $s_{\alpha}=60$. (\textbf{D}) $P_{swap}$ en fonction de la distance $s_d$ (en pixels) et de l'angle de normalisation $s_{\alpha}$ (en degrés) pour PAR\_001 avec $h_d=210$ et $h_t=90$. } 
+    \label{part_1:fig_4}
+    \end{figure}
+	
 	On une autre question souvent posée est de savoir avec quelle résolution temporelle acquérir le film. Une grande résolution permet de diminuer $P_{swap}$ et donc je réduire le post-traitement mais n'est pas toujours envisageable (limitation de la caméra, de l'illumination, nécessité d'un grand espace de stockage).
-	Pour étudier l'impact de la fréquence d'enregistrement, on a sélectionné 7 films avec une bonne résolution temporelle et nous les avons dégradés pour à chaque fois calculer $P_{swap}$. tracer en fonction du facteur de dégradation adimentionné $(f-f^{\star})\tau$, on viot que tous les $P_{swap}$ suivent une courbe maîtresse :
+	Pour étudier l'impact de la fréquence d'enregistrement, on a sélectionné 7 films avec une bonne résolution temporelle et nous les avons dégradés pour à chaque fois calculer $P_{swap}$. tracer en fonction du facteur de dégradation adimentionné $(f-f^{\star})\tau$, on voit que tous les $P_{swap}$ suivent une courbe maîtresse :
 	$$
 	    L(x)=\frac{1}{1+e^{-1}a}
 	$$
 	qui est une fonction logistique standard où $f^{\star}$ correspond au facteur de dégradation où $P_{swap}=0.5$, $\tau$ est un facteur de normalisation qui dépend des propriétés dynamique de chaque système.\\
 	
 	A l'aide de ses résultats, on peut donc proposer un méthode permettant de déterminer la fréquence d'acquisition optimal. Cette méthode nécessite un seul enregistrement de bonne qualité déjà analysé avec FastTrack. Il faut ensuite répété la procédure de dégradation et calculer le $P_{swap}$ résultant. Les $P_{swap}$ peuvent être ajusté à la fonction logitique pour en extraitre les paramètres $f^{\star}$ et $\tau$. Il suffit ensuite de choisir la fréquence d'acquisition en fonction de la quantité de travail que l'utilisateur est prêt à fournir en post-traitement $N_{swap}=P_{swap}(N_{obj}-n_{ap})$.
+	
+	\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\textwidth]{part_1/assets/Figure_5.png}    
+    \caption{\textbf{$P_{swap}$ et vitesse d’acquisition} (\textbf{A}) Schéma de la procédure de dégradation. (\textbf{B} $P_{swap}$ en fonction du taux réduit de dégradation $(f-f^{\star})\tau$ pour 7 systèmes très différents. $f^{\star}$ et $\tau$ ont été déterminés par un ajustement sur la fonction logistique standard (noire).}
+    \label{part_1:fig_5}
+    \end{figure}
 	
 \chapter{Perspective}
 

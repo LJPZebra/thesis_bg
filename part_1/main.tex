@@ -135,15 +135,70 @@
 
 		
 \chapter{Base de données de films}
+    
+    Pour démontrer que FastTrack peut être utilisé pour analyser des films provenant d'une grande diversité de systèmes, nous avons compilé une base de données de films nommée $TD^2$. Cette banque de films peut être téléchargé à l'adresse suivante URL. Les films proviennent soit de données déjà publiées dans la littérature, soit ils nous ont été fourni par les auteurs eux-mêmes sous licence CC-BY-NC-SA. Chaque film est identifié par un code à 3 lettres définissant le système (ex. ACT : active matter, ZFA : zebrafish adult etc...) et 3 chiffres pour indexer les films provenant de systèmes identiques. $TD^2$ regroupe actuellement 41 films comprenant différent types d'objets de nature et de taille très différents : 7 espèces d'animaux allant du poisson à la mouche, des cellules, des particules actives, des gouttes microfluidiques ainsi que des objets macroscopiques tels des joueurs d'ultimate ou des voitures. Une vidéo donnant un rapide aperçut de tous les systèmes utilisés est disponible à l'adresse suivante URL.\\
+
+    Un autre aspect important à considérer est le nombre d'objets par film ainsi que leurs éventuelles apparitions, disparitions et chevauchements. Dans 22 films sur 41, le nombre d'objets est variable et des objets sortent ou rentrent dans le champ de la caméra durant l'enregistrement. Dans 19 films sur 41, des objets peuvent se chevaucher créant un phénomène d'occlusion que le logiciel doit gérer pour retrouver l'identité des objets.
 
 
 \chapter{Résultats}
 
 	\section{Analyse de la base de données}
+
+  Analyser des films provenant de systèmes aussi diffèrent que ceux compilés dans $TD^2$ est un véritable challenge. Cela est dû en partie aux conditions d'enregistrement qui peuvent être très diverses et qui complexifient la tâche de détection des objets. Deux difficultés récurrentes sont à soulever : les variations de l'illumination (ex. réflexion dans GRA\_001, ombres dans SOC\_001) et le chevauchement des objets (ex. HXB\_001).
+  Dans le cas de films provenant du milieu académique, les systèmes sont souvent conçus pour limiter ou contourner ces deux difficultés. Il est commun de trouver des films dont l'illumination est uniforme et constante. de même un confinement quasi-2D ainsi qu'un nombre d'objet restreint dans le champ de la caméra permettent de réduire le nombre d'occlusions.
+  Dans $TD^2$, 23 films ont une illumination assez bonnes pour être analysés directement avec FastTrack, les autres ayant dû subir un pre-processing individuel spécifique avant de pouvoir être analysées. Deux films ayant un nombre d'occlusions extrêmement élevé ont été écarté (HXB\_001 and ZFL\_001) car ne pouvant pas être analysé avec le logiciel.
+  Les 39 films restant ont pu être analysés avec FastTrack sans difficulté. L'algorithme de Kuhn-Munkres étant de complexité $O(n^3)$ le temps de calcul est en général assez rapide. Sur l'ordinateur utilisé pour l'analyse (ordinateur de bureau moderne), on observe une vitesse d'analyse pouvant aller jusqu’à 500 images/secondes. Les films les plus volumineux en taille et nombre d'images et en nombre d'objets n'ont pas pris plus de quelques dizaines de minutes. Chaque film a ensuite été corrigé manuellement grâce à l'outil intégré dans le logiciel.
 	
 	\section{Estimation de la charge de travail de correction}
 	
+	FastTrack est conçu pour que la phase de post-traitement soit la plus faible possible, mais cette charge de travail varie grandement suivant les films analysés. On va ici montrer que cette charge de travail peut être estimée rapidement pour un film donnée. On assumera pour la suite que la détection et l'association ont déjà été réalisées.\\
+	
+	La méthode repose sur l'évaluation de la probabilité d'incursion $P_{inc}$. Une incursion étant définie par la sortie d'un objet de sa cellule de Voronoï, prise en $t_1$, durant un trajet entre $t_1$ et $t_2$. Le nombre d'incursions dépend de la distribution des déplacements, de la densité d'objets, de la géométrie de la cellule de Voronoï et du degré d'alignement des déplacements. On peut écrite cette probabilité :
+	$$$$
+	où $\rho=r\sqrt{d}$ est le déplacement réduit adimensionné, $R(\rho)$ la distribution des $\rho$ et $p_{inc}(\rho)$ la probabilité géométrique d’incursion qui ne dépend que des propriétés géométrique de la disposition des objets. On calcule $p_{inc}$ en prenant les cellules de Voronoï de tous les objets sur toutes les images, puis en déterminant la proportion des angles pour lesquels un déplacement de $\rho$ implique un incursion dans une cellules de Voronoï voisine. Intuitivement, on peut se convaincre que $p_{inc}$ va de 0 quand $\rho->\inf$, à 1 quand $\rho>>1$. La forme de cette fonction est sensible à la densité des objets, compacts (ex. ACT\_002), clairsemés (ex. PAR\_001), et à la taille globale du système quand celui-ci est restreint par des murs (ex. ZFA\_001).\\
+	
+	Les distributions de $\rho$ et $p_{inc}$ sont représentées figure~\ref{} pour trois films de $TD^2$ représentatifs de trois systèmes très différents. Il n'est pas nécessaire d'avoir un tracking parfait pour avoir une bonne estimation de cette valeur car les quelques erreurs possibles ont une influence marginale sur la distributions des $\rho$ donc sur $P_{inc}$.\\
+	On a calculé $P_{inc}$ pour tous les films de $TD^2$ figure~\ref{}, de manière à en estimer le nombre d'incursion $n_{inc}$ :
+	$$
+	    n_{inc}=P_{inc}*N_{obj}
+	$$
+	avec $N_{obj}$ le nombre total d'objet dans le films.
+	Chaque incursion ne résultant pas à une inversion de l'identité de deux objets, donc à une erreur, on gardera en tête que cette valeur représente la borne maximale possible d'erreurs. Dans $TD^2$, seulement 5 films on $n_{inc}>1$ ce qui suggère que pour la grande majorité des films, le post-traitement se résume à un simple contrôle. Les 5 films restants sont connus pour leur difficulté à analyser dont 2 (ACT\_003 et ACT\_004) ont nécessités le développement d'un algorithme spécifique, 2 autres (BAC\_001 et ZFA\_001) des logiciels dédiés pour être analysés.
+	
 	\section{Optimisation des paramètres}
 	
+	L'optimisation des paramètres d'analyse peut parfois s'avérer être une tâche délicate, on présentera ici une méthode basée sur la minimisation du nombre d'inversion d'identités (swap). Les étapes suivies pour le calcul sont présentés figure~\ref{}. Pour compter le nombre d'inversions, il est seulement nécessaire d'avoir un seul film du système étudié parfaitement analysé, ce qui peut être réalisé par un post-traitement méticuleux. On peut ensuite définir la probabilité d'inversion $P_{swap}$ et varié la paramètre afin de la minimiser. Pour se faire, on utilisera l'interface en ligne de commande FastTrack\_cli qui permet d'appeller FastTrack directement à l'intérieur d'un script Python pour automatiser la minimisation. On définit la probabilité d'inversion :
+	$$
+	    P_{swap}=\frac{N_{swap}}{N_{obj}-n_{ap}}
+	$$
+	avec $N_{swap}$ le nombre total d'inversions, $N_{obj}$ le nombre total d'objets sur toutes les images, et $n_{ap}$ le nombre de fois qu'un nouvel objet apparaît. Si le nombre d'objets est constant et noté $n$, alors $n_{ap}=n$ et $*N_{obj}=nT$ avec $T$ le nombre d'images dans le film, alors on peut simplifier $P_{swap}$ :
+    $$
+	    P_{swap}=\frac{N_{swap}}{n(T-1)}
+	$$
+	On a étudier en premier lieu l'impact du paramètre $h_d$, la distance maximale de déplacement autorisé entre deux images successives. La figure~\ref{} représente l'évolution de $P_{swap}$ en fonction de $h_d$ pour trois films tirés de $TD^2$. On voit que pour un faible $h_d$, $P_{swap}$ est essentiellement donnée par la distribution des déplacements des objets, ce qui s'explique par le fait qu'un grand nombre d'erreurs est générées quand un objet n'est pas autorisé à se déplacer plus qu'on son déplacement typique. Pour des $h_d$ grands, c'est la distribution des distances aux voisins (défini par la tesselation de Voronoï) qui influence le plus $P_{swap}$, algorithme devenant plus sensible aux incursions et pouvant faire plus d'erreurs avec les entrées et sorties du champ de vision.
+	Entre ces deux cas extrêmes, il existe en général un minimum, ce qui est particulièrement évident pour les systèmes denses dont la distribution des distances aux voisins est très piquées. Par exemple pour DRP\_001 on voit que $P_{swap}$ tombe à 0 pour un intervalle de $h_d$. La fréquence d'acquisition joue un rôle important ici, pour des films très résolue temporellement, on aura une distribution de déplacement décalée à gauche vers des distances plus courtes, cela va donner une séparation claire et de petite valeurs en $P_{swap}$. Pour des films avec une résolution temporelle médiocre (ZFJ\_001), les deux distributions se recouvrent et $P_{swap}$ reste toujours bloquée à de grandes valeurs.\\
+	
+	On peut faire une analyse similaire pour les autres paramètres. On a représenté $h_d$ en fonction de $h_t$ (nombre d'image où l'objet disparaît autorisé), on voit qu'on peut trouver une bande de paramètres où $P_{swap}$ est minimale.
+	
+	Pour résumer, on peut faire cette analyse pour un film parfaitement analysée grâce à FastTrack et à l'outil de post-traitement, puis en dérivé un jeu de paramètre optimaux à appliquer sur des films similaire de manière à réduire la charge de travail en post-traitement.\\
+	
+	On une autre question souvent posée est de savoir avec quelle résolution temporelle acquérir le film. Une grande résolution permet de diminuer $P_{swap}$ et donc je réduire le post-traitement mais n'est pas toujours envisageable (limitation de la caméra, de l'illumination, nécessité d'un grand espace de stockage).
+	Pour étudier l'impact de la fréquence d'enregistrement, on a sélectionné 7 films avec une bonne résolution temporelle et nous les avons dégradés pour à chaque fois calculer $P_{swap}$. tracer en fonction du facteur de dégradation adimentionné $(f-f^{\star})\tau$, on viot que tous les $P_{swap}$ suivent une courbe maîtresse :
+	$$
+	    L(x)=\frac{1}{1+e^{-1}a}
+	$$
+	qui est une fonction logistique standard où $f^{\star}$ correspond au facteur de dégradation où $P_{swap}=0.5$, $\tau$ est un facteur de normalisation qui dépend des propriétés dynamique de chaque système.\\
+	
+	A l'aide de ses résultats, on peut donc proposer un méthode permettant de déterminer la fréquence d'acquisition optimal. Cette méthode nécessite un seul enregistrement de bonne qualité déjà analysé avec FastTrack. Il faut ensuite répété la procédure de dégradation et calculer le $P_{swap}$ résultant. Les $P_{swap}$ peuvent être ajusté à la fonction logitique pour en extraitre les paramètres $f^{\star}$ et $\tau$. Il suffit ensuite de choisir la fréquence d'acquisition en fonction de la quantité de travail que l'utilisateur est prêt à fournir en post-traitement $N_{swap}=P_{swap}(N_{obj}-n_{ap})$.
 	
 \chapter{Perspective}
+
+	On a vu dans cette partie le logiciel FastTrack. On a détaillé les outils utilisés ainsi que l'implémentation en elle-même. On a ensuite testé le logiciel sur une grande quantité de films présentant des systèmes extrêmement variés et évalué sa performance. On a décrit deux méthodes permettant de trouver facilement les paramètres optimaux d'analyses et la fréquence d'acquisition optimale qui permet de guider l'utilisateur de la conception de l'expérience jusqu'à l'analyse des films.\\
+	
+	On a aussi abordé un point central du logiciel qui est son appartenance au mouvement open-source. Les codes du logiciel sont entièrement disponible à l'adresse URL. Cela permet d'une part de collaborer au projet pour régler des bugs où ajouter des fonctionnalité. D'intégrer tout ou une partie du projet dans un logiciel ou une expérience déjà existante. Cela renforce la pérennité du projet qui ne dépend pas d'une seule personne pour rester à jour. Enfin la mise en place de la livraison continue (CD) permet de s'affranchir d'une personne dédié à la création de chaque version pour les trois plateformes supportées et donc de réduire le temps nécessaire à la parution de correctifs.\\
+	
+	La collaboration pour implémenter de nouvelles fonctionnalités, participer à la documentation ou régler des bugs est encourager et peut se faire grâce au système de pull-request de GitHub. Le logiciel à d'abord été testé au sein du laboratoire où il a assez vite été adopté. Il compte à cette date (avant publication de l'article) plus de 500 téléchargements et une base d'une dizaine d'utilisateurs quotidiens.
+	
+	
+

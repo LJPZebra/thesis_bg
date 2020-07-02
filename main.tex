@@ -1,9 +1,12 @@
-\documentclass[12pt]{report}
+\documentclass[12pt,french]{report}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
+\usepackage{epigraph}
+\usepackage{babel}
 \usepackage[font=small,labelfont=bf]{caption}
 \sffamily
-\usepackage[numbers,sort&compress]{natbib}
+\usepackage{cite}
+\usepackage{hyperref}
 
 \setcounter{secnumdepth}{3}
 
@@ -25,5 +28,8 @@
 
 \part{Dual}
 \input{part_2/main.tex}
+
+\bibliography{biblio}
+\bibliographystyle{abbrv}
 \end{document}
 

@@ -2,13 +2,16 @@
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \usepackage{epigraph}
+\usepackage{xcolor}
 \usepackage{babel}
 \usepackage[font=small,labelfont=bf]{caption}
 \sffamily
 \usepackage{cite}
 \usepackage{hyperref}
-
-\setcounter{secnumdepth}{3}
+\usepackage[sfdefault,book]{FiraSans} %% option 'sfdefault' activates Fira Sans as the default text font
+\usepackage[T1]{fontenc}
+\renewcommand*\oldstylenums[1]{{\firaoldstyle #1}}\setcounter{secnumdepth}{3}
+\setlength{\parskip}{1em}
 
 \title{Perception chimique chez la larve de poisson zèbre}
 \author{Benjamin Gallois}

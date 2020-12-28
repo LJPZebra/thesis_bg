@@ -90,7 +90,7 @@
 	Both interfaces can be used in a complementary way. The user can find the optimal parameters with the interactive interface and then automate the analysis of many movies by adding them in batches in the software.
 
 
-	\begin{figure}[h]
+	\begin{figure}[h!]
     \centering
     \includegraphics[width=0.75\textwidth]{part_1/assets/Figure_1.png}    
     \caption{\textbf{FastTrack flux de traitement.} Il se divise en trois parties distinctes : la détection, l'association et le post-traitement.}
@@ -121,7 +121,7 @@
 
 		The third method is a method based on the identification of key points. It allows for correcting movements and deformations (homography). The key points (about 500) are automatically determined on two images thanks to the ORB algorithm \cite{}. These points are then associated two by two using the RANSAC algorithm \cite{} to find the best transformation between the two images. This method, more precise, requires a sufficient image quality to be able to discern key points.
 		
-	\begin{figure}[h]
+	\begin{figure}[h!]
     \centering
     \includegraphics[width=1\textwidth]{part_1/assets/Figure_2.png}    
     \caption{\textbf{Registrations.} Deux films avec une dérive sévère sont utilisés comme référence (DRO\_001 en hautn ULT\_001 en bas). (\textbf{A}) Comparaison entre une image (magenta) avec la première image (vert), avec agrandissement des détails en insert. (\textbf{B}) Déviation moyenne carrée (RMSD) de l'intensité des pixels avant et après registration, moyennée sur toutes les images et normalisée par la RMSD sans registration pour les trois méthodes. Barres d'erreur : déviation standard. (\textbf{C}) Temps moyen relatif pour les trois méthodes (unités arbitraires). Barres d'erreur : déviation standard.}
@@ -183,12 +183,14 @@
 
 	\section{Deployment}
 		\subsection{CI/CD}
-        \begin{figure}[h]
+
+        \begin{figure}[h!]
         \centering
         \includegraphics[width=1\textwidth]{part_1/assets/Figure_cicd.png}
-        \caption{\textbf{CI/CD workflow.}}
+        \caption{\textbf{FastTrack CI/CD workflow.}}
         \label{part_1:fig_cicd}
         \end{figure}
+
         The deployment is one part that should not be overlooked in software design, and two aspects are crucial to consider. From the user's point of view, the software must be easy to install on supported platforms and with fewer bugs as possible. From the maintainer's perspective, the deployment part must be easily achievable and reproducible so that patches and new functionalities can be quickly integrated. From the developer's perspective, the source code's consistency and correctness have to be tested at each change to avoid introducing bugs and facilitate collaboration between developers.  With this in mind, FastTrack follows the CI/CD philosophy \cite{shahin2017continuous}\cite{wikstrom2019benefits} taking advantage of the new GitHub Actions system.
 
         Continuous Integration (CI) is a set of practices designed to integrate changes into the project in an automated manner quickly. It is coupled with the automation of unit testing. FastTrack takes advantage of GitHub's CI/CD system called Actions. With each new (commit\footnote{Action to send the list of changes made in the version management system}) or new (pull-request \footnote{Action to request the addition of changes to the project}), a series of tests is automatically triggered. These tests will check the proper functioning of the tracking algorithm and the formatting of the source code. Only the changes that pass the tests can be integrated into the project, which guarantees the reproducibility of the analyses and the consistency of the source code and documentation.
@@ -215,7 +217,7 @@
 
     Another essential aspect to consider is the number of objects per film and their possible appearances, disappearances, and overlaps. In 22 films out of 41, the number of objects is variable, and objects come and go out of the camera field during recording. In 19 films out of 41, objects may overlap, creating an occlusion phenomenon that the software has to manage to preserve the identity of the objects.
 
-	\begin{figure}[h]
+	\begin{figure}[h!]
     \centering
     \includegraphics[width=1\textwidth]{part_1/assets/Figure_td2.png}    
     \caption{\textbf{$TD^2$.}}
@@ -224,6 +226,29 @@
 
 
 \chapter{Résultats}
+
+    \section{Performance}
+    To assess FastTrack's performance, we ran a benchmark comparing FastTrack, Idtracker.ai, and ToxTrac. These software have substantial intrinsic limitations compared to FastTrack. Both require an acceptable framerate and image quality, with sufficient contrast and number of pixels per object and a constant number of objects in the movie that must be defined before the tracking. The benchmark was performed on a dataset consisting of a selection of videos provided with each software, and some movies from the $TD^2$ dataset that meet the three software requirements. $idtrackeraivideoexample$ and $100Zebra$ are available on the idtracker.ai website \url{https://idtrackerai.readthedocs.io/en/latest/data.html}. Guppy2, Waterlouse5, and Wingedant on the ToxTrac SourceForge\url{https://sourceforge.net/projects/toxtrac/files/ScientificReports/}. Movies provided in image sequence format were converted losslessly to a video format using FFmpeg since idtracker.ai and ToxTrac could not directly process image sequences. $DRO\_002$ and $ACT\_002$ were preprocessed with a custom script to detect the objects before performing the tracking. Also, only the first 100 images of $DRO\_002$ were used to reduce the computing time.
+
+    The benchmark between idtracker.ai and FastTrack was performed on a workstation with an Intel i7-6900K (16 cores), 4.0 GHz CPU, an NVIDIA GeForce GTX 1060 with 6GB of RAM GPU, 32GB of RAM, and an NVMe SSD of 250GB running Arch Linux. The parameters were set by trials and errors inside the graphical user interface of the two software. The tracking duration was recorded using a script calling the software command-line interface. The average tracking duration and the standard deviation were computed over five runs except for $DRO\_002$  (2 runs) and $ACT\_002$ (1 run) due to the very long processing time. Idtracker.ai was evaluated with and without GPU capability except for $100Zebra$, $DRO\_002$, and $ACT\_002$ due to the very long processing time.
+
+    The benchmark between ToxTrac and FastTrack was performed on a computer with an Intel i7-8565U (4 Cores), 1.99 GHz CPU, 16 GB of RAM, and an NVMe SSD of 1 TB running Windows 10. The parameters were set by trials and errors in the graphical user interface. The average tracking duration and the standard deviation were computed over five runs using each software's built-in timer feature. The accuracy was evaluated manually using the built-in review feature implemented in each software. The number of swaps and the number of non-detected objects were counted in each movie, and occlusion events were ignored in this counting.
+
+	\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\textwidth]{part_1/assets/Figure_benchmark.png}
+    \caption{\textbf{} }
+    \label{part_1:fig_benchmark}
+    \end{figure}
+
+    The accuracy was computed as follows:
+    $$ A=\frac{n_{obj}n_{img} - (2N_{swap} + N_{undetected})}{n_{obj}n_{img}}$$
+    with $N_{swap}$ the number of swaps, $N_{undetected}$ the number of non-detected objects, $n_{obj}$ the number of objects, and $n_{img}$ the number of images.
+    For $100Zebra$, the accuracy was computed only over the 200 first images. All the results are presented in \ref{part1_fig_benchmark}. As expected, FastTrack is several orders of magnitude faster than idtracker.ai and significantly faster than ToxTrac on all tested videos. That is mainly due to the method used, idtracker.ai using deep learning and ToxTrac cost optimization and the identity preservation algorithm.
+    All software performed exceptionally well in terms of accuracy, except idtracker.ai on $ZFJ\_001$ probably because the resolution is not good enough.
+    FastTrack's ergonomic post-processing interface can be used to reach a perfect tracking accuracy within a few more minutes. This built-in manual correction is not possible in ToxTrac and lacking ergonomy in Idtracker.ai.
+
+    Altogether, FastTrack offers many assets compared to idtracker.ai and ToxTrac. The software is more versatile than its concurrents and more comfortable to use. The total time spent to track a movie is globally lower, in some cases by orders of magnitude, without sacrificing tracking accuracy.
 
 	\section{Analyse de la base de données}
 
@@ -234,7 +259,7 @@
     In $TD^2$, 23 movies have an illumination good enough to be analyzed directly with FastTrack. The others had to undergo a specific individual pre-processing before being analyzed. Two movies with too many occlusions were discarded (HXB\_001 and ZFL\_001) because they could not be analyzed with FastTrack.
     The remaining 39 films could be analyzed with FastTrack without difficulty. The Kuhn-Munkres algorithm being of complexity $O(n^3)$ the calculation time is generally quite fast. Each film was then manually corrected using the built-in tool to get the ground-truth tracking.
 
-	\section{Estimation de la charge de travail de correction}
+	\section{Dataset classification}
     FastTrack is designed to keep the post-processing phase as light as possible. However, this phase workload varies greatly depending on the movie being analyzed. This workload can be quickly estimated for a given film by computing what we call the probability of incursion.
 
     First, we define the incursion as the exit of an object from its Voronoi cell (\ref{} TODO RAPPEL VORONOI ANNEXE), defined at a time $t$, after a travel time $\tau$. The number of incursions depends on
@@ -246,38 +271,46 @@
     \end{itemize}
     To consider the objects' density, we defined the reduced length $\rho=r\sqrt{d}$ where $r$ is the length and $d$ the density. We remark that typically $\rho=1$ is corresponding to the length between two objects, and $\rho=0.5$ is the length between an object and its Voronoï cell boundary.
 
-    We can write the incursion probability as follows:
+    Assuming that the dynamic is uncorrelated with the geometric proprieties of the Voronoï cells, we can write the incursion probability as follows:
         $$P_{inc}=\int_{0}^{\inf} R(\rho)p_{inc}(\rho) \,d \rho$$
-    where $R(\rho)$ the distribution of the reduced displacement, and $p_{inc}(\rho)$ the geometrical probability of incursion.
+    where $R(\rho)$ the distribution of the reduced displacement at the timescale $\rho$, and $p_{inc}(\rho)$ the geometrical probability of incursion.
 
     $p_{inc}(\rho)$ depends only on the geometrical properties of the objects' arrangement. We can calculate $p_{inc}$ by taking a Voronoï cell and determining the proportion of the angles for which a displacement of $\rho$ implies an incursion in a neighboring Voronoi cell. In other words, see figure~\ref{part_1:fig_pinc}, we take a circle of radius $\rho$ centered on the object and count $\Sigma$ the proportion of the circle that lies outside the Voronoï cell. That will give us $p(\rho)=\frac{\Sigma(\rho)}{2\pi}$ the geometric probability of incursion for one cell. Then, to take into account the diversity of size and shape of Voronoï cells, we average over all the cells of the movies $p_{inc}(\rho)=<p(\rho)>_{cells}$.
 
     Intuitively, we see that $p_{inc}$ goes from 0 when $\rho->\inf$, to 1 when $\rho>>1$. The precise shape of the geometric probability is sensitive to the density of objects, compact (e.g., ACT\_002), sparse (e.g., PAR\_001), and to the overall size of the system when walls restrict it (e.g., ZFA\_001).
 
-	\begin{figure}[h]
+	\begin{figure}[h!]
     \centering
     \includegraphics[width=0.5\textwidth]{part_1/assets/Figure_pinc.png}
     \caption{\textbf{Geometric probability of incursion:} Voronoï cells in black and objects black dots with typical $\rho$ length. Circle of radius $\rho$ with portions inside the Voronoï cell in blue and outside in red. The geometric probability for one cell is computed as $p(\rho)=\frac{\color{red}{\Sigma(\rho)_{out}}}{\color{red}{\Sigma(\rho)_{out}} + \color{blue}{\Sigma(\rho)_{in}}} = \frac{\color{red}{\Sigma(\rho)_{out}}}{2\pi}$}
     \label{part_1:fig_pinc}
     \end{figure}
 
-	
-	Les distributions de $\rho$ et $p_{inc}$ sont représentées figure~\ref{} pour trois films de $TD^2$ représentatifs de trois systèmes très différents. Il n'est pas nécessaire d'avoir un tracking parfait pour avoir une bonne estimation de cette valeur car les quelques erreurs possibles ont une influence marginale sur la distribution des $\rho$ donc sur $P_{inc}$.
+    The distribution $R(\rho)$ is shown in \ref{part_1:fig_3}.B for three timescales $\tau$. A graphical way of calculating $P_{inc}$ is to take the intersection of the areas under $R(\rho)$ and $p_{inc}(\rho)$. In the regime where $R(\rho)$ and $p_{inc}(\rho)$ are well-separated, the resulting value of $P_{inc}$ are low but highly sensitive to the number of swaps in the tracking. Indeed, the swaps create a bump in $R$  at values of $\rho$ close to one that can artificially increase $P_{inc}$ of several orders of magnitude. Unless the ground-truth trajectories are accessible, the single value of $P_{inc}$ at $\tau=1$ can not be used as a measure for a movie's trackability.
 
-	On a calculé $P_{inc}$ pour tous les films de $TD^2$ figure~\ref{}, de manière à en estimer le nombre d'incursions $n_{inc}$ :
-	$$
-	    n_{inc}=P_{inc}*N_{obj}
-	$$
-	avec $N_{obj}$ le nombre total d'objet dans le film.
-	Chaque incursion ne résultant pas à une inversion de l'identité de deux objets, donc à une erreur, on gardera en tête que cette valeur représente la borne maximale possible d'erreurs. Dans $TD^2$, seulement 5 films ont $n_{inc}>1$ ce qui suggère que pour la grande majorité des films, le post-traitement se résume à un simple contrôle. Les 5 films restant sont connus pour leur difficulté à être analysé dont 2 (ACT\_003 et ACT\_004) ont nécessité le développement d'un algorithme spécifique, 2 autres (BAC\_001 et ZFA\_001) des logiciels dédiés pour être analysés.
-	
-	\begin{figure}[h]
+    A timescale-varying analysis will allow us to extract more robust quantifiers. As $p_{inc}(\rho)$ does not depend on $\tau$ and $R(\rho)$ is shifted to the high values of $\rho$ when $\tau$ increases, we can expect that $P_{inc}(\tau)$ has a sigmoid-like shape. We thus computed $P_{inc}$ for various $\tau$. If $\tau>1$ we take integer values (i.e. keep one frame every $\tau1$), and if $\tau<1$ we linearly interpolated the displacements (i.e. multiplied $\rho$ by $\tau$). We represented the results in \ref{part_1:fig_3}.C for the 39 movies that could be tracked in the dataset.
+
+    Strikingly, all $P_{inc}$ followed a logistic curve when $\tau$ is log-scaled. Therefore we used a fit of the form:
+    $$Pinc=\frac{L}{1 + e^{-k(log(\tau)-x_0)}}$$
+    and, noting $\tau_0=e^{x_0}$, the fitting function can be rewritten as:
+    $$P_{inc}=\frac{L}{1 + \frac{\tau_0}{\tau}^k}$$
+    The fits are shown in \ref{}, and are valid for all the movies in the dataset. We can make all fitting curves collapse on a single master curve. We show in \ref{part_1:fig_3}.D that $\frac{P_{inc}}{L}$ plotted as a function of $klog(frac{\tau}{\tau_0})$ follows the standard logistic sigmoid function $$f(x) =\frac{1}{1+e^{-x}}$$.
+
+    An exciting outcome of this approach is determining the framerate at which experiments should be recorded. It is indeed a recurrent experimental question. A high temporal resolution is preferable to reduce the number of incursions and ease the tracking. However, it may not always be accessible (e.g., limited sensor rate, intense illumination required as the exposure time drops) and generates large amounts of images to store and process. A low temporal resolution can make the tracking difficult by increasing the number of incursions.
+    We define $\tau_1$, the timescale at which $P_{inc}$ reaches the inverse of the total number of objects on all frames $N_{obj}$, i.e., the probability of a single incursion in the whole movie. As $\tau_1$ defines the onset of incursions and the possibility of swaps in the tracking procedure, it can be used to indicate each movie's sampling quality. Movies with $\tau_1<1$ already have incursions at the current framerate and are thus undersampled. Whereas for movies with $\tau_1>1$, the current framerate can be degraded without triggering incursions and are thus oversampled. Besides, $\tau_1$ is directly the resampling factor that one should use to have minimal movie size without generating incursions. Using \ref{}, it reads:
+    $$\tau_1=\tau_0(LN_{obj}-1)^{\frac{1}{k}}$$
+    We computed and ordered the values of $\tau_1$ in \ref{part_1:fig_3}.D for the whole dataset. It appears that three quarters (30) of the movies are oversampled. Any difficulty in the tracking should not be expected concerning incursions. On the other hand, nine movies are undersampled. These recordings were already known to be difficult to track, three of them ($ACT\_003$, $ACT\_004$, and $GRA\_003$) have required specific algorithms for analysis, and two ($BAC\_001$, $ZFA\_001$) required dedicated software.
+
+    Then, we tested to what extent this characterization is robust to swaps in the trajectories. Starting from the ground truth trajectories of $ACT\_002$, we degraded the tracking quality by introducing random swaps between neighboring objects. This process is controlled by a degradation rate $\delta$, defines as the number of artificial swaps divided by the total number of objects on all frames. Such a degradation affects the small timescales more severely, and the multi-scale approach takes on its full interest. As depicted in \ref{part_1:fig_3}.F, the fits of $P_{inc}(\tau)$ are insensitive to degradation up to a remarkably high-level of $\delta \approx 10^{-3}$. Therefore, even poor-quality tracking can be used as an input for this method. As long as the distribution of displacements is only marginally affected, the output remains unchanged.
+
+    \begin{figure}[h!]
     \centering
-    \includegraphics[width=1\textwidth]{part_1/assets/Figure_3.png}    
-    \caption{\textbf{Probabilité d'incursion} (\textbf{A}) Définition des incursions : objets faisant de petits déplacements à l'intérieur de leurs cellules de Voronoï (haut), grands déplacements générant des incursions dans les cellules de Voronoï voisines (bas). De telle incursions sont susceptibles de générer des erreurs de tracking. (\textbf{B}) Images extraient de 3 films avec le déplacement instantané des objets (rouge). La position initiale est marqué d'un point. (\textbf{C}) Probabilité géométrique d'incursion $p_{inc}$ en fonction du déplacement normalisé $\rho$ (noir) et de la densité de probabilité de $\rho$ (rouge) pour les trois films correspondant. La probabilité d'incursion $P_{inc}$ correspond à l'aire de recouvrement des deux courbes. (\textbf{D}) Probabilité d'incursion $P_{inc}$ (bleue) et nombre d'incursions $n_{inc}$ (orange) pour 19 films de $TD^2$. Le reste des films ayant $P_{inc}<10^{-20}$}
+    \includegraphics[width=1\textwidth]{part_1/assets/Figure_3.png}
+    \caption{\textbf{}}
     \label{part_1:fig_3}
     \end{figure}
-	
+
+
 	\section{Optimisation des paramètres}
 	
 	L'optimisation des paramètres d'analyse peut parfois s'avérer être une tâche délicate, on présentera ici une méthode basée sur la minimisation du nombre d'inversions d'identités (swap). Les étapes suivies pour le calcul sont présentés figure~\ref{}. Pour compter le nombre d'inversions, il est seulement nécessaire d'avoir un seul film du système étudié parfaitement analysé, ce qui peut être réalisé par un post-traitement méticuleux. On peut ensuite définir la probabilité d'inversion $P_{swap}$ et varié la paramètre afin de la minimiser. Pour se faire, on utilisera l'interface en ligne de commande FastTrack\_cli qui permet d'appeler FastTrack directement à l'intérieur d'un script Python pour automatiser la minimisation. On définit la probabilité d'inversion :
@@ -312,13 +345,6 @@
 
 	
 	A l'aide de ses résultats, on peut donc proposer une méthode permettant de déterminer la fréquence d'acquisition optimale. Cette méthode nécessite un seul enregistrement de bonne qualité déjà analysé avec FastTrack. Il faut ensuite répéter la procédure de dégradation et calculer le $P_{swap}$ résultant. Les $P_{swap}$ peuvent être ajustés à la fonction logistique pour en extraire les paramètres $f^{\star}$ et $\tau$. Il suffit ensuite de choisir la fréquence d'acquisition en fonction de la quantité de travail que l'utilisateur est prêt à fournir en post-traitement $N_{swap}=P_{swap}(N_{obj}-n_{ap})$.
-	
-	\begin{figure}[h]
-    \centering
-    \includegraphics[width=1\textwidth]{part_1/assets/Figure_5.png}    
-    \caption{\textbf{$P_{swap}$ et vitesse d’acquisition} (\textbf{A}) Schéma de la procédure de dégradation. (\textbf{B} $P_{swap}$ en fonction du taux réduit de dégradation $(f-f^{\star})\tau$ pour 7 systèmes très différents. $f^{\star}$ et $\tau$ ont été déterminés par un ajustement sur la fonction logistique standard (noire).}
-    \label{part_1:fig_5}
-    \end{figure}
 	
 \chapter{Perspective}
 

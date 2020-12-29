@@ -8,9 +8,17 @@
 \sffamily
 \usepackage{cite}
 \usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=magenta,
+    filecolor=magenta,
+    urlcolor=magenta,
+    citecolor=magenta,
+}
 \usepackage[sfdefault,book]{FiraSans} %% option 'sfdefault' activates Fira Sans as the default text font
 \usepackage[T1]{fontenc}
-\renewcommand*\oldstylenums[1]{{\firaoldstyle #1}}\setcounter{secnumdepth}{3}
+\usepackage{titlesec}
+\titleformat{\chapter}[display]{\normalfont\bfseries}{}{0pt}{\Huge}\renewcommand*\oldstylenums[1]{{\firaoldstyle #1}}\setcounter{secnumdepth}{3}
 \setlength{\parskip}{1em}
 
 \title{Perception chimique chez la larve de poisson zèbre}

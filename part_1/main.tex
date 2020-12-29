@@ -49,7 +49,7 @@
     \paragraph{idTracker.ai}
     IdTracker.ai \cite{romero2019idtracker} is a framework that allows to track animals with almost perfect accuracy. IdTracker.ai takes advantage of deep learning to carry out the tracking. In a first step, each object is segmented by applying a threshold. A convolutional network then classifies each detected blob as containing a single object, or containing several objects. Another convolutional network then finds the identity of each individual throughout the film. To work, this system requires enough data to train the network to recognize each individual. The authors found that a robust tracking can be obtained with only 30 isolated images of each individual as a base, so it is necessary to plan for a minimum of 500 images for a dozen individuals with a minimum of 25 fps. A resolution of 300 pixels per animal is recommended for good tracking accuracy. A limiting factor of idTracker.ai is that it requires a lot of computing time and a lot of RAM, the authors report a duration of about 20 minutes for 8 zebrafish and about 6 hours for 100 zebrafish on about 2000 high definition images. Even if a ui is available to help the user, basic computer and programming knowledge is required, as well as suitable hardware, the use of a GPU is strongly recommended. It is recommended for users who want perfect, fully automated tracking from high quality images and long movies with a powerful machine without time constraints.
 
-    \section{FastTrack: a different approcach}
+    \section{FastTrack: an original approcach}
     We have previously seen the existing software and the different tracking paradigms applied to science. We can see that a fast approach, requiring little computing power, and generalist (can be applied to different systems, variable number of objects, etc...) is missing.
     To fill this void, we designed a software called FastTrack. This software contains two distinct parts:
     \begin{itemize}
@@ -62,7 +62,7 @@
     FastTrack is distributed under an free software license and implemented in a modular and fully documented manner. Each user can thus modify the software at his convenience or contribute to it. The tracking algorithm is decoupled from the detection and correction interface which makes it extremely easy to integrate FastTrack into an existing project. The software is easily installed in less than 5 minutes and is compatible with Linux, MacOs and Windows, it can run on modest configurations and Single Board Computer (SBC) such as the Raspberry Pi.
 
 
-\chapter{Conception et réalisation}
+\chapter{Design and implementation}
 
     \epigraph{Testing can only prove the presence of bugs, not their absence.}{Edsger W. Dijkstra}
 
@@ -98,7 +98,7 @@
     \end{figure}
 	
 	
-		\subsection{Détection}
+		\subsection{Detection}
 		The purpose of the detection step is to extract each object's kinematic parameters, which will then be used in the association step. FastTrack includes a collection of image analysis filters that allow the user to optimize object detection without external software.
 		\paragraph{Background Calculation}
 		Each analysis starts by calculating a background image. If the user already has a previously saved background image, he can open it directly in the software. Otherwise, three calculation methods are possible:
@@ -171,14 +171,68 @@
         \right.
         $$
         This cost matrix is, in general, rectangular because the number of objects can vary from one image to the following. A memory parameter can be selected to assign a new identity to an object that disappears on more than the selected number of images. In this case, we remove the row corresponding to this object from the cost matrix.
-		We want then to find the best possible association. This problem is called the rectangular assignment problem and can be solved exactly by using the Hungarian algorithm. FastTrack uses the Kuhn-Munkres implementation in C++ to solve this problem.
+        We want then to find the best possible association. This problem is called the rectangular assignment problem and can be solved exactly by using the Hungarian algorithm. FastTrack uses the Kuhn-Munkres implementation in C++ to solve this problem.
 
-		\paragraph{Manual Correction}.
+        \subsection{Automatic tracking parameters}
+        Finding the optimal tracking parameters is necessary to have a tracking accuracy as good as possible. FastTrack can automatically determine a neutral set of soft normalization factors $s_r$, $s_\alpha$, $s_A$, and $s_p$ to help the user. These factors allow comparing terms of very different nature and amplitude into a single cost function. The set of parameters automatically found by FastTrack will give each term the same weight inside the cost function. Therefore, the user must perform parameters' fine-tuning, with some system insight, to get the best set of parameters possible.
+
+        It is intuitive to use the standard deviation of the increments of each kinematic parameter. However, some trajectories are needed to estimate the standard deviations. We set up an iterative, rapidly-converging algorithm to perform this talk.
+
+        Let us use $ZFJ\_001$, a slightly oversampled movie, with many occlusions and objects of different sizes to illustrate the algorithm's details. For simplicity, let us use only the position, angle, and area as kinematic parameters. There is no gain to expect by adding the perimeter parameter because objects' shapes are very similar. The Figure~\ref{part_1:fig_5}-A. shows a snapshot of this movie.
+
+        In order to evaluate the distributions of $dr$, $d\alpha$ and $dA$, we start by tracking the movie setting the hard parameters and random soft parameters. The resulting distributions are shown in Figure~\ref{part_1:fig_5}-C to E. For kinematic parameters whose differential values can be positive or negative the distribution is fitted by a Gaussian function and the soft parameter is set to the standard deviation. For instance with the angular difference $d\alpha$ the fit reads:
+
+        \begin{equation}
+        f(d\alpha) = \frac{1}{s_\alpha\sqrt{2 \pi}} \; e^{-\frac{d\alpha^2}{2 s_\alpha^2}}
+        \label{eq:fit_Gaussian}
+        \end{equation}
+
+        and $s_\alpha$ (orange bar in Figure~\ref{part_1:fig_5}-D) is stored as the soft parameter to use during the next iteration.
+        The computation of the soft parameter for displacement of $s_r$ is different since distances can only be positive. Assuming that the displacements along the $x$ and $y$ axes follow two independent Gaussian processes, the resulting displacement follows a $\chi$ distribution with $2$ degrees of freedom, and the fit reads (see Annexe~\ref{part_1:fig_5} for de detailed derivation):
+
+        \begin{equation}
+    f(x)
+        \label{eq:fit_chi}
+        \end{equation}
+
+        where $s_r$ (orange bar in Fig~\ref{part_1:fig_5}-C) is stored as the soft parameter to use for the next iteration.
+
+        Once all soft tracking parameters have been derived from the distributions, the software recomputes new trajectories with these updated parameters. This iterative process, depicted in Figure~\ref{part_1:fig_5}-B, is run until the tracking parameters converge. In practice, the convergence is very fast, regardless of the initial position in the parameters space. We drew $100$ sets of seed parameters from uniform distributions spanning large intervals, and convergence has been attained in very few iterations for all parameters Figure~\ref{part_1:fig_5}-F.
+
+        FastTrack's implements this algorithm by taking the kinematic quantities' sample standard deviation to increase speed and efficiency. The convergence criterion implemented is that soft parameters should vary less than $10^{-3}$.
+
+        To characterized the resulting tracking, we computed the amount of swaps with respect to the ground-truth:
+
+        \begin{equation}
+        P_{swap} = \frac{N_{swap}}{N_{obj} - n_{ap}}
+        \label{eq:Pswap}
+        \end{equation}
+
+        with $N_{swap}$ being the total number of swaps, $N_{obj}$ the total number of objects on all frames and $n_{ap}$ the number of times a new object appears. If the number of objects is constant and noted $n$, then $n_{ap} = n$ and $N_{obj} = nT$, with $T$ the number of frames in the recording, such that $P_{swap}$ can be simpliefied:
+
+        \begin{equation}
+        P_{swap} = \frac{N_{swap}}{n(T-1)}
+        \label{eq:Pswap_constant}
+        \end{equation}
+
+        $P_{swap}$ converges very fast to a value that is nearly-optimal. For $77\%$ of the parameter sets $P_{swap}$ is decreased or remain equal, with an average drop of $0.0119$ ($155$\% of the converged value), while for 23\% of the parameter sets $P_{swap}$ is increased with an average rise of $0.0011$ ($14$\% of the converged value). Thus, the expected difference is $-0.0090$ ($116$\% of the converged value) for this movie. Therefore, the automatic parameters are an excellent starting point in the general case. The user can fine-tune the weights given to the kinetic parameters to consider the specificities of each movie.
+
+        We computed the converged soft parameters $\hat{s}_r$, $\hat{s}_\alpha$ and $\hat{s}_A$ for several sampling rates of $\tau>1$ (Fig~\ref{part_1:fig_5}-H to J). We used these parameters to track the $ZFJ\_001$ movie at different $\tau$ and compute $P_{swap}$. A comparison between $P_{swap}$ and $P_{inc}$ as a function of $\tau$ is shown in Fig~\ref{part_1:fig_5}-K. This comparison illustrates that $P_{swap}$ is a noisier measurement of a movie's trackability than $P_{inc}$ and confirms that the iterative algorithm produces trajectories with a number of errors that is close to the statistical limit.
+
+        \begin{figure}[h!]
+        \centering
+        \includegraphics[width=1\textwidth]{part_1/assets/Figure_5.png}
+        \caption{\textbf{}}
+        \label{part_1:fig_5}
+        \end{figure}
+
+
+		\subsection{Manual correction}
         FastTrack integrates a manual tracking correction tool. Once the analysis is completed, the result can be displayed in an ergonomic interface created solely for this purpose. The user can replay the film by superimposing the results of the analysis on the original movie. The user can interactively see each object's parameters. More importantly, the user can also directly correct tracking errors by deleting objects or exchanging objects' identity.
         This interface is designed with ergonomics and performance in mind. Keyboard shortcuts and an on-the-fly selection of objects by clicking on the video allow the user to check and correct the analyses quickly. It is also possible to record a film with the tracking results overlay superimposed.
         This manual correction interface makes it possible to shift the workload from the traditional pre-processing of data to the tracking result's post-processing. In general, tracking software will reduce user inputs and improve tracking by using the raw images' pre-processing and the conception of system-specific tracking algorithms. With FastTrack, the pre-processing step is reduced to the minimum to remain general and be applied to a wide variety of systems. To compensate for this, FastTrack provides a correction tool. We will see in the following chapter that this method can save the user much time because the correction time is in genral lower than the conception and computational time of system-specific tracking algorithms.
 
-		\paragraph{Analysis}
+		\subsection{Analysis}
         A question that comes back a lot from users' feedbacks is what to do after the tracking. FastTrack only takes care of the tracking, and statistical data analysis is not implemented in the software. After the tracking, the software generates several files containing the results and the tracking parameters. The result file is named tracking.txt, and it contains the raw data of the analysis with one image and one object per line. This format is compatible with the most used analysis software (R, Python, Julia, spreadsheet). Examples in Python and Julia are available in the documentation to get started.
 
 	\section{Deployment}
@@ -204,7 +258,7 @@
         \paragraph{User} User documentation is available at \url{https://www.fasttrack.sh/UserManual/docs/intro.html}. This documentation is generated from the project, and users can contribute to it at https://github.com/bgallois/FastTrack/. It contains all the information needed to use the software, as well as instructional videos to help the user get started with the software.
         \paragraph{Developer} Developer documentation is available at \url{https://www.fasttrack.sh/API/index.html}. It is automatically generated by the Doxygen software from the documentation in the FastTrack source code. It contains all the information necessary for developers who want to modify or contribute to FastTrack.
 
-\chapter{Base de données de films}
+\chapter{Movies dataset}
     To demonstrate that FastTrack can analyze movies from various systems, we have compiled a database of movies named $TD^2$. This database can be downloaded at \url{https://data.ljp.upmc.fr/datasets/TD2/}. The films either come from data already published in the literature or provided to us by the authors themselves. All the movies are under a CC-BY-NC-SA license. Each movie is identified by a 3-letter code defining the system (e.g., ACT: active matter, ZFA: zebrafish adult...) and three digits to index films from an identical system. $TD^2$ currently regroups 41 films, including different types of objects of very different nature and size
     \begin{itemize}
     \item 7 species of animals from fish to flies,
@@ -225,7 +279,7 @@
     \end{figure}
 
 
-\chapter{Résultats}
+\chapter{Results}
 
     \section{Performance}
     To assess FastTrack's performance, we ran a benchmark comparing FastTrack, Idtracker.ai, and ToxTrac. These software have substantial intrinsic limitations compared to FastTrack. Both require an acceptable framerate and image quality, with sufficient contrast and number of pixels per object and a constant number of objects in the movie that must be defined before the tracking. The benchmark was performed on a dataset consisting of a selection of videos provided with each software, and some movies from the $TD^2$ dataset that meet the three software requirements. $idtrackeraivideoexample$ and $100Zebra$ are available on the idtracker.ai website \url{https://idtrackerai.readthedocs.io/en/latest/data.html}. Guppy2, Waterlouse5, and Wingedant on the ToxTrac SourceForge\url{https://sourceforge.net/projects/toxtrac/files/ScientificReports/}. Movies provided in image sequence format were converted losslessly to a video format using FFmpeg since idtracker.ai and ToxTrac could not directly process image sequences. $DRO\_002$ and $ACT\_002$ were preprocessed with a custom script to detect the objects before performing the tracking. Also, only the first 100 images of $DRO\_002$ were used to reduce the computing time.
@@ -250,8 +304,7 @@
 
     Altogether, FastTrack offers many assets compared to idtracker.ai and ToxTrac. The software is more versatile than its concurrents and more comfortable to use. The total time spent to track a movie is globally lower, in some cases by orders of magnitude, without sacrificing tracking accuracy.
 
-	\section{Analyse de la base de données}
-
+	\section{Dataset classification}
     Analyzing movies from systems as different as those compiled in $TD^2$ is a real challenge. That is partly due to the recording conditions that can be very diverse and make object detection more complex. Two recurring difficulties can be discerned: variations in illumination (e.g., reflection in GRA\_001, shadows in SOC\_001) and overlapping objects (e.g., HXB\_001).
 
     In movies from the academic world, systems are often designed to limit or circumvent these two difficulties. It is common to find movies with a uniform and constant illumination. Also, quasi-2D confinement and a restricted number of objects in the camera field reduce the number of occlusions.
@@ -259,7 +312,6 @@
     In $TD^2$, 23 movies have an illumination good enough to be analyzed directly with FastTrack. The others had to undergo a specific individual pre-processing before being analyzed. Two movies with too many occlusions were discarded (HXB\_001 and ZFL\_001) because they could not be analyzed with FastTrack.
     The remaining 39 films could be analyzed with FastTrack without difficulty. The Kuhn-Munkres algorithm being of complexity $O(n^3)$ the calculation time is generally quite fast. Each film was then manually corrected using the built-in tool to get the ground-truth tracking.
 
-	\section{Dataset classification}
     FastTrack is designed to keep the post-processing phase as light as possible. However, this phase workload varies greatly depending on the movie being analyzed. This workload can be quickly estimated for a given film by computing what we call the probability of incursion.
 
     First, we define the incursion as the exit of an object from its Voronoi cell (\ref{} TODO RAPPEL VORONOI ANNEXE), defined at a time $t$, after a travel time $\tau$. The number of incursions depends on
@@ -310,60 +362,7 @@
     \label{part_1:fig_3}
     \end{figure}
 
-    \section{Automatic tracking parameters}
-    Finding the optimal tracking parameters is necessary to have a tracking accuracy as good as possible. FastTrack can automatically determine a neutral set of soft normalization factors $s_r$, $s_\alpha$, $s_A$, and $s_p$ to help the user. These factors allow comparing terms of very different nature and amplitude into a single cost function. The set of parameters automatically found by FastTrack will give each term the same weight inside the cost function. Therefore, the user must perform parameters' fine-tuning, with some system insight, to get the best set of parameters possible.
-
-    It is intuitive to use the standard deviation of the increments of each kinematic parameter. However, some trajectories are needed to estimate the standard deviations. We set up an iterative, rapidly-converging algorithm to perform this talk.
-
-    Let us use $ZFJ\_001$, a slightly oversampled movie, with many occlusions and objects of different sizes to illustrate the algorithm's details. For simplicity, let us use only the position, angle, and area as kinematic parameters. There is no gain to expect by adding the perimeter parameter because objects' shapes are very similar. The Figure~\ref{part_1:fig_5}-A. shows a snapshot of this movie.
-
-    In order to evaluate the distributions of $dr$, $d\alpha$ and $dA$, we start by tracking the movie setting the hard parameters and random soft parameters. The resulting distributions are shown in Figure~\ref{part_1:fig_5}-C to E. For kinematic parameters whose differential values can be positive or negative the distribution is fitted by a Gaussian function and the soft parameter is set to the standard deviation. For instance with the angular difference $d\alpha$ the fit reads:
-
-    \begin{equation}
-    f(d\alpha) = \frac{1}{s_\alpha\sqrt{2 \pi}} \; e^{-\frac{d\alpha^2}{2 s_\alpha^2}}
-    \label{eq:fit_Gaussian}
-    \end{equation}
-
-    and $s_\alpha$ (orange bar in Figure~\ref{part_1:fig_5}-D) is stored as the soft parameter to use during the next iteration.
-    The computation of the soft parameter for displacement of $s_r$ is different since distances can only be positive. Assuming that the displacements along the $x$ and $y$ axes follow two independent Gaussian processes, the resulting displacement follows a $\chi$ distribution with $2$ degrees of freedom, and the fit reads (see Annexe~\ref{part_1:fig_5} for de detailed derivation):
-
-    \begin{equation}
-f(x)
-    \label{eq:fit_chi}
-    \end{equation}
-
-    where $s_r$ (orange bar in Fig~\ref{part_1:fig_5}-C) is stored as the soft parameter to use for the next iteration.
-
-    Once all soft tracking parameters have been derived from the distributions, the software recomputes new trajectories with these updated parameters. This iterative process, depicted in Figure~\ref{part_1:fig_5}-B, is run until the tracking parameters converge. In practice, the convergence is very fast, regardless of the initial position in the parameters space. We drew $100$ sets of seed parameters from uniform distributions spanning large intervals, and convergence has been attained in very few iterations for all parameters Figure~\ref{part_1:fig_5}-F.
-
-    FastTrack's implements this algorithm by taking the kinematic quantities' sample standard deviation to increase speed and efficiency. The convergence criterion implemented is that soft parameters should vary less than $10^{-3}$.
-
-    To characterized the resulting tracking, we computed the amount of swaps with respect to the ground-truth:
-
-    \begin{equation}
-    P_{swap} = \frac{N_{swap}}{N_{obj} - n_{ap}}
-    \label{eq:Pswap}
-    \end{equation}
-
-    with $N_{swap}$ being the total number of swaps, $N_{obj}$ the total number of objects on all frames and $n_{ap}$ the number of times a new object appears. If the number of objects is constant and noted $n$, then $n_{ap} = n$ and $N_{obj} = nT$, with $T$ the number of frames in the recording, such that $P_{swap}$ can be simpliefied:
-
-    \begin{equation}
-    P_{swap} = \frac{N_{swap}}{n(T-1)}
-    \label{eq:Pswap_constant}
-    \end{equation}
-
-    $P_{swap}$ converges very fast to a value that is nearly-optimal. For $77\%$ of the parameter sets $P_{swap}$ is decreased or remain equal, with an average drop of $0.0119$ ($155$\% of the converged value), while for 23\% of the parameter sets $P_{swap}$ is increased with an average rise of $0.0011$ ($14$\% of the converged value). Thus, the expected difference is $-0.0090$ ($116$\% of the converged value) for this movie. Therefore, the automatic parameters are an excellent starting point in the general case. The user can fine-tune the weights given to the kinetic parameters to consider the specificities of each movie.
-
-    We computed the converged soft parameters $\hat{s}_r$, $\hat{s}_\alpha$ and $\hat{s}_A$ for several sampling rates of $\tau>1$ (Fig~\ref{part_1:fig_5}-H to J). We used these parameters to track the $ZFJ\_001$ movie at different $\tau$ and compute $P_{swap}$. A comparison between $P_{swap}$ and $P_{inc}$ as a function of $\tau$ is shown in Fig~\ref{part_1:fig_5}-K. This comparison illustrates that $P_{swap}$ is a noisier measurement of a movie's trackability than $P_{inc}$ and confirms that the iterative algorithm produces trajectories with a number of errors that is close to the statistical limit.
-
-    \begin{figure}[h!]
-    \centering
-    \includegraphics[width=1\textwidth]{part_1/assets/Figure_5.png}
-    \caption{\textbf{}}
-    \label{part_1:fig_5}
-    \end{figure}
-
-    \section{Parameter optimization}
+    \section{Parameters optimization}
     One may also want to determine the optimal tracking parameters, i.e., with a $P_{swap}$ close to 0 as possible. Provided that the ground-truth is known for at least one movie of a system, for example, by a careful manual post-processing. It is possible to leverage FastTrack's speed to explore the parameters space and minimize $P_{swap}$. The optimized parameters found that way can be used to track other similar movies with a minimal error rate. The workflow of the method is depicted in the Figure~\ref{part_1:fig_4}-A. As the exploration of the whole parameters space requires to perform at least thousands of trackings, such an approach is only made possible by the command-line interface (CLI) and the speed of execution of FastTrack.
 
     Let us first apply this approach to gain insight into the influence of $h_r$, i.e., the maximal distance allowed for an object to travel before considered lost. The Figure~\ref{part_1:fig_4}-B displays how $P_{swap}$ evolves as a function of $h_r$ for three recordings in the dataset. For low values of $h_r$, $P_{swap}$ is essentially imposed by the distribution of the objects' displacements since a high number of errors are generated when the objects are not allowed to move sufficiently. For higher values of $h_r$, the distribution of the distances to the neighbors (as defined by the Voronoï tesselation) starts to influence $P_{swap}$ as the algorithm becomes sensitive to incursions. It can also be more easily fooled by entries and exits at the boundaries of the region of interest when the number of objects in the scene varies.
@@ -380,13 +379,12 @@ f(x)
 	
 \chapter{Perspective}
 
-	On a vu dans cette partie le logiciel FastTrack. On a détaillé les outils utilisés ainsi que l'implémentation en elle-même. On a ensuite testé le logiciel sur une grande quantité de films présentant des systèmes extrêmement variés et évalué sa performance. On a décrit deux méthodes permettant de trouver facilement les paramètres optimaux d'analyses et la fréquence d'acquisition optimale qui permet de guider l'utilisateur de la conception de l'expérience jusqu'à l'analyse des films.
+    In this chapter, we saw how we implemented a versatile and easy to use tracking software using open-source tools. Taking advantage of the GitHub Actions system, we automated the testing and the deployment of the software, increasing confidence, and promoting collaboration. We have shown that FastTrack can compete with state-of-the-art tracking software for many usages. At the same time, we compile a database of movies to track, allowing us to benchmark tracking software on a wide variety of systems. We classify the dataset based on the probability of incursion and, doing so, highlight a criterion to determine the optimal framerate of acquisition. We have finally shown how to determine the best set of tracking parameters leveraging FastTrack capabilities.
 
-	
-	Les codes du logiciel sont entièrement disponible à l'adresse \url{.}. Cela permet d'une part de collaborer au projet pour régler des bogues où ajouter des fonctionnalités. D'intégrer tout ou une partie du projet dans un logiciel ou une expérience déjà existante. Cela renforce la pérennité du projet qui ne dépend pas d'une seule personne pour rester à jour. Enfin la mise en place de la livraison continue (CD) permet de s'affranchir d'un temps dédié à la création de chaque version pour les trois plateformes supportées.
+    FastTrack's original approach, shifting the workload on the post-processing phase while keeping the pre-processing as light as possible, allows the use of FastTrack without insight into the system to track. The post-processing phase, mainly a swift checking of the tracking and small corrections, can be done directly inside the software in an interactive and ergonomic environment. FastTrack allows users to track movies quickly without any computer knowledge.
 
-	
-	La collaboration pour implémenter de nouvelles fonctionnalités, participer à la documentation ou régler des bogues est encouragée et peut se faire grâce au système de pull-request de GitHub.
-	
-	
+    FastTrack's approach does not prevent human inputs, mainly in the post-processing phase, to obtain a perfect tracking accuracy. It will be without inconvenience for many users who will need a human checking in any case. Users who want a perfect tracking accuracy without human input will have to turn to other tracking software that, in our knowledge, suffers severe limitations.
 
+    It is important to note that the source code of FastTrack is available with a fully documented API. Power users can specialize the software with a custom detection phase or a custom cost function tailored to their system to circumvent any encountered limitation. The FastTrack command-line interface allows to embed the software in a high-level programming language like Python or Julia and integrate it inside an existing workflow.
+
+    Overall, FastTrack gives any user the power to quickly analyze their movies on a relatively modest computer and power-user to build a custom-tailored software. The feedback we have encountered more frequently is how to analyze the tracking results. The standardized output leaves the user free to choose the analysis tool that he preferred. An answer to this request will be to develop analysis add-ons that can be integrated into FastTrack if needed. These add-ons will be thematic (e.g., rats behavior, soft matter), and each one will have a specific set of functions to compute meaningful quantities specific to this domain and system.

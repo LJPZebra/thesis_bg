@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created with Inkscape (http://www.inkscape.org/) -->
-
 <svg
    xmlns:osb="http://www.openswatchbook.org/uri/2009/osb"
    xmlns:dc="http://purl.org/dc/elements/1.1/"
@@ -17,8 +15,8 @@
    height="131mm"
    viewBox="0 0 153 131"
    sodipodi:docname="Figure_4.svg"
-   inkscape:version="0.91 r13725"
-   inkscape:export-filename="C:\Users\rapha\Documents\Science\Articles\2020 - PLOS Computational Biology - FastTrack\Figures\Sources\Figure_4.png"
+   inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
+   inkscape:export-filename="/home/benjamin/Codes/thesis_bg/part_1/assets/Figure_4.png"
    inkscape:export-xdpi="600"
    inkscape:export-ydpi="600">
   <metadata
@@ -1424,17 +1422,17 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="1500"
-     inkscape:window-height="937"
+     inkscape:window-width="947"
+     inkscape:window-height="1042"
      id="namedview4"
      showgrid="false"
      inkscape:zoom="2.0000001"
-     inkscape:cx="-10.351392"
-     inkscape:cy="182.01928"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
+     inkscape:cx="204.32136"
+     inkscape:cy="117.61"
+     inkscape:window-x="965"
+     inkscape:window-y="30"
      inkscape:window-maximized="1"
-     inkscape:current-layer="layer2"
+     inkscape:current-layer="g2617"
      fit-margin-top="0"
      fit-margin-left="0"
      fit-margin-right="0"
@@ -1443,7 +1441,8 @@
      units="mm"
      inkscape:document-units="mm"
      scale-x="1"
-     inkscape:snap-global="false" />
+     inkscape:snap-global="false"
+     inkscape:document-rotation="0" />
   <g
      inkscape:groupmode="layer"
      id="layer1"
@@ -1454,7 +1453,7 @@
     <flowRoot
        xml:space="preserve"
        id="flowRoot9092"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#f2f2f2;fill-opacity:1;stroke:none"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0.01%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#f2f2f2;fill-opacity:1;stroke:none"
        transform="matrix(0.26458333,0,0,0.26458333,0,-50)"><flowRegion
          id="flowRegion9094"
          style="fill:#f2f2f2"><rect
@@ -1464,7 +1463,9 @@
            x="27.391304"
            y="406.71176"
            style="fill:#f2f2f2" /></flowRegion><flowPara
-         id="flowPara9098" /></flowRoot>    <rect
+         id="flowPara9098"
+         style="font-size:8px;line-height:1.25"> </flowPara></flowRoot>
+    <rect
        style="opacity:1;fill:#f2f2f2;fill-opacity:1;stroke:none;stroke-width:0.17209381;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.96618359"
        id="rect1332"
        width="152"
@@ -1514,252 +1515,7 @@
      transform="translate(0,81)">
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:Arial;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="-33.867012"
-       y="24.949703"
-       id="text1996"><tspan
-         sodipodi:role="line"
-         id="tspan1994"
-         x="-33.867012"
-         y="24.949703"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;line-height:1.25;font-family:Arial;-inkscape-font-specification:Arial;stroke-width:0.26458332">A</tspan></text>
-    <text
-       id="text2000"
-       y="32.009686"
-       x="-33.967266"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:Arial;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       xml:space="preserve"><tspan
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666703px;line-height:1.25;font-family:Arial;-inkscape-font-specification:Arial;stroke-width:0.26458332"
-         y="32.009686"
-         x="-33.967266"
-         sodipodi:role="line"
-         id="tspan2024"><tspan
-   id="tspan1715"
-   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:1.25;font-family:Arial;-inkscape-font-specification:Arial;stroke-width:0.26458332">Some text @ 6</tspan> </tspan></text>
-    <text
-       id="text2000-3"
-       y="35.173809"
-       x="-33.95142"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:Arial;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       xml:space="preserve"><tspan
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.76388884px;line-height:1.25;font-family:Arial;-inkscape-font-specification:Arial;stroke-width:0.26458332"
-         y="35.173809"
-         x="-33.95142"
-         id="tspan1998-6"
-         sodipodi:role="line">Some text @ 5</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:Arial;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="-33.998959"
-       y="28.439907"
-       id="text2022"><tspan
-         sodipodi:role="line"
-         id="tspan2020"
-         x="-33.998959"
-         y="28.439907"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;line-height:1.25;font-family:Arial;-inkscape-font-specification:Arial;stroke-width:0.26458332">Some text @ 8</tspan></text>
-    <rect
-       style="display:inline;opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="rect2026"
-       width="5"
-       height="3"
-       x="-33.872181"
-       y="2.9711913e-07" />
-    <rect
-       y="4.2333341"
-       x="-33.872181"
-       height="3"
-       width="5"
-       id="rect2048"
-       style="display:inline;opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
-    <rect
-       style="display:inline;opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="rect2058"
-       width="5"
-       height="3"
-       x="-33.872181"
-       y="8.466671" />
-    <rect
-       y="12.700005"
-       x="-33.872181"
-       height="3"
-       width="5"
-       id="rect2068"
-       style="display:inline;opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
-    <rect
-       style="display:inline;opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="rect2078"
-       width="5"
-       height="3"
-       x="-33.872181"
-       y="16.933338" />
-    <rect
-       y="2.3185303e-05"
-       x="-27.079288"
-       height="3"
-       width="5"
-       id="rect2040"
-       style="display:inline;opacity:1;fill:#808080;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
-    <rect
-       style="display:inline;opacity:1;fill:#808080;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="rect2050"
-       width="5"
-       height="3"
-       x="-27.079288"
-       y="4.233357" />
-    <rect
-       y="8.4666939"
-       x="-27.079288"
-       height="3"
-       width="5"
-       id="rect2060"
-       style="display:inline;opacity:1;fill:#808080;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
-    <rect
-       style="display:inline;opacity:1;fill:#808080;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="rect2070"
-       width="5"
-       height="3"
-       x="-27.079288"
-       y="12.700027" />
-    <rect
-       y="16.933361"
-       x="-27.079288"
-       height="3"
-       width="5"
-       id="rect2080"
-       style="display:inline;opacity:1;fill:#808080;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
-    <rect
-       style="display:inline;opacity:1;fill:#214478;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="rect2042"
-       width="5"
-       height="3"
-       x="-20.2864"
-       y="2.3185303e-05" />
-    <rect
-       y="4.233357"
-       x="-20.2864"
-       height="3"
-       width="5"
-       id="rect2052"
-       style="display:inline;opacity:1;fill:#c83737;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
-    <rect
-       style="display:inline;opacity:1;fill:#672178;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="rect2062"
-       width="5"
-       height="3"
-       x="-20.2864"
-       y="8.4666939" />
-    <rect
-       y="12.700027"
-       x="-20.2864"
-       height="3"
-       width="5"
-       id="rect2072"
-       style="display:inline;opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
-    <rect
-       style="display:inline;opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="rect2082"
-       width="5"
-       height="3"
-       x="-20.2864"
-       y="16.933361" />
-    <rect
-       y="2.3185303e-05"
-       x="-13.493511"
-       height="3"
-       width="5"
-       id="rect2044"
-       style="display:inline;opacity:1;fill:#216778;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
-    <rect
-       style="display:inline;opacity:1;fill:#d45500;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="rect2054"
-       width="5"
-       height="3"
-       x="-13.493511"
-       y="4.233357" />
-    <rect
-       y="8.4666939"
-       x="-13.493511"
-       height="3"
-       width="5"
-       id="rect2064"
-       style="display:inline;opacity:1;fill:#a02c5a;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
-    <rect
-       style="display:inline;opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="rect2074"
-       width="5"
-       height="3"
-       x="-13.493511"
-       y="12.700027" />
-    <rect
-       y="16.933361"
-       x="-13.493511"
-       height="3"
-       width="5"
-       id="rect2084"
-       style="display:inline;opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
-    <rect
-       style="display:inline;opacity:1;fill:#00aaff;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="rect2046"
-       width="5"
-       height="3"
-       x="-6.7006197"
-       y="2.3185303e-05" />
-    <rect
-       y="4.233357"
-       x="-6.7006197"
-       height="3"
-       width="5"
-       id="rect2056"
-       style="display:inline;opacity:1;fill:#ffcc00;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
-    <rect
-       style="display:inline;opacity:1;fill:#ff2a7f;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="rect2066"
-       width="5"
-       height="3"
-       x="-6.7006197"
-       y="8.4666939" />
-    <rect
-       y="12.700027"
-       x="-6.7006197"
-       height="3"
-       width="5"
-       id="rect2076"
-       style="display:inline;opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
-    <rect
-       style="display:inline;opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="rect2086"
-       width="5"
-       height="3"
-       x="-6.7006197"
-       y="16.933361" />
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:'French Script MT';-inkscape-font-specification:'French Script MT';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="-33.923855"
-       y="39.099689"
-       id="text7591"><tspan
-         sodipodi:role="line"
-         x="-33.923855"
-         y="39.099689"
-         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944451px;line-height:1.25;font-family:'Standard Symbols L';-inkscape-font-specification:'Standard Symbols L Italic'"
-         id="tspan6926">α β γ δ λ <tspan
-   style="font-style:normal;font-size:2.46944451px"
-   id="tspan4279">π</tspan> τ θ φ μ σ ρ η κ ν ζ ε</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="-33.804371"
-       y="42.610264"
-       id="text6936"><tspan
-         sodipodi:role="line"
-         id="tspan6934"
-         x="-33.804371"
-         y="42.610264"
-         style="stroke-width:0.26458332">→ ← ℃</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;line-height:0%;font-family:Arial;-inkscape-font-specification:Arial;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:Arial;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
        x="0.0051676431"
        y="-78.474747"
        id="text1996-4"><tspan
@@ -1767,21 +1523,21 @@
          id="tspan1994-2"
          x="0.0051676431"
          y="-78.474747"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;line-height:1.25;font-family:Arial;-inkscape-font-specification:Arial;stroke-width:0.26458332">A</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:1.25;font-family:Arial;-inkscape-font-specification:Arial;stroke-width:0.264583">A</tspan></text>
     <text
        id="text14737"
        y="-46"
        x="0.0051676431"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;line-height:0%;font-family:Arial;-inkscape-font-specification:Arial;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:Arial;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
        xml:space="preserve"><tspan
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;line-height:1.25;font-family:Arial;-inkscape-font-specification:Arial;stroke-width:0.26458332"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:1.25;font-family:Arial;-inkscape-font-specification:Arial;stroke-width:0.264583"
          y="-46"
          x="0.0051676431"
          id="tspan14735"
          sodipodi:role="line">B</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;line-height:0%;font-family:Arial;-inkscape-font-specification:Arial;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:Arial;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
        x="80.974945"
        y="-46.043064"
        id="text14741"><tspan
@@ -1789,14 +1545,14 @@
          id="tspan14739"
          x="80.974945"
          y="-46.043064"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;line-height:1.25;font-family:Arial;-inkscape-font-specification:Arial;stroke-width:0.26458332">C</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:1.25;font-family:Arial;-inkscape-font-specification:Arial;stroke-width:0.264583">C</tspan></text>
     <text
        id="text14745"
        y="2"
        x="80.974945"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;line-height:0%;font-family:Arial;-inkscape-font-specification:Arial;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:Arial;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
        xml:space="preserve"><tspan
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;line-height:1.25;font-family:Arial;-inkscape-font-specification:Arial;stroke-width:0.26458332"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:1.25;font-family:Arial;-inkscape-font-specification:Arial;stroke-width:0.264583"
          y="2"
          x="80.974945"
          id="tspan14743"
@@ -1826,13 +1582,13 @@
       <path
          sodipodi:nodetypes="ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
          d="m 40.699407,31.082156 0.267811,-1.717252 0.542267,-1.902108 0.542266,-0.369151 0.542271,0.592823 0.542263,-0.349356 0.542267,-0.185185 0.542263,1.209126 0.54227,2.554053 0.542267,-0.233027 0.542267,-2.103871 0.542267,-1.112811 0.542267,-1.394948 0.542267,-1.888971 0.542266,-1.58312 0.542267,-1.212949 0.542267,-0.932912 0.542267,-0.677306 0.542267,-0.547271 0.54227,-0.49428 0.542263,-0.490386 0.542267,-0.563304 0.542263,-0.579941 0.542271,-0.590175 0.542266,-0.632724 0.542267,-0.631788 0.542267,-0.62853 0.542267,-0.639977 0.542267,-0.579237 0.542267,-0.465303 0.542266,-0.310099 0.542267,-0.09524 0.542267,0.156129 0.542267,0.441345 0.54227,0.706546 0.542263,0.847915 0.542267,0.853965 0.542264,0.78089 0.54227,0.693592 0.542267,0.589367 0.542267,0.405429 0.542266,0.233365 0.542267,0.21633 0.542267,0.264572 0.542267,0.217972 0.542267,0.155824 0.542263,0.07882 0.54227,0.0064 0.542267,0.0337 0.542267,0.02893 0.542263,-0.0063 0.542274,0.03446 0.542263,0.03159 0.542267,-0.09309 0.542267,-0.182678 0.54227,-0.189522 0.542267,-0.133069 0.542263,0.07338 0.547017,0.260785 v 12.047283 z"
-         style="font-style:normal;font-weight:normal;font-size:medium;font-family:Dialog;color-interpolation:linearRGB;fill:#d45500;fill-opacity:0.19607843;fill-rule:evenodd;stroke:none;stroke-width:0.07759778;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:optimizeQuality;image-rendering:optimizeQuality;shape-rendering:auto;text-rendering:geometricPrecision"
+         style="font-style:normal;font-weight:normal;font-size:medium;font-family:Dialog;color-interpolation:linearRGB;fill:#ff7f0e;fill-opacity:0.19607843;fill-rule:evenodd;stroke:none;stroke-width:0.07759778;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:optimizeQuality;image-rendering:optimizeQuality;shape-rendering:auto;text-rendering:geometricPrecision"
          id="path411"
          inkscape:connector-curvature="0" />
       <path
          sodipodi:nodetypes="cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
          d="m 6.796653,18.017495 0.1318374,-0.505535 0.2872479,-0.930538 0.2872446,-0.818768 0.2872479,-0.739898 0.2872479,-0.672937 0.2872446,-0.62525 0.2872479,-0.608894 0.2872446,-0.596809 0.2872479,-0.532238 0.2872445,-0.385201 0.287248,-0.17017 0.2872478,0.07906 0.287245,0.326981 0.287248,0.537489 0.287244,0.672629 0.287248,0.703703 0.287245,0.637697 0.287248,0.525889 0.287244,0.421596 0.287248,0.339315 0.287245,0.269793 0.287247,0.206402 0.287248,0.157466 0.287245,0.136106 0.287248,0.14158 0.287248,0.156346 0.287244,0.156058 0.287248,0.118498 0.287245,0.03972 0.287248,-0.05249 0.287248,-0.121694 0.287244,-0.157627 0.287245,-0.173744 0.287248,-0.184426 0.287248,-0.194677 0.287244,-0.201302 0.287248,-0.197394 0.287245,-0.179732 0.287248,-0.15282 0.287248,-0.124602 0.287244,-0.09926 0.287245,-0.07419 0.287248,-0.04054 0.287247,0.01365 0.287245,0.09684 0.287248,0.207767 0.287244,0.333771 0.287248,0.454436 0.287245,0.549561 0.287248,0.610766 0.287248,0.643966 0.287244,0.649156 0.287248,0.603241 0.287245,0.497651 0.287248,0.388583 0.287248,0.334433 0.287244,0.315602 0.287248,0.281977 0.287245,0.231455 0.287248,0.212791 0.287244,0.255929 0.287248,0.341524 0.287245,0.416874 0.287248,0.424313 0.287248,0.345538 0.287244,0.262663 0.287245,0.281994 0.287248,0.370919 0.287247,0.354058 0.287248,0.115198 0.287245,-0.113514 0.287248,-0.110349 0.287244,0.02872 0.287248,0.142259 0.287245,0.147812 0.287248,0.09437 0.287248,0.104863 0.287244,0.202062 0.287245,0.279832 0.287248,0.180862 0.287248,-0.06514 0.287244,-0.142109 0.287245,0.04989 0.287251,0.354509 0.287241,0.561097 0.287252,0.382477 0.287244,-0.07073 0.287245,-0.159332 0.287248,0.124192 0.287248,0.536213 0.287244,0.978292 0.287248,1.42665 0.222051,1.451487 -26.4815844,0.0028 z"
-         style="font-style:normal;font-weight:normal;font-size:medium;font-family:Dialog;color-interpolation:linearRGB;fill:#216778;fill-opacity:0.19607843;fill-rule:evenodd;stroke:none;stroke-width:0.07759778;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:optimizeQuality;image-rendering:optimizeQuality;shape-rendering:auto;text-rendering:geometricPrecision"
+         style="font-style:normal;font-weight:normal;font-size:medium;font-family:Dialog;color-interpolation:linearRGB;fill:#1f77b4;fill-opacity:0.19607843;fill-rule:evenodd;stroke:none;stroke-width:0.07759778;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:optimizeQuality;image-rendering:optimizeQuality;shape-rendering:auto;text-rendering:geometricPrecision"
          id="path409"
          inkscape:connector-curvature="0" />
       <g
@@ -1900,9 +1656,9 @@
              id="text1776"
              y="34.112251"
              x="2.52163"
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
              xml:space="preserve"><tspan
-               style="stroke-width:0.26458332"
+               style="font-size:2.11667px;line-height:0.25;stroke-width:0.264583"
                y="34.112251"
                x="2.52163"
                id="tspan1774"
@@ -1911,9 +1667,9 @@
              id="text1780"
              y="32.647232"
              x="3.0181594"
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
              xml:space="preserve"><tspan
-               style="font-size:1.41111112px;text-align:center;text-anchor:middle;stroke-width:0.26458332"
+               style="font-size:1.41111px;line-height:0.25;text-align:center;text-anchor:middle;stroke-width:0.264583"
                y="32.647232"
                x="3.0181594"
                id="tspan1778"
@@ -1924,7 +1680,7 @@
            id="g1796">
           <text
              xml:space="preserve"
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
              x="2.52163"
              y="34.112251"
              id="text1790"><tspan
@@ -1932,10 +1688,10 @@
                id="tspan1788"
                x="2.52163"
                y="34.112251"
-               style="stroke-width:0.26458332">10</tspan></text>
+               style="font-size:2.11667px;line-height:0.25;stroke-width:0.264583">10</tspan></text>
           <text
              xml:space="preserve"
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
              x="3.0181594"
              y="32.647232"
              id="text1794"><tspan
@@ -1943,7 +1699,7 @@
                id="tspan1792"
                x="3.0181594"
                y="32.647232"
-               style="font-size:1.41111112px;text-align:center;text-anchor:middle;stroke-width:0.26458332">-3</tspan></text>
+               style="font-size:1.41111px;line-height:0.25;text-align:center;text-anchor:middle;stroke-width:0.264583">-3</tspan></text>
         </g>
         <g
            id="g1806"
@@ -1952,9 +1708,9 @@
              id="text1800"
              y="34.112251"
              x="2.52163"
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
              xml:space="preserve"><tspan
-               style="stroke-width:0.26458332"
+               style="font-size:2.11667px;line-height:0.25;stroke-width:0.264583"
                y="34.112251"
                x="2.52163"
                id="tspan1798"
@@ -1963,9 +1719,9 @@
              id="text1804"
              y="32.647232"
              x="3.0181594"
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
              xml:space="preserve"><tspan
-               style="font-size:1.41111112px;text-align:center;text-anchor:middle;stroke-width:0.26458332"
+               style="font-size:1.41111px;line-height:0.25;text-align:center;text-anchor:middle;stroke-width:0.264583"
                y="32.647232"
                x="3.0181594"
                id="tspan1802"
@@ -1973,7 +1729,7 @@
         </g>
         <text
            xml:space="preserve"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
            x="40.53001"
            y="33.380165"
            id="text1810"><tspan
@@ -1981,21 +1737,21 @@
              id="tspan1808"
              x="40.53001"
              y="33.380165"
-             style="stroke-width:0.26458332">60</tspan></text>
+             style="font-size:2.11667px;line-height:0.25;stroke-width:0.264583">60</tspan></text>
         <text
            id="text2192"
            y="33.380165"
            x="24.257353"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
            xml:space="preserve"><tspan
-             style="stroke-width:0.26458332"
+             style="font-size:2.11667px;line-height:0.25;stroke-width:0.264583"
              y="33.380165"
              x="24.257353"
              id="tspan2190"
              sodipodi:role="line">30</tspan></text>
         <text
            xml:space="preserve"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
            x="7.400754"
            y="33.380165"
            id="text2196"><tspan
@@ -2003,26 +1759,26 @@
              id="tspan2194"
              x="7.400754"
              y="33.380165"
-             style="stroke-width:0.26458332">0</tspan></text>
+             style="font-size:2.11667px;line-height:0.25;stroke-width:0.264583">0</tspan></text>
         <text
            xml:space="preserve"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
            x="56.79388"
            y="33.380165"
            id="text2200"><tspan
              sodipodi:role="line"
              x="56.79388"
              y="33.380165"
-             style="stroke-width:0.26458332"
+             style="font-size:2.11667px;line-height:0.25;stroke-width:0.264583"
              id="tspan2202">90</tspan></text>
         <text
            id="text2208"
            y="33.380165"
            x="73.579681"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
            xml:space="preserve"><tspan
              id="tspan2206"
-             style="stroke-width:0.26458332"
+             style="font-size:2.11667px;line-height:0.25;stroke-width:0.264583"
              y="33.380165"
              x="73.579681"
              sodipodi:role="line">120</tspan></text>
@@ -2346,23 +2102,23 @@
          d="m 71.884185,14.369902 c -5.188842,0.04058 -10.381065,-0.05807 -15.567907,0.011 -0.584578,0.165665 -1.280891,0.0085 -1.686934,0.538425 -0.555692,0.417919 -1.013621,1.001643 -1.583281,1.370071 -1.217152,0.222696 -2.444533,0.331833 -3.680863,0.262231 -1.06236,-0.0125 -2.131006,0.125694 -3.178866,0.291042 -0.905977,0.140133 -1.743394,0.618251 -2.681114,0.482918 -2.354018,-0.03976 -4.701521,0.183964 -7.056181,0.11624 -0.617361,0 -1.234723,0 -1.852085,0 0,4.537847 0,9.075695 0,13.613542"
          style="font-style:normal;font-weight:normal;font-size:medium;font-family:Dialog;color-interpolation:linearRGB;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:optimizeQuality;image-rendering:optimizeQuality;shape-rendering:auto;text-rendering:geometricPrecision" />
       <g
-         style="fill:#216778;fill-opacity:1"
+         style="fill:#1f77b4;fill-opacity:1"
          transform="translate(-0.32740517,0.04677217)"
          id="g2464">
         <text
            xml:space="preserve"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#216778;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#1f77b4;fill-opacity:1;stroke:none;stroke-width:0.264583"
            x="14.382496"
            y="24.416178"
            id="text2450"><tspan
              sodipodi:role="line"
              x="14.382496"
              y="24.416178"
-             style="text-align:start;text-anchor:start;fill:#216778;fill-opacity:1;stroke-width:0.26458332"
+             style="font-size:2.11667px;line-height:0.25;text-align:start;text-anchor:start;fill:#1f77b4;fill-opacity:1;stroke-width:0.264583"
              id="tspan2452">pdf of</tspan></text>
         <text
            xml:space="preserve"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#216778;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#1f77b4;fill-opacity:1;stroke:none;stroke-width:0.264583"
            x="10.372405"
            y="27.175735"
            id="text2458"><tspan
@@ -2370,26 +2126,26 @@
              id="tspan2456"
              x="10.372405"
              y="27.175735"
-             style="text-align:start;text-anchor:start;fill:#216778;fill-opacity:1;stroke-width:0.26458332">displacements</tspan></text>
+             style="font-size:2.11667px;line-height:0.25;text-align:start;text-anchor:start;fill:#1f77b4;fill-opacity:1;stroke-width:0.264583">displacements</tspan></text>
       </g>
       <g
-         style="fill:#d45500;fill-opacity:1"
+         style="fill:#ff7f0e;fill-opacity:1"
          transform="translate(39.955407,0.04677217)"
          id="g2497">
         <text
            xml:space="preserve"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#d45500;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ff7f0e;fill-opacity:1;stroke:none;stroke-width:0.264583"
            x="12.651853"
            y="24.416178"
            id="text2491"><tspan
              sodipodi:role="line"
              x="12.651853"
              y="24.416178"
-             style="text-align:start;text-anchor:start;fill:#d45500;fill-opacity:1;stroke-width:0.26458332"
+             style="font-size:2.11667px;line-height:0.25;text-align:start;text-anchor:start;fill:#ff7f0e;fill-opacity:1;stroke-width:0.264583"
              id="tspan2489">pdf of distances</tspan></text>
         <text
            xml:space="preserve"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#d45500;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ff7f0e;fill-opacity:1;stroke:none;stroke-width:0.264583"
            x="14.288445"
            y="27.175735"
            id="text2495"><tspan
@@ -2397,15 +2153,15 @@
              id="tspan2493"
              x="14.288445"
              y="27.175735"
-             style="text-align:start;text-anchor:start;fill:#d45500;fill-opacity:1;stroke-width:0.26458332">to neighbors</tspan></text>
+             style="font-size:2.11667px;line-height:0.25;text-align:start;text-anchor:start;fill:#ff7f0e;fill-opacity:1;stroke-width:0.264583">to neighbors</tspan></text>
       </g>
       <text
          id="text2501"
          y="10.571614"
          x="31.79228"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
          xml:space="preserve"><tspan
-           style="stroke-width:0.26458332"
+           style="font-size:2.11667px;line-height:0.25;stroke-width:0.264583"
            y="10.571614"
            x="31.79228"
            id="tspan2499"
@@ -2477,9 +2233,9 @@
            id="text2645"
            y="34.112251"
            x="2.52163"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
            xml:space="preserve"><tspan
-             style="stroke-width:0.26458332"
+             style="font-size:2.11667px;line-height:0.25;stroke-width:0.264583"
              y="34.112251"
              x="2.52163"
              id="tspan2643"
@@ -2488,9 +2244,9 @@
            id="text2649"
            y="32.647232"
            x="3.0181594"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
            xml:space="preserve"><tspan
-             style="font-size:1.41111112px;text-align:center;text-anchor:middle;stroke-width:0.26458332"
+             style="font-size:1.41111px;line-height:0.25;text-align:center;text-anchor:middle;stroke-width:0.264583"
              y="32.647232"
              x="3.0181594"
              id="tspan2647"
@@ -2501,7 +2257,7 @@
          id="g2661">
         <text
            xml:space="preserve"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
            x="2.52163"
            y="34.112251"
            id="text2655"><tspan
@@ -2509,10 +2265,10 @@
              id="tspan2653"
              x="2.52163"
              y="34.112251"
-             style="stroke-width:0.26458332">10</tspan></text>
+             style="font-size:2.11667px;line-height:0.25;stroke-width:0.264583">10</tspan></text>
         <text
            xml:space="preserve"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
            x="3.0181594"
            y="32.647232"
            id="text2659"><tspan
@@ -2520,7 +2276,7 @@
              id="tspan2657"
              x="3.0181594"
              y="32.647232"
-             style="font-size:1.41111112px;text-align:center;text-anchor:middle;stroke-width:0.26458332">-3</tspan></text>
+             style="font-size:1.41111px;line-height:0.25;text-align:center;text-anchor:middle;stroke-width:0.264583">-3</tspan></text>
       </g>
       <g
          id="g2671"
@@ -2529,9 +2285,9 @@
            id="text2665"
            y="34.112251"
            x="2.52163"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
            xml:space="preserve"><tspan
-             style="stroke-width:0.26458332"
+             style="font-size:2.11667px;line-height:0.25;stroke-width:0.264583"
              y="34.112251"
              x="2.52163"
              id="tspan2663"
@@ -2540,9 +2296,9 @@
            id="text2669"
            y="32.647232"
            x="3.0181594"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
            xml:space="preserve"><tspan
-             style="font-size:1.41111112px;text-align:center;text-anchor:middle;stroke-width:0.26458332"
+             style="font-size:1.41111px;line-height:0.25;text-align:center;text-anchor:middle;stroke-width:0.264583"
              y="32.647232"
              x="3.0181594"
              id="tspan2667"
@@ -2550,7 +2306,7 @@
       </g>
       <text
          xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
          x="42.052647"
          y="65.380165"
          id="text2675"><tspan
@@ -2558,21 +2314,21 @@
            id="tspan2673"
            x="42.052647"
            y="65.380165"
-           style="stroke-width:0.26458332">30</tspan></text>
+           style="font-size:2.11667px;line-height:0.25;stroke-width:0.264583">30</tspan></text>
       <text
          id="text2679"
          y="65.380165"
          x="25.779991"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
          xml:space="preserve"><tspan
-           style="stroke-width:0.26458332"
+           style="font-size:2.11667px;line-height:0.25;stroke-width:0.264583"
            y="65.380165"
            x="25.779991"
            id="tspan2677"
            sodipodi:role="line">15</tspan></text>
       <text
          xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
          x="8.9233923"
          y="65.380165"
          id="text2683"><tspan
@@ -2580,26 +2336,26 @@
            id="tspan2681"
            x="8.9233923"
            y="65.380165"
-           style="stroke-width:0.26458332">0</tspan></text>
+           style="font-size:2.11667px;line-height:0.25;stroke-width:0.264583">0</tspan></text>
       <text
          xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
          x="58.338737"
          y="65.380165"
          id="text2687"><tspan
            sodipodi:role="line"
            x="58.338737"
            y="65.380165"
-           style="stroke-width:0.26458332"
+           style="font-size:2.11667px;line-height:0.25;stroke-width:0.264583"
            id="tspan2685">45</tspan></text>
       <text
          id="text2691"
          y="65.380165"
          x="74.588654"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
          xml:space="preserve"><tspan
            id="tspan2689"
-           style="stroke-width:0.26458332"
+           style="font-size:2.11667px;line-height:0.25;stroke-width:0.264583"
            y="65.380165"
            x="74.588654"
            sodipodi:role="line">60</tspan></text>
@@ -2607,7 +2363,7 @@
          id="g4220">
         <path
            d="m 8.3219996,44.40711 0.1047448,-0.724624 0.1820751,-0.874157 0.182071,-0.568155 0.182071,-0.337125 0.182071,-0.166453 0.182071,-0.03724 0.182071,0.06488 0.1820724,0.147573 0.1820737,0.217129 0.1820714,0.278252 0.182071,0.330697 0.182071,0.373868 0.182072,0.410839 0.182071,0.444104 0.182071,0.471318 0.182074,0.488669 0.182072,0.49862 0.182071,0.506137 0.182071,0.510398 0.182071,0.509992 0.182071,0.506672 0.182071,0.501695 0.182071,0.493787 0.182075,0.479415 0.182071,0.461099 0.182071,0.444671 0.182071,0.428366 0.182071,0.414551 0.182071,0.408501 0.182071,0.400621 0.182073,0.378869 0.182071,0.358749 0.182073,0.363945 0.182071,0.392264 0.182071,0.438128 0.182073,0.488984 0.182071,0.482256 0.182071,0.380624 0.182073,0.289427 0.182069,0.313358 0.182075,0.407054 0.182071,0.460998 0.182071,0.440861 0.182071,0.419264 0.182071,0.417699 0.182071,0.347024 0.182075,0.171155 0.182071,0.05013 0.182068,0.147906 0.182074,0.403389 0.182071,0.607456 0.182071,0.574016 0.182071,0.335774 0.182072,0.03327 0.182071,-0.141261 0.182074,-0.07605 0.182068,0.09628 0.182075,0.184969 0.182071,0.02654 0.182071,-0.142727 0.182071,-0.0169 0.182071,0.246935 0.182071,0.433446 0.182075,0.430594 0.182071,0.193262 0.182071,-0.236074 0.182071,-0.492869 0.182071,-0.376815 0.182071,-0.154141 0.182075,-0.05568 0.182067,-0.147988 0.182073,-0.380787 0.182073,-0.574741 0.182069,-0.526924 0.182073,-0.241003 0.182071,0.132962 0.182073,0.374991 0.182071,0.224588 0.182071,-0.07907 0.182071,0.02445 0.182075,0.446854 0.182071,0.855036 0.182071,0.760033 0.182071,0.195834 0.182071,0.241856 0.182075,0.796464 0.119573,0.865745 -15.6972612,0.0012 z"
-           style="font-style:normal;font-weight:normal;font-size:medium;font-family:Dialog;color-interpolation:linearRGB;fill:#1f6675;fill-opacity:0.19607843;fill-rule:evenodd;stroke:none;stroke-width:0.06971122;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:optimizeQuality;image-rendering:optimizeQuality;shape-rendering:auto;text-rendering:geometricPrecision"
+           style="font-style:normal;font-weight:normal;font-size:medium;font-family:Dialog;color-interpolation:linearRGB;fill:#1f77b4;fill-opacity:0.19607843;fill-rule:evenodd;stroke:none;stroke-width:0.06971122;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:optimizeQuality;image-rendering:optimizeQuality;shape-rendering:auto;text-rendering:geometricPrecision"
            id="path409-8"
            inkscape:connector-curvature="0"
            sodipodi:nodetypes="cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc" />
@@ -2929,7 +2685,7 @@
       </g>
       <text
          xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
          x="33.314919"
          y="42.571613"
          id="text2845"><tspan
@@ -2937,12 +2693,12 @@
            id="tspan2843"
            x="33.314919"
            y="42.571613"
-           style="stroke-width:0.26458332">ACT_002</tspan></text>
+           style="font-size:2.11667px;line-height:0.25;stroke-width:0.264583">ACT_002</tspan></text>
       <path
          sodipodi:nodetypes="cccccccccccccccccccccccccccccccccccccccccc"
          inkscape:connector-curvature="0"
          id="path413-2"
-         style="font-style:normal;font-weight:normal;font-size:medium;font-family:Dialog;color-interpolation:linearRGB;fill:#d15200;fill-opacity:0.19607843;fill-rule:evenodd;stroke:none;stroke-width:0.06971122;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:optimizeQuality;image-rendering:optimizeQuality;shape-rendering:auto;text-rendering:geometricPrecision"
+         style="font-style:normal;font-weight:normal;font-size:medium;font-family:Dialog;color-interpolation:linearRGB;fill:#ff7f0e;fill-opacity:0.19607843;fill-rule:evenodd;stroke:none;stroke-width:0.06971122;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:optimizeQuality;image-rendering:optimizeQuality;shape-rendering:auto;text-rendering:geometricPrecision"
          d="m 32.174343,63.081592 0.01396,-1.883997 1.084479,-2.948571 1.084481,-1.711165 1.084479,-2.053333 1.08448,-5.68563 1.084476,-5.048695 1.084483,-1.741398 1.08448,1.318025 1.084479,2.411127 1.084481,1.922072 1.084478,1.195607 1.084483,0.618924 1.084477,0.327523 1.08448,0.241591 1.08448,0.109631 1.084479,0.05238 1.08448,0.09548 1.084479,0.04827 1.084481,1.120934 1.084479,0.931769 1.084477,0.315951 1.084483,0.364078 1.084479,0.247493 1.08448,0.606856 1.084479,-0.369778 1.08448,-1.157617 1.084483,0.721813 1.084477,2.426466 1.08448,1.037635 1.084479,0.233163 1.08448,-0.774044 1.084479,-0.960496 1.084476,-1.925662 1.084483,-3.296825 1.084478,-0.405584 1.084483,1.717778 1.084479,2.025138 1.084483,2.402697 1.088003,1.593421 v 5.871892 z" />
       <path
          inkscape:connector-curvature="0"
@@ -2957,9 +2713,9 @@
          id="text3075"
          y="74.571617"
          x="33.314919"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
          xml:space="preserve"><tspan
-           style="stroke-width:0.26458332"
+           style="font-size:2.11667px;line-height:0.25;stroke-width:0.264583"
            y="74.571617"
            x="33.314919"
            id="tspan3073"
@@ -2969,13 +2725,13 @@
          inkscape:connector-curvature="0"
          id="path325"
          d="m 8.3045349,79.306427 c 0.2809095,-0.804943 0.5253803,-1.715814 1.2201,-2.268905 0.6145801,-0.399282 1.2806251,0.136541 1.7894801,0.46661 1.531146,0.967277 2.460873,2.588423 3.297569,4.139599 0.934545,1.672738 1.687493,3.441982 2.660922,5.092737 0.303303,0.52825 0.759357,1.002446 1.38278,1.114916 0.995305,0.313078 1.413794,1.375446 1.830603,2.233976 0.227545,0.399433 0.331767,0.962108 0.772277,1.179739 0.447903,-0.08036 0.592522,-0.620817 0.89474,-0.909274 0.219114,-0.327588 0.719475,-0.53453 1.011144,-0.17257 0.65365,0.766858 0.836967,1.800448 1.106682,2.746046 0.179118,0.713995 0.326878,1.435492 0.462743,2.158833 l -16.4008358,-0.0026 z"
-         style="font-style:normal;font-weight:normal;font-size:medium;font-family:Dialog;color-interpolation:linearRGB;fill:#1f6675;fill-opacity:0.19607843;fill-rule:evenodd;stroke:none;stroke-width:0.0628633;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:optimizeQuality;image-rendering:optimizeQuality;shape-rendering:auto;text-rendering:geometricPrecision" />
+         style="font-style:normal;font-weight:normal;font-size:medium;font-family:Dialog;color-interpolation:linearRGB;fill:#1f77b4;fill-opacity:0.19607843;fill-rule:evenodd;stroke:none;stroke-width:0.0628633;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:optimizeQuality;image-rendering:optimizeQuality;shape-rendering:auto;text-rendering:geometricPrecision" />
       <path
          sodipodi:nodetypes="ccccccccccccc"
          inkscape:connector-curvature="0"
          id="path327"
          d="m 15.278088,95.086406 c 1.120266,-2.611473 3.200316,-5.268856 6.22429,-5.578704 1.922759,-0.199369 3.536137,-1.630084 5.53112,-1.433668 1.835507,0.11477 3.61668,-0.352406 5.36844,-0.830113 1.614254,-0.269926 3.270838,-0.03368 4.88041,-0.388273 1.759951,-0.243661 3.531247,0.299332 5.28713,-0.0805 2.351789,-0.295297 4.740357,0.102311 7.07664,-0.388964 1.760887,-0.230614 3.594388,0.253273 5.28717,-0.468594 2.910032,-1.030386 5.971531,0.190755 8.94751,-0.274463 2.924957,-0.271314 5.919815,-0.09834 8.840691,0.0849 0.244373,-0.0011 0.438159,-0.0127 0.68156,-0.03445 v 9.390987 z"
-         style="font-style:normal;font-weight:normal;font-size:medium;font-family:Dialog;color-interpolation:linearRGB;fill:#d15200;fill-opacity:0.19607843;fill-rule:evenodd;stroke:none;stroke-width:0.0628633;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:optimizeQuality;image-rendering:optimizeQuality;shape-rendering:auto;text-rendering:geometricPrecision" />
+         style="font-style:normal;font-weight:normal;font-size:medium;font-family:Dialog;color-interpolation:linearRGB;fill:#ff7f0e;fill-opacity:0.19607843;fill-rule:evenodd;stroke:none;stroke-width:0.0628633;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:optimizeQuality;image-rendering:optimizeQuality;shape-rendering:auto;text-rendering:geometricPrecision" />
       <path
          inkscape:connector-curvature="0"
          id="path329"
@@ -3043,9 +2799,9 @@
              id="text2875"
              y="34.112251"
              x="2.52163"
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
              xml:space="preserve"><tspan
-               style="stroke-width:0.26458332"
+               style="font-size:2.11667px;line-height:0.25;stroke-width:0.264583"
                y="34.112251"
                x="2.52163"
                id="tspan2873"
@@ -3054,9 +2810,9 @@
              id="text2879"
              y="32.647232"
              x="3.0181594"
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
              xml:space="preserve"><tspan
-               style="font-size:1.41111112px;text-align:center;text-anchor:middle;stroke-width:0.26458332"
+               style="font-size:1.41111px;line-height:0.25;text-align:center;text-anchor:middle;stroke-width:0.264583"
                y="32.647232"
                x="3.0181594"
                id="tspan2877"
@@ -3067,7 +2823,7 @@
            id="g2891">
           <text
              xml:space="preserve"
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
              x="2.52163"
              y="34.112251"
              id="text2885"><tspan
@@ -3075,10 +2831,10 @@
                id="tspan2883"
                x="2.52163"
                y="34.112251"
-               style="stroke-width:0.26458332">10</tspan></text>
+               style="font-size:2.11667px;line-height:0.25;stroke-width:0.264583">10</tspan></text>
           <text
              xml:space="preserve"
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
              x="3.0181594"
              y="32.647232"
              id="text2889"><tspan
@@ -3086,7 +2842,7 @@
                id="tspan2887"
                x="3.0181594"
                y="32.647232"
-               style="font-size:1.41111112px;text-align:center;text-anchor:middle;stroke-width:0.26458332">-2</tspan></text>
+               style="font-size:1.41111px;line-height:0.25;text-align:center;text-anchor:middle;stroke-width:0.264583">-2</tspan></text>
         </g>
         <g
            id="g2901"
@@ -3095,9 +2851,9 @@
              id="text2895"
              y="34.112251"
              x="2.52163"
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
              xml:space="preserve"><tspan
-               style="stroke-width:0.26458332"
+               style="font-size:2.11667px;line-height:0.25;stroke-width:0.264583"
                y="34.112251"
                x="2.52163"
                id="tspan2893"
@@ -3106,9 +2862,9 @@
              id="text2899"
              y="32.647232"
              x="3.0181594"
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
              xml:space="preserve"><tspan
-               style="font-size:1.41111112px;text-align:center;text-anchor:middle;stroke-width:0.26458332"
+               style="font-size:1.41111px;line-height:0.25;text-align:center;text-anchor:middle;stroke-width:0.264583"
                y="32.647232"
                x="3.0181594"
                id="tspan2897"
@@ -3116,7 +2872,7 @@
         </g>
         <text
            xml:space="preserve"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
            x="42.052647"
            y="97.380165"
            id="text2905"><tspan
@@ -3124,21 +2880,21 @@
              id="tspan2903"
              x="42.052647"
              y="97.380165"
-             style="stroke-width:0.26458332">40</tspan></text>
+             style="font-size:2.11667px;line-height:0.25;stroke-width:0.264583">40</tspan></text>
         <text
            id="text2909"
            y="97.380165"
            x="25.779991"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
            xml:space="preserve"><tspan
-             style="stroke-width:0.26458332"
+             style="font-size:2.11667px;line-height:0.25;stroke-width:0.264583"
              y="97.380165"
              x="25.779991"
              id="tspan2907"
              sodipodi:role="line">20</tspan></text>
         <text
            xml:space="preserve"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
            x="8.9233923"
            y="97.380165"
            id="text2913"><tspan
@@ -3146,26 +2902,26 @@
              id="tspan2911"
              x="8.9233923"
              y="97.380165"
-             style="stroke-width:0.26458332">0</tspan></text>
+             style="font-size:2.11667px;line-height:0.25;stroke-width:0.264583">0</tspan></text>
         <text
            xml:space="preserve"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
            x="58.316517"
            y="97.380165"
            id="text2917"><tspan
              sodipodi:role="line"
              x="58.316517"
              y="97.380165"
-             style="stroke-width:0.26458332"
+             style="font-size:2.11667px;line-height:0.25;stroke-width:0.264583"
              id="tspan2915">60</tspan></text>
         <text
            id="text2921"
            y="97.380165"
            x="73.501381"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
            xml:space="preserve"><tspan
              id="tspan2919"
-             style="text-align:center;text-anchor:middle;stroke-width:0.26458332"
+             style="font-size:2.11667px;line-height:0.25;text-align:center;text-anchor:middle;stroke-width:0.264583"
              y="97.380165"
              x="73.501381"
              sodipodi:role="line">80</tspan></text>
@@ -3573,16 +3329,16 @@
          id="text7940"
          y="50.077518"
          x="93.025414"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
          xml:space="preserve"><tspan
-           style="text-align:center;text-anchor:middle;stroke-width:0.26458332"
+           style="font-size:2.11667px;line-height:0.25;text-align:center;text-anchor:middle;stroke-width:0.264583"
            y="50.077518"
            x="93.025414"
            id="tspan7938"
            sodipodi:role="line">100</tspan></text>
       <text
          xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
          x="103.16914"
          y="50.077518"
          id="text7944"><tspan
@@ -3590,21 +3346,21 @@
            id="tspan7942"
            x="103.16914"
            y="50.077518"
-           style="text-align:center;text-anchor:middle;stroke-width:0.26458332">150</tspan></text>
+           style="font-size:2.11667px;line-height:0.25;text-align:center;text-anchor:middle;stroke-width:0.264583">150</tspan></text>
       <text
          id="text7948"
          y="50.077518"
          x="113.39614"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
          xml:space="preserve"><tspan
-           style="text-align:center;text-anchor:middle;stroke-width:0.26458332"
+           style="font-size:2.11667px;line-height:0.25;text-align:center;text-anchor:middle;stroke-width:0.264583"
            y="50.077518"
            x="113.39614"
            id="tspan7946"
            sodipodi:role="line">200</tspan></text>
       <text
          xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
          x="123.53986"
          y="50.077518"
          id="text7952"><tspan
@@ -3612,21 +3368,21 @@
            id="tspan7950"
            x="123.53986"
            y="50.077518"
-           style="text-align:center;text-anchor:middle;stroke-width:0.26458332">250</tspan></text>
+           style="font-size:2.11667px;line-height:0.25;text-align:center;text-anchor:middle;stroke-width:0.264583">250</tspan></text>
       <text
          id="text7956"
          y="50.077518"
          x="133.6711"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
          xml:space="preserve"><tspan
-           style="text-align:center;text-anchor:middle;stroke-width:0.26458332"
+           style="font-size:2.11667px;line-height:0.25;text-align:center;text-anchor:middle;stroke-width:0.264583"
            y="50.077518"
            x="133.6711"
            id="tspan7954"
            sodipodi:role="line">300</tspan></text>
       <text
          xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
          x="90.780342"
          y="47.251595"
          id="text7960"><tspan
@@ -3634,10 +3390,10 @@
            id="tspan7958"
            x="90.780342"
            y="47.251595"
-           style="text-align:center;text-anchor:middle;stroke-width:0.26458332">75</tspan></text>
+           style="font-size:2.11667px;line-height:0.25;text-align:center;text-anchor:middle;stroke-width:0.264583">75</tspan></text>
       <text
          xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
          x="90.207764"
          y="33.999641"
          id="text7964"><tspan
@@ -3645,21 +3401,21 @@
            id="tspan7962"
            x="90.207764"
            y="33.999641"
-           style="text-align:center;text-anchor:middle;stroke-width:0.26458332">100</tspan></text>
+           style="font-size:2.11667px;line-height:0.25;text-align:center;text-anchor:middle;stroke-width:0.264583">100</tspan></text>
       <text
          id="text7968"
          y="20.734776"
          x="90.191231"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
          xml:space="preserve"><tspan
-           style="text-align:center;text-anchor:middle;stroke-width:0.26458332"
+           style="font-size:2.11667px;line-height:0.25;text-align:center;text-anchor:middle;stroke-width:0.264583"
            y="20.734776"
            x="90.191231"
            id="tspan7966"
            sodipodi:role="line">125</tspan></text>
       <text
          xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
          x="90.207764"
          y="7.4699044"
          id="text7972"><tspan
@@ -3667,7 +3423,7 @@
            id="tspan7970"
            x="90.207764"
            y="7.4699044"
-           style="text-align:center;text-anchor:middle;stroke-width:0.26458332">150</tspan></text>
+           style="font-size:2.11667px;line-height:0.25;text-align:center;text-anchor:middle;stroke-width:0.264583">150</tspan></text>
       <g
          id="g7629-3"
          style="display:inline"
@@ -3797,16 +3553,16 @@
          id="text8030"
          y="79.689995"
          x="90.207764"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
          xml:space="preserve"><tspan
-           style="text-align:center;text-anchor:middle;stroke-width:0.26458332"
+           style="font-size:2.11667px;line-height:0.25;text-align:center;text-anchor:middle;stroke-width:0.264583"
            y="79.689995"
            x="90.207764"
            id="tspan8028"
            sodipodi:role="line">100</tspan></text>
       <text
          xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
          x="90.796875"
          y="89.833717"
          id="text8277"><tspan
@@ -3814,10 +3570,10 @@
            id="tspan8275"
            x="90.796875"
            y="89.833717"
-           style="text-align:center;text-anchor:middle;stroke-width:0.26458332">50</tspan></text>
+           style="font-size:2.11667px;line-height:0.25;text-align:center;text-anchor:middle;stroke-width:0.264583">50</tspan></text>
       <text
          xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
          x="90.207764"
          y="69.546272"
          id="text8281"><tspan
@@ -3825,14 +3581,14 @@
            id="tspan8279"
            x="90.207764"
            y="69.546272"
-           style="text-align:center;text-anchor:middle;stroke-width:0.26458332">150</tspan></text>
+           style="font-size:2.11667px;line-height:0.25;text-align:center;text-anchor:middle;stroke-width:0.264583">150</tspan></text>
       <text
          id="text8285"
          y="59.402554"
          x="90.207764"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
          xml:space="preserve"><tspan
-           style="text-align:center;text-anchor:middle;stroke-width:0.26458332"
+           style="font-size:2.11667px;line-height:0.25;text-align:center;text-anchor:middle;stroke-width:0.264583"
            y="59.402554"
            x="90.207764"
            id="tspan8283"
@@ -3887,16 +3643,16 @@
          id="text8343"
          y="97.837364"
          x="101.28754"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
          xml:space="preserve"><tspan
-           style="text-align:center;text-anchor:middle;stroke-width:0.26458332"
+           style="font-size:2.11667px;line-height:0.25;text-align:center;text-anchor:middle;stroke-width:0.264583"
            y="97.837364"
            x="101.28754"
            id="tspan8341"
            sodipodi:role="line">50</tspan></text>
       <text
          xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
          x="111.35994"
          y="97.837364"
          id="text8347"><tspan
@@ -3904,21 +3660,21 @@
            id="tspan8345"
            x="111.35994"
            y="97.837364"
-           style="text-align:center;text-anchor:middle;stroke-width:0.26458332">100</tspan></text>
+           style="font-size:2.11667px;line-height:0.25;text-align:center;text-anchor:middle;stroke-width:0.264583">100</tspan></text>
       <text
          id="text8351"
          y="97.837364"
          x="121.50366"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
          xml:space="preserve"><tspan
-           style="text-align:center;text-anchor:middle;stroke-width:0.26458332"
+           style="font-size:2.11667px;line-height:0.25;text-align:center;text-anchor:middle;stroke-width:0.264583"
            y="97.837364"
            x="121.50366"
            id="tspan8349"
            sodipodi:role="line">150</tspan></text>
       <text
          xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
          x="131.73067"
          y="97.837364"
          id="text8355"><tspan
@@ -3926,7 +3682,7 @@
            id="tspan8353"
            x="131.73067"
            y="97.837364"
-           style="text-align:center;text-anchor:middle;stroke-width:0.26458332">200</tspan></text>
+           style="font-size:2.11667px;line-height:0.25;text-align:center;text-anchor:middle;stroke-width:0.264583">200</tspan></text>
     </g>
     <g
        id="g14629"
@@ -3935,16 +3691,16 @@
          id="text8429"
          y="-18.401041"
          x="15.220777"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
          xml:space="preserve"><tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.264583"
            y="-18.401041"
            x="15.220777"
            id="tspan8427"
            sodipodi:role="line">Data</tspan></text>
       <text
          xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
          x="47.640968"
          y="-18.401041"
          id="text8433"><tspan
@@ -3952,21 +3708,21 @@
            id="tspan8431"
            x="47.640968"
            y="-18.401041"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332">Points</tspan></text>
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.264583">Points</tspan></text>
       <text
          id="text8437"
          y="-18.401037"
          x="82.110298"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
          xml:space="preserve"><tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.264583"
            y="-18.401037"
            x="82.110298"
            id="tspan8435"
            sodipodi:role="line">Trajectories</tspan></text>
       <text
          xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
          x="123.30307"
          y="-18.401041"
          id="text8441"><tspan
@@ -3974,21 +3730,21 @@
            id="tspan8439"
            x="123.30307"
            y="-18.401041"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332">Ground truth</tspan></text>
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.264583">Ground truth</tspan></text>
       <text
          id="text8445"
          y="-20.732494"
          x="30.200972"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
          xml:space="preserve"><tspan
-           style="stroke-width:0.26458332"
+           style="font-size:2.11667px;line-height:0.25;stroke-width:0.264583"
            y="-20.732494"
            x="30.200972"
            id="tspan8443"
            sodipodi:role="line">detection</tspan></text>
       <text
          xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
          x="64.48307"
          y="-20.787291"
          id="text8449"><tspan
@@ -3996,14 +3752,14 @@
            id="tspan8447"
            x="64.48307"
            y="-20.787291"
-           style="stroke-width:0.26458332">matching</tspan></text>
+           style="font-size:2.11667px;line-height:0.25;stroke-width:0.264583">matching</tspan></text>
       <text
          id="text8453"
          y="-20.787291"
          x="103.96414"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
          xml:space="preserve"><tspan
-           style="stroke-width:0.26458332"
+           style="font-size:2.11667px;line-height:0.25;stroke-width:0.264583"
            y="-20.787291"
            x="103.96414"
            id="tspan8451"
@@ -4012,9 +3768,9 @@
          id="text8437-8"
          y="-5.2115407"
          x="58.943184"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
          xml:space="preserve"><tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke-width:0.26458332"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke-width:0.264583"
            y="-5.2115407"
            x="58.943184"
            id="tspan8435-1"
@@ -4130,9 +3886,9 @@
          id="text8359"
          y="45.067455"
          x="147.98714"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
          xml:space="preserve"><tspan
-           style="stroke-width:0.26458332"
+           style="font-size:2.11667px;line-height:0.25;stroke-width:0.264583"
            y="45.067455"
            x="147.98714"
            id="tspan8357"
@@ -4164,7 +3920,7 @@
          inkscape:connector-curvature="0" />
       <text
          xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
          x="147.98714"
          y="36.262768"
          id="text8392"><tspan
@@ -4172,21 +3928,21 @@
            id="tspan8390"
            x="147.98714"
            y="36.262768"
-           style="stroke-width:0.26458332">0.016</tspan></text>
+           style="font-size:2.11667px;line-height:0.25;stroke-width:0.264583">0.016</tspan></text>
       <text
          id="text8396"
          y="27.456125"
          x="147.98714"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
          xml:space="preserve"><tspan
-           style="stroke-width:0.26458332"
+           style="font-size:2.11667px;line-height:0.25;stroke-width:0.264583"
            y="27.456125"
            x="147.98714"
            id="tspan8394"
            sodipodi:role="line">0.017</tspan></text>
       <text
          xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
          x="147.98714"
          y="18.65144"
          id="text8400"><tspan
@@ -4194,14 +3950,14 @@
            id="tspan8398"
            x="147.98714"
            y="18.65144"
-           style="stroke-width:0.26458332">0.018</tspan></text>
+           style="font-size:2.11667px;line-height:0.25;stroke-width:0.264583">0.018</tspan></text>
       <text
          id="text8404"
          y="9.8457737"
          x="147.98714"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11666656px;line-height:0.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
          xml:space="preserve"><tspan
-           style="stroke-width:0.26458332"
+           style="font-size:2.11667px;line-height:0.25;stroke-width:0.264583"
            y="9.8457737"
            x="147.98714"
            id="tspan8402"

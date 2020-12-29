@@ -310,41 +310,73 @@
     \label{part_1:fig_3}
     \end{figure}
 
+    \section{Automatic tracking parameters}
+    Finding the optimal tracking parameters is necessary to have a tracking accuracy as good as possible. FastTrack can automatically determine a neutral set of soft normalization factors $s_r$, $s_\alpha$, $s_A$, and $s_p$ to help the user. These factors allow comparing terms of very different nature and amplitude into a single cost function. The set of parameters automatically found by FastTrack will give each term the same weight inside the cost function. Therefore, the user must perform parameters' fine-tuning, with some system insight, to get the best set of parameters possible.
 
-	\section{Optimisation des paramètres}
-	
-	L'optimisation des paramètres d'analyse peut parfois s'avérer être une tâche délicate, on présentera ici une méthode basée sur la minimisation du nombre d'inversions d'identités (swap). Les étapes suivies pour le calcul sont présentés figure~\ref{}. Pour compter le nombre d'inversions, il est seulement nécessaire d'avoir un seul film du système étudié parfaitement analysé, ce qui peut être réalisé par un post-traitement méticuleux. On peut ensuite définir la probabilité d'inversion $P_{swap}$ et varié la paramètre afin de la minimiser. Pour se faire, on utilisera l'interface en ligne de commande FastTrack\_cli qui permet d'appeler FastTrack directement à l'intérieur d'un script Python pour automatiser la minimisation. On définit la probabilité d'inversion :
-	$$
-	    P_{swap}=\frac{N_{swap}}{N_{obj}-n_{ap}}
-	$$
-	avec $N_{swap}$ le nombre total d'inversions, $N_{obj}$ le nombre total d'objets sur toutes les images, et $n_{ap}$ le nombre de fois qu'un nouvel objet apparaît. Si le nombre d'objets est constant et noté $n$, alors $n_{ap}=n$ et $*N_{obj}=nT$ avec $T$ le nombre d'images dans le film, alors on peut simplifier $P_{swap}$ :
-    $$
-	    P_{swap}=\frac{N_{swap}}{n(T-1)}
-	$$
-	On a étudié en premier lieu l'impact du paramètre $h_d$, la distance maximale de déplacement autorisée entre deux images successives. La figure~\ref{} représente l'évolution de $P_{swap}$ en fonction de $h_d$ pour trois films tirés de $TD^2$. On voit que pour un faible $h_d$, $P_{swap}$ est essentiellement donnée par la distribution des déplacements des objets, ce qui s'explique par le fait qu'un grand nombre d'erreurs est généré quand un objet n'est pas autorisé à se déplacer plus que son déplacement typique. Pour des $h_d$ grands, c'est la distribution des distances aux voisins (défini par la tesselation de Voronoï) qui influence le plus $P_{swap}$, algorithme devenant plus sensible aux incursions et pouvant faire plus d'erreurs avec les entrées et sorties du champ de vision.
-	Entre ces deux cas extrêmes, il existe en général un minimum, ce qui est particulièrement évident pour les systèmes denses dont la distribution des distances aux voisins est très piquées. Par exemple pour DRP\_001 on voit que $P_{swap}$ tombe à 0 pour un intervalle de $h_d$. La fréquence d'acquisition joue un rôle important ici, pour des films très résolus temporellement, on aura une distribution de déplacement décalée à gauche vers des distances plus courtes, cela va donner une séparation claire et de petite valeurs en $P_{swap}$. Pour des films avec une résolution temporelle médiocre (ZFJ\_001), les deux distributions se recouvrent et $P_{swap}$ reste toujours bloquée à de grandes valeurs.
+    It is intuitive to use the standard deviation of the increments of each kinematic parameter. However, some trajectories are needed to estimate the standard deviations. We set up an iterative, rapidly-converging algorithm to perform this talk.
 
-	On peut faire une analyse similaire pour les autres paramètres. On a représenté $h_d$ en fonction de $h_t$ (nombre d'images où l'objet peut disparaitre), on voit qu'on peut trouver une bande de paramètres où $P_{swap}$ est minimale.
-	
-	Pour résumer, on peut faire cette analyse pour un film parfaitement analysé grâce à FastTrack et à l'outil de post-traitement, puis en dériver un jeu de paramètres optimaux à appliquer sur des films similaires de manière à réduire la charge de travail en post-traitement.
+    Let us use $ZFJ\_001$, a slightly oversampled movie, with many occlusions and objects of different sizes to illustrate the algorithm's details. For simplicity, let us use only the position, angle, and area as kinematic parameters. There is no gain to expect by adding the perimeter parameter because objects' shapes are very similar. The Figure~\ref{part_1:fig_5}-A. shows a snapshot of this movie.
 
-	
-	\begin{figure}[h]
+    In order to evaluate the distributions of $dr$, $d\alpha$ and $dA$, we start by tracking the movie setting the hard parameters and random soft parameters. The resulting distributions are shown in Figure~\ref{part_1:fig_5}-C to E. For kinematic parameters whose differential values can be positive or negative the distribution is fitted by a Gaussian function and the soft parameter is set to the standard deviation. For instance with the angular difference $d\alpha$ the fit reads:
+
+    \begin{equation}
+    f(d\alpha) = \frac{1}{s_\alpha\sqrt{2 \pi}} \; e^{-\frac{d\alpha^2}{2 s_\alpha^2}}
+    \label{eq:fit_Gaussian}
+    \end{equation}
+
+    and $s_\alpha$ (orange bar in Figure~\ref{part_1:fig_5}-D) is stored as the soft parameter to use during the next iteration.
+    The computation of the soft parameter for displacement of $s_r$ is different since distances can only be positive. Assuming that the displacements along the $x$ and $y$ axes follow two independent Gaussian processes, the resulting displacement follows a $\chi$ distribution with $2$ degrees of freedom, and the fit reads (see Annexe~\ref{part_1:fig_5} for de detailed derivation):
+
+    \begin{equation}
+f(x)
+    \label{eq:fit_chi}
+    \end{equation}
+
+    where $s_r$ (orange bar in Fig~\ref{part_1:fig_5}-C) is stored as the soft parameter to use for the next iteration.
+
+    Once all soft tracking parameters have been derived from the distributions, the software recomputes new trajectories with these updated parameters. This iterative process, depicted in Figure~\ref{part_1:fig_5}-B, is run until the tracking parameters converge. In practice, the convergence is very fast, regardless of the initial position in the parameters space. We drew $100$ sets of seed parameters from uniform distributions spanning large intervals, and convergence has been attained in very few iterations for all parameters Figure~\ref{part_1:fig_5}-F.
+
+    FastTrack's implements this algorithm by taking the kinematic quantities' sample standard deviation to increase speed and efficiency. The convergence criterion implemented is that soft parameters should vary less than $10^{-3}$.
+
+    To characterized the resulting tracking, we computed the amount of swaps with respect to the ground-truth:
+
+    \begin{equation}
+    P_{swap} = \frac{N_{swap}}{N_{obj} - n_{ap}}
+    \label{eq:Pswap}
+    \end{equation}
+
+    with $N_{swap}$ being the total number of swaps, $N_{obj}$ the total number of objects on all frames and $n_{ap}$ the number of times a new object appears. If the number of objects is constant and noted $n$, then $n_{ap} = n$ and $N_{obj} = nT$, with $T$ the number of frames in the recording, such that $P_{swap}$ can be simpliefied:
+
+    \begin{equation}
+    P_{swap} = \frac{N_{swap}}{n(T-1)}
+    \label{eq:Pswap_constant}
+    \end{equation}
+
+    $P_{swap}$ converges very fast to a value that is nearly-optimal. For $77\%$ of the parameter sets $P_{swap}$ is decreased or remain equal, with an average drop of $0.0119$ ($155$\% of the converged value), while for 23\% of the parameter sets $P_{swap}$ is increased with an average rise of $0.0011$ ($14$\% of the converged value). Thus, the expected difference is $-0.0090$ ($116$\% of the converged value) for this movie. Therefore, the automatic parameters are an excellent starting point in the general case. The user can fine-tune the weights given to the kinetic parameters to consider the specificities of each movie.
+
+    We computed the converged soft parameters $\hat{s}_r$, $\hat{s}_\alpha$ and $\hat{s}_A$ for several sampling rates of $\tau>1$ (Fig~\ref{part_1:fig_5}-H to J). We used these parameters to track the $ZFJ\_001$ movie at different $\tau$ and compute $P_{swap}$. A comparison between $P_{swap}$ and $P_{inc}$ as a function of $\tau$ is shown in Fig~\ref{part_1:fig_5}-K. This comparison illustrates that $P_{swap}$ is a noisier measurement of a movie's trackability than $P_{inc}$ and confirms that the iterative algorithm produces trajectories with a number of errors that is close to the statistical limit.
+
+    \begin{figure}[h!]
     \centering
-    \includegraphics[width=1\textwidth]{part_1/assets/Figure_4.png}    
-    \caption{\textbf{Optimisation des paramètres d'analyse basé sur $P_{swap}$} (\textbf{A}) Schéma du workflow d'optimisation : le résultat parfait de tracking est utilisée pour calculer $P_{swap}$ et créer une boucle de rétroaction sur les paramètres d'analyse. (\textbf{B}) $P_{swap}$ (noire) en fonction de la distance maximale $h_d$ (en pixels) pour trois films typiques. Les lignes verticales pour DRP\_001 indique que $P_{swap}$ descend à 0. Les distributions des déplacements entre deux images successives (bleue), et de distance aux voisins (orange) sont montrées pour comparaison. (\textbf{C}) $P_{swap}$ en fonction de la distance maximale $h_d$ et du temps de disparition maximal $h_t$ (en nombre d'images) pour PAR\_001 pour $s_d=95$ et $s_{\alpha}=60$. (\textbf{D}) $P_{swap}$ en fonction de la distance $s_d$ (en pixels) et de l'angle de normalisation $s_{\alpha}$ (en degrés) pour PAR\_001 avec $h_d=210$ et $h_t=90$. } 
+    \includegraphics[width=1\textwidth]{part_1/assets/Figure_5.png}
+    \caption{\textbf{}}
+    \label{part_1:fig_5}
+    \end{figure}
+
+    \section{Parameter optimization}
+    One may also want to determine the optimal tracking parameters, i.e., with a $P_{swap}$ close to 0 as possible. Provided that the ground-truth is known for at least one movie of a system, for example, by a careful manual post-processing. It is possible to leverage FastTrack's speed to explore the parameters space and minimize $P_{swap}$. The optimized parameters found that way can be used to track other similar movies with a minimal error rate. The workflow of the method is depicted in the Figure~\ref{part_1:fig_4}-A. As the exploration of the whole parameters space requires to perform at least thousands of trackings, such an approach is only made possible by the command-line interface (CLI) and the speed of execution of FastTrack.
+
+    Let us first apply this approach to gain insight into the influence of $h_r$, i.e., the maximal distance allowed for an object to travel before considered lost. The Figure~\ref{part_1:fig_4}-B displays how $P_{swap}$ evolves as a function of $h_r$ for three recordings in the dataset. For low values of $h_r$, $P_{swap}$ is essentially imposed by the distribution of the objects' displacements since a high number of errors are generated when the objects are not allowed to move sufficiently. For higher values of $h_r$, the distribution of the distances to the neighbors (as defined by the Voronoï tesselation) starts to influence $P_{swap}$ as the algorithm becomes sensitive to incursions. It can also be more easily fooled by entries and exits at the boundaries of the region of interest when the number of objects in the scene varies.
+    In between, for most recordings, there is a gap yielding the minimal probability of error. That is particularly true when the objects are densely packed, since the distribution of distances to neighbors is sharper, like for $DRP\_001$ where $P_{swap}$ drops to zero on a range of $h_r$. The acquisition framerate also has an essential role in this effect. With highly time-resolved movies, the distribution of displacements is shifted to the left (i.e., short distances), leading to a clear separation between the distribution of displacements and the distribution of the distances to the neighbors, resulting in low values of $P_{swap}$. In contrast, for poorly time-resolved movies like $ZFJ\_001$ the two distributions overlap, and $P_{swap}$ is always bound to high values.
+
+    Similar analysis can be performed on the other tracking parameters. The Figure~\ref{part_1:fig_4}-C represents $P_{swap}$ as a function of both hard parameters $h_r$ and $h_t$ for $PAR\_001$, and a thin optimal segment appears. The Figure~\ref{part_1:fig_4}-D represents $P_{swap}$ as a function of the two soft parameters $s_r$ and $s_\alpha$, and an optimal ratio lies at $\frac{s_r}{s_\alpha} \simeq 0.63$. Altogether, a set of optimal parameters can be derived and used for the processing of similar recordings.
+
+    \begin{figure}[h!]
+    \centering
+    \includegraphics[width=1\textwidth]{part_1/assets/Figure_4.png}
+    \caption{\textbf{}}
     \label{part_1:fig_4}
     \end{figure}
-	
-	Une autre question souvent posée est de savoir avec quelle résolution temporelle acquérir le film. Une grande résolution permet de diminuer $P_{swap}$ et donc de réduire le post-traitement mais n'est pas toujours envisageable (limitation de la caméra, de l'illumination, nécessité d'un grand espace de stockage).
-	Pour étudier l'impact de la fréquence d'enregistrement, on a sélectionné 7 films avec une bonne résolution temporelle et nous les avons dégradés pour à chaque fois calculer $P_{swap}$. Tracé en fonction du facteur de dégradation adimentionné $(f-f^{\star})\tau$, on voit que tous les $P_{swap}$ suivent une courbe maîtresse :
-	$$
-	    L(x)=\frac{1}{1+e^{-1}a}
-	$$
-	qui est une fonction logistique standard où $f^{\star}$ correspond au facteur de dégradation où $P_{swap}=0.5$, $\tau$ est un facteur de normalisation qui dépend des propriétés dynamiques de chaque système.
-
-	
-	A l'aide de ses résultats, on peut donc proposer une méthode permettant de déterminer la fréquence d'acquisition optimale. Cette méthode nécessite un seul enregistrement de bonne qualité déjà analysé avec FastTrack. Il faut ensuite répéter la procédure de dégradation et calculer le $P_{swap}$ résultant. Les $P_{swap}$ peuvent être ajustés à la fonction logistique pour en extraire les paramètres $f^{\star}$ et $\tau$. Il suffit ensuite de choisir la fréquence d'acquisition en fonction de la quantité de travail que l'utilisateur est prêt à fournir en post-traitement $N_{swap}=P_{swap}(N_{obj}-n_{ap})$.
 	
 \chapter{Perspective}
 

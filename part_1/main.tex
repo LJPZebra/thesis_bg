@@ -66,82 +66,95 @@
 
     \epigraph{Testing can only prove the presence of bugs, not their absence.}{Edsger W. Dijkstra}
 
-	\section{Tools used}
-	
-	The choice of tools and libraries used in designing a software program is paramount, and several selection factors must be taken into account.
-	The first criterion to consider is the license. We chose to put the FastTrack software under a free license (GPL3), which implies that the language used as well as the libraries are also under compatible licenses. The choice of an open-source license is evident in the case of scientific software. The user can then check how the software works, modify it to adapt it to his needs, and share it.
-	The second criterion is to choose the libraries used carefully, considering the future of the software so that the user does not have to change libraries if its capabilities prove insufficient as the software evolves. Mature libraries offering long-term support are preferred.
+    \section{Tools used}
 
-	In this perspective, FastTrack has been implemented in C++ using the Qt \cite{Qt} and OpenCV \cite{opencv_library} libraries for the graphical interface and image analysis, respectively. Unit tests are performed using the Google Test library.
+    The choice of tools and libraries used in designing a software program is paramount, and several selection factors must be taken into account.
+    The first criterion to consider is the license. We chose to put the FastTrack software under a free license (GPL3), which implies that the language used as well as the libraries are also under compatible licenses. The choice of an open-source license is evident in the case of scientific software. The user can then check how the software works, modify it to adapt it to his needs, and share it.
+    The second criterion is to choose the libraries used carefully, considering the future of the software so that the user does not have to change libraries if its capabilities prove insufficient as the software evolves. Mature libraries offering long-term support are preferred.
 
-	C++ is a computer language created by Bjarne Stroustrup in 1985. Offering high performance, it is standardized by the International Organization for Standardization (ISO). It is the language of choice for image analysis applications and the creation of complex graphical user interfaces.
+    In this perspective, FastTrack has been implemented in C++ using the Qt \cite{Qt} and OpenCV \cite{opencv_library} libraries for the graphical interface and image analysis, respectively. Unit tests are performed using the Google Test library.
 
-	Qt is an open-source GUI library created by Haavard Nord and Eirik Chambe-Eng, both physicists, in 1991 when developing ultrasonic image analysis software. With extensive documentation and a large community, it is very mature. It allows creating graphical user interfaces for Linux, Mac, and Windows with the same source code.
+    C++ is a computer language created by Bjarne Stroustrup in 1985. Offering high performance, it is standardized by the International Organization for Standardization (ISO). It is the language of choice for image analysis applications and the creation of complex graphical user interfaces.
 
-	OpenCV is an open-source image analysis library created by Intel in 1999. Very complete and efficient, it has become the reference in image analysis for both research and commercial applications.
+    Qt is an open-source GUI library created by Haavard Nord and Eirik Chambe-Eng, both physicists, in 1991 when developing ultrasonic image analysis software. With extensive documentation and a large community, it is very mature. It allows creating graphical user interfaces for Linux, Mac, and Windows with the same source code.
 
-	Google test is a suite for automating unit tests in C++. OpenCV notably uses it. The purpose of unit tests is to verify that each part of the program works as expected. This practice has several advantages: detecting more easily possible errors during the implementation of new features and facilitating the development of the software when it grows in size to avoid any error inclusions. This series of tests are automatically performed on each new commit, see section~\ref{}.
+    OpenCV is an open-source image analysis library created by Intel in 1999. Very complete and efficient, it has become the reference in image analysis for both research and commercial applications.
 
-	\section{Implementation}
-	FastTrack's operation can be divided into three parts: the detection of objects, the association of objects from one image to another, and finally, a correction step.
+    Google test is a suite for automating unit tests in C++. OpenCV notably uses it. The purpose of unit tests is to verify that each part of the program works as expected. This practice has several advantages: detecting more easily possible errors during the implementation of new features and facilitating the development of the software when it grows in size to avoid any error inclusions. This series of tests are automatically performed on each new commit, see section~\ref{}.
 
-	Each analysis begins with the opening of a sequence of images or a video file. The user can choose between two types of interfaces, an interactive interface where he can only open one film at a time. It allows the user to see, in real-time, the impact of parameters on the images. Which facilitates the determination of the optimal analysis parameters. A second interface allows many movies to be opened simultaneously, either by giving a parameter file or selecting the parameters in the interface. It is useful when the user wants to analyze many movies for which he already knows the optimal analysis parameters.
+    \section{Implementation}
+    FastTrack's operation can be divided into three parts: the detection of objects, the association of objects from one image to another, and finally, a correction step.
 
-	Both interfaces can be used in a complementary way. The user can find the optimal parameters with the interactive interface and then automate the analysis of many movies by adding them in batches in the software.
+    Each analysis begins with the opening of a sequence of images or a video file. The user can choose between two types of interfaces, an interactive interface where he can only open one film at a time. It allows the user to see, in real-time, the impact of parameters on the images. Which facilitates the determination of the optimal analysis parameters. A second interface allows many movies to be opened simultaneously, either by giving a parameter file or selecting the parameters in the interface. It is useful when the user wants to analyze many movies for which he already knows the optimal analysis parameters.
+
+    Both interfaces can be used in a complementary way. The user can find the optimal parameters with the interactive interface and then automate the analysis of many movies by adding them in batches in the software.
 
 
-	\begin{figure}[h!]
+    \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.75\textwidth]{part_1/assets/Figure_1.png}    
-    \caption{\textbf{FastTrack flux de traitement.} Il se divise en trois parties distinctes : la détection, l'association et le post-traitement.}
+    \includegraphics[width=0.75\textwidth]{part_1/assets/Figure_1.png}
+    \caption{{\bf FastTrack workflow chart.} The workflow divides into three mains parts: detection, matching, and post-processing. A \faUser indicates the few steps that require user input. Sample dataset: $ZFJ\_001$.}
     \label{part_1:fig_1}
     \end{figure}
-	
-	
-		\subsection{Detection}
-		The purpose of the detection step is to extract each object's kinematic parameters, which will then be used in the association step. FastTrack includes a collection of image analysis filters that allow the user to optimize object detection without external software.
-		\paragraph{Background Calculation}
-		Each analysis starts by calculating a background image. If the user already has a previously saved background image, he can open it directly in the software. Otherwise, three calculation methods are possible:
-		\begin{itemize}
-			\item Projection of maximum intensity.
-			\item Projection of minimum intensity.
-			\item Projection of the average intensity.
-		\end{itemize}
-		All three methods are based on the same principle. The user chooses $n$ images in the sequence. The software will project in the direction perpendicular to the image (along the time component) either the maximum, minimum or average of the sequence. In practice, the maximum (resp. minimum) will be projected if the objects are darker (resp. lighter) than the background so that the objects disappear and thus obtain the background. The user can make the registration of each image before the projection in order to correct a possible camera movement.
-		
-		\paragraph{Registration}
-		The user can choose to register the images. Three methods are proposed in the software. Each method is implemented in a pyramidal way, i.e., the registration is first carried out on a degraded image to roughly correct the displacement. The correction is then refined by increasing the image quality until the original quality is reached. This speeds up the process, as registration is often a relatively time-consuming process.
+
+        \subsection{Detection}
+        The purpose of the detection step is to extract each object's kinematic parameters, which will then be used in the association step. FastTrack includes a collection of image analysis filters that allow the user to optimize object detection without external software.
+        \paragraph{Background Calculation}
+        Each analysis starts by calculating a background image. If the user already has a previously saved background image, he can open it directly in the software. Otherwise, three calculation methods are possible:
+        \begin{itemize}
+            \item Projection of maximum intensity.
+            \item Projection of minimum intensity.
+            \item Projection of the average intensity.
+        \end{itemize}
+        All three methods are based on the same principle. The user chooses $n$ images in the sequence. The software will project in the direction perpendicular to the image (along the time component) either the maximum, minimum or average of the sequence. In practice, the maximum (resp. minimum) will be projected if the objects are darker (resp. lighter) than the background so that the objects disappear and thus obtain the background. The user can make the registration of each image before the projection in order to correct a possible camera movement.
+
+        \paragraph{Registration}
+        The user can choose to register the images. Three methods are proposed in the software. Each method is implemented in a pyramidal way, i.e., the registration is first carried out on a degraded image to roughly correct the displacement. The correction is then refined by increasing the image quality until the original quality is reached. This speeds up the process, as registration is often a relatively time-consuming process.
 
 
-		The first method proposed is phase correlation. It allows correcting the translational movements between two images using the Fourier theorem in the frequency domain. This method is swift but remains limited to small translational movements only.
+        The first method proposed is phase correlation. It allows correcting the translational movements between two images using the Fourier theorem in the frequency domain. This method is swift but remains limited to small translational movements only.
 
 
-		The second proposed method is the Enhanced Correlation Coefficient (ECC) method. In FastTrack, it is restricted to correcting translational and rotational movements only. It consists of using the correlation coefficient as a measure to find the best transformation between two images. This method's advantage is that it is relatively fast, since the non-linear optimization problem can be solved in a linear way. It is efficient for noisy images and having photometric distortions (contrast, brightness).
+        The second proposed method is the Enhanced Correlation Coefficient (ECC) method. In FastTrack, it is restricted to correcting translational and rotational movements only. It consists of using the correlation coefficient as a measure to find the best transformation between two images. This method's advantage is that it is relatively fast, since the non-linear optimization problem can be solved in a linear way. It is efficient for noisy images and having photometric distortions (contrast, brightness).
 
 
-		The third method is a method based on the identification of key points. It allows for correcting movements and deformations (homography). The key points (about 500) are automatically determined on two images thanks to the ORB algorithm \cite{}. These points are then associated two by two using the RANSAC algorithm \cite{} to find the best transformation between the two images. This method, more precise, requires a sufficient image quality to be able to discern key points.
-		
-	\begin{figure}[h!]
-    \centering
-    \includegraphics[width=1\textwidth]{part_1/assets/Figure_2.png}    
-    \caption{\textbf{Registrations.} Deux films avec une dérive sévère sont utilisés comme référence (DRO\_001 en hautn ULT\_001 en bas). (\textbf{A}) Comparaison entre une image (magenta) avec la première image (vert), avec agrandissement des détails en insert. (\textbf{B}) Déviation moyenne carrée (RMSD) de l'intensité des pixels avant et après registration, moyennée sur toutes les images et normalisée par la RMSD sans registration pour les trois méthodes. Barres d'erreur : déviation standard. (\textbf{C}) Temps moyen relatif pour les trois méthodes (unités arbitraires). Barres d'erreur : déviation standard.}
-    \label{part_1:fig_2}
-    \end{figure}
-		
-		\paragraph{Binarization}
-		Each image is then binarized by subtracting the background image from it and defining a threshold value. In the interactive mode, the user can see the impact of the parameters on the image, which makes it easier to adjust the binarization threshold. The software also detects if the background is darker (resp. lighter) than the objects allowing to have at the end of this operation a binary image where the pixels belonging to the object are equal to 1, and the pixels belonging to the background are equal to 0.
-		\paragraph{Morphological operation}
-		A set of morphological operations (dilation, erosion, opening, etc...) can be performed on the binary image to improve detection and eliminate possible artifacts. Different shapes and sizes of cores are available.
-		\paragraph{ROI}
-		The user can select a region of interest and exclude the rest of the image from the analysis. This speeds up the analysis process and avoids the detection of interfering objects. In interactive mode, this ROI can be drawn directly on the image.
-		\paragraph{Sort}
-		To exclude objects that are too small for noise or too large, for example, two objects on top of each other, the user must select two characteristic sizes. The objects are colored either red or green in interactive mode depending on whether their size belongs to the selected size range.
-		\paragraph{Extracting Kinematic Parameters}
-		Based on the binary images, the software will detect the contour of each object. An essential step in any tracking procedure is the extraction of the parameters that will be used in the association step. It is generally in the choice of its quantities that the tracking algorithms differ to specialize to a given type of object. In FastTrack, the parameters extracted are the center of mass, the orientation, the area, and the object's perimeter. Its quantities are quickly calculated and general enough to adapt to a wide variety of objects.
+        The third method is a method based on the identification of key points. It allows for correcting movements and deformations (homography). The key points (about 500) are automatically determined on two images thanks to the ORB algorithm \cite{}. These points are then associated two by two using the RANSAC algorithm \cite{} to find the best transformation between the two images. This method, more precise, requires a sufficient image quality to be able to discern key points.
 
-		To do this, FastTrack calculates the object's equivalent ellipse from the second-order moments of the binary image. This procedure is accelerated by directly using the contour thanks to Green's formula \cite{}. The orientation of the object is given by the major axis of the equivalent ellipse. Its direction is determined by projecting each pixel of the object on the major axis of the ellipse. The skewness of the distribution of distances of the projected points from the center of mass is then calculated. The skewness sign is a robust indicator of the asymmetry of the object with respect to its major axis from which the direction of the object can be determined.
+        \begin{figure}[h!]
+        \centering
+        \includegraphics[width=1\textwidth]{part_1/assets/Figure_2.png}
+        \caption{{\bf Image registration.} Two recordings with severe drift are used for the benchmarking (top: $DRO\_001$, bottom: $ULT\_001$).
+            (\textbf{A}) Comparison of a frame (magenta) with the first frame (green) and magnification of details in the scene.
+            (\textbf{B}) The root mean square deviation (RMSD) of pixel intensities after registration onto the first image, averaged over all time frames and normalized by the RMSD without registration, for the three registration methods. Error bars: standard deviation across time frames.
+            (\textbf{C}) The relative average computation time of the three registration methods, normalized by the total number of pixels in the movie (arbitrary units). Error bars: standard deviation across time frames.}
+        \label{part_1:fig_2}
+        \end{figure}
 
-		For deformable objects, the previously calculated direction may be different from the direction of movement. For example, in the case of zebrafish, it deforms its body periodically to move. Only the head is directed in the same direction as the movement. This is why the object is decomposed into two equivalent ellipses. The user can then choose which ellipse best represents the direction of movement.
+        \paragraph{Binarization}
+        Each image is then binarized by subtracting the background image from it and defining a threshold value. In the interactive mode, the user can see the impact of the parameters on the image, which makes it easier to adjust the binarization threshold. The software also detects if the background is darker (resp. lighter) than the objects allowing to have at the end of this operation a binary image where the pixels belonging to the object are equal to 1, and the pixels belonging to the background are equal to 0.
+        \paragraph{Morphological operation}
+        A set of morphological operations (dilation, erosion, opening, etc...) can be performed on the binary image to improve detection and eliminate possible artifacts. Different shapes and sizes of cores are available.
+        \paragraph{ROI}
+        The user can select a region of interest and exclude the rest of the image from the analysis. This speeds up the analysis process and avoids the detection of interfering objects. In interactive mode, this ROI can be drawn directly on the image.
+        \paragraph{Sort}
+        To exclude objects that are too small for noise or too large, for example, two objects on top of each other, the user must select two characteristic sizes. The objects are colored either red or green in interactive mode depending on whether their size belongs to the selected size range.
+        \paragraph{Extracting Kinematic Parameters}
+        Based on the binary images, the software will detect the contour of each object. An essential step in any tracking procedure is the extraction of the parameters that will be used in the association step. It is generally in the choice of its quantities that the tracking algorithms differ to specialize to a given type of object. In FastTrack, the parameters extracted are the center of mass, the orientation, the area, and the object's perimeter. Its quantities are quickly calculated and general enough to adapt to a wide variety of objects.
+
+        To do this, FastTrack calculates the object's equivalent ellipse from the second-order moments of the binary image. This procedure is accelerated by directly using the contour thanks to Green's formula \cite{}. The orientation of the object is given by the major axis of the equivalent ellipse. Its direction is determined by projecting each pixel of the object on the major axis of the ellipse. The skewness of the distribution of distances of the projected points from the center of mass is then calculated. The skewness sign is a robust indicator of the asymmetry of the object with respect to its major axis from which the direction of the object can be determined.
+
+        For deformable objects, the previously calculated direction may be different from the direction of movement. For example, in the case of zebrafish, it deforms its body periodically to move. Only the head is directed in the same direction as the movement. This is why the object is decomposed into two equivalent ellipses. The user can then choose which ellipse best represents the direction of movement.
+
+        \begin{figure}[h!]
+        \centering
+        \includegraphics[width=1\textwidth]{part_1/assets/Figure_ellipse.png}
+        \caption{\textbf{Detection} Details of the detection phase for one object of the movie $ZFJ\_001$.
+            (\textbf{A}) raw image.
+            (\textbf{B}) binarized image obtained by subtraction the background image and applied a threshold.
+            (\textbf{C}) equivalent ellipse of the object.
+            (\textbf{D}) two equivalent ellipses, useful for a deformable object.}
+        \label{part_1:fig_2}
+        \end{figure}
 
 		\subsection{Association}
 		The purpose of the association step is to keep the objects' identity from one image to another. To do so, FastTrack uses a method derived from \cite{}, which takes advantage of the fact that each object's position, area, perimeter, and direction changes very little from one image to another.
@@ -165,8 +178,8 @@
 		$$
         C_{i,j} = \left\{
         	\begin{array}{ll}
-        		c_{i,j} & \mbox{si } r_{i,j} < h_{d} \\
-        		\inf & \mbox{sinon }
+        		c_{i,j} & \mbox{if} r_{i,j} < h_{d} \\
+        		\inf & \mbox{else}
         	\end{array}
         \right.
         $$
@@ -222,7 +235,14 @@
         \begin{figure}[h!]
         \centering
         \includegraphics[width=1\textwidth]{part_1/assets/Figure_5.png}
-        \caption{\textbf{}}
+        \caption{{\bf Automatic tracking parameters.}
+            (\textbf{A}) Snapshot and blow-up of $ZFJ\_001$ movie, with definition of $\vec{dr}$ and $d\alpha$
+            (\textbf{B}) Scheme of the algorithm determining the tracking parameters automatically.
+            (\textbf{C-E}) Distribution of displacements $dr$ (in pixels), angular differences $d\alpha$ (in radians) and area differences $dA$ (in pixels) when the default parameters of the software are used on $ZFJ\_001$, for $\tau=1$ (black). The corresponding $\chi$ and Gaussian fits are displayed in red. Orange bars: resulting soft parameters.
+            (\textbf{F}) Evolution of $s_r$, $s_\alpha$ and $s_A$ with algorithm iterations for $ZFJ\_001$. Left: iterations 1 and 2; right: iterations 2 and 3. A hundred runs with random initial values are shown. The run with the software default parameters is highlighted in red.
+            (\textbf{G}) Evolution of $P_{swap}$ with algorithm iterations, same runs.
+            (\textbf{H-J}) Evolution of the converged parameters $\hat{s}_r$, $\hat{s}_\alpha$ and $\hat{s}_A$ as a function of the timescale $\tau$ for $ZFJ\_001$.
+            (\textbf{K}) Comparison between $P_{swap}$ (blue crosses) obtained with the converged parameters and $P_{inc}$ (red dots) for $ZFJ\_001$. The solid black line is the logistic fit of $P_{inc}$.}
         \label{part_1:fig_5}
         \end{figure}
 
@@ -241,7 +261,7 @@
         \begin{figure}[h!]
         \centering
         \includegraphics[width=1\textwidth]{part_1/assets/Figure_cicd.png}
-        \caption{\textbf{FastTrack CI/CD workflow.}}
+        \caption{{\bf FastTrack CI/CD workflow.} The CI/CD workflow is divided into two parts: the CI tasks (blue rectangle) and the CD tasks (red rectangle). The CI must be performed successfully in order to integrate the changes into the project.}
         \label{part_1:fig_cicd}
         \end{figure}
 
@@ -271,12 +291,14 @@
 
     Another essential aspect to consider is the number of objects per film and their possible appearances, disappearances, and overlaps. In 22 films out of 41, the number of objects is variable, and objects come and go out of the camera field during recording. In 19 films out of 41, objects may overlap, creating an occlusion phenomenon that the software has to manage to preserve the identity of the objects.
 
-	\begin{figure}[h!]
+	\begin{figure}[ht]
     \centering
     \includegraphics[width=1\textwidth]{part_1/assets/Figure_td2.png}    
-    \caption{\textbf{$TD^2$.}}
+    \caption{{\bf $TD^2$} Thumbnail of the $TD^2$ dataset.}
     \label{part_1:fig_5}
     \end{figure}
+
+    \includepdf[landscape=true]{part_1/assets/Table_td.pdf}
 
 
 \chapter{Results}
@@ -291,7 +313,9 @@
 	\begin{figure}[h!]
     \centering
     \includegraphics[width=\textwidth]{part_1/assets/Figure_benchmark.png}
-    \caption{\textbf{} }
+    \caption{{\bf Benchmark of FastTrack, idtracker.ai, and ToxTrac.}
+        (\textbf{A-B}) Comparison of the computation time for the tracking of various movies with the same workstation. Whenever possible, CPU and GPU variants of idtracker.ai have been run. Only the first 100 images of $DRO\_002$ have been used.
+        (\textbf{C-D}) Accuracies of the resulting trackings. "perfect" means an accuracy of exactly $1$. The trajectories computed by the CPU and GPU variants of idtracker.ai being rigorously similar, we only show the GPU results. For $100Zebra$, the accuracy was computed by taking into account only the first 200 images.}
     \label{part_1:fig_benchmark}
     \end{figure}
 
@@ -358,7 +382,15 @@
     \begin{figure}[h!]
     \centering
     \includegraphics[width=1\textwidth]{part_1/assets/Figure_3.png}
-    \caption{\textbf{}}
+    \caption{{\bf Characterization of the TD$^2$ dataset.}
+        (\textbf{A}) Illustration of the dynamics at various timescales in$ACT\_002$. The Voronoï cells (dashed white) and the displacements of a particle at $\tau=1$, $10$ and $100$ are overlaid.
+        (\textbf{B}) Geometric probability of incursion $p_{inc}$ (red) and distribution of the reduced displacement $\rho$ at three different timescales $\tau$ (black) in $ACT\_002$. The probability of incursion $P_{inc}$ is the intersection of the areas under the two curves.
+        (\textbf{C}) $P_{inc}$ as a function of $\tau$ for the whole dataset (symbols). The solid lines are fits with a logistic function (see text).
+        (\textbf{D}) Scaling of the reduced quantities $P_{inc}/L$ as a function of $k.log(\frac{\tau}
+        {\tau_0})$ on the standard logistic sigmoid function (solid black).
+        (\textbf{E}) Classification of the movies in the dataset by increasing values of $\tau_1$ as defined by eq.~(\ref{eq:Pinc_tau0}), with fitting parameters determined over a logarithmic scale for $P_{inc}$. Movies with $\tau_1<1$ are undersampled while movies with $\tau_1>1$ are oversampled.
+        (\textbf{F}) Comparison of $P_{inc}(\tau)$ for different levels of degradation $\delta$ (symbols) and corresponding logistic fits (solid curves) in $ACT\_002$.
+        (\textbf{G-I}) Evolutions of the fitting parameters $L$, $k$ and $\tau_0$ as a function of the degration $\delta$ in $ACT\_002$}
     \label{part_1:fig_3}
     \end{figure}
 
@@ -373,7 +405,11 @@
     \begin{figure}[h!]
     \centering
     \includegraphics[width=1\textwidth]{part_1/assets/Figure_4.png}
-    \caption{\textbf{}}
+    \caption{{\bf Optimization of tracking parameters based on $P_{swap}$.}
+        (\textbf{A}) Scheme of the optimization workflow: on top of the detection/matching/post-process flow chart, the ground truth is used to compute $P_{swap}$ and create a feedback loop on the tracking parameters.
+        (\textbf{B}) $P_{swap}$ (black) as a function of the maximal distance parameter $h_r$ (in pixels) for three typical recordings. Vertical lines for $DRP\_001$ indicate  that $P_{swap}$ drops to 0. The distributions of displacements between successive frames (blue) and of distances to the neighbors (orange) are also shown for comparison.
+        (\textbf{C}) $P_{swap}$ as a function of the maximal distance parameter $h_r$ (in pixels) and the maximal disappearance time $h_t$ (in frames) for $PAR\_001$. Soft parameters are set to $s_r = 95$ and $s_\alpha = 60$.
+        (\textbf{D}) $P_{swap}$ as a function of the normalization distance parameter $s_r$ (in pixels) and the normalization angle $s_\alpha$ (in degrees) for $PAR\_001$. Hard parameters are set to $h_r = 210$ and $h_t = 90$.}
     \label{part_1:fig_4}
     \end{figure}
 	

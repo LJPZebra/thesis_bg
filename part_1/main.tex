@@ -3,7 +3,9 @@
   \epigraph{Talk is cheap. Show me the code.}{Linux Torvald}
 
 	\section{Video based tracking}
-    The tracking of objects from video recordings is a problem that has gained much popularity in recent years. It is mostly due to its great potential, both in academics and for commercial and security applications. Examples include autonomous cars that can drive themselves or the Airbus ATTOL project \cite{ATTOL} that allows fully automated take-off, landing, and taxiing based solely on image analysis. A large part of the research effort is focused on creating pedestrian recognition and tracking algorithms to automate the analysis of video surveillance data. Tracking is also widely used in the field of cinema and special effects (VFX), whether to stabilize shots or to realize special effects (e.g., motion capture). In this case, automated tracking on images allows reducing costs and production time. In science, the use of automated tracking, especially in biology and ecology \cite{dell2014automated}, is a rapidly growing field. It avoids the need to invasively mark animals and thus disturbing them. It allows generating a large amount of reliable data, reducing bias, and avoiding a long and laborious manual analysis.
+    The tracking of objects from video recordings is a problem that has gained much popularity in recent years. It is mostly due to its great potential, both in academics and for commercial and security applications. Examples include autonomous cars that can drive themselves, or the Airbus ATTOL project \cite{ATTOL} that allows fully automated take-off, landing, and taxiing of plane based solely on image analysis. A large part of the research effort is focused on creating pedestrian recognition and tracking algorithms to automate the analysis of video surveillance data. Tracking is also widely used in movie creation with special effects (VFX, CGI), whether to stabilize shots or to realize special effects (e.g., motion capture), and for industrial process \cite{luo1988adaptive}. In this case, automated tracking on images reduces costs, production time, and human operators' use.
+
+    In academics, the use of automated tracking, especially in biology and ecology \cite{dell2014automated,risse2017fimtrack}, is a rapidly growing field because it avoids the need to disturb animals by invasively mark them. Cellular motions tracking is also widely studied with very specialized algorithms developed solely for this purpose \cite{juang2009tracking,dewan2011tracking}. Other fields of science are interested in automated tracking, to name a few: microfluidic \cite{jeong2018accurately}, active matter \cite{bricard2013emergence}, social science \cite{ali2012multiple} and robotic \cite{treptow2004real}. It allows generating a large amount of reliable data, reducing bias, and avoiding a long and laborious manual analysis (that is sometimes impossible).
 
     Object tracking can be separated into two categories: the Single Object Tracking (SOT), where the goal is to detect a single object in a more or less complicated scene, and the Multiple Object Tracking (MOT), where the goal is to detect and track several objects. In this dissertation, we will place ourselves within the MOT framework because it regroups the vast majority of scientific applications. In a scientific experiment, the tracking problem's difficulty is reduced by designing the setup well. In general, the image quality is good, the camera is fixed, and we can optimize the lighting to facilitate object detection. On the other hand, the tolerance to errors is low if one wants to produce reliable data and robust scientific conclusions. A decisive point is the algorithm's performance, which must analyze the data in a reasonable time compared to their production rate and meet the user's material and technical constraints. The ease of installation and use of the software that integrates the algorithm should not be neglected. The users brought to use these software are generally not experts in computer science and image analysis, and the software must be readily installable and usable by all.
 
@@ -17,8 +19,7 @@
     Two main classes of algorithms can be distinguished to mitigate association problems. The first class of algorithms uses the object's kinematic quantities, such as direction or position \cite{qian2016effective}, to predict or find the position of the object on the next image and thus keep its identity. This method's error rate remains constant when we increase the number of individuals (keeping the density of objects fixed). It is generally fast, and this makes it a good candidate for real-time tracking applications. The major disadvantage of this approach comes from the error propagation phenomenon. If the algorithm makes an error in the assignment, it has no way to correct the error at the next step, and it propagates to the end of the analysis.
     The second class of algorithms is based on recognizing the object's points of interest, allowing the creation of a "fingerprint" unique to each object. That can be done using either a classical method \cite{perez2014idtracker, bai2018automatic}, or using machine learning \cite{mathis2018deeplabcut, romero2019idtracker}. This technique solves the propagation of errors problem and allows objects to be tracked over time, i.e., across several unpaired videos. For example, an animal can be recognized from one day of experiments to the next, which can be very useful, especially for behavioral studies. This method requires an image of sufficient quality to extract markers representative of the object. It also requires more computational resources, thus, an analysis that cannot be done in real-time. However, the main limitation is the number of objects it can track. It is currently limited to about ten objects per image with classical methods before the algorithms' performance degrades significantly. The machine learning approach makes it possible to increase the number of objects at the cost of long computation time and the need to use high-performance computers.
 
-	\section{Existing software}
-	\section{Existing software}
+    \section{Existing software}
     Many tracking software already exist. We will make a non-exhaustive list of the most popular ones, separating them into two categories: proprietary software and open-source software.
 
     \subsection{Proprietary software}
@@ -241,14 +242,14 @@
     \end{equation}
 
     \noindent and $s_\alpha$ (orange bar in Figure~\ref{part_1:fig_5}-D) is stored as the soft parameter to use during the next iteration.
-    The computation of the soft parameter for the displacement $s_r$ is different since distances can only be positive. Assuming that the displacements along the $x$ and $y$ axes follow two independent Gaussian processes, the resulting displacement follows a $\chi$ distribution with $2$ degrees of freedom, and the fit reads (see Annexe~\ref{} for de detailed derivation):
+    The computation of the soft parameter for the displacement $s_r$ is different since distances can only be positive. Assuming that the displacements along the $x$ and $y$ axes follow two independent Gaussian processes, the resulting displacement follows a $\chi$ distribution with $2$ degrees of freedom, and the fit reads (see Annexe~\ref{part_1:annexe_chi} for the detailed derivation):
 
     \begin{equation}
-        f(x)
-        \label{eq:fit_chi}
+        f(x)=\frac{x}{(\frac{s_{r}}{\sigma_0})^2}e^{-\frac{1}{2}(\frac{x}{\frac{s_{r}}{\sigma_0}})^2}
+        \label{eq1}
     \end{equation}
 
-    \noindent where $s_r$ (orange bar in Figure~\ref{part_1:fig_5}-C) is stored as the soft parameter to use for the next iteration.
+    \noindent where $s_r$ (orange bar in Figure~\ref{part_1:fig_5}-C) is stored as the soft parameter to use for the next iteration and a constant $\sigma_0^2=2-\mu_0^2=\frac{4-\pi}{2}$.
 
     Once all soft tracking parameters have been derived from the distributions, the software recomputes new trajectories with these updated parameters. This iterative process, depicted in Figure~\ref{part_1:fig_5}-B, is run until the tracking parameters converge. In practice, the convergence is very fast, regardless of the initial position in the parameters space. We drew $100$ sets of seed parameters from uniform distributions spanning large intervals, and convergence has been attained in very few iterations for all parameters Figure ~\ref{part_1:fig_5}-F.
 
@@ -261,7 +262,7 @@
     \label{eq:Pswap}
     \end{equation}
 
-    \noindent with $N_{swap}$ being the total number of swaps, $N_{obj}$ the total number of objects on all frames and $n_{ap}$ the number of times a new object appears. If the number of objects is constant and noted $n$, then $n_{ap} = n$ and $N_{obj} = nT$, with $T$ the number of frames in the recording, such that $P_{swap}$ can be simpliefied:
+    \noindent with $N_{swap}$ being the total number of swaps, $N_{obj}$ the total number of objects on all frames and $n_{ap}$ the number of times a new object appears. If the number of objects is constant and noted $n$, then $n_{ap} = n$ and $N_{obj} = nT$, with $T$ the number of frames in the recording, such that $P_{swap}$ can be simplified:
 
     \begin{equation}
     P_{swap} = \frac{N_{swap}}{n(T-1)}
@@ -477,7 +478,7 @@
         \begin{figure}[h!]
         \centering
         \includegraphics[width=0.75\textwidth]{part_1/assets/Appendix_voronoi.png}
-        \caption{{\bf Exemple of a Voronoï diagram computed with one image of $ZFJ\_001$.} Voronoï vertices represented with orange point, seed points with blue points, finite Voronoï ridges with black lines, and infinite Voronoï ridges with dashed-black lines.}
+        \caption{{\bf Exemple of a Voronoï diagram computed with one image of $ZFJ\_001$.} Voronoï vertices represented with orange points, seed points with blue points, finite Voronoï ridges with black lines, and infinite Voronoï ridges with dashed-black lines.}
         \end{figure}
 
         \section{Construction}
@@ -493,7 +494,7 @@
         \label{appendix_hungarian}
 
         \section{Definition}
-        The Hungarian algorithm is a combinatorial optimization problem that solves the so-called assignment problem in polynomial time \cite{kuhn1955hungarian}. Since 1957, it has been known as the Kuhn–Munkres algorithm \cite{munkres1957algorithms} after that, James Munkres reviewed it as strongly polynomial. First $O(n^{4})$, several implementations exist with a complexity of $O(n^{3})$ \cite{edmonds1972theoretical,tomizawa1971some,jonker1987shortest}.
+        The Hungarian algorithm is a combinatorial optimization problem that solves the so-called assignment problem in polynomial time \cite{kuhn1955hungarian}. Since 1957, it has been known as the Kuhn–Munkres algorithm \cite{munkres1957algorithms} after that James Munkres reviewed it as strongly polynomial. First $O(n^{4})$, several implementations exist with a complexity of $O(n^{3})$ \cite{edmonds1972theoretical,tomizawa1971some,jonker1987shortest}.
 
         \section{Description}
         \paragraph{Problem:} We consider four jobs J1, J2, and J3 that need to be executed by four workers W1, W2, and W3, one job per worker. The objective is to minimize the total cost \footnote{\url{http://www.hungarianalgorithm.com}}. In this example, we choose the simplest form of the problem with a square matrix.
@@ -549,5 +550,30 @@
         \end{matrix}$$
 
         \noindent In this case the total cost is 127 with the assignment $\{J1; W1\}$, $\{J2; W4\}$, $\{J3; W3\}$ and $\{J4; W2\}$.
+
+
+        \chapter{Displacement distribution fitting}
+        \label{part_1:annexe_chi}
+
+        The standardized $\chi$ distribution with 2 degree of freedom reads:
+        \begin{equation}
+        f_0(x)=xe^{-\frac{x^2}{2}}
+        \end{equation}
+        \noindent with the mean $\mu_0=\frac{\sqrt{2\pi}}{2}$ and the variance $\sigma_0^2=2-\mu_0^2=\frac{4-\pi}{2}$
+
+        The generalized $\chi$ distribution with 2 degree of freedom, A a shift and $B$ a scaling reads:
+        $$f(x)=\frac{x-A}{B^2}e^{-\frac{1}{2}(\frac{x-A}{B})^2}$$
+        \noindent with the mean $\mu=\mu_0B+A$ and the standard deviation $\sigma=\sigma_0B$ with $\mu_0$ and $\sigma_0$ the mean and standard deviation from the standardized $\chi$ distribution.
+        Substituting by $A=\mu-\mu_0\frac{\sigma}{\sigma_0}$ and $B=\frac{\sigma}{\sigma_0}$ we obtain:
+        \begin{equation}
+        f(x)=\frac{x-\mu+\mu_0\frac{\sigma}{\sigma_0}}{(\frac{\sigma}{\sigma_0})^2}e^{-\frac{1}{2}(\frac{x-\mu+\mu_0\frac{\sigma}{\sigma_0}}{\frac{\sigma}{\sigma_0}})^2}
+        \label{eq1}
+        \end{equation}
+
+        We can approximate that $A=\mu-\mu_0\frac{\sigma}{\sigma_0}=0$ in the large majority of cases leading to:
+        \begin{equation}
+        f(x)=\frac{x}{(\frac{\sigma}{\sigma_0})^2}e^{-\frac{1}{2}(\frac{x}{\frac{\sigma}{\sigma_0}})^2}
+        \label{eq1}
+        \end{equation}
 
     \end{appendices}

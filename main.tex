@@ -1,9 +1,9 @@
-\documentclass[12pt,french]{report}
+\documentclass[12pt,a4paper]{report}
+\usepackage[USenglish]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \usepackage{epigraph}
 \usepackage[dvipsnames]{xcolor}
-\usepackage{babel}
 \usepackage[font=small,labelfont=bf]{caption}
 \sffamily
 \usepackage{cite}
@@ -18,34 +18,38 @@
 \usepackage[sfdefault,book]{FiraSans} %% option 'sfdefault' activates Fira Sans as the default text font
 \usepackage[T1]{fontenc}
 \usepackage{titlesec}
-\titleformat{\chapter}[display]{\normalfont\bfseries}{}{0pt}{\Huge}\renewcommand*\oldstylenums[1]{{\firaoldstyle #1}}\setcounter{secnumdepth}{3}
+%\titleformat{\chapter}[display]{\normalfont\bfseries}{}{0pt}{\Huge}\renewcommand*\oldstylenums[1]{{\firaoldstyle #1}}\setcounter{secnumdepth}{3}
 \setlength{\parskip}{1em}
+\renewcommand{\baselinestretch}{1.2}
 \usepackage{fontawesome}
 \usepackage[toc,page]{appendix}
 \usepackage{pdfpages}
 \usepackage{float}
 \usepackage{amsmath}
+\usepackage[activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,factor=1100,stretch=10,shrink=10]{microtype}
 
-\title{Perception chimique chez la larve de poisson zèbre}
+\usepackage[left]{lineno}
+\linenumbers
+
+\title{Draft v0.1}
 \author{Benjamin Gallois}
 
 \begin{document}
 \maketitle
-\chapter*{Abstract}
+%\chapter*{Abstract}
 
-\chapter*{Dedication}
+%\chapter*{Dedication}
 
-\chapter*{Acknowledgements}
+%\chapter*{Acknowledgements}
 
 \tableofcontents
 
 \part{FastTrack}
 \input{part_1/main.tex}
 
-\part{Dual}
-\input{part_2/main.tex}
+%\part{Dual}
+%\input{part_2/main.tex}
 
 \bibliography{biblio}
 \bibliographystyle{abbrv}
 \end{document}
-

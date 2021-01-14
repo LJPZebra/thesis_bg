@@ -66,7 +66,7 @@ Receptor cells project directly into the olfactory bulb located in the brain, in
 
     A well known and impressive behavior encountered in many fish species is the homing migration. A typical example is salmons that perform three migratory phases throughout their life. One of them, the upstream migration from the ocean to their home stream, has been shown to rely on an olfaction imprinting \cite{stabell1992olfactory,hasler1983olfactory}. Little is known about the imprinting mechanism, but experiments suggest that it relies on a mixture of odors perceived during the juvenile stage in the fish's home stream.
 
-    Feeding is one of the most important behaviors. It relies on several senses for food detection, and selection \cite{pavlov1990sensory}. A stereotyped behavioral sequence was shown to exist \cite{atema1980chemical} consisting in a step of arousal mainly mediated by olfaction \cite{bateson1890sense}, then a step of localization of the food mediated by chemical and visual cues. The last step of ingestion is triggered primarily by the gustation \cite{atema1980chemical}. The impact of each sensory modality varies significantly with the species. For example, the yellow bullhead has the entire feeding sequence mediated by taste, whereas ictalurid catfish prey detection was abolished when olfaction was blocked. The chemical substances that attract fish depend on the species \cite{atema 1982}, and response to a mixture is higher than isolated compounds in general.
+    Feeding is one of the most important behaviors. It relies on several senses for food detection, and selection \cite{pavlov1990sensory}. A stereotyped behavioral sequence was shown to exist \cite{atema1980chemical} consisting in a step of arousal mainly mediated by olfaction \cite{bateson1890sense}, then a step of localization of the food mediated by chemical and visual cues. The last step of ingestion is triggered primarily by the gustation \cite{atema1980chemical}. The impact of each sensory modality varies significantly with the species. For example, the yellow bullhead has the entire feeding sequence mediated by taste, whereas ictalurid catfish prey detection was abolished when olfaction was blocked. The chemical substances that attract fish depend on the species \cite{atema1980chemical}, and response to a mixture is higher than isolated compounds in general.
 
     Olfaction \cite{tavolga1956visual} as well as the gustatory system \cite{de1983influence} has been shown to play an essential role in reproduction. Non-anosmic males exposed to water taken from a tank with a gravid female developed courtship behaviors, except for some species like the three-spined stickleback where the gustation can replace the olfaction. Complete courtship repertoire necessitated the presence of other sensory cues.
 
@@ -114,12 +114,12 @@ Receptor cells project directly into the olfactory bulb located in the brain, in
     \begin{figure}[h]
       \centering
       \includegraphics[width=1\textwidth]{part_2/assets/diffusion.png}
-      \caption{\textbf{Diffusion setups from \cite{hussain2013high}}. \textbf{A.} One channel diffusion setup, blue cross: chemical introduction point. \textbf{F.} Two channel setup.}
+      \caption{\textbf{Diffusion setups from \cite{hussain2013high}}. \textbf{A.} One channel diffusion setup, blue cross: chemical introduction point. \textbf{F.} Two channels setup.}
       \label{diffusion_setup}
     \end{figure}
 
     \subsection{Flow}
-    An exciting setup to study chemical preference in fish is the underflow device. The first mention of this type of device date back to 2013 \cite{readman2013fish}. In this setup, the tank is separated into two distinct compartments using a laminar flow, see Figure~\ref{low_0_setup}. The animal can then choose between the two compartments during the experiment without any constraint, and the experimenter can put a chemical to test on one side. The interface between the two compartments self-heal with a characteristic time depending on the flow velocity. The time spent on each side, the number of interface crosses, and the animal's kinematic parameter are extracted from video recordings to assess the fish's preference.
+    An exciting setup to study chemical preference in fish is the underflow device. The first mention of this type of device date back to 2013 \cite{readman2013fish}. In this setup, the tank is separated into two distinct compartments using a laminar flow, see Figure~\ref{flow_0_setup}. The animal can then choose between the two compartments during the experiment without any constraint, and the experimenter can put a chemical to test on one side. The interface between the two compartments self-heal with a characteristic time depending on the flow velocity. The time spent on each side, the number of interface crosses, and the animal's kinematic parameter are extracted from video recordings to assess the fish's preference.
 
     Several psychoactive substances have been tested on adult zebrafish \cite{abreu2016acute, abreu2016behavioral} and showed attraction by diazepam, fluoxetine, risperidone, and buspirone; neutral response to ethanol and clonazepam; an aversion to acid pH, two food odor extracts, and conditioned water took from a tank with chemically and physically stressed fish.
 
@@ -136,18 +136,18 @@ Receptor cells project directly into the olfactory bulb located in the brain, in
 
     Several food odors were shown to produce a significant increase in speed and number of bursts; social odors from conspecific produced a similar response; alert odors result in a dive to the bottom of the tank and an increase in frozen time; decomposition odors result in more turns. The critical points noted with this device is the inter-and intra-experimental variability. The authors showed that less than a third of the odors used in the study produce reproducible results between trials of the same individual. Some odors such as cadaverine, blood, skin, and food odors resulted in inconsistent responses for the same individual. Most odors produce poorly reproducible results for different fish.
 
-    This setup novelty is to allow adult animals to evolve realistically in a 3D environment and to have a better knowledge of the concentration perceived by the animal than in a diffusion setup. Therefore, direct preference assessment is not accessible, and comparisons with existing quasi-2D setups like the well-plate are difficult.
-
-    From this overview of the scientific literature, we see that the study of chemical perception and behavioral response to chemical stimuli is not standardized. No experimental setup is set as a standard, and direct comparisons between studies carried out in various independent laboratories are not easily possible. In this context, we have developed Dual, an open-source, low cost, do it yourself, and scalable experimental setup. Using the underflow principle, Dual allows studying chemical preferences in larvae and juvenile zebrafish in a standardized, high-throughput, and comparable way.
-
-
     \begin{figure}[h]
       \centering
-      \includegraphics[width=1\textwidth]{part_2/assets/flow_1.png}
+      \includegraphics[width=0.5\textwidth]{part_2/assets/flow_1.png}
       \caption{\textbf{Flow setups from \cite{kermen2020stimulus}.}}
       \label{flow_1_setup}
     \end{figure}
 
+    This setup novelty is to allow adult animals to evolve realistically in a 3D environment and to have a better knowledge of the concentration perceived by the animal than in a diffusion setup. Therefore, direct preference assessment is not accessible, and comparisons with existing quasi-2D setups like the well-plate are difficult.
+
+    From this overview of the scientific literature, we see that the study of chemical perception and behavioral response to chemical stimuli is not standardized. No experimental setup is set as a standard, and direct comparisons between studies carried out in various independent laboratories are not easily possible. In this context, we have developed Dual, an open-source, low cost, do it yourself, and scalable experimental setup. Using the underflow principle, Dual allows studying chemical preferences in larvae and juvenile zebrafish in a standardized, high-throughput, and comparable way.
+
+\iffalse
 \chapter{Dispositif expérimental}
 
   \section{Dual}
@@ -213,3 +213,4 @@ Receptor cells project directly into the olfactory bulb located in the brain, in
 
 
 \chapter{Résultats}
+\fi

@@ -147,7 +147,7 @@ Receptor cells project directly into the olfactory bulb located in the brain, in
 
     From this overview of the scientific literature, we see that the study of chemical perception and behavioral response to chemical stimuli is not standardized. No experimental setup is set as a standard, and direct comparisons between studies carried out in various independent laboratories are not easily possible. In this context, we have developed Dual, an open-source, low cost, do it yourself, and scalable experimental setup. Using the underflow principle, Dual allows studying chemical preferences in larvae and juvenile zebrafish in a standardized, high-throughput, and comparable way.
 
-\chapter{Dispositif expérimental}
+\chapter{Experimental setups}
 
   \section{Dual}
   The comparison of behavioral studies is an open problem in neuroscience. The design and implementation of experimental setups that allow a high throughput of experiments while avoiding any bias are essential to behavior characterization. The absence of a standardized setup to assess preference to chemical stimuli does not allow easy comparison through the various studies. We will present Dual, a high throughput experimental setup that is easy to set up and implement.
@@ -179,7 +179,7 @@ For the construction, Dual can be separated into five independent parts connecte
   Six The Lee Company 3 ports microvalves are connected, see Figure~\ref{}, and form a circuit that allows performing cycles of filling and injection.
 
   \subsubsection{Optic}
-  The setup is lightened by transmission using an infrared LED placed at the bottom of the box. Homogenous lighting is obtained by placing a diffusor (tracing papers or white plastic sheet) at the box's mid-height. Experiments are recorded with a Chameleon 3 camera mounted with a 23- 5 mm EFL lens connected directly to the computer via USB3. A PMMA infrared transparent sheet is placed between the camera and the lens to block visible light and only retrieve Dual's infrared lightening.
+  The setup is lightened by transmission using an infrared LED placed at the bottom of the box. Homogenous lighting is obtained by placing a diffusor (tracing papers or white plastic sheet) at the box's mid-height. Experiments are recorded with a Chameleon 3 camera mounted with a 23- 25 mm EFL lens connected directly to the computer via USB3. A PMMA infrared transparent sheet is placed between the camera and the lens to block visible light and only retrieve Dual's infrared lightening.
 
   \subsubsection{Electronic}
   The electronic system links the analogic mechanical and millifluidic system to the software. A custom printed circuit board (PCB) has been designed for Dual. It contains an Arduino Nano serving as a microcontroller, six half-bridge gate drivers allowing the control of the microvalves from the logic signals of the Arduino. A Big EasyDriver stepper motor controller to control the motor speed from a logic output of the Arduino. A potentiometer to control the intensity of the LED lighting. All the electronics and the syringe pump motor are powered by a 550W ATX computer power supply connected to the PCB.
@@ -198,27 +198,32 @@ For the construction, Dual can be separated into five independent parts connecte
 
   \section{The Tropical River}
   \subsection{Description}
-  La perception chimique dans un environnement aquatique turbulent comme lequel sont soumis les poissons nécessite un dispositif expérimental permettant de créer de manière contrôlé des écoulements et de délivrer des stimuli chimique. Pour se faire, nous avons créé un dispositif expérimental permettant de délivrer un écoulement laminaire à température contrôlée, permettant d'imager les poissons aussi bien en lumière visible qu'en lumière infrarouge pour les placer dans le noir total. Une buse d'injection permet de créer des panaches turbulent ou laminaire à l'intérieur de cet écoulement.
-  \paragraph{Dispositif mécanique}
-  La partie mécanique du dispositif est constitué d'un canal assemblé à partir de plaque de PVC transparent. Une plaque lumineuse est placé sous le canal permettant un éclairage en lumière visible par le dessous pour éviter toutes réflexions sur la surface de l'eau. Le canal peut être éclairé par le dessus par un ensemble de LED infrarouge. Une caméra est placée au-dessus du canal et permet d'enregistrer les expériences. Un miroir est placé à 45 degrés sur le côté du canal ce qui permet de récupérer les positions verticales des poissons sur la même image que leurs positions horizontales. L'ensemble du canal est placé dans une boîte pour l'isoler de la lumière et de toutes perturbations liées à l'environnement immédiat de l'expérience.
-  \paragraph{Dispositif hydrodynamique}
-  Le canal est alimenté en eau depuis un robinet connecté au réseau d'eau du bâtiment. Avant d'arriver dans le canal, elle est filtrée par un filtre au charbon actif, chauffé grâce à un système de bain marie puis injecté par une extrémité du canal. Un réseau de paille est placé dans le canal permettant ainsi de régulariser l'écoulement turbulent en écoulement laminaire. Le débit peut être ajusté grâce à une valve solénoïde. L'autre extrémité du canal est laissé libre et l'eau sortante est redirigé vers le réseau d'eau usé du bâtiment, les produits testés ne nécessitant pas de traitement particulier. Il est possible de diluer un produit en amont du canal grâce à une buse d'injection située directement à la sortie de l'alimentation en eau, un agitateur magnétique est placé directement dans le canal pour faciliter la dilution. Une autre buse d'injection peut être placé dans le canal pour créer un panache dans l'écoulement, il est alimenté depuis un réservoir placé en hauteur et le débit peut être ajusté par gravité.
-  \paragraph{Dispositif de contrôle}
-  Tous les composants du système sont contrôlés depuis un logiciel maison.
-  \subparagraph{Température}
-  Un capteur de température est placé dans l'écoulement et envoie la température instantanée au logiciel de contrôle. Le logiciel va alors sélectionner la température du bain marie en amont de l'injection dans le canal grâce à un système de rétro action par PID. Cela permet de garder une température constante de le canal malgré des variations de température dans le système d'eau du bâtiment.
-  \subparagraph{Injection}
-  L'injection de différent produit peut être sélectionné de manière automatisé grâce à un système de valves contrôlé par le logiciel. Cela permet de mettre en place facilement des protocoles d'injection. La vitesse de l'écoulement laminaire dans le canal est aussi configurable dans le logiciel et est modulé grâce au contrôleur de débit à l'entrée du dispositif.
-  \subparagraph{Caméra}
-  Le réglage et l'acquisition des images par la caméra est fait directement dans le logiciel de contrôle, ce qui permet d'inclure dans les fichiers des données tel que le temps relatif à l'expérience, la température instantanée et d'autres variables.
-  \paragraph{Logiciel}
-  Le logiciel de contrôle permet de récupérer et de contrôler toutes les variables de l'expérience. Il permet de sélectionner la vitesse, la température de l'écoulement et les paramètres de capture de la caméra. Une fonction clef du logiciel est de pouvoir construire des protocoles d'expérience. Il s'agit de simple fichier texte précisant la valeur souhaitée des variables a un temps donné. Le logiciel accepte nativement d'autres capteurs Arduino répondant à un standard prédéfini permettant de facilement rajouter un ou des capteurs sans avoir à modifier le logiciel.
-  \subsection{Utilisation et limitation}
-  On voit que ce dispositif expérimental est très versatile. La capacité à moduler séparément ou simultanément la vitesse, la température de l'écoulement laminaire, ainsi que l'injection de produits dans l'écoulement de manière automatisée et quantifiée tout en filmant les poissons à la lumière ou dans le noir permet d'étudier une grande variété de comportement de rhéotaxie à la chimiotaxie en passant par la thermotaxie.
-  La hauteur d'eau dans le canal peut être modulé par l'ajout d'une digue en sortie ce qui permet de faire évoluer dans le canal des larves ainsi que des poissons zèbres adultes sans difficulté.
+  Studying chemical perception and chemically-driven navigation in a turbulent aquatic environment like the one fish encounters naturally requires an experimental device capable of creating controlled flows and chemical jets. We have created an experimental device capable of delivering a temperature-controlled laminar flow, allowing us to record the fish in both visible and infrared light. An injection nozzle is used to create turbulent or laminar jets within this laminar flow.
+
+  \paragraph{Structure}
+  The mechanical part of the device consists of a channel assembled from transparent laser cutted PVC sheets fixed with Norcan rails. A LED panel is placed under the channel to illuminate the setup by transmission. The channel can be illuminated from above by a set of infrared LEDs or by transmission by covering the LED panel with a PMMA infrared transparent sheet. A Chameleon 3 camera is placed above the channel to record the experiments and connected via USB3 to a computer. A mirror is placed at 45 degrees of inclination on the channel's side, which allows determining the fish's vertical position. The whole channel is set inside a box constructed with Norcan rails and plywood sheets to isolate the fish from the surrounding environment.
+
+  \paragraph{Hydrodynamic}
+  The canal is supplied at one end with water from the building's water system. Before entering the canal, tap water is filtered by an activated carbon filter and heated by a water bath system. A network of straws is placed in the channel to obtain a laminar flow. The flow rate can be adjusted by a solenoid valve. The other end of the channel is left free, and the outgoing water is redirected to the building's wastewater network. The products tested do not require any special treatment before being disposed of. It is possible to dilute a product upstream of the channel by an injection nozzle located directly at the water supply outlet. A magnetic stirrer is placed in the channel before the straws network to facilitate dilution. Another injection nozzle can be placed inside the channel to create a turbulent jet, it is fed from a tank, and the flow rate can be adjusted by gravity.
+
+  \paragraph{Software}
+  The control software allows to retrieve and control all the variables of the experiment. By default, it allows selecting the flow rate, temperature, and camera capture parameters. A vital function of the software is the ability to build experimental protocols. Easy to build, the protocol template is a simple text file specifying a variable's desired value for a given device at a given time point. Any Arduino sensor or control device that follows a convention detailed in \url{} can be used in these protocols without the need to modify the software.
+
+  \paragraph{Camera}
+  The camera's options are directly accessible inside the software using the Spinnaker SDK. Metadata like temperature, relative time of the experiment and flowrate can be saved inside the image.
+
+  \paragraph{Temperature}
+  A temperature sensor is placed in the flow and sends the instantaneous temperature to the control software. This one will then select the Nestlab water bath temperature using a PID feedback system and serial port connection. The water temperature inside the channel is kept constant at a selected value despite temperature variations in the building water system.
+
+  \paragraph{Injection}
+  The flowrate inside the channel is configurable in the software. The flow controller modulates it at the inlet of the setup. The injection by the different nozzles can be selected in an automated way by a software-controlled microvalve system.
+
+  \subsection{Usage and limitation}
+  This experimental device is, in practice, very versatile. The ability to modulate the velocity and the temperature of the laminar flow, as well as the injection of products in an automated and quantified manner while recording the fish, allows the study of a wide variety of behaviors like rheotaxy, chemotaxis, and thermotaxis. The height of water in the channel can be modulated by adding a dyke at the outlet, making it possible to use adults and larval fish.
+
   \paragraph{Limitations}
-  L'insertion dans l'écoulement de produit chimique ne nous permet pas de réutiliser l'eau après passage dans le canal, c'est pour cela que l'apport d'eau est effectué via le réseau d'eau du bâtiment. Bien que filtré, la qualité de l'eau dépend de celle du réseau ce qui ne pose pas en principe de problème pour les poissons juvéniles et adultes qui sont élevés dans l'eau du robinet filtrée dès 2 semaines. Cela peut en revanche posé plus de problème pour les larves qui sont plus fragiles et nécessite une eau calibrée particulière (E3).
-  Bien qu'en principe la durée de l'expérience n'a comme limite que l'espace de stockage disponible à l'enregistrement des images, on remarque au bout de quelque heure l'apparition de bulles de le canal qui viennent perturber les poissons, l'ajout du filtre au charbon actif permet une diminution de ce phénomène mais il reste présent.
+  The insertion of chemical in the flow does not allow us to reuse the water. This is why the water supply is done by the water network of the building. Although filtered, the water quality depends on the quality of the network, which is usually not a problem for juveniles and adults fish that are reared in filtered tap water from 2 weeks onwards. However, this can be more problematic for larvae, which are more fragile and require special calibrated water (E3).
 
+  Although the experiment's duration is limited only by the computer's storage, small air bubbles appear in the channel that disturb the fish after a few hours. The activated carbon filter's addition reduces this phenomenon, but it remains present and limits the maximum experimental time to a few hours.
 
-\chapter{Résultats}
+\chapter{Results}

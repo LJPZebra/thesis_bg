@@ -147,38 +147,40 @@ Receptor cells project directly into the olfactory bulb located in the brain, in
 
     From this overview of the scientific literature, we see that the study of chemical perception and behavioral response to chemical stimuli is not standardized. No experimental setup is set as a standard, and direct comparisons between studies carried out in various independent laboratories are not easily possible. In this context, we have developed Dual, an open-source, low cost, do it yourself, and scalable experimental setup. Using the underflow principle, Dual allows studying chemical preferences in larvae and juvenile zebrafish in a standardized, high-throughput, and comparable way.
 
-\iffalse
 \chapter{Dispositif expérimental}
 
   \section{Dual}
-  \subsection{Introduction}
-  La reproductibilité des études comportementales est un problème ouvert en neuroscience. La conception et la réalisation de montages expérimentaux permettant un grand débit d'expériences en d'éviter tout biais est essentielle à la caractérisation d'un comportement. L'absence de standard en matière d'étude de la réponse comportementale à des stimuli chimiques ne permet pas à ce jour de comparer facilement les résultats obtenus au travers des diverses études menées jusqu'à présent. C'est dans ce contexte que nous présentons Dual, un montage expérimental à haut débit d'expérience facile à réaliser et à mettre en place.
-  \medbreak
-  On verra dans un premier temps la philosophie du dispositif, dans quel but il a été conçu et pour quelle utilisation. Dans un second temps les étapes de construction et enfin on verra son utilisation et son coût en temps pour réaliser une campagne d'expérience.
-  \subsection{Philosophie}
-  Dual est un système du même type que \cite{readman2013fish} qui consiste à créer grâce à un flux laminaire deux compartiments virtuels dans l'aquarium. Comme on l'a vu précédemment, ce système permet une connaissance rigoureuse de la concentration du composé chimique auquel est soumis l'animale. Il permet aussi d'éviter la convection due au mouvement d'eaux engendré par la nage du poisson, toutes les perturbations étant entraînées par le flux. On a donc deux compartiments virtuels bien défini par une interface qui se "répare" d'elle-même dans un temps caractéristique donné par la vitesse de l'écoulement laminaire. 
-  \medbreak
-  Pour se faire, Dual utilise un système de quatre seringues (2 seringues infectantes et 2 seringues aspirantes) qui permet de créer un flux laminaire constant dans l'aquarium où évolue le poisson. Le rôle des seringues peut être inversés grâce à un système de valves pour pouvoir les remplir et choisir le produit qu'elles contiennent. On peut alors construire une expérience en réalisant plusieurs cycles de remplissage-injection. Par exemple en aspirant en premier de l'eau dans les deux seringues ce qui constituera en injection un flux laminaire d'eau homogène (contrôle) et dans un second temps un produit dans une seringue et de l'eau dans l'autre ce qui en injection permettra de créer un flux laminaire de produit et un flux laminaire d'eau créant deux compartiments virtuels dans l'aquarium. 
-  \medbreak
-  Dual est inspiré du mouvement Do It Yourself qui permet de construire des choses sans l'aide d'expert du domaine. C'est dans ce sens que tous les composants, plans et autres fichiers CAD nécessaires à la création et au montage de Dual sont disponibles en annexe. Dual peut être construite à moindre coût sans connaissance préalable en mécanique ou en électronique. Les machines nécessaires à la réalisation des pièces peuvent être trouvé dans un FabLab et à moindre coût.
-  \subsection{Construction}
-  \paragraph{Overview}
-  Dual est constitué de quatre parties distinctes : une partie mécanique, une partie hydraulique, une partie électronique et enfin un logiciel informatique permettant de contrôler tout le dispositif.
-  \paragraph{Système mécanique}
-  La partie mécanique de Dual comprend un pousse seringue motorisé, un support de caméra et un aquarium isolé de l'environnement extérieur. Le pousse-seringue motorisé permet d'accommoder quatre seringues figure~\ref{} qui marche deux à deux en opposition de phase. Quand les seringues supérieures injectent, les seringues inférieures se remplissent et inversement. Cela va permettre de créer le flux laminaire nécessaire à la création des deux compartiments virtuels. Tous les plans et fichiers nécessaires à la réalisation des différents éléments est disponible en annexe.
-  \medbreak
-  L'aquarium figure~\ref{} est constitué d'une puce millifluidique en XXXX réalisée à la découpe laser et coller grâce à de l'acide acétique. Le XXXX est un matériau plastique transparent ce qui permet de conserver une bonne qualité d'image quand on filme en transmission. Elle est constituée en son centre d'une zone délimitée par deux grilles en plastique réalisées en impression 3D où le poisson pourra évoluer. La puce comprend deux entrées et deux sorties qui seront connectées par le système hydraulique aux seringues. Cela permet de créer deux flux laminaires à volume constant dans l'aquarium. Le tronçon reliant les entrées et les sorties à la zone où le poisson est confinée présente un profil évasé pour éviter toutes perturbations et un raccordement optimal entre les deux flux laminaires. Enfin, une plaque en plastique est placée au-dessus du système et permet d'éviter que le poisson ne s'échappe et les déformations optiques lors de l'enregistrement.
-  \medbreak
-  La puce millifluidique est placée dans une boîte réalisée avec une structure en MakerBeam et des panneaux en MDF découpé à la découpe laser. Cette boîte permet d'isoler l'expérience du milieu environnant et de placer l'animale dans un éclairage contrôlé (ou bien obscurité complète). Cette boîte contient figure~\ref{} de bas en haut : deux LED permettant d'éclairer en lumière visible et en infrarouge (nécessaire pour l'enregistrement), un diffuseur permettant un éclairage homogène, la puce microfluidique et sur la face supérieure une fenêtre amovible constituée d'un filtre laissant uniquement passer la lumière IR, cela permet de bloquer toutes lumières extérieures tout en pouvant enregistrer les images de l'expérience en lumière IR.
-  \medbreak
-  Un support de caméra est placé au-dessus de la boîte et une caméra Chameleon3 FLIR Systems permet d'enregistrer les expériences en lumière IR.
-  \medbreak
-  Tous ces éléments sont fixés solidement et à niveau à la table pour éviter toutes vibrations ou biais qui pourraient perturber l'animale pendant l'expérience. La facilité de réalisation de la puce microfluidique en moins de 12 h permet de la remplacer facilement en cas de détérioration ou de contamination.
-  \paragraph{Système hydraulique}
-  Le système hydraulique permet de relier les seringues à la puce microfluidique avec un système de valves permettant de choisir quelle seringue injectera dans quelle entrée de la puce microfluidique, et depuis quel récipient se remplira la seringue, un schéma du circuit est disponible figure~\ref{}. Ce système permet de créer des expériences construites en mettant bout à bout des cycles de remplissage et d'injection. Les valves sont contrôlées électroniquement ce qui permet d'automatiser complétement le système.
-  \paragraph{Système électronique}
+  The comparison of behavioral studies is an open problem in neuroscience. The design and implementation of experimental setups that allow a high throughput of experiments while avoiding any bias are essential to behavior characterization. The absence of a standardized setup to assess preference to chemical stimuli does not allow easy comparison through the various studies. We will present Dual, a high throughput experimental setup that is easy to set up and implement.
+
+  \subsection{Overview}
+  Dual is an underflow system builds on the same principle that \cite{readman2013fish}. It consists of creating two virtual compartments in a tank through a laminar flow. As we have seen previously, this system allows a rigorous knowledge of the compound's concentration to which the animal is subjected. Diffusion and convection due to the water movements caused by the fish are avoided. The interface between the two compartments is well defined and self-heal, when disturbed, with a characteristic time depending on the flow.
+
+  To create the laminar flow, Dual uses a system of four syringes, coupled by two, in phase opposition, when two syringes push, two syringes pull, see Figure~\ref{}. The syringes are connected to a millifluidic chip and generate a laminar flow with constant volume by having two syringes injecting at one side and two aspirating at the other side. Thanks to a microvalves system, each syringe can be filled independently. One can then build an experimental protocol by stacking several filling and injection cycles and choosing with which product to fill the syringes.
+
+  For example, to access fish preference, one can first create a cycle with water on the two sides as habituation and control. Then add a cycle with a chemical on one side and water on the other side to study the fish preference. Another example is to fill the two sides with a chemical for a given amount of time and then clean the system with water on two sides, reproducing the type of experiment performed with the well-plate device.
+
+  Dual is a Do It Yourself project, which allows great flexibility in the conception and fast iteration to adapt the project if necessary. All the components, blueprints, and other CAD files needed to create and assemble Dual are available in the appendixes. Dual can be built at a low-cost \ref{} without prior knowledge of mechanics or electronics. The tools necessary for the realization of the parts can be found in a FabLab.
+
+\subsection{Construction}
+For the construction, Dual can be separated into four independent parts connected together. The mechanic system comprised all the structures, the motor, and moving parts; the millifluidic system the chip, microvalves, and syringe connections; the electronic system the lighting, camera, and the motor and microvalves controls; the control system the computer and software to control all the setup automatically.
+
+  \subsubsection{Mechanic system}
+  \paragraph{Motorized syringe pump} The main mechanical part of Dual is the motorized syringe pump that allows creating the laminar flow. It is built around the V-Slot Linear Actuator from OpenBuilds fixed on a custom build structure using OpenBuilds linear rails and 3D printing fixations. A 42STH38 NEMA-17 step motor drives the actuator, and COM-13119 stop microswitches defined the range of motion.
+
+  \paragraph{Box} It is crucial to isolate the animal from the exterior environment and of any light sources. A box that will contain the millifluidic ship and lighting system is constructed using MakerBeam rails and medium-density fibreboard panels. A PMMA infrared transparent sheet is placed on the removable top panel to record the experiment while blocking visible light. The box contains, see Figure~\ref{}, two LEDs for visible and infrared light, a diffuser for homogeneous lighting, and a support to fix the millifluidic chip.
+
+  \paragraph{Structure} A structure to maintain the camera and the Raspberry is build using OpenBuilds rails. It is best to build Dual on top of an optical breadboard to facilitate fixation and enhanced stability. All these elements need to be fixed firmly and level to avoid any bias that could disturb the animal during the experiment.
+
+  \subsubsection{Système hydraulique}
+  \paragraph{Chip} The millifluidic chip will serve as a tank for the fish, see Figure~\ref{}. The chip is laser cutted in XXXX plastic that is transparent and presents excellent optic properties. The part is stick using acetic acid \cite{}. The fish is restrained in the center by nets, and profiled inputs and outputs allow a laminar flow.
+
+  \paragraph{Syringes} 60 milliliters syringes are fixed with 3D printed connector on the actuator and connected with XXXX tube to the microvalves circuit.
+
+  \paragraph{Microvalves} Six The Lee Company 3 ports microvalves are connected, see Figure~\ref{}, and form a circuit that allows performing cycles of filling and injection.
+
+  \subsubsection{Système électronique}
   Le système électronique permet de faire l'interface entre les éléments à contrôler que sont les valves, les LED et le moteur du pousse-seringue et le logiciel informatique. Le circuit imprimé a été créé sur-mesure~\ref{}. Il accueille un Arduino Nano servant de microcontrôleur, Six relais permettant le contrôle des valves à partir des signaux logiques de l'Arduino. Un contrôleur de moteur pas à pas EasyDriver permettant de contrôler la vitesse du moteur depuis une sortie logique de l'Arduino. Un système de potentiomètre permet de contrôler l'intensité des LED d'éclairage. Tout le système électronique ainsi que le moteur du pousse-seringue est alimenté par une alimentation ATX d'ordinateur 550W connectée au circuit imprimé par un montage inspiré du Benchtop Power Board de Sparkfun.
-  \paragraph{Système informatique}
+  \subsubsection{Système informatique}
   Un logiciel a été développé spécialement pour contrôler le dispositif. L'interface graphique a été créée à l'aide de Qt et la caméra est interfacé au logiciel grâce au SDK de FLIR Systems. Le logiciel permet de contrôler manuellement chaque élément du système comme les valves, la caméra et le moteur du pousse-seringue. Il permet de contrôler l'éclairage ainsi que d'enregistrer les images provenant de la caméra. Il est possible (et conseillé) de créer des templates d'expériences, un simple fichier texte, contenant les instructions nécessaires à l'automatisation des cycles d'injection et d'aspiration. Le logiciel permet de contrôler depuis la même interface quatre Duals.
   \subsection{Utilisation}
   Pour nos besoins, nous avons construit quatre Duals que nous avons fait tourner en parallèle. La construction complète du montage nécessite une découpe laser, une imprimante 3D, du matériel électronique (fer à souder, etc.) et du matériel d'atelier (tournevis, vis, perceuse, etc.) et les matériaux et plan (disponible en annexe ~\ref{}. Deux semaines ont été nécessaires à la construction du dispositif à partir des plans. La construction ne demande pas de connaissance spécifique et la construction par exemple dans un FabLab permettra de trouver le matériel et l'aide nécessaire en cas de difficultés à réaliser le projet.
@@ -213,4 +215,3 @@ Receptor cells project directly into the olfactory bulb located in the brain, in
 
 
 \chapter{Résultats}
-\fi

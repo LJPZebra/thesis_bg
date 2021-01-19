@@ -234,3 +234,59 @@
   The insertion of chemical in the flow does not allow us to reuse the water. This is why the water supply is done using the water network of the building. Although filtered, the water quality depends on the building's water quality, which is usually not a problem for juveniles and adults fish that are reared in filtered tap water from 2 weeks onwards. However, this can be more problematic for larvae, which are more fragile and require calibrated water (E3). Although the experiment's duration is limited only by the computer's storage, small air bubbles appear in the channel after a few hours. This phenomenon is due to the dissolved gases present in the tap water and is detrimental to the fish. The activated carbon filter reduces this phenomenon, but it remains present and limits the maximum experimental time to a few hours.
 
 \chapter{Results}
+  \section{Methods}
+  The first part of the project was to screen several chemical compounds to assess fish preference and find a product with a robust, attractive behavior. To see if Dual was capable of replicating already published data, we focus our efforts on three compounds: citric acid that was shown to be repulsive \cite{}, ATP and adenosine that were shown to be attractive \cite{} with adults fish. In the next sections, we will present the experimental protocol that we used and the analysis we developed to assess fish chemical preference.
+
+  \subsection{Experiment}
+  \paragraph{Protocol} Fish chemical preference was assessed using Dual and a one-hour long experimental protocol, see Figure~{}. This protocol is subdivided into 4 cycles:
+  B1: a cycle where buffer is injected on the two sides that serves as a control.
+  P1: a cycle where a product is injected on one side and water on the other.
+  B2: same cycle as B1 that will serve to flush the system of any residual product.
+  P2: same as P1 but with the sides inverted.
+
+  \paragraph{Fish} In the following experiments, we use larval (6-8 days post-fertilization) and early juveniles (14 to 21 weeks) zebrafish. Preferences were assessed without changes in rearing condition before the experiment except for ATP and adenosine, where fish were starved 24 hours before the experiment, as mentioned in \cite{}. Chemicals were solved in a buffer the day of the experiment: E3 \cite{} for larvae and degassed tap water for juveniles.
+
+  \paragraph{Flow visualization} All the experiments were performed in the dark to isolated chemical senses from other sensory inputs, in particular visual perception. The flow was visualized using an infrared dye, an emulsion of silicone oil, and infrared lightening.
+
+  \subsection{Analysis}
+  The project's original idea was to use FastTrack and an automatic custom-developed image analysis pipeline to monitor the position of the interface and the fish position and kinematic parameters. It would have made it possible to assess fish preference and decipher how the fish modulate its behavior when in contact with a chemical. In particular cases, the fish's complex behavior coupled with the challenge to get the interface position accurately pushed us to develop a manual method of analysis.
+
+  \paragraph{Time-basec preference index} The preference index is a measure of the attraction or repulsion of a product. It is defined from the times spent inside or outside the product as follows:
+  $$
+  PI=\frac{t_{product}-t_{buffer}}{t_{product}+t_{buffer}}
+  $$
+  \noindent When $PI=1$, the fish spend all its time on the product side; thus, the product is attractive. When $PI=-1$, it is the complete opposite, and the product is repulsive. $PI=0$ means that the fish spent the same amount of time on each side; thus, the product is neutral.
+
+  The critical point of this analysis method is to define when the fish is in the product. A coarse-grained analysis would be to assimilate the interface with a line placed at the middle of the image. Most of the time, it is accurate when the fish do not disturb the interface and reflect the fish preference well. On the other hand, it will provide no insight at the crucial moment where fish take a decision, i.e., when the fish cross the interface. We try unsuccessfully to develop an automatic interface extraction based using the difference in contrast between buffer and water. Besides, complex behaviors of the fish at the interface were challenging to quantify automatically.
+
+  \paragraph{Event analysis} To be time-efficient, we choose to develop a manual analysis method. We choose four characteristics and meaningful events, see Figure~\ref{}, to quantify the behavior: when the fish cross the interface to change side and when the fish sense the interface and return to the side where it was. By recording these events, we can quantify the moment where the fish make a decision, which was not possible with the time-based analysis.
+
+  To count these events, we performed a blind analysis where movies were anonymized and scrambled. The events counting was performed by two independents individuals and then pulled together to get the average and deanonymized.
+
+  We look first at the correlation between the two independents analyses, see Figure~\ref{}, to check for human bias. The correlation between each fish's events count was equal to 0.97, indicating that there is no significant bias or disagreement.
+
+  We can define an event-based preference index as follow:
+  $$
+  $$
+  \noindent This preference index is slightly different from the time-based one. By construction, time passed without making decisions will be disregarded. TODO
+
+  \section{Results}
+  \subsection{Setup caracterisation}
+  \paragraph{Left-right bias} We started by checking the preference index in the B1 buffer cycle, i.e., the baseline preference, to capture an eventual left-right bias of setup. We compute the time-based preference index choosing the middle of the tank as left-right separation (in B1, there is no dye hence no real separation). Figure~\ref{} represent the distribution of preference index for B1 cycles. We see a great variability between fish, but the mean value is $PI=0$, there is no significant left-right bias.
+
+  \paragraph{Dye neutrality} In the product cycle P1 and P2, the infrared dye is diluted with the product to visualize the flow. The Figure~\ref{} represents the event-based preference index for the dye only. We see that in mean, the dye is neutral with variability among fish.
+
+  \subsection{Products screening}
+  We have screened several products that were known to elicit an aversion or attraction to the zebrafish.
+
+  \paragraph{Citric acid}
+  Citric acid is known to be repulsive in many fish species \cite{}. Early juveniles and larval zebrafish were assessed using a solution of citric acid ranging from $5 \times 10^{-3} M$ to $1 \times 10^{-6} M$.
+
+  \paragraph{Quinine}
+
+
+  \paragraph{ATP and adenosine}
+  Zebrafish have pear-shaped olfactory sensory neurons expressing olfactory receptor specific to adenosine \cite{}. ATP, ADP, and AMP are dephosphorylated in the zebrafish olfactory epithelium by two kinases \cite{}. Behavioral responses to adenosine were shown to exist with arousal and food-seeking behavior.
+
+  \section{Model}
+  \subsection{Markov-chain}

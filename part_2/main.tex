@@ -174,18 +174,46 @@
   For the construction, Dual can be separated into five inter-dependent parts. The mechanical system comprised all the structures, the motor, and moving parts. The millifluidic system is constituted of the millifluidic chip, the microvalves, the syringes, and connecting tubes.  A camera and LEDs form the imaging system. The electronic system is a custom PCB controlling the motor and the microvalves. Finally, a software that controls all the setup automatically.
 
   \subsubsection{Mechanical}
-  Dual's central mechanical part is the motorized syringe push-pull pump that allows creating the laminar flow. It is built around the V-Slot Linear Actuator from OpenBuilds fixed on a structure builds using OpenBuilds linear rails and 3D printing fixations. A stepper motor drives the actuator, and two stop microswitches fixed on the structure limit the range of motion.
+  Dual's central mechanical part is the motorized syringe push-pull pump that allows creating the laminar flow. It is built around the V-Slot Linear Actuator from OpenBuilds fixed on a structure builds using OpenBuilds linear rails and 3D printing fixations. A stepper motor drives the actuator, and two stop microswitches fixed on the structure limit the range of motion, see Figure~\ref{dual_mechanical}.
 
-  It is crucial to isolate the animal from the exterior environment and of any light sources. A box that will contain the millifluidic chip and lighting system is constructed using MakerBeam rails and medium-density fibreboard sheets. A PMMA infrared transparent sheet is placed on the removable top panel to record the experiment while blocking visible light. The box contains, see Figure~\ref{}, two LEDs for visible and infrared light, a diffuser for homogeneous lighting, and support to fix the millifluidic chip.
+    \begin{figure}[h]
+      \centering
+      \includegraphics[width=0.95\textwidth]{part_2/assets/pull_push.png}
+      \caption{\textbf{}}
+      \label{dual_mechanical}
+    \end{figure}
+
+  It is crucial to isolate the animal from the exterior environment and of any light sources. A box that will contain the millifluidic chip and lighting system is constructed using MakerBeam rails and medium-density fibreboard sheets. A PMMA infrared transparent sheet is placed on the removable top panel to record the experiment while blocking visible light. The box contains, see Figure~\ref{dual_box}, two LEDs for visible and infrared light, a diffuser for homogeneous lighting, and support to fix the millifluidic chip.
+
+    \begin{figure}[h]
+      \centering
+      \includegraphics[width=0.75\textwidth]{part_2/assets/box.png}
+      \caption{\textbf{}}
+      \label{dual_box}
+    \end{figure}
 
   A structure to maintain the camera on top of the box and secure the Raspberry and the power alimentation is build using OpenBuilds rails. It is best to build Dual on top of an optical breadboard to facilitate fixation and enhanced stability. All these elements need to be fixed firmly and level to avoid any bias that could disturb the animal during the experiment.
 
   \subsubsection{Millifluidic}
-  The millifluidic chip that will serve as a tank for the fish, see Figure~\ref{} is laser cutted in XXXX plastic that is transparent and presents excellent optic properties. The different parts are stick using acetic acid \cite{}. The fish is restrained in the center by nets, and profiled inputs and outputs allow a laminar flow.
+  The millifluidic chip that will serve as a tank for the fish, see Figure~\ref{dual_chip_visu} is laser cutted in XXXX plastic that is transparent and presents excellent optic properties. The different parts are stick using acetic acid \cite{}. The fish is restrained in the center by nets, and profiled inputs and outputs allow a laminar flow.
 
   Sixty-milliliters syringes are fixed with 3D printed connectors on the actuator and connected with tubes to the microvalves circuit.
 
   Six three ports microvalves are connected, see Figure~\ref{}, and form a circuit that allows performing cycles of filling and injection.
+
+    \begin{figure}[h]
+      \centering
+      \includegraphics[width=0.75\textwidth]{part_2/assets/chip.png}
+      \caption{\textbf{}}
+      \label{dual_chip}
+    \end{figure}
+
+    \begin{figure}[h]
+      \centering
+      \includegraphics[width=0.75\textwidth]{part_2/assets/chipxcf.png}
+      \caption{\textbf{}}
+      \label{dual_chip_visu}
+    \end{figure}
 
   \subsubsection{Imaging}
   The setup is lightened by transmission using an infrared LED placed at the bottom of the box. Homogenous lighting is obtained by placing a diffusor (tracing papers or white plastic sheet) at the box's mid-height. Experiments are recorded with a Chameleon 3 camera mounted with a 23-25 mm EFL lens connected directly to the computer via USB3. A PMMA infrared transparent sheet is placed between the camera and the lens to block visible light and only retrieve Dual's infrared lightening.
@@ -251,7 +279,7 @@
   \subsection{Analysis}
   The project's original idea was to use FastTrack and an automatic custom-developed image analysis pipeline to monitor the position of the interface and the fish position and kinematic parameters. It would have made it possible to assess fish preference and decipher how the fish modulate its behavior when in contact with a chemical. In particular cases, the fish's complex behavior coupled with the challenge to get the interface position accurately pushed us to develop a manual method of analysis.
 
-  \paragraph{Time-basec preference index} The preference index is a measure of the attraction or repulsion of a product. It is defined from the times spent inside or outside the product as follows:
+  \paragraph{Time-base preference index} The preference index is a measure of the attraction or repulsion of a product. It is defined from the times spent inside or outside the product as follows:
   $$
   PI=\frac{t_{product}-t_{buffer}}{t_{product}+t_{buffer}}
   $$
@@ -269,6 +297,11 @@
   $$
   $$
   \noindent This preference index is slightly different from the time-based one. By construction, time passed without making decisions will be disregarded. TODO
+
+  \paragraph{Ratio exploration-exploitation} Besides the preference of the fish, an interesting quantity that we can look for is the type of behavior. We can distinguish two modes of behavior: the exploration mode where the fish cross the interface to explore the environment; the exploitation mode where the fish stay on the same side and touch and return at the interface. Note that this quantity is not a preference indicator.
+
+  The ratio exploration-exploitation can be computed based on the event as follows:
+  $$$$
 
   \section{Results}
   \subsection{Setup caracterisation}
@@ -290,3 +323,13 @@
 
   \section{Model}
   \subsection{Markov-chain}
+
+\chapter{Conclusion}
+
+  In these chapters, we saw how we build two experimental setups to assess and understand the chemical preference of larval and early-juveniles zebrafish.
+
+
+  The setup Dual is a high-throughput chemical screening setup that allows to explore the combination of products, concentrations, and fish ages easily and rapidly. The setup is scalable and can be built at  the laboratory for less than 1500 USD. We successfully use Dual to assess the chemical preference of several products. TODO DETAILLER RESUTATS
+
+
+  The Tropical River is a setup capable of producing controlled flows. The flow temperature and velocity can be precisely controlled. Turbulent and laminar jets can be created inside the flow to mimic more realistic fragmented chemical perception. This setup was originally developed to study the chemically-driven navigation after finding a robust, attractive compound with Dual. Due to the difficulty of finding such a product, the development of analysis methods to better quantify and decipher the fish behavior during Dual experiments, and time constraints, we could not use it in the context of this project. Nonetheless, several preliminary experiments were performed to check the setup, and it was used in another project to study the fish swimming taking advantage of the flow velocity control and high framerate imaging.

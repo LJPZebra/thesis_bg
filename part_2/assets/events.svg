@@ -12,8 +12,11 @@
    viewBox="0 0 382.125 268.09836"
    version="1.1"
    id="svg8"
-   inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
-   sodipodi:docname="events.svg">
+   inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07, custom)"
+   sodipodi:docname="events.svg"
+   inkscape:export-filename="/home/benjamin/Codes/thesis_bg/part_2/assets/events.png"
+   inkscape:export-xdpi="600"
+   inkscape:export-ydpi="600">
   <defs
      id="defs2">
     <rect
@@ -178,8 +181,8 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.7"
-     inkscape:cx="1049.9007"
+     inkscape:zoom="0.175"
+     inkscape:cx="717.75784"
      inkscape:cy="739.19557"
      inkscape:document-units="mm"
      inkscape:current-layer="g1244"
@@ -189,9 +192,9 @@
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
-     inkscape:window-width="1906"
+     inkscape:window-width="947"
      inkscape:window-height="1042"
-     inkscape:window-x="6"
+     inkscape:window-x="965"
      inkscape:window-y="30"
      inkscape:window-maximized="0" />
   <metadata
@@ -202,7 +205,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>

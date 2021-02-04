@@ -159,47 +159,45 @@
 \chapter{Experimental setups}
 
   \section{Dual}
-  The comparison of behavioral studies is an open problem in neuroscience. The design and implementation of experimental setups that are high-throughput, avoiding bias, and scalable are essential to behavior characterization. The absence of a standardized setup to assess chemical stimuli preference does not allow easy comparison through various studies already published. We present Dual, a high-throughput experimental setup that is easy to set up and implement.
+  The design and implementation of experimental setups that are high-throughput, bias-free, and scalable are essential to behavior characterization. We present Dual, a high-throughput experimental setup that is easy to build, scalable, and costs less than 1 500 USD.
 
   \subsection{Overview}
-  Dual is an underflow system builds on the same principle that \cite{readman2013fish}. It consists of creating two virtual compartments in a tank through a laminar flow. As we have seen previously, this system allows a rigorous knowledge of the compound's concentration to which the animal is subjected. Diffusion and convection due to the water movements caused by the fish are avoided. The interface between the two compartments is well defined and self-heal, when disturbed, with a characteristic time depending on the flow.
+  Dual is an underflow system builds on the same principle that \cite{readman2013fish}. It consists of creating two virtual compartments in a tank through a laminar flow. As we have seen previously, this system allows a rigorous knowledge of the compound's concentration to which the animal is subjected. Diffusion and advection due to the water movements caused by the fish are avoided. The interface between the two compartments is well defined and self-heal, when disturbed, with a characteristic time depending on the flow velocity.
 
-  To create the laminar flow, Dual uses a system of four syringes, coupled by two, in phases opposition, when two syringes push, two syringes pull, see Figure~\ref{}. The syringes are connected to a millifluidic chip, where the fish is placed, and generate a laminar flow with constant volume by having two syringes injecting at one side and two aspirating at the other side. Thanks to a microvalves system, each syringe can be filled independently. One can then build an experimental protocol by stacking several filling and injection cycles and choosing with which product to fill the syringes.
+  To create the laminar flow, Dual uses a system of four syringes, coupled two by two, in phases opposition: when two syringes push, two syringes pull, see Figure~\ref{dual_mechanical}. The syringes are connected to a millifluidic chip and generate a laminar flow with constant volume by having two syringes injecting at one side and two aspirating at the other side. Thanks to a microvalves system, each syringe can be filled independently. One can then build an experimental protocol by stacking several filling and injection cycles and choosing what to fill the syringes with. The fish is placed inside the microfluidic chip, see Figure\ref{dual_chip_visu}.
 
-  For example, to access fish preference, one can first create a cycle with water on the two sides as habituation and control. Then add a cycle with a chemical on one side and water on the other side to study the fish preference. Another example is to fill the two sides with a chemical for a given amount of time and then clean the system with water on two sides, reproducing the type of experiment performed with the well-plate device.
+  For example, to assess fish preference, one can first create a cycle with water on the two sides as habituation and control. Then add a cycle with a chemical on one side and water on the other side to study the fish preference. Another example is to fill the two sides with a chemical for a given amount of time and then clean the system with water on the two sides, reproducing the type of experiment performed with the multi well-plate device. A large variety of experiments can be designed with none or few setup modifications.
 
-  Dual is a Do It Yourself project, which allows great flexibility in the conception and fast iteration to adapt the project if necessary. All the components, blueprints, and other CAD files needed to build and assemble Dual are available in the appendixes. Dual can be built at a low-cost \ref{} without prior knowledge of mechanics or electronics. The tools necessary for the realization of the parts can be found in a FabLab.
+  Dual is a Do It Yourself project, which allows great flexibility in the conception and fast iteration to adapt the project if necessary. All the components, blueprints, and other CAD files needed to build and assemble Dual are available in the appendixes. Dual can be built at a low-cost (see the bill of materials~\ref{bom}) without prior knowledge of mechanics or electronics. The tools necessary for realizing Dual can be found in a FabLab and necessitate little formation.
 
   \subsection{Construction}
   For the construction, Dual can be separated into five inter-dependent parts. The mechanical system comprised all the structures, the motor, and moving parts. The millifluidic system is constituted of the millifluidic chip, the microvalves, the syringes, and connecting tubes.  A camera and LEDs form the imaging system. The electronic system is a custom PCB controlling the motor and the microvalves. Finally, a software that controls all the setup automatically.
 
   \subsubsection{Mechanical}
-  Dual's central mechanical part is the motorized syringe push-pull pump that allows creating the laminar flow. It is built around the V-Slot Linear Actuator from OpenBuilds fixed on a structure builds using OpenBuilds linear rails and 3D printing fixations. A stepper motor drives the actuator, and two stop microswitches fixed on the structure limit the range of motion, see Figure~\ref{dual_mechanical}.
+  Dual's central mechanical part is a motorized syringe push-pull pump that allows creating the laminar flow. It is built around the V-Slot Linear Actuator from OpenBuilds fixed on a structure builds using OpenBuilds linear rails and 3D printing fixations. A stepper motor drives the actuator, and two stop microswitches limit the range of motion, see Figure~\ref{dual_mechanical}.
 
     \begin{figure}[h]
       \centering
       \includegraphics[width=0.95\textwidth]{part_2/assets/pull_push.png}
-      \caption{\textbf{}}
+      \caption{\textbf{Dual mechanical structure} Dual custom pull-push syringe.}
       \label{dual_mechanical}
     \end{figure}
 
-  It is crucial to isolate the animal from the exterior environment and of any light sources. A box that will contain the millifluidic chip and lighting system is constructed using MakerBeam rails and medium-density fibreboard sheets. A PMMA infrared transparent sheet is placed on the removable top panel to record the experiment while blocking visible light. The box contains, see Figure~\ref{dual_box}, two LEDs for visible and infrared light, a diffuser for homogeneous lighting, and support to fix the millifluidic chip.
+  It is crucial to isolate the animal from the exterior environment and of any light sources. A box that will contain the millifluidic chip and lighting system is constructed using MakerBeam rails and medium-density fibreboard sheets. A PMMA infrared transparent sheet is placed on the removable top panel to record the experiment while blocking visible light. The box contains, see Figure~\ref{dual_box}, two LEDs for visible and infrared light, a diffuser for homogeneous lighting, and a support to fix the millifluidic chip.
 
     \begin{figure}[h]
       \centering
       \includegraphics[width=0.75\textwidth]{part_2/assets/box.png}
-      \caption{\textbf{}}
+      \caption{\textbf{Box} Dual box that will isolate the animal from the exterior.}
       \label{dual_box}
     \end{figure}
 
   A structure to maintain the camera on top of the box and secure the Raspberry and the power alimentation is build using OpenBuilds rails. It is best to build Dual on top of an optical breadboard to facilitate fixation and enhanced stability. All these elements need to be fixed firmly and level to avoid any bias that could disturb the animal during the experiment.
 
   \subsubsection{Millifluidic}
-  The millifluidic chip that will serve as a tank for the fish, see Figure~\ref{dual_chip_visu} is laser cutted in XXXX plastic that is transparent and presents excellent optic properties. The different parts are stick using acetic acid \cite{}. The fish is restrained in the center by nets, and profiled inputs and outputs allow a laminar flow.
+  The millifluidic chip that will serve as a tank for the fish, see Figure~\ref{dual_chip_visu} is laser cutted in PMMA plastic that is transparent and presents excellent optic properties. The different parts are glued using acetic acid. The fish is restrained in the center by nets, and profiled inputs and outputs allow a laminar flow.
 
-  Sixty-milliliters syringes are fixed with 3D printed connectors on the actuator and connected with tubes to the microvalves circuit.
-
-  Six three ports microvalves are connected, see Figure~\ref{}, and form a circuit that allows performing cycles of filling and injection.
+  Sixty-milliliters syringes are fixed with 3D printed fixations on the actuator and connected with 2.2 mm diameters tubing to the microvalves circuit. Six three ports microvalves are connected and form a circuit that allows performing cycles of filling and injection.
 
     \begin{figure}[h]
       \centering
@@ -219,96 +217,96 @@
   The setup is lightened by transmission using an infrared LED placed at the bottom of the box. Homogenous lighting is obtained by placing a diffusor (tracing papers or white plastic sheet) at the box's mid-height. Experiments are recorded with a Chameleon 3 camera mounted with a 23-25 mm EFL lens connected directly to the computer via USB3. A PMMA infrared transparent sheet is placed between the camera and the lens to block visible light and only retrieve Dual's infrared lightening.
 
   \subsubsection{Electronic}
-  The electronic system links the analogic mechanical and millifluidic system to the software. A custom printed circuit board (PCB) has been designed for Dual \ref{}. It contains an Arduino Nano serving as a microcontroller; six half-bridge gate drivers to control the microvalves from the logic signals of the Arduino; a Big EasyDriver stepper motor controller is controlling the motor speed from a logic output of the Arduino; a potentiometer to control the intensity of the LED lighting. All the electronics and the syringe pump motor are powered by a 550W ATX computer power supply connected to the PCB.
+  The electronic system links the analogic mechanical and millifluidic system to the software. A custom printed circuit board (PCB) has been designed for Dual TODO(ajouter blueprint). It contains an Arduino Nano serving as a microcontroller; six half-bridge gate drivers to control the microvalves from the logic signals of the Arduino; a Big EasyDriver stepper motor controller to control the motor speed from a logic output of the Arduino; a potentiometer to control the intensity of the LED lighting. All the electronics and the syringe pump motor are powered by a 550W ATX computer power supply connected to the PCB.
 
   \subsubsection{Software}
-  A software has been specifically developed to control the setup. The graphical user interface is developed using Qt, and the camera is interfaced to the software using the FLIR Systems SDK \url{} provided with the camera. The electronic system is controlled through the Arduino Nano flashed with a custom sketch \url{} and communicating to the software via USB serial. The software allows manual control of each system element, such as the microvalves, the camera, and the motor. It is possible (and advisable) to create experimental protocols, a simple text file, containing the necessary instructions to automate the filling and aspiration cycles and build experiments.
+  A software has been specifically developed to control the setup. The graphical user interface is developed using Qt, and the camera is interfaced to the software using the FLIR Systems SDK provided with the camera. The electronic system is controlled through the Arduino Nano flashed with a custom sketch and communicating to the software via USB serial. The software allows manual control of each system element, such as the microvalves, the camera, and the motor. It is possible (and advisable) to create custom experimental protocols, a simple text file, containing the necessary instructions to automate the filling and aspiration cycles to build experiments.
 
-  Two versions of the software are available, one running on a modern desktop computer that can drive four Dual, another running on a Raspberry Pi4 that drives only one Dual. The latest solution offers better scalability since each Dual is independent. A custom version of Ubuntu 20.04 is preinstalled with the camera's SDK and the software. It can be downloaded at \url{} and flashed on an SD card or USB device for the Raspberry Pi4.
+  Two versions of the software are available, one running on a modern desktop computer that can drive four Dual, another running on a Raspberry Pi4 that drives only one Dual. The latest solution offers better scalability since each Dual is independent. A custom version of Ubuntu 20.04 is preinstalled with the camera's SDK and the software. It can be downloaded at \url{https://github.com/LJPZebra/dual_control/releases} and flashed on an SD card or USB device. It is designed to work with a 7-inch touchscreen display allowing a compact and easy-to-use control.
 
   \subsection{Construction and usage}
   For our needs, we have built four Duals that we ran in parallel. The construction requires a laser cutting machine, a 3D printer, and workshop tools. It took about two weeks to build the four devices. The construction does not require any specific knowledge, and access to a FabLab is sufficient to carry out this project and find the required tools and help in the event of difficulties.
 
   In practice, using Dual is effortless. Once the experiment template is created, the only manual task remaining is to place the fish in the millifluidic chip, close the device, and play the experiment template. It is also necessary to check that the suction containers neither run out of water or chemical. It is then possible to do experiments with little as possible dead times and minimal manual interventions.
 
-  A recurring problem we have encountered is the fouling of the millifluidic system. The dye used to visualize the flow see Section~\ref{}, ends up clogging the valves and tubes and can stop the system in the middle of an experiment. This problem can be solved by taking preventive habits. After each day of experiments, the millifluidic system has to be flushed with water. It can be performed automatically using an experimental template designed to wash all the microvalves thoughtfully. Microvalves can regularly be passed in an ultrasonic bath to clean them. The tubes have to be changed when worn out, which can append after several months of usage. Another encountered problem was the syringe plunger wear. After several months of usage, the plunger's latex cap loses water-tightness, and the plunger has to be replaced, which can be done very quickly in less than 2 minutes for one Dual.
+  A recurring problem we have encountered is the fouling of the millifluidic system. The dye used to visualize the flow ends up clogging the valves and tubes and can stop the system in the middle of an experiment. This problem can be solved by taking preventive habits. After each day of experiments, the millifluidic system has to be flushed with water. It can be performed automatically using an experimental template designed to wash all the microvalves thoughtfully. Microvalves can regularly be passed in an ultrasonic bath to clean them. The tubes have to be changed when worn out, which can append after several weeks of intensive usage. Another encountered problem was the syringe plunger wear. After several months of usage, the plunger's latex cap loses water-tightness, and the plunger has to be replaced, which can be done very quickly in less than 2 minutes.
 
-
-    \section{The Tropical River}
+  \section{The Tropical River}
   Studying chemical perception and chemically-driven navigation in a turbulent aquatic environment like the one fish encounters naturally requires an experimental device capable of creating controlled flows and chemical jets. We have created an experimental device capable of delivering a temperature-controlled laminar flow while recording the fish in both visible and infrared light. An injection nozzle is used to create turbulent or laminar jets within this laminar flow.
 
     \begin{figure}[h]
       \centering
       \includegraphics[width=1\textwidth]{part_2/assets/river.png}
-      \caption{\textbf{The tropical river} Schematic of the experimental setup.}
+      \caption{\textbf{The Tropical River} Schematic of the experimental setup.}
       \label{river}
     \end{figure}
 
 \subsection{Description}
   \subsubsection{Structure}
-  The device's structure consists of a channel assembled from transparent laser cutted PVC sheets fixed with Norcan rails to form a channel (60x10x10 cm), see Figure~\ref{river}. A LED panel is placed under the channel to illuminate the setup by transmission in visible light. The setup can be illuminated from above by a ring of infrared LEDs or by transmission by covering the LED panel with a PMMA infrared transparent sheet. A Chameleon 3 camera with a TODO lens is placed above the channel to record the experiments and connected to a computer via USB3. A mirror is placed at 45 degrees of inclination from the horizontal on the channel's side to determine the fish's vertical position. The whole channel is set inside a box constructed with Norcan rails and plywood sheets to isolate the fish from the surrounding environment.
+  The device's structure consists of a channel assembled from transparent laser cutted PMMA sheets fixed with Norcan rails to form a channel (60x10x10 cm), see Figure~\ref{river}. A LED panel is placed under the channel to illuminate the setup by transmission in visible light. The setup can be illuminated from above by a ring of infrared LEDs or by transmission by covering the LED panel with a PMMA infrared transparent sheet. A Chameleon 3 camera with a TODO lens is placed above the channel to record the experiments and connected to the computer via USB3. A mirror is placed at 45 degrees of inclination from the horizontal on the channel's side to control the fish's vertical position. The whole channel is set inside a box constructed with Norcan rails and plywood sheets to isolate the fish from the surrounding environment.
 
   \subsubsection{Hydrodynamic}
-  The canal is supplied at one end with water from the building's water system. Before entering the canal, tap water is filtered by an activated carbon filter and heated by a water bath system. A network of straws is placed in the channel to obtain a laminar flow, and a solenoid valve can adjust the flow rate. The other end of the channel is left free, and the outgoing water is redirected to the building's wastewater network because the products tested do not require any special treatment before being disposed of. The water height inside the channel can be controlled by modulating the dyke height placed at the end of the channel.
+  The canal is supplied at one end with water from the building's water system. Before entering the canal, tap water is filtered by an activated carbon filter and heated by a water bath. A network of straws is placed in the channel to obtain a laminar flow, and a solenoid valve can adjust the flow rate. The other end of the channel is left free. The outgoing water is redirected to the building's wastewater network because the products tested do not require any special treatment before being disposed of. The water height inside the channel can be controlled by modulating the dyke height placed at the end of the channel.
 
-  It is possible to dilute a product inside the channel by using an injection nozzle located directly at the water supply outlet. A magnetic stirrer is placed inside the channel, before the straws network, to facilitate dilution. Another injection nozzle can be placed inside the channel, after the straws network, to create a turbulent or laminar jet, it is supplied from an external tank, and the flow rate can be adjusted by gravity.
-
+  It is possible to dilute a product inside the channel by using an injection nozzle located directly at the water supply outlet. A magnetic stirrer is placed inside the channel, before the straws network, to facilitate dilution. Another injection nozzle can be placed inside the channel, after the straws network, to create a turbulent or laminar jet. It is supplied by an external tank, and the flow rate can be adjusted by gravity and delivery automatically controlled by a valve system.
 
   \subsubsection{Software}
-  The control software allows to retrieve and control all the variables of the experiment. By default, it allows selecting the flow rate, temperature, injection valves, and camera settings. A vital function of the software is the ability to build experimental protocols. Easy to build, the protocol template is a simple text file specifying for a given device a variable's desired value at a given time point. Any Arduino sensor or control device that follows a convention detailed in \url{} can be called in these protocols without the need to modify the software.
+  The control software allows to retrieve and control all the variables of the experiment. By default, it allows selecting the flow rate, temperature, injection valves, and camera settings. A vital function of the software is the ability to build experimental protocols. Easy to build, the protocol template is a simple text file specifying for a given device a variable's desired value at a given time point. Any Arduino sensor or control device that follows a convention detailed in \url{https://github.com/LJPZebra/the_tropical_river_control} can be called in these protocols without the need to modify the software.
 
   \subsubsection{Camera}
   The camera's options are directly accessible inside the software using the Spinnaker SDK. Metadata like temperature, relative times to the experiment, flow rate, or user-specified value can be saved inside the image.
 
   \subsubsection{Temperature}
-  The temperature regulation is made using a coiled heat exchanger tube added to the water inlet and immersed into a Neslab RTE water bath capable of cooling and warming. A temperature sensor is placed inside the channel and sends the instantaneous temperature to the control software. The software can control the water bath via an RS232 serial connector selecting the temperature using a PID \cite{} feedback system. Despite large variations of the building's water temperature, this system allows a precise and rapid temperature regulation.
+  The temperature regulation is made using a coiled heat exchanger tube added to the water inlet and immersed into a Neslab RTE water bath capable of cooling and warming. A temperature sensor is placed inside the channel and sends the instantaneous temperature to the control software. The software can control the water bath via an RS232 serial connector selecting the temperature using a PID feedback system. Despite large variations of the building's water temperature, this system allows a precise and rapid temperature regulation.
 
   \subsection{Usage and limitation}
-  This experimental device is, in practice, very versatile. The ability to control the velocity and the temperature of the laminar flow, as well as the injection of products in an automated and quantified manner while recording the fish, allows the study of a wide variety of behaviors like rheotaxy, chemotaxis, and thermotaxis. The height of water in the channel can be modulated, making it possible to use adults and larval fish in the same setup.
+  This experimental device is, in practice, very versatile. The ability to control the velocity and the temperature of the laminar flow, as well as the injection of products in an automated and quantified manner while recording the fish, allows the study of a wide variety of behaviors like rheotaxy, chemotaxis, and thermotaxis. The height of water in the channel can be modulated, making it possible to use adult and larval fish in the same setup.
 
-  The insertion of chemical in the flow does not allow us to reuse the water. This is why the water supply is done using the water network of the building. Although filtered, the water quality depends on the building's water quality, which is usually not a problem for juveniles and adults fish that are reared in filtered tap water from 2 weeks onwards. However, this can be more problematic for larvae, which are more fragile and require calibrated water (E3). Although the experiment's duration is limited only by the computer's storage, small air bubbles appear in the channel after a few hours. This phenomenon is due to the dissolved gases present in the tap water and is detrimental to the fish. The activated carbon filter reduces this phenomenon, but it remains present and limits the maximum experimental time to a few hours.
+  The insertion of chemical in the flow does not allow us to reuse the water. This is why the water supply is done using the water network of the building. Although filtered, the water quality depends on the building's water quality, which is usually not a problem for juvenile and adult fish that are reared in filtered tap water from 2 weeks onwards. However, this can be more problematic for larvae, which are more fragile and require calibrated water (E3). Although the experiment's duration is limited only by the computer's storage, small air bubbles appear in the channel after a few hours. This phenomenon is due to the dissolved gases present in the tap water and is detrimental to the fish. The activated carbon filter reduces this phenomenon, but it remains present and limits the maximum experimental time to a few hours.
 
 \chapter{Results}
   \section{Methods}
-  The first part of the project was to screen several chemical compounds to assess fish preference and find a product with a robust, attractive behavior. To see if Dual was capable of replicating already published data, we focus our efforts on three compounds: citric acid that was shown to be repulsive \cite{}, ATP and adenosine that were shown to be attractive \cite{} with adults fish. In the next sections, we will present the experimental protocol that we used and the analysis we developed to assess fish chemical preference.
+  In the next sections, we will present the experimental protocol that we used and the analysis methods we developed to assess zebrafish chemical preference.
 
   \subsection{Experiment}
-  \paragraph{Protocol} Fish chemical preference was assessed using Dual and a one-hour long experimental protocol, see Figure~\ref{exp_protocol}. This protocol is subdivided into 4 cycles:
-  B1: a cycle where buffer is injected on the two sides that serves as a control.
-  P1: a cycle where a product is injected on one side and water on the other.
-  B2: same cycle as B1 that will serve to flush the system of any residual product.
-  P2: same as P1 but with the sides inverted.
+  \paragraph{Protocol} Fish chemical preference was assessed using Dual setup in a one-hour long experimental in a protocol detailed in Figure~\ref{exp_protocol}. This protocol is subdivided into 4 cycles of 15 minutes each:
+\begin{itemize}
+  \item B1: a cycle where buffer is injected on the two sides that serves as a control.
+  \item P1: a cycle where a product is injected on one side and water on the other.
+  \item B2: same cycle as B1 that will serve to flush the system of any residual product.
+  \item P2: same as P1 but with sides inverted.
+\end{itemize}
 
     \begin{figure}[h]
       \centering
       \includegraphics[width=0.75\textwidth]{part_2/assets/protocol.png}
-      \caption{\textbf{Protocol} Experimental protocol used to assess fish chemical preference. Product cycles P1 and P2 were regularly inverted to avoid any side bias.}
+      \caption{\textbf{Protocol} Experimental protocol used to assess zebrafish chemical preference. Product cycles P1 and P2 were regularly inverted to avoid any side bias.}
       \label{exp_protocol}
     \end{figure}
 
-  \paragraph{Fish} In the following experiments, we use larval (6-8 days post-fertilization) and early juveniles (14 to 21 weeks) zebrafish. Preferences were assessed without changes in rearing condition before the experiment except for ATP and adenosine, where fish were starved 24 hours before the experiment, as mentioned in \cite{}. Chemicals were solved in a buffer the day of the experiment: E3 \cite{} for larvae and degassed tap water for juveniles.
+  \paragraph{Fish} In the following experiments, we use larval (6-8 days post-fertilization) and early juveniles (14 to 21 weeks post-fertilization) zebrafish. Preferences were assessed without changes in rearing condition before the experiment, except for ATP and adenosine, where fish were starved 24 hours before the experiment, a protocol inspired from \cite{wakisaka2017adenosine}. Chemicals were dissolved in a buffer the day of the experiment: E3 \cite{} for larvae and degassed tap water for juveniles.
 
-  \paragraph{Flow visualization} All the experiments were performed in the dark to isolated chemical senses from other sensory inputs, in particular visual perception. The flow was visualized using an infrared dye, an emulsion of silicone oil, and infrared lightening.
+  \paragraph{Flow visualization} All the experiments were performed in the dark to isolated chemical senses from other sensory inputs, in particular visual perception. The flow was visualized using an infrared dye, an emulsion of silicone oil, and infrared lightening. TODO(completer avec info Laeticia)
 
   \subsection{Analysis}
-  The project's original idea was to use FastTrack and an automatic custom-developed image analysis pipeline to monitor the fish and interface positions. It would have made it possible to assess fish preference and decipher how the fish modulate its behavior when in contact with a chemical. Although, in particular cases, the fish's complex behavior coupled with the challenge to get the interface position accurately pushed us to develop a manual method of analysis that we have used to caracterise more precisely the fish behavior.
+  The project's original idea was to use FastTrack \ref{part1} and an automatic custom-developed image analysis pipeline to monitor the fish and interface position. It would have made it possible to assess fish preference and decipher how the fish modulate its behavior when in contact with a chemical. However, in particular cases, the fish's complex behavior coupled with the challenge to get the interface position accurately pushed us to develop a manual method of analysis that we have used to characterize more precisely the fish behavior.
 
-  \paragraph{Time-base preference index} The preference index is a measure of the attraction or repulsion of a product. It is defined from the times spent inside or outside the product as follows:
+  \paragraph{Time-base preference index} The preference index is a measure of the attraction or repulsion of a product. It is defined from the times spent inside and outside the product as follows:
   $$
   PI=\frac{t_{product}-t_{buffer}}{t_{product}+t_{buffer}}
   $$
   \noindent When $PI=1$, the fish spend all its time on the product side; thus, the product is attractive. When $PI=-1$, it is the complete opposite, and the product is repulsive. $PI=0$ means that the fish spent the same amount of time on each side; thus, the product is neutral.
 
-  The critical point of this analysis method is to define when the fish is in the product. A coarse-grained analysis would be to assimilate the interface with a line placed at the middle of the image. Most of the time, it is accurate when the fish do not disturb the interface and reflect the fish preference well. On the other hand, it will provide no insight at the crucial moment where fish take a decision, i.e., when the fish cross the interface. We try unsuccessfully to develop an automatic interface extraction based using the difference in contrast between buffer and water. Besides, complex behaviors of the fish at the interface were challenging to quantify automatically.
+  The critical point of this analysis method is to define when the fish is in the product. A coarse-grained analysis would be to assimilate the interface with its median position. Most of the time, it is accurate and reflects the fish preference well. On the other hand, it will provide no insight at the crucial moment where fish take a decision, i.e., when the fish cross the interface. We try unsuccessfully to develop an automatic interface extraction using the difference in contrast between buffer and water. But, complex behaviors of the fish at the interface that were challenging to quantify automatically, the large amount of data, and time constraints pushed us to use a manual method of quantification.
 
     \begin{figure}[h]
       \centering
       \includegraphics[width=0.75\textwidth]{part_2/assets/behavior.jpg}
       \caption{\textbf{Complexe} Example of a complex behavior where the fish swim inside the interface. The fish is creating advection and automatically extract the interface position is challenging.}
-      \label{ld_bias}
+      \label{behavior_comp}
     \end{figure}
 
-  \paragraph{Event analysis} To be time-efficient, we choose to develop a manual analysis method. We choose four characteristics and meaningful events, see Figure~\ref{events}, to quantify the behavior: when the fish cross the interface to change side and when the fish sense the interface and return to the side where it was. By recording these events, we can quantify the moment where the fish make a decision, which was not possible with the time-based analysis.
+  \paragraph{Event analysis} To be time-efficient, we choose to develop a manual analysis method. We choose 4 characteristics and meaningful events, see Figure~\ref{events}, to quantify the behavior: when the fish cross the interface to change side (PB, BP) and when the fish sense the interface and return to the side where it was (BB, PP). By recording these events, we can quantify the moment where the fish make a decision, which was not possible with the time-based analysis.
 
     \begin{figure}[h]
       \centering
@@ -319,37 +317,51 @@
 
   To count these events, we performed a blind analysis where movies were anonymized and scrambled. The events counting was performed by two independents individuals and then pulled together to get the average and deanonymized.
 
-  We look first at the correlation between the two independents analyses, see Figure~\ref{correlation_count}, to check for human bias. The correlation between each fish's events count was equal to 0.97, indicating that there is no significant bias or disagreement.
+  We look first at the correlation between the two independents analyses, see Figure~\ref{correlation_count}, to check for human bias. The correlation between each fish's events count was equal to $0.97$, indicating that there is no significant bias or disagreement between the analysis.
 
     \begin{figure}[h]
       \centering
-      \includegraphics[width=0.75\textwidth]{part_2/assets/correlation.png}
+      \includegraphics[width=0.50\textwidth]{part_2/assets/correlation.png}
       \caption{\textbf{Analysis correlation} Correlation between the two independent event-based analysis. One point is the count for one event type for one fish. Red line is the identity line. The point color intensity is encoding the number of points at the same coordinate.}
       \label{correlation_count}
     \end{figure}
 
   We can define an event-based preference index as follow:
   $$
-  pi = \frac{n_{BP} + n_{PP} - n_{BB} - n_{PB}}{n_{BP} + n_{PP} + n_{BB} + n_{PB}}
+  PI = \frac{n_{BP} + n_{PP} - n_{BB} - n_{PB}}{n_{BP} + n_{PP} + n_{BB} + n_{PB}}
   $$
-  \noindent This preference index is slightly different from the time-based one. It will only take into account fish decision and will not be impacted by the fish inactivity.
+  \noindent This preference index is slightly different from the time-based one. It will only consider fish decisions and not be impacted by the fish inactivity and freezing.
 
-  \paragraph{Ratio exploration-exploitation} Besides the preference of the fish, an interesting quantity that we can look for is the type of behavior. We can distinguish two modes of behavior: the exploration mode where the fish cross the interface to explore the environment; the exploitation mode where the fish stay on the same side and touch and return at the interface. Note that this quantity is not a preference indicator.
+  \paragraph{Ratio exploration-exploitation} Besides the preference of the fish, an interesting quantity that we can look for is the type of behavior. We can distinguish two modes of behavior: an exploration mode where the fish cross the interface to explore the environment and an exploitation mode where the fish stay on the same side and make touch-and-turn at the interface. Note that this quantity is by any means a preference indicator.
 
   The ratio exploration-exploitation can be computed based on the event as follows:
   $$
-  \rho=\frac{n_{BP} + n_{PB}}{n_{BB} + n_{PP}}
+  r=\frac{n_{BP} + n_{PB}}{n_{BB} + n_{PP}}
   $$
-  \paragraph{Model} Based on the events recordings, we can build a two-state Markov chain model, see Figure~\ref{markov_model}. We can define the probability of transfer as follows:
-  \noindent with p the probability of going from the buffer to the product and b the probability of going from the product to the buffer.
-  $$
-  p = \frac{n_{bp}}{n_{bp} + n_{bb}}
-  $$
-  $$
-  b = \frac{n_{pb}}{n_{pb} + n_{pp}}
-  $$
+\noindent When $r=1$ there is as much exploration as exploitation, $r<1$ there is more exploitation and $r>1$ more exploration. In the event where $n_{BB} + n_{PP} = 0$ we take $r=0$ (pur exploration),  and $n_{BP} + n_{PB} = 0$ we take $r=\infty$ (pur exploitation).
 
-  We can build a numerical simulation of two states Markov chain to explore the relationship between $p$ and $b$ probabilities, the preference index, and the exploration-exploitation ratio. The numerical simulation will construct Markov chain of probabilities $p$, and $b$, the length of the chain is drawn from the experimental chain length distribution that follows a discrete negative binomial distribution (see Figure~\ref{chain_fit}:
+  \paragraph{Model} Based on the events recordings, we can build a two-state Markov chain model (Figure~\ref{markov_model}). We can define the probability of transfer as follows:
+  $$
+  p = \frac{n_{BP}}{n_{BP} + n_{BB}}
+  $$
+  $$
+  b = \frac{n_{PB}}{n_{PB} + n_{PP}}
+  $$
+  \noindent With $p$ the probability of going from the buffer to the product and $b$ the probability of going from the product to the buffer.
+
+  \begin{figure}[h]
+    \centering
+    \includegraphics[width=0.85\textwidth]{part_2/assets/model.png}
+    \caption{\textbf{Two states Markov chain model}}
+    \label{markov_model}
+  \end{figure}
+
+  With this model, the preference index can be defined directly by $p-b$ the proportion of time spent in the product state minus the proportion of time spent in the buffer state. If $p$ (resp. $b$) can be defined, we take $PI=-1$ (resp. $PI=1$).
+
+ An indicator of the fish exploration-exploitation behavior can be derived as follows:
+$$ r_{markov} = 2Min(p,b) - 1 $$
+
+  We can build a numerical simulation of two states Markov chain to explore the relationship between $p$ and $b$ probabilities, the preference index, and $r_{markov}$. The numerical simulation will construct Markov chain of probabilities $p$, and $b$. The length of the chain is drawn from the experimental chain length distribution that follows a discrete negative binomial distribution (see Figure~\ref{chain_fit}):
   $$
   f(k) = \begin{pmatrix}
   k+n-1\\
@@ -357,73 +369,269 @@
   \end{pmatrix}
   a^n(1-a)^k
   $$
-  \noindent with $n=2.527$ et $a=0.084$.
+  \noindent With $n=2.527$ et $a=0.084$.
 
   \begin{figure}[h]
     \centering
-    \includegraphics[width=0.85\textwidth]{part_2/assets/chain_fit.png}
-    \caption{\textbf{Chain length} Distribution of chains length.}
+    \includegraphics[width=0.65\textwidth]{part_2/assets/chain_fit.png}
+    \caption{\textbf{Chain length} Chains length distribution.}
     \label{chain_fit}
   \end{figure}
-
-  From the Figure~\ref{markov_simu}A, we see that $\frac{p}{b}$ can be related to the event-based preference index as a sigmoid shape. When $\frac{p}{b} \approx 1$,  $pi \approx 0$, when $\frac{p}{b} \to +\infty$, $pi \to +1$, and when $\frac{p}{b} \to 0$, $pi \to -1$. Interestingly, we see Figure~\ref{markov_simu}B, that $(p,b)$ can not have any values, the possible values are determined by the Markov chain length, short chains will have less possible values than longer chains. This can be explained by the fact that $p$ and $b$ are integer fractions.
 
   \begin{figure}[h]
     \centering
     \includegraphics[width=0.85\textwidth]{part_2/assets/pi_pb.png}
-    \caption{\textbf{Numerical simulation} Preference index and ratio of the transition probabilities for 62 500 realisations with a chain size following the experimental distribution.}
+    \caption{\textbf{Numerical simulation} Preference index and$r_{markov}$ for 10 000 realisations with a chain size following the experimental distribution.}
     \label{markov_simu}
   \end{figure}
 
+  We see on Figure~\ref{markov_simu} that there are forbidden couples of $(p,b)$ due to the chain length. The preference indexes are distributed on either side of the identity line $p=b$ where $pi = 0$ with an upper triangle repulsive and a lower triangle attractive. Looking at the map of $r_{markov}$, we see a right upper corner at high $p$ and $b$ dominated by exploration, and a bottom left corner by exploitation. As expected, the fish can have a neutral preference with either exploration or exploitation, but a strong preference can only happen in a regime dominated by exploitation.
+
   \section{Results}
   \subsection{Setup caracterisation}
-  \paragraph{Left-right bias} We started by checking the preference index in the B1 buffer cycle to capture an eventual left-right bias of setup. There is water on the two sides in this control cycle, and fish were never exposed to any product.  We compute the time-based preference index choosing the middle of the tank as left-right separation (in B1, there is no dye, thus no real separation). Figure~\ref{ld_bias} presents the distribution of preference index for B1 cycles for larvae and juveniles. The first thing we can notice is the significant variability of preference among fish. The median value ($pi = -0.02$ for $N=85$ for larvae and $pi = 0.03$ for $N = 168$ juveniles) is close to zero that will exclude any left-right bias of the setup.
+  \paragraph{Left-right bias} We started by checking the preference index in the B1 buffer cycle to capture an eventual left-right bias of setup. There is water on the two sides in this control cycle, and fish were never exposed to any product. We compute the time-based preference index choosing the middle of the tank as left-right separation (in B1, there is no dye, thus no real separation). Figure~\ref{ld_bias} presents the distribution of preference index for B1 cycles for larvae and juveniles. The first thing we can notice is the significant variability among fish. The median value ($pi = 0.08$ for $N=125$ for larvae and $pi = 0.05$ for $N = 178$ juveniles) is close to zero that will exclude any left-right bias of the setup.
 
     \begin{figure}[h]
       \centering
-      \includegraphics[width=0.85\textwidth]{part_2/assets/ld_bias.png}
+      \includegraphics[width=0.75\textwidth]{part_2/assets/ld_bias.png}
       \caption{\textbf{Left-right bias} Distribution of the time preference index computed for the first buffer cycle (B1) with water on the two sides. Each point is a value of preference index for one fish. Black line is the distribution median.}
       \label{ld_bias}
     \end{figure}
 
-  \paragraph{Dye neutrality} In the product cycles P1 and P2, the dye is diluted with the product to visualize the flow. To study the dye's impact on the fish, we performed control experiments with juvenile fish assessing only the dye with the same protocol presented above.
+  \paragraph{Dye neutrality} In the product cycles P1 and P2, the dye is diluted with the product to visualize the flow. To study the dye's impact on the fish, we performed control experiments with juvenile fish assessing only the dye with the protocol presented above.
 
-  Figure~\ref{dye_bias}A presents the event-based preference index for the dye only. Each point is a fish for one independent manual analysis; the point's size encodes the number of events during the cycle. We see that the dye seems neutral to the fish with no clear attraction or repulsion. As expected, there is large inter-fish variability. The preference index distributions for P1 and P2 are not statistically significant, but cycle P2 includes more outliers fish with strong, attractive preference.
+  Figure~\ref{dye_bias}A presents the event-based preference index for the dye only. Each point is a fish for one independent manual analysis; the point's size encodes the number of events during the cycle. We see that the dye seems neutral to the fish with no clear attraction or repulsion. As expected, there is large inter-fish variability. The preference index distributions for P1 and P2 are not statistically significant, but cycle P2 includes more outliers fish with a strong attractive preference.
 
-  Figure~\ref{dye_bias}B presents the time-based preference index, each point representing one fish. We remark a slight repulsion in the P1 cycle and a slight repulsion in the P2 cycle toward the dye; there is no clear, robust preference toward the dye. These slight preferences that are not visible with the event-based analysis come from the time-based method that is less precise and our low statistics $N=13$.
+  Figure~\ref{dye_bias}B presents the time-based preference index, each point representing one fish. We see a slight repulsion in the P1 cycle and a slight attraction in the P2 cycle toward the dye; there is no clear, robust preference toward the dye. These slight preferences are not visible with the event-based analysis and come from the time-based method that is less precise with our low statistics $N=13$ and more sensible to periods where the fish do not make a decision.
 
-  Figure~\ref{dye_bias}C presents the $p$ and $b$ probabilities from the Markov chain model by fish. In each cycle, we see that $p \approx b \approx 0.6 to 0.7$, meaning that the fish can perceive the dye ($ p = b = 1$ mean that the fish do not perceive the dye) or at least the side change by another unknown mean.
+  Figure~\ref{dye_bias}C presents the $p$ and $b$ probabilities from the Markov chain model by fish. In each cycle, we see that $p \approx b \approx 0.65$, meaning that the fish can perceive the dye ($ p = b = 1$ mean that the fish do not perceive the dye) or at least the side change by another unknown mean. This effect is also visible on the ratio exploration-exploitation (Figure~\ref{dye_bias}D).
 
   Altogether, these results indicate that the fish can sense the dye but without manifesting any preference. With enough statistics to mitigate the fish inter-variability, we will be able to assess the fish preference while visualizing precisely the flow.
 
-    \begin{figure}[h]
+    \begin{figure}[H]
       \centering
-      \includegraphics[width=1\textwidth]{part_2/assets/dye_pi.png}
-      \caption{\textbf{Left-right bias preference index} Distribution of the time preference index computed for the first buffer cycle (B1) with water on the two sides. Each point is a value of preference index for one fish. Black line is the distribution median. A is the event-based preference index and B. is the time-based preference index C. p and b probabilities by fish.}
+      \includegraphics[width=0.75\textwidth]{part_2/assets/dye_pi.png}
+      \caption{\textbf{Dye bias preference index} \textbf{A.} Event-based preference index, one point is representing one fish for one independant analysis. \textbf{B.} Time-based preference index, one point is one fish. \textbf{C.} $p$ and $b$ probabilities from the Markov chain model, one point is representing one fish for one independant analysis. \textbf{D.} Ratio exploration-exploitation, one point is representing one fish for one independant analysis.}
       \label{dye_bias}
     \end{figure}
 
   \subsection{Products screening}
-  We have screened several products that were known to elicit an aversion or attraction to the zebrafish.
+  We have screened several products known to elicit an aversion or attraction to the zebrafish. Because the literature is mainly focused on adult fish, our strategy was to assess early juvenile fish preference first and reduce fish age by using larvae.
 
-  \paragraph{Citric acid}
-  Citric acid is known to be repulsive in many fish species \cite{}. Early juveniles and larval zebrafish were assessed using a solution of citric acid ranging from $5 \times 10^{-3} M$ to $1 \times 10^{-6} M$.
+  \paragraph{Citric acid juvenile}
+  Citric acid is known to be repulsive in many fish species. It was shown that zebrafish could sense their environment pH \cite{abreu2016acute, abreu2016behavioral} and display a strong aversion for acidic pH ($pH \approx 3$). As a positive control, early juveniles and larval zebrafish preference were assessed using citric acid solutions ranging from $5 \times 10^{-3} M$ to $1 \times 10^{-6} M$, ie pH from $2.8$ to $4.2$ (Figure~\ref{citric_acid}).
 
-  \paragraph{Quinine}
+    \begin{figure}[h]
+      \centering
+      \includegraphics[width=.6\textwidth]{part_2/assets/citricacid.png}
+      \caption{\textbf{Time-based preference index} Time based preference index for P1 and P2 cycle (mean $\pm$ SEM), pH in green. }
+      \label{citric_acid}
+    \end{figure}
 
+    \begin{figure}[h]
+      \centering
+      \includegraphics[width=0.8\textwidth]{part_2/assets/citricacid_event.png}
+      \caption{\textbf{Citric acid: event-based analysis} A. Mean event-based preference index. B. Mean ratio exploration-exploitation.}
+      \label{citric_acid_event}
+    \end{figure}
+
+    \begin{figure}[h]
+      \centering
+      \includegraphics[width=0.8\textwidth]{part_2/assets/citricacid_markov.png}
+      \caption{\textbf{Citric acid: Markov chain analysis} A. Mean Markov chain preference index. B. Mean Markov chain ratio exploration-exploitation.}
+      \label{citric_acid_markov}
+    \end{figure}
+
+  The ratio exploration-exploitation (Figures~\ref{citric_acid_event}B~\ref{citric_acid_markov}B) showed an apparent decrease when the citric acid concentration increase. Fish sense the product and reduce their exploration to the benefit of a stereotyped exploitation behavior where they often go to the interface and return in the buffer (see Appendix~\ref{} for a detailed description).
+
+  The time-based (Figure~\ref{citric_acid}A), event-based (Figure~\ref{citric_acid_markov}B) and model-based (Figure~\ref{citric_acid}A) mean preference indexes (see~\ref{} for detailed calculations) decrease in a concentration-dependent manner. The distributions of preference index by fish (Figure~\ref{dist_citric_acid}) show a decrease in variability as the concentration increase and no significant difference between P1 and P2 cycles, which tends to suggest that fish adopt the same characteristic behavior with less variability as the repulsion increase.
+
+
+  \paragraph{Citric acid larvae} Preliminary experiments were done to assess the effect of citric acid on zebrafish larvae (Figure~\ref{dist_citric_acid}). Despite low statistics (see section\ref{discussion}) and significant variability, we see that citric acid seems to be repulsive as expected from juvenile results. More experiments need to be done to confirm this effect.
+
+  Using Dual, we were able to assess the repulsion to citric acid by zebrafish. Our analysis and model were able to capture the fish behavior changes and quantify the repulsion magnitude. As expected, the inter-fish variability is large but seems to be reduced by aversion where fish adopt a stereotyped exploitation behavior.
+
+    \begin{figure}[h]
+      \centering
+      \includegraphics[width=0.6\textwidth]{part_2/assets/dist_citricacid_lar.png}
+      \caption{\textbf{Preference index distributions for citric acid and larvae} Time-based preference index, one point is corresponding to one fish.}
+      \label{dist_citric_acid}
+    \end{figure}
 
   \paragraph{ATP and adenosine}
-  Zebrafish have pear-shaped olfactory sensory neurons expressing olfactory receptor specific to adenosine \cite{}. ATP, ADP, and AMP are dephosphorylated in the zebrafish olfactory epithelium by two kinases \cite{}. Behavioral responses to adenosine were shown to exist with arousal and food-seeking behavior.
+  Zebrafish have pear-shaped olfactory sensory neurons expressing olfactory receptors specific to adenosine \cite{wakisaka2017adenosine}. ATP, ADP, and AMP are dephosphorylated in the zebrafish olfactory epithelium by two kinases \cite{wakisaka2017adenosine}. Behavioral responses to adenosine and ATP were shown to exist with arousal and food-seeking behavior. We assessed preference to ATP and adenosine for larval and early juveniles zebrafish. Fish were starved 24 hours before the experiment, and preference was assessed following the protocol presented below.
 
-  \section{Model}
-  \subsection{Markov-chain}
+  \paragraph{Adenosine juveniles} Fish can perceive adenosine as indicated by the ratio exploration-exploitation (Figures~\ref{adenosine_event}B~\ref{adenosin_markov}B) that decrease with the concentration and are lower than the dye.
 
-\chapter{Conclusion}
+  The event-based and markov-based preference indexes (Figures~\ref{adenosin_event}A~\ref{adenosin_markov}A) show a slight repulsion for the P1 cycle and a slight attraction for the P2 cycle at the two lower concentrations.  The time-based preference index (Figures~\ref{adenosine}) displays a slight repulsive preference for the P1 cycle. There is no clear preference, and analysis from event-based and time-based preferences disagree, meaning that there is probably not enough statistic to conclude. Besides, preference index distributions (Figure~\ref{dist_adenosine}) show great variability. As no clear preference emerged from the experiments, we focused on the concentration $50 \mu M$ and increased the statistics up to $N=28$. We see a slight repulsion on the P1 cycle at the same level that the other concentration. However, the P2 cycle shows a clear repulsion with a median preference index equal to $-0.6$ and 2 clusters of fish, one attracted and one repulsed.
 
-  In these chapters, we saw how we build two experimental setups to assess and understand the chemical preference of larval and early-juveniles zebrafish.
+  Unexpectedly, adenosine does not seem to attract early juvenile zebrafish. On the contrary, at high concentration, it is clearly repulsive. However, one part of the fish ($\approx 30 \%$) seems to be either attractive or neutral at the second presentation of the product.
+
+    \begin{figure}[h]
+      \centering
+      \includegraphics[width=0.6\textwidth]{part_2/assets/adenosine.png}
+      \caption{\textbf{Adenosine: time-based preference index.} }
+      \label{adenosine}
+    \end{figure}
+
+    \begin{figure}[h]
+      \centering
+      \includegraphics[width=0.8\textwidth]{part_2/assets/adenosine_event.png}
+      \caption{\textbf{Adenosine: event-based analysis} A. Mean event-based preference index. B. Mean ratio exploration-exploitation.}
+      \label{adenosine_event}
+    \end{figure}
+
+    \begin{figure}[h]
+      \centering
+      \includegraphics[width=0.8\textwidth]{part_2/assets/adenosine_markov.png}
+      \caption{\textbf{Adenosine: Markov chain analysis} A. Mean Markov chain preference index. B. Mean Markov chain ratio exploration-exploitation.}
+      \label{adenosine_markov}
+    \end{figure}
+
+    \paragraph{Adenosine larvae} Zebrafish larvae were exposed to adenosine with the same protocol as juveniles. Preliminary results (Figure~\ref{dist_adenosine_lar}) base on the time preference index seems to indicate no strong preference at high concentrations.
+
+  \begin{figure}[h]
+      \centering
+      \includegraphics[width=0.6\textwidth]{part_2/assets/dist_adenosine_lar.png}
+      \caption{\textbf{Preference index distributions ATP larvae} Time-based preference index. }
+      \label{dist_atp}
+    \end{figure}
+
+  \paragraph{ATP juveniles} Interestingly, we find that ATP, a product that was shown to be attractive on adults, produces a two phases behavior on early juvenile zebrafish. At low concentration, the fish do not manifest a preference, but at the highest concentration ($125 \mu  M$  and $200 \mu M$), the P1 cycle became repulsive and the P2 cycle attractive.
+
+  Comparing the distribution of event-based and time-based preference index by fish (Figure~\ref{dist_atp}), we see that this effect is significant at $125 \mu M$ and  $200 \mu M$ (one-sided Wilcoxon signed-rank test).
+
+  A fish by fish analysis (Figure~\ref{proportion}) reveals that the fish proportion that changes its preference toward attraction increase with the concentration.
+
+    \begin{figure}[h]
+      \centering
+      \includegraphics[width=0.6\textwidth]{part_2/assets/atp.png}
+      \caption{\textbf{ATP: time-based preference index.} }
+      \label{atp}
+    \end{figure}
+
+    \begin{figure}[h]
+      \centering
+      \includegraphics[width=0.8\textwidth]{part_2/assets/atp_event.png}
+      \caption{\textbf{ATP: event-based analysis} A. Mean event-based preference index. B. Mean ratio exploration-exploitation.}
+      \label{atp_event}
+    \end{figure}
+
+    \begin{figure}[h]
+      \centering
+      \includegraphics[width=0.8\textwidth]{part_2/assets/atp_markov.png}
+      \caption{\textbf{ATP: Markov chain analysis} A. Mean Markov chain preference index. B. Mean Markov chain ratio exploration-exploitation.}
+      \label{atp_markov}
+    \end{figure}
+
+    \paragraph{ATP larvae} Zebrafish larvae were exposed to ATP with the same protocol as juveniles. Preliminary results (Figure~\ref{dist_atp_lar}) based on the time preference index indicate a repulsion at every concentrations. High concentrations seem to produce robust repulsive behavior with low variability.
+
+    \begin{figure}[h]
+      \centering
+      \includegraphics[width=0.6\textwidth]{part_2/assets/dist_atp_lar.png}
+      \caption{\textbf{Preference index distributions ATP larvae} Time-based preference index. }
+      \label{dist_atp}
+    \end{figure}
+
+  \paragraph{Quinine juveniles} Quinine is a natural alkaloid that tastes bitter, and that is a highly deterrent substance for many fish species \cite{kasumyan2003taste}. Unexpectedly, we see with the time-based preference index (Figure~\ref{dist_quinine}) that the preference seems to be mostly neutral. A slight attraction can be constated on the P1 cycle, and a neutral a slightly repulsive preference on the P2 cycle. Despite relatively good statistics ($\approx 7$ fish by concentration), no robust preference emerged as we see with a large variability in responses.
+
+    \begin{figure}[h]
+      \centering
+      \includegraphics[width=0.6\textwidth]{part_2/assets/dist_quinine.png}
+      \caption{\textbf{Preference index distributions quinine juveniles} Time-based preference index. }
+      \label{dist_atp}
+    \end{figure}
 
 
-  The setup Dual is a high-throughput chemical screening setup that allows to explore the combination of products, concentrations, and fish ages easily and rapidly. The setup is scalable and can be built at  the laboratory for less than 1500 USD. We successfully use Dual to assess the chemical preference of several products. TODO DETAILLER RESUTATS
+  \chapter{Conclusion}
+  Dual is a high-throughput chemical screening setup that allows exploring the combination of products, concentrations, and fish ages easily and rapidly. The setup is scalable and can be built at the laboratory for less than 1500 USD.
+
+  In the first part of the thesis, we built the setup and controlled that it did not have any bias. We check that the infrared dye used to visualize the flow was neutral to the fish. We successfully use Dual to assess the chemical preference of several products. We show a strong aversion to citric acid and an exciting effect with ATP where fish inverts preference at the second product presentation. Work remains to be done to precisely characterize this effect. An interesting question would be to check what happened at the third presentation of ATP. It can be done easily by adding a cycle to the experiment. If this attractive preference persists in time, ATP could be used in The Tropical River to study chemically-driven navigation. A temporal characterization would also be of great interest. Adults were shown to be attracted by ATP without mention of prior exposures. Studying the effect at a fixed concentration, like $125 \mu M$, by varying the fish age will help understand the development of ATP's perception by fish.
+
+  Preliminary results shown with larvae seem to follow the same interesting tendencies, but more statistics are required. Studying larvae poses several challenges. First, larvae tend to explore less than juveniles, and combined with their small sizes, they do not frequently cross the interface. We circumvent the problem by putting up to 4 larvae by experiment, thus increasing the statistics, but this adds work in the analysis phase. Secondly, larvae are more susceptible to fatigue and freezing than juveniles. It frequently happens that larvae stop swimming and do not recover until the end of the experiment. For this reason, assessing the ATP effect on larvae is very challenging: reducing cycles length to reduce fatigue will lead to fewer crossing events, but longer cycles will lead to more fish dropouts before the cycle P2. For this reason, studying larvae will need many statistics, a thing that we had not the time to do in the context of this thesis.
+
+  The analysis methods are fragmented according to fish ages and products. We first implemented a coarse-grained approach where we recorded the fish's position and computed the time-based preference index taking the mean interface position. Then we tried to refine this approach to better characterize the fish behavior at the interface by extracting the interface position. This was not practically achievable due to several constraints: time, fish complex behavior, and challenging image processing problems on a large amount of data (8 To of data). Finally, we chose to perform a manual analysis that focuses on events happening at the interface, moments where the fish had to make a decision. It was possible to confirm the time-based analysis results with this approach and characterize the fish behavior more precisely. This approach was only applied to products where there were enough statistics and already interesting effects to explain.
+
+ Studying the chemical perception of zebrafish proved to be challenging. The fish inter-variability is high, as we have seen by screening products. In these experiments, we use 4 Duals to record up to 350 hours of usable experiments, but we see that more statistics are needed. We hope that Dual as a low-cost, easily replicable setup will encourage people to build and use the setup to better characterize zebrafish chemo-preference.
 
 
-  The Tropical River is a setup capable of producing controlled flows. The flow temperature and velocity can be precisely controlled. Turbulent and laminar jets can be created inside the flow to mimic more realistic fragmented chemical perception. This setup was originally developed to study the chemically-driven navigation after finding a robust, attractive compound with Dual. Due to the difficulty of finding such a product, the development of analysis methods to better quantify and decipher the fish behavior during Dual experiments, and time constraints, we could not use it in the context of this project. Nonetheless, several preliminary experiments were performed to check the setup, and it was used in another project to study the fish swimming taking advantage of the flow velocity control and high framerate imaging.
+
+
+\begin{appendices}
+
+
+  \chapter{Visualisation}
+    \section{Boxplot}
+    The boxplot is a non-parametric method to represent data graphically using their quartiles, its read as indicated in the Figure~\ref{boxplot}.
+      \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.5\textwidth]{part_2/assets/boxplot.png}
+        \caption{\textbf{Boxplot}}
+        \label{boxplot}
+      \end{figure}
+
+    \section{Violinplot}
+    The violinplot is a non-parametric method to represent data graphically using their kernel density plot, see Figure~\ref{violinplot}. The kernel density estimation is a non-parametric method to estimate the probability density function. The width kernel density plot will give the frequency of a given value.
+
+      \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.5\textwidth]{part_2/assets/violinplot.png}
+        \caption{\textbf{Violinplot}}
+        \label{violinplot}
+      \end{figure}
+
+  \chapter{Calculation}
+
+    \section{Mean quantities}
+    Mean quantities were calculated from events count following these definition:
+    $$
+    \bar{PI} = \frac{\sum_{fish}^{}(n_{BP} + n_{PP} - n_{BB} - n_{PB})}{\sum_{fish}^{}(n_{BP} + n_{PP} + n_{BB} + n_{PB})}
+    $$
+    $$
+    \bar{r} =\frac{\sum_{fish}^{}(n_{BP} + n_{PB})}{\sum_{fish}^{}(n_{BB} + n_{PP})}
+    $$
+    $$
+    \bar{p} = \frac{\sum_{fish}^{}n_{BP}}{\sum_{fish}^{}(n_{BP} + n_{BB})}
+    $$
+    $$
+    \bar{b} = \frac{\sum_{fish}^{}n_{PB}}{\sum_{fish}^{}(n_{PB} + n_{PP})}
+    $$
+
+    \section{Statistical tests}
+    Statistical significance was evaluated using the Wilcoxon signed-rank test, one-sided when knowing the effect's direction, or two-sided otherwise. In the case of the event-based analysis, the test was carried out separately on the two independents manual counting then averaged to avoid a size effect bias.
+
+    \section{Image analysis}
+    Fish head position was extracted using FastTrack. Each recording was manually checked to remove low-quality movies either with imperfect flows or non-responsive fish.
+
+    A custom image processing procedure was developed to extract the interface using the contrast difference due to the dye. First, the maximal and minimal z-projection of the movie was calculated. For the minimal projection, the fish is masked with a white mask on each image before the projection, only keeping the flow and not projection the fish. Each image of the movie is then normalized with minimal and maximal projection. Finally, the interface was detected using an Otsu threshold.
+
+    A python command-line interface \footnote{\url{https://github.com/LJPZebra/dual_analysis}} was created to export the relevant data in a synthetic toml file easy exportable, one experiment by file.
+
+    \section{Data analysis}
+    Data analysis was carried out using Python and Julia.
+
+
+  \chapter{Preference index distributions}
+
+    \begin{figure}[h]
+      \centering
+      \includegraphics[width=1\textwidth]{part_2/assets/dist_acid.png}
+      \caption{\textbf{Preference index distributions for citric acid and juveniles} \textbf{A.} Event-based preference index. \textbf{B.} Time-based preference index. }
+      \label{dist_citric_acid}
+    \end{figure}
+
+    \begin{figure}[h]
+      \centering
+      \includegraphics[width=1\textwidth]{part_2/assets/dist_adenosine.png}
+      \caption{\textbf{Preference index distributions for adenosine and juveniles} \textbf{A.} Event-based preference index. \textbf{B.} Time-based preference index. }
+      \label{dist_adenosine}
+    \end{figure}
+
+    \begin{figure}[h]
+      \centering
+      \includegraphics[width=1\textwidth]{part_2/assets/dist_atp.png}
+      \caption{\textbf{Preference index distributions ATP juveniles} \textbf{A.} Event-based preference index. \textbf{B.} Time-based preference index. }
+      \label{dist_atp}
+    \end{figure}
+
+\end{appendices}

@@ -29,16 +29,19 @@ jobs:
           run: |
             sudo apt-get update
             sudo apt-get install texlive-full
+            sudo apt-get install ghostscript
 
         # Build document
         - name: Compilation
-          run: ./compile.sh
+          run: |
+            ./compile.sh
+            gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/prepress -dNOPAUSE -dQUIET -dBATCH -sOutputFile=gallois_thesis.pdf main.pdf
 
         - name: Linux artefact
           uses: actions/upload-artifact@v1
           with:
             name: pdf
-            path: main.pdf
+            path: gallois_thesis.pdf
   job_2:
       needs: [job_1]
       runs-on: ubuntu-latest
@@ -72,6 +75,6 @@ jobs:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           with:
             upload_url: ${{ steps.create_release.outputs.upload_url }} 
-            asset_path: pdf/main.pdf
-            asset_name: main.pdf
+            asset_path: pdf/gallois_thesis.pdf
+            asset_name: gallois_thesis.pdf
             asset_content_type: pdf

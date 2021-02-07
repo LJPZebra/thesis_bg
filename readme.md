@@ -6,7 +6,32 @@ bibliography:
 title: Draft v0.1
 ---
 
-# FastTrack
+![image](cover/ljp.png) ![image](cover/su.png)
+
+::: {.center}
+Thèse de doctorat
+
+Sorbonne université
+
+École doctorale nº564 : Physique en Île-de-France
+
+**Assessing chemical perception of the young zebrafish**
+
+réalisée au Laboratoire Jean Perrin par\
+**Benjamin Gallois**
+
+soutenance le 31 Mars 2021\
+devant le jury composé de\
+**M. JOLY Jean-Stephane Referee**\
+**M. BOURDIEU Laurent Referee**\
+**Mme WYART Clair Examinator**\
+**Mme HONG Elim Examinator**\
+**M. THIRIA Benjamin Examinator**\
+**M. DEL BENE Filippo Examinator**\
+**M. CANDELIER Raphaël Thesis director**\
+:::
+
+# FastTrack: a general tracking software
 
 ## Introduction
 
@@ -20,10 +45,10 @@ Linux Torvald
 
 The tracking of objects from video recordings is a problem that has
 gained much popularity in recent years. It is mostly due to its great
-potential, both in academics and for commercial and security
+potential, both in academia and for commercial and security
 applications. Examples include autonomous cars that can drive
 themselves, or the Airbus ATTOL project [@ATTOL] that allows fully
-automated take-off, landing, and taxiing of plane based solely on image
+automated take-off, landing, and taxiing of planes based solely on image
 analysis. A large part of the research effort is focused on creating
 pedestrian recognition and tracking algorithms to automate the analysis
 of video surveillance data. Tracking is also widely used in movie
@@ -32,27 +57,30 @@ to realize special effects (e.g., motion capture), and for industrial
 process [@luo1988adaptive]. In this case, automated tracking on images
 reduces costs, production time, and human operators' use.
 
-In academics, the use of automated tracking, especially in biology and
+In academia, the use of automated tracking, especially in biology and
 ecology [@dell2014automated; @risse2017fimtrack], is a rapidly growing
-field because it avoids the need to disturb animals by invasively mark
-them. Cellular motions tracking is also widely studied with very
-specialized algorithms developed solely for this purpose
+field because it avoids disturbing the animals with invasive markings.
+Cellular motions tracking is also widely studied with very specialized
+algorithms developed solely for this purpose
 [@juang2009tracking; @dewan2011tracking]. Other fields of science are
 interested in automated tracking, to name a few: microfluidic
 [@jeong2018accurately], active matter [@bricard2013emergence], social
-science [@ali2012multiple] and robotic [@treptow2004real]. It allows
-generating a large amount of reliable data, reducing bias, and avoiding
-a long and laborious manual analysis (that is sometimes impossible).
+science [@ali2012multiple] and robotic [@treptow2004real]. Automated
+tracking generally produces large amounts of reliable data, reduces
+biases and avoids long and tedious manual analyses. The latter are
+sometimes impossible to perform due to excessively large image
+collections.
 
 Object tracking can be separated into two categories: the Single Object
 Tracking (SOT), where the goal is to detect a single object in a more or
 less complicated scene, and the Multiple Object Tracking (MOT), where
 the goal is to detect and track several objects. In this dissertation,
-we will place ourselves within the MOT framework because it regroups the
-vast majority of scientific applications. In a scientific experiment,
-the tracking problem's difficulty is reduced by designing the setup
-well. In general, the image quality is good, the camera is fixed, and we
-can optimize the lighting to facilitate object detection. On the other
+we will place ourselves within the MOT framework since it is more
+representative of the applications usually encountered in academia. For
+many scientific experimental setups, the inherent difficulty of tracking
+can be greatly mitigated with a well-designed system. In general, the
+setups are designed to optimize the imaging conditions, with a fixed
+camera and a lighting that facilitates object detection. On the other
 hand, the tolerance to errors is low if one wants to produce reliable
 data and robust scientific conclusions. A decisive point is the
 algorithm's performance, which must analyze the data in a reasonable
@@ -63,17 +91,17 @@ to use these software are generally not experts in computer science and
 image analysis, and the software must be readily installable and usable
 by all.
 
-We will first see how tracking is a complex problem and how we can
-reduce or bypass this complexity. We will then present a non-exhaustive
-list of existing tracking software applied to diverse scientific fields.
-Finally, we will see how FastTrack's approach, the software we have
-created to solve the tracking problem, is different, and in which cases
-it can be useful.
+We will first see why the tracking is still a complex problem and how we
+can reduce or bypass this complexity. We will then present a
+non-exhaustive list of existing tracking software applied to diverse
+scientific fields. Finally, we will present how the software we have
+developed for general-purpose tracking follows a different approach, and
+in which cases it can be useful.
 
 ### The tracking, a not so simple problem
 
-The image-based tracking of objects rest on three key steps: the
-acquisition of the images, which, depending on the acquisition
+The image-based tracking of objects usually involves three key steps:
+the acquisition of the images, which, depending on the acquisition
 parameters, will condition the difficulty of the tracking and the type
 of algorithm that can be used; the detection of objects, which consists
 in separating the objects from the background; and finally the
@@ -89,16 +117,16 @@ and the association step.
 
 Object detection problems can usually be circumvented by the design of
 the experimental setup whenever it is possible. A fixed point of view
-and lighting optimization usually allow simple detection by subtracting
-a background image (without objects) and applying a threshold. For more
-complicated cases, a wide variety of algorithms are available
-[@yilmaz2006object] and applicable depending on the images' quality. The
-most common is to detect points of interest in the object. This
-technique is invariant to the point of view and illumination but
-requires a good image quality. Segmentation allows to separate the image
-by area of similarities and thus to detect objects of interest, many
-algorithms and approaches exist to segment an image. Machine learning
-can also be applied for objects detection [@zhao2019object].
+and lighting optimization usually allows for simple detection by
+subtracting a background image (without objects) and applying a
+threshold. For more complicated cases, a wide variety of algorithms are
+available [@yilmaz2006object] and applicable depending on the images'
+quality. The most common is to detect points of interest in the object.
+This technique is invariant to the point of view and illumination but
+requires a sufficient image quality. Segmentation allows to separate the
+image by area of similarities and thus to detect objects of interest,
+many algorithms and approaches exist to segment an image. Machine
+learning can also be applied for objects detection [@zhao2019object].
 
 Two main classes of algorithms can be distinguished to mitigate
 association problems. The first class of algorithms uses the object's
@@ -120,15 +148,14 @@ technique solves the propagation of errors problem and allows objects to
 be tracked over time, i.e., across several unpaired videos. For example,
 an animal can be recognized from one day of experiments to the next,
 which can be very useful, especially for behavioral studies. This method
-requires an image of sufficient quality to extract markers
-representative of the object. It also requires more computational
-resources, thus, an analysis that cannot be done in real-time. However,
-the main limitation is the number of objects it can track. It is
-currently limited to about ten objects per image with classical methods
-before the algorithms' performance degrades significantly. The machine
-learning approach makes it possible to increase the number of objects at
-the cost of long computation time and the need to use high-performance
-computers.
+requires images of sufficient quality to extract markers representative
+of the object. It also requires more computational resources, thus an
+analysis that cannot be done in real-time. However, the main limitation
+is the number of objects it can track. It is currently limited to about
+ten objects per image with classical methods before the algorithms'
+performance degrades significantly. The machine learning approach makes
+it possible to increase the number of objects at the cost of long
+computation time and the need to use high-performance computers.
 
 ### Existing software
 
@@ -185,22 +212,22 @@ only.
 ###### ToxTrack
 
 ToxTrack [@rodriguez2018toxtrac] is a software that implements in a
-graphical interface the ToxId algorithm [@rodriguez2017toxid]. To
-summarize, the algorithm extracts objects from the background by
-applying a threshold. The pieces of trajectories between occlusions are
-divided into short and long trajectories based on a user-defined
-threshold time. A group of long trajectories where all individuals are
-observed simultaneously is then extracted. In this case, the assignment
-is made using the Hungarian algorithm
-Figure [\[appendix_hung\]](#appendix_hung){reference-type="ref"
-reference="appendix_hung"}. The remaining trajectories are then assigned
-to the corresponding object selecting the best correlation value in a
-trajectory identification matrix
+graphical interface the ToxId algorithm [@rodriguez2017toxid]. In short,
+the algorithm extracts objects from the background by applying a
+threshold. The pieces of trajectories between occlusions are divided
+into short and long trajectories based on a user-defined threshold time.
+A group of long trajectories where all individuals are observed
+simultaneously is then extracted. In this case, the assignment is made
+using the Hungarian algorithm
+Figure [8](#appendix_hungarian){reference-type="ref"
+reference="appendix_hungarian"}. The remaining trajectories are then
+assigned to the corresponding object selecting the best correlation
+value in a trajectory identification matrix
 Figure [1.1](#part_1:toxId){reference-type="ref"
 reference="part_1:toxId"}. This matrix contains the similarity between
 every two trajectory fragments based on objects' features. The authors
-report that ToxId is as powerful as existing software, speedy, and can
-track objects in real-time. A disadvantage that can be seen in this
+report that ToxId is as powerful as other existing software, fast, and
+can track objects in real-time. A disadvantage that can be seen in this
 algorithm is that it only works for a constant number of animals. The
 algorithm's initialization requires to have at one moment $t$ all the
 objects to be tracked simultaneously detectable for a user-defined time
@@ -221,7 +248,7 @@ width="75%"}
 Open-source software allows the user to read, modify, and distribute the
 software. It is the preferred alternative to commercial software. From a
 scientific perspective, using open-source software increase transparency
-and lead to easier replicability of scientific results. From a
+and lead to easier reproducibility of scientific results. From a
 development standpoint, it leads to better code quality and fewer bugs.
 In general, no individual assistance service is provided. The
 collaborative development of most of these software allows the user to
@@ -230,25 +257,26 @@ report bugs and participate in their development to help the community.
 ###### idTracker
 
 IdTracker [@perez2014idtracker] is a MATLAB library that allows to track
-multiple objects in video recording. It is based on the extraction of a
-\"fingerprint\" for each object thus a reliable association without
-errors propagation. The advantage of idTracker is that it can recognize
-an object over several videos and after a relatively long time, which
-can be useful to track individuals' behavior over several series of
+multiple objects in video recordings. It is based on the extraction of a
+\"fingerprint\" for each object, allowing a tracking without errors
+propagation. The advantage of idTracker is that it can recognize an
+object over several videos and after a relatively long time, which can
+be useful to track individuals' behavior over several series of
 experiments.
 
-IdTracker is solving amazingly well the propagation of errors problem
-during the association phase. However, it is limited by the number of
-objects it can track, currently about twenty, due to the movie's length
+IdTracker is solving amazingly well the error-propagation problem during
+the association phase. However, it is limited by the number of objects
+it can track, currently about twenty, due to the movie's length
 necessary for extracting each object's \"fingerprint\". This task can go
 up to 30 minutes minimum for a high object density. The required image
 quality is an essential factor and must be at least 150 pixels per
 animal. The computation time is relatively long, in the order of 0.5 to
-2 seconds per image, and requires a large RAM amount. The installation
-of idTracker can be done without the need to buy MATLAB thanks to the
-Matlab Run Time Compiler but only under Windows. Therefore, it is
-necessary to purchase a MATLAB license for other platforms and have
-minimal knowledge of the language to set up idTracker.
+2 seconds per image, and requires a large amount of RAM. The
+installation of idTracker can be done without the need to install MATLAB
+thanks to the Matlab Run Time Compiler but only under Windows.
+Therefore, it is necessary to purchase a MATLAB license for other
+platforms and have minimal knowledge of the language to set up
+idTracker.
 
 ###### DeepLabCut
 
@@ -274,31 +302,31 @@ They have added tools to train the algorithm easily and test its
 robustness.
 
 It takes advantage of deep learning to solve the so-called estimation
-pose problem. As a reminder, deep learning is a machine learning
-algorithm that consists of training a neural network containing several
-layers. In DeepLabCut, the network consists of several residual neural
-networks (ResNets) pre-trained on the ImageNet database. The network is
-then fine-tuned by training on images where the parts to be detected are
-annotated. In the end, the algorithm gives the probability of presence
-of the object in the image. The authors have shown that the performance
-is at least as good as human detection and can be obtained with very
-little training data (200 annotated images).
+pose problem. Deep learning is a machine learning algorithm that
+consists of training a neural network containing several layers
+[@Goodfellow-et-al-2016]. In DeepLabCut, the network consists of several
+residual neural networks (ResNets) pre-trained on the ImageNet database.
+The network is then fine-tuned by training on images where the parts to
+be detected are annotated. In the end, the algorithm gives the
+probability of presence of the object in the image. The authors have
+shown that the performance is at least as good as human detection and
+can be obtained with very little training data (200 annotated images).
 
 DeepLabCut, as previously mentioned, is a framework, and despite an
 excellent documentation [@nath2019using], it can be challenging to use
-it for a user with little computer skills. The installation process
-lasts from 10 to 60 minutes and requires a GPU installation to get the
-most out of the software. Besides, the algorithm requires a lot of
-computing power. To give an idea, images of 682x540 pixels, analyzed
-with a last-generation GPU, lead to an analysis speed of 30 frames per
-second. Without GPU, this time can be multiplied by a factor of 10 or
-100 [@mathis2018inference].
+for a user with little computer skills. The installation process lasts
+from 10 to 60 minutes and requires a GPU installation to get the most
+out of the software. Besides, the algorithm requires a lot of computing
+power. To give an idea, images of 682x540 pixels, analyzed with a
+last-generation GPU, lead to an analysis speed of 30 frames per second.
+Without GPU, this time can be multiplied by a factor of 10 or 100
+[@mathis2018inference].
 
-We see that DeepLabCut is of great interest to find objects in an image
-with precision. It is particularly aimed at behavioral neuroscience,
-allowing complex movement tracking (e.g., hand fingers in a mouse). It
-will not be suitable for users with little computer knowledge interested
-in more extensive problems and with little data to process.
+We see that DeepLabCut is of great interest to precisely find objects in
+an image. It is particularly aimed at behavioral neuroscience, allowing
+complex movement tracking (e.g., hand fingers of a mouse). It will not
+be suitable for users with little computer knowledge interested in more
+extensive problems and with little data to process.
 
 ![**DeepLabCut workflow
 chart.**](part_1/assets/deeplabcut.png){#part_1:deeplabcut width="75%"}
@@ -350,22 +378,30 @@ This software contains two distinct parts:
     keeping the identity of objects from one image to another, fast and
     with a low error rate.
 
--   An ergonomic interface where the tracking can be checked and and
+-   An ergonomic interface where the tracking can be checked and
     manually corrected if necessary.
 
-We will notice here the difference in approach between FastTrack and
-existing software. Instead of developing a system that requires high
-computing power, which is slow but provides fully automated and highly
-reliable results, FastTrack implements a fast and easy to set up, very
-generalized method. The correction of the remaining errors is left to
-the user but can be done natively in the software, the ergonomic
-interface allowing a fast and efficient correction. This solution has
-several advantages, the first one being that it does not require any
-programming knowledge. Any user can perform a perfect analysis in a very
-short time. Moreover, it has been shown that the post-processing work
-can be estimated by an analysis of the geometrical and dynamic
-parameters of the studied system, which allows the user to know if the
-software is adapted to his needs. For many of the systems studied, the
+FastTrack has a different approach than the software previously
+mentioned. Instead of exploiting a high computational power to achieve a
+reliable result without any human intervention, FastTrack implements a
+simple, very general method. The few resulting tracking errors are left
+to manual corrections. In terms of result accuracy, both approaches lead
+to a quasi-perfect tracking. In terms of speed, human interventions
+during the post-processing are costly. However, the automatic tracking
+part is performed much faster, and we noticed that using FastTrack is
+usually faster. From the images to the trajectories, the duration of the
+whole process is notably reduced for small projects due to the fast
+installation and ease of use of FastTrack. Besides, many researchers
+want to double-check the resulting trajectories to ensure the
+reliability of the trajectories or get some sense of their objects'
+dynamics to orient the subsequent analyses, which is performed natively
+in the FastTrack workflow. This solution has several advantages, the
+first one being that it does not require any programming knowledge. Any
+user can perform a perfect analysis in a very short time. Moreover, it
+we will see in the following that the post-processing work can be
+estimated by an analysis of the geometrical and dynamic parameters of
+the studied system, which allows the user to know if the software is
+adapted to his needs. For many of the systems studied, the
 post-processing is only a quick check. If the number of occlusions is
 too high, and a perfect tracking accuracy is necessary without having to
 resort to manual correction, another solution must be considered.
@@ -379,6 +415,42 @@ software is easily installed in less than 5 minutes and is compatible
 with Linux, macOS, and Windows. It can run on modest configurations and
 Single Board Computer (SBC) such as the Raspberry Pi.
 
+## Movies dataset
+
+To demonstrate that FastTrack can analyze movies from various systems,
+we have compiled a collection of movies named the Two-Dimentional
+Tracking Dataset ($TD^2$). This dataset can be downloaded at
+<https://data.ljp.upmc.fr/datasets/TD2/>. The films either come from
+data already published in the literature or provided by the authors
+themselves. All the movies are under a CC-BY-NC-SA license. Each movie
+is identified by a 3-letter code defining the system (e.g., ACT: active
+matter, ZFA: zebrafish adult\...) and three digits to index films from
+an identical system. $TD^2$ currently regroups 41 films, including
+different types of objects of very different nature and size
+
+-   7 species of animals from fish to flies,
+
+-   cells,
+
+-   active particles,
+
+-   microfluidic drops,
+
+-   macroscopic objects such as ultimate players or cars.
+
+A video giving a quick overview of all the systems used is available at
+<http://www.fasttrack.sh/images/illustrations/mockups/trackingExample.webm>.
+
+Another essential aspect to consider is the number of objects per film
+and their possible appearances, disappearances, and overlaps. In 22
+films out of 41, the number of objects is variable, and objects come and
+go out of the camera field during recording. In 19 films out of 41,
+objects may overlap, creating an occlusion phenomenon that the software
+has to manage to preserve the identity of the objects.
+
+![**$TD^2$ dataset** Thumbnail of the $TD^2$
+dataset.](part_1/assets/Figure_td2.png){#part_1:dataset width="100%"}
+
 ## Design and implementation
 
 ::: {.epigraph}
@@ -390,28 +462,39 @@ Edsger W. Dijkstra
 ### Tools used
 
 The choice of tools and libraries used in designing software is
-paramount, and several selection factors must be taken into account. The
-first criterion to consider is the license. We chose to put FastTrack
-under a free license (GPL3), which implies that the language used and
-the libraries must also be under compatible licenses. The choice of an
-open-source license is evident in the case of scientific software. The
-user can then check how the software works, change it to adapt it to his
-needs, and share it. The second criterion is to choose the libraries
-used carefully, considering the future of the software so that the
-developers do not have to change libraries if their capabilities prove
-insufficient as the software evolves. Mature libraries offering
-long-term support are preferred.
+paramount, and several selection factors must be taken into account.
+
+The first criterion to consider is the license. We chose to put
+FastTrack under a free license (GPL3), which implies that the language
+used and the libraries must also be under compatible licenses. The
+choice of an open-source license is preferable in the case of scientific
+software [@easterbrook2014open]. Poor code quality naturally leads to
+what is called a technical debt. Choosing the \"quick and dirty\"
+implementation instead of a time-costly but maintainable solution can
+hurt the project in the long goal by costing time and effort to run and
+maintain the code. Open-source can help to solve this problem. First, it
+is a strong incentive to produce clean code, knowing that it can be
+read, checked, and used by other people. Moreover, cooperative work can
+help solve bugs faster than a closed-source model. Finally, open-source
+projects, well documented, can make accessible tools for non-technical
+scientists that would otherwise have been impossible.
+
+The second criterion is to carefully choose the libraries used,
+considering the future of the software so that the developers do not
+have to change libraries if their capabilities prove insufficient as the
+software evolves. Mature libraries offering long-term support are thus
+preferred.
 
 In this perspective, FastTrack has been implemented in C++ using the Qt
 [@Qt] and OpenCV [@opencv_library] libraries for the graphical interface
 and image analysis, respectively. Unit tests are performed using the
 Google Test library.
 
-C++ is a computer language created by Bjarne Stroustrup in 1985.
-Offering high performance, it is standardized by the International
-Organization for Standardization (ISO). It is the language of choice for
-image analysis applications and the creation of complex graphical user
-interfaces.
+C++ is a computer language created by Bjarne Stroustrup in 1985
+[@stroustrup1996history]. Offering high performance, it is standardized
+by the International Organization for Standardization (ISO). It is the
+language of choice for image analysis applications and the creation of
+complex graphical user interfaces.
 
 Qt is an open-source GUI library created by Haavard Nord and Eirik
 Chambe-Eng, two physicists, in 1991 when developing ultrasonic image
@@ -430,19 +513,20 @@ detecting more easily possible errors during the implementation of new
 features and facilitating software development when it grows in size to
 avoid any error inclusions. This series of tests are automatically
 performed on each new commit, see Section
- [2.3.1](#part_1:cicd){reference-type="ref" reference="part_1:cicd"}.
+ [3.3.1](#part_1:cicd){reference-type="ref" reference="part_1:cicd"} for
+more information.
 
 ### Implementation
 
-FastTrack's operation can be divided into three parts: the detection of
-objects, the association of objects from one image to another, and
-finally, a correction step.
+FastTrack's operation can be divided into three parts: the objects'
+detection (detection), the objects association from one image to another
+(matching), and finally, a manual correction step (post-processing).
 
 Each analysis begins with the opening of an image sequence or a video
 file. The user can choose between two types of interfaces, an
 interactive interface where he can only open one film at a time. It
 allows the user to see, in real-time, the impact of parameters on the
-images, which facilitates the determination of the optimal analysis
+images, which facilitates the determination of optimal analysis
 parameters. A second interface allows many movies to be opened
 simultaneously, either by giving a parameter file or selecting the
 parameters in the interface. It is useful when the user wants to analyze
@@ -460,9 +544,9 @@ $ZFJ\_001$.](part_1/assets/Figure_1.png){#part_1:fig_1 width="75%"}
 #### Detection
 
 The purpose of the detection step is to extract each object's kinematic
-parameters, which will be used later in the association step. FastTrack
-includes a collection of image analysis filters that allow the user to
-optimize object detection without external software.
+parameters, which will be used later during the association step.
+FastTrack includes a collection of image analysis filters that allow the
+user to optimize object detection without external software.
 
 ###### Background Calculation
 
@@ -482,8 +566,8 @@ along the time component, either the maximum, minimum or average of each
 pixel. In practice, the maximum (resp. minimum) will be projected if the
 objects are darker (resp. lighter) than the background so that the
 objects disappear and thus obtain the background. The user can make the
-registration of each image before the projection in order to correct a
-possible camera movement.
+registration of each image before the projection in order to correct for
+possible minute camera movement.
 
 ###### Registration
 
@@ -495,10 +579,10 @@ the image quality until the original quality is reached. This speeds up
 the process, as registration is often a relatively time-consuming
 process.
 
-The first method proposed is phase correlation. It allows correcting the
-translational movements between two images using the Fourier theorem in
-the frequency domain. This method is swift but remains limited to small
-translational movements only.
+The first method proposed is phase correlation [@stone2001fast]. It
+corrects the translational movements between two images using the
+Fourier theorem in the frequency domain. This method is swift but
+remains limited to small translational movements only.
 
 The second proposed method is the Enhanced Correlation Coefficient (ECC)
 [@evangelidis2008parametric] method. In FastTrack, it is restricted to
@@ -531,9 +615,9 @@ of pixels in the movie (arbitrary units). Error bars: standard deviation
 across time frames.](part_1/assets/Figure_2.png){#part_1:fig_2
 width="100%"}
 
-Figure [2.3](#part_1:fig_2){reference-type="ref"
+Figure [3.3](#part_1:fig_2){reference-type="ref"
 reference="part_1:fig_2"} provides a rough comparison of the performance
-of the three methods. Using two recordings of the dataset, we
+of the three methods. Using two recordings of the $TD^{2}$ dataset, we
 benchmarked both the accuracy -- with the root mean squared difference
 (RMSD) of pixel intensities between the reference and the corrected
 image -- and the relative computation time. Choosing the right method to
@@ -542,7 +626,7 @@ However, one can use the rule of thumb that if the objects to track
 occupy a large fraction of the total area, the best accuracy is more
 likely to be obtained by using ECC and using the features-based method
 otherwise. However, as shown in
-Figure [2.3](#part_1:fig_2){reference-type="ref"
+Figure [3.3](#part_1:fig_2){reference-type="ref"
 reference="part_1:fig_2"}-C, the ECC method is generally slower by an
 order of magnitude. Hence, we recommend using the features-based method
 in the general case and long movies.
@@ -583,7 +667,7 @@ range.
 
 Based on the binary images, the software will detect the contour of each
 object. An essential step in any tracking procedure is the extraction of
-the parameters used in the association step. It is generally with the
+the parameters used in the matching step. It is generally with the
 choice of these quantities that the tracking algorithms can differ to be
 more specialized for a given type of object. In FastTrack, the
 parameters extracted are the center of mass, the orientation, the area,
@@ -591,20 +675,21 @@ and the object's perimeter. These quantities are quickly calculated and
 general enough to adapt to a wide variety of objects.
 
 To do this, FastTrack calculates the object's equivalent ellipse from
-the second-order moments of the binary image. This procedure is
-accelerated by directly using the contour thanks to Green's formula
-[@Riemann; @B.]. The object's orientation is given by the ellipse's
-major axis and is defined in the interval $[0;\pi[$. The direction in
-the interval $[0; 2\pi[$ is determined by projecting each object's pixel
-on the major axis of the equivalent ellipse, and calculating the
-skewness of the distribution of distances of these projected points to
-the center of mass. The skewness sign is a robust indicator of the
-object's asymmetry along its principal axis. For deformable objects, the
-previously calculated direction may be different from the direction of
-motion. For example, in the case of zebrafish, it bends its body
-periodically to move. Only the head is directed at the motion. This is
-why the object is decomposed into two equivalent ellipses. The user can
-then choose which ellipse best represents the direction of the movement.
+the second-order moments of the binary image [@rocha2002image]. This
+procedure is accelerated by directly using the contour thanks to Green's
+formula [@riemann_1851]. The object's orientation is given by the
+ellipse's major axis and is defined in the interval $[0;\pi[$. The
+direction in the interval $[0; 2\pi[$ is determined by projecting each
+object's pixel on the major axis of the equivalent ellipse, and
+calculating the skewness of the distribution of distances of these
+projected points to the center of mass. The sign of the skewness is a
+robust indicator of the object's asymmetry along its principal axis. For
+deformable objects, the previously calculated direction may be different
+from the direction of motion. For example, in the case of zebrafish, it
+bends its body periodically to move. Only the head is directed at the
+motion. This is why the object is decomposed into two equivalent
+ellipses. The user can then choose which ellipse best represents the
+direction of the movement.
 
 ![**Detection** Details of the detection phase for one object of the
 movie $ZFJ\_001$. (**A**) raw image. (**B**) binarized image obtained by
@@ -613,7 +698,7 @@ equivalent ellipse of the object. (**D**) two equivalent ellipses,
 useful for a deformable
 object.](part_1/assets/Figure_ellipse.png){#part_1:fig_2 width="100%"}
 
-#### Association
+#### Matching
 
 The purpose of the association step is to keep the objects' identity
 from one image to another. To do so, FastTrack uses a method derived
@@ -622,40 +707,45 @@ object's position, area, perimeter, and direction changes very little
 from one image to another.
 
 For each pair of objects $(i,j)$ belonging to two successive images, two
-costs are calculated. The hard cost as follows: $$\left\{
-        \begin{array}{ll}
-            h_{i,j} = 1 & \mbox{if } r_{i,j} < h_{d} \\
-            h_{i,j} = \inf & \mbox{else }
-        \end{array}
-    \right.$$ with $r_{i,j}$ the distance between objects i and j,
+costs are calculated: a hard cost that is a threshold set to $1$ or
+$+ \infty$, and a soft cost that is a normalization parameter. This
+terminology is brought from statistical physics, where particles can
+have soft, long-ranged interactions or hard, binary contacts. The hard
+cost is defined as follows: $$\left\{
+            \begin{array}{ll}
+                h_{i,j} = 1 & \mbox{if } r_{i,j} < h_{d} \\
+                h_{i,j} = \inf & \mbox{else }
+            \end{array}
+        \right.$$ with $r_{i,j}$ the distance between objects i and j,
 $h_{d}$ a threshold representing the maximum travel distance allowed
 between two successive images. The hard cost allows discarding obvious
 impossible assignments to speed-up the computation. It is essential with
 a non-constant number of objects because it allows new objects entering
 the field of view to be assigned with new identities.
 
-The soft cost is defined as follows:
+The soft cost is then defined as follows:
 $$c_{i,j} = \frac{r_{i,j}}{s_d} + \frac{\delta\alpha_{i,j}}{s_{\alpha}} + \frac{a_{i,j}}{s_a} + \frac{p_{i,j}}{s_p}$$
 where $\delta\alpha_{i,j}$ is the angular difference, $\delta a_{i,j}$
-the area difference and $\delta p_{i,j}$ perimeter difference between
-objects i and j. To compare these quantities expressed in different
-dimensions and magnitudes, we need to normalize them. We define the soft
-normalization coefficients: $s_{d}$, $s_{a}$, $s_{p}$ and $s_{\alpha}$.
-These coefficients represent the typical value of the parameter that
-they normalize. We can construct the cost matrix: $$C_{i,j} = \left\{
-        \begin{array}{ll}
-            c_{i,j} & \mbox{if} r_{i,j} < h_{d} \\
-            \inf & \mbox{else}
-        \end{array}
-    \right.$$ This cost matrix is, in general, rectangular because the
-number of objects can vary from one image to the following. A memory
+the area difference and $\delta p_{i,j}$ the perimeter difference
+between objects i and j. To compare these quantities expressed in
+different dimensions and magnitudes, one need to normalize them. We
+define the soft normalization coefficients: $s_{d}$, $s_{a}$, $s_{p}$
+and $s_{\alpha}$. These coefficients represent the typical value of the
+parameter that they normalize. We can construct the cost matrix:
+$$C_{i,j} = \left\{
+            \begin{array}{ll}
+                c_{i,j} & \mbox{if} r_{i,j} < h_{d} \\
+                \inf & \mbox{else}
+            \end{array}
+        \right.$$ This cost matrix is, in general, rectangular because
+the number of objects can vary from one image to the following. A memory
 parameter can be selected to assign a new identity to an object that
-disappears on more than the selected number of images. In this case, we
-remove the row corresponding to this object from the cost matrix. We
-want then to find the best possible association. This problem is called
-the rectangular assignment problem and can be solved exactly by using
-the Hungarian algorithm see
-Annexe [7](#appendix_hungarian){reference-type="ref"
+disappears on more than the selected number of images. In this case, the
+row corresponding to this object is removed from the cost matrix and the
+object can be assigned in the subsequent images. We want then to find
+the best possible matching. This problem is called the rectangular
+assignment problem and can be solved exactly by using the Hungarian
+algorithm see Annexe [8](#appendix_hungarian){reference-type="ref"
 reference="appendix_hungarian"}. FastTrack uses the Kuhn-Munkres
 implementation in C++ to solve it.
 
@@ -663,7 +753,7 @@ implementation in C++ to solve it.
 
 Finding the optimal tracking parameters is necessary to have a tracking
 accuracy as good as possible. FastTrack can automatically determine a
-neutral set of soft normalization factors $s_r$, $s_\alpha$, $s_A$, and
+neutral set of soft normalization factors $s_r$, $s_\alpha$, $s_a$, and
 $s_p$ to help the user. These factors allow comparing terms of very
 different nature and amplitude into a single cost function. The set of
 parameters automatically found by FastTrack will give each term the same
@@ -676,18 +766,18 @@ kinematic parameter. However, some trajectories are needed to estimate
 the standard deviations. We set up an iterative, rapidly-converging
 algorithm to perform this talk.
 
-Let us use $ZFJ\_001$, a slightly oversampled movie, with many
-occlusions and objects of different sizes to illustrate the algorithm's
-details. For simplicity, let us use only the position, angle, and area
-as kinematic parameters. There is no gain to expect by adding the
-perimeter parameter because objects' shapes are very similar. The
-Figure [3.1](#part_1:fig_5){reference-type="ref"
+Let us use $ZFJ\_001$, a movie with many occlusions and objects of
+different sizes to illustrate the algorithm's details. For simplicity,
+let us use only the position, angle, and area as kinematic parameters.
+There is no gain to expect by adding the perimeter parameter because
+objects' shapes are very similar. The
+Figure [3.4](#part_1:fig_5){reference-type="ref"
 reference="part_1:fig_5"}-A. shows a snapshot of this movie.
 
-To evaluate the distributions of $dr$, $d\alpha$, and $dA$, we start by
+To evaluate the distributions of $dr$, $d\alpha$, and $da$, we start by
 tracking the movie setting the hard parameters and random soft
 parameters. The resulting distributions are shown in
-Figure [3.1](#part_1:fig_5){reference-type="ref"
+Figure [3.4](#part_1:fig_5){reference-type="ref"
 reference="part_1:fig_5"}-C to E. For kinematic parameters whose
 differential values can be positive or negative, the distribution is
 fitted by a Gaussian function, and the soft parameter is set to the
@@ -698,43 +788,43 @@ $$f(d\alpha) = \frac{1}{s_\alpha\sqrt{2 \pi}} \; e^{-\frac{d\alpha^2}{2 s_\alpha
     \label{eq:fit_Gaussian}$$
 
 and $s_\alpha$ (orange bar in
-Figure [3.1](#part_1:fig_5){reference-type="ref"
+Figure [3.4](#part_1:fig_5){reference-type="ref"
 reference="part_1:fig_5"}-D) is stored as the soft parameter to use
 during the next iteration. The computation of the soft parameter for the
 displacement $s_r$ is different since distances can only be positive.
 Assuming that the displacements along the $x$ and $y$ axes follow two
 independent Gaussian processes, the resulting displacement follows a
 $\chi$ distribution with $2$ degrees of freedom, and the fit reads (see
-Annexe [8](#part_1:annexe_chi){reference-type="ref"
+Annexe [9](#part_1:annexe_chi){reference-type="ref"
 reference="part_1:annexe_chi"} for the detailed derivation):
 
 $$f(x)=\frac{x}{(\frac{s_{r}}{\sigma_0})^2}e^{-\frac{1}{2}(\frac{x}{\frac{s_{r}}{\sigma_0}})^2}
         \label{eq1}$$
 
 where $s_r$ (orange bar in
-Figure [3.1](#part_1:fig_5){reference-type="ref"
+Figure [3.4](#part_1:fig_5){reference-type="ref"
 reference="part_1:fig_5"}-C) is stored as the soft parameter to use for
-the next iteration and a constant
-$\sigma_0^2=2-\mu_0^2=\frac{4-\pi}{2}$.
+the next iteration and $\sigma_0^2=2-\mu_0^2=\frac{4-\pi}{2}$.
 
 Once all soft tracking parameters have been derived from the
 distributions, the software recomputes new trajectories with these
 updated parameters. This iterative process, depicted in
-Figure [3.1](#part_1:fig_5){reference-type="ref"
+Figure [3.4](#part_1:fig_5){reference-type="ref"
 reference="part_1:fig_5"}-B, is run until the tracking parameters
 converge. In practice, the convergence is very fast, regardless of the
 initial position in the parameters space. We drew $100$ sets of seed
 parameters from uniform distributions spanning large intervals, and
 convergence has been attained in very few iterations for all parameters
-Figure  [3.1](#part_1:fig_5){reference-type="ref"
+Figure  [3.4](#part_1:fig_5){reference-type="ref"
 reference="part_1:fig_5"}-F.
 
 FastTrack's implements this algorithm by taking the kinematic
 quantities' sample standard deviation for a subset of 200 images in the
 movie to increase speed and efficiency. The convergence criterion
-implemented is that soft parameters should vary less than $10^{-3}$.
+implemented is that soft parameters should vary less than $10^{-3}$ of
+the corresponding parameter.
 
-To characterized the resulting tracking, we computed the number of swaps
+To characterize the resulting tracking, we computed the number of swaps
 with respect to the ground-truth:
 
 $$P_{swap} = \frac{N_{swap}}{N_{obj} - n_{ap}}
@@ -761,11 +851,13 @@ kinetic parameters to consider the specificities of each movie.
 
 We computed the converged soft parameters $\hat{s}_r$, $\hat{s}_\alpha$
 and $\hat{s}_A$ for several sampling rates of $\tau>1$
-(Figure [3.1](#part_1:fig_5){reference-type="ref"
+(Figure [3.4](#part_1:fig_5){reference-type="ref"
 reference="part_1:fig_5"}-H to J). We used these parameters to track the
 $ZFJ\_001$ movie at different $\tau$ and compute $P_{swap}$. A
-comparison between $P_{swap}$ and $P_{inc}$ as a function of $\tau$ is
-shown in Figure [3.1](#part_1:fig_5){reference-type="ref"
+comparison between $P_{swap}$ and $P_{inc}$ (see
+Section [4.2](#pinc){reference-type="ref" reference="pinc"}) as a
+function of $\tau$ is shown in
+Figure [3.4](#part_1:fig_5){reference-type="ref"
 reference="part_1:fig_5"}-K. This comparison illustrates that $P_{swap}$
 is a noisier measurement of a movie's trackability than $P_{inc}$ and
 confirms that the iterative algorithm produces trajectories with a
@@ -802,35 +894,28 @@ the user can also correct tracking errors by deleting objects or
 exchanging objects' identity. This interface is designed with ergonomics
 and performance in mind. Keyboard shortcuts and an on-the-fly selection
 of objects by clicking on the video allow the user to check and correct
-the analyses quickly. It is also possible to record a film with the
-tracking results overlay superimposed. This manual correction interface
-makes it possible to shift the workload from the traditional
-pre-processing of data to the tracking result's post-processing. In
-general, tracking software will reduce user inputs and improve tracking
-by using the raw images' pre-processing and the conception of
-system-specific tracking algorithms. With FastTrack, the pre-processing
-step is reduced to the minimum to remain general and be applied to a
-wide variety of systems. To compensate for this, FastTrack provides a
-correction tool. In the following chapter, we will see that this method
-can save the user much time because the correction time is in general
-lower than the conception and computational time of system-specific
-tracking algorithms.
+the trajectories quickly. It is also possible to record a film with the
+tracking results overlay superimposed.
 
-#### Analysis
+This manual correction interface makes it possible to shift the workload
+from the traditional pre-processing of data to the tracking result's
+post-processing. In the following chapter, we will see how this method
+can save the user time, the correction time being in general lower than
+the conception and computational time of system-specific tracking
+algorithms.
 
-A question that comes back a lot from users' feedbacks is what to do
-after the tracking. FastTrack only takes care of the tracking, and
-statistical data analysis is not implemented in the software. After the
-tracking, the software generates several files containing the results
-and the tracking parameters. The result file is named tracking.txt, and
-it contains the raw data of the analysis with one image and one object
-per line. This format is compatible with the most used analysis software
-(R, Python, Julia, spreadsheet). Examples in Python and Julia are
-available in the documentation to get started.
+#### Output
+
+After the tracking, the software generates several files containing the
+results and the tracking parameters. The result file is named
+tracking.txt, and it contains the raw data of the analysis with one
+image and one object per line. This format is compatible with the most
+used analysis software (R, Python, Julia, spreadsheet). Examples in
+Python and Julia are available in the documentation to get started.
 
 ### Deployment
 
-#### CI/CD {#part_1:cicd}
+#### Continuous integration delivery {#part_1:cicd}
 
 ![**FastTrack CI/CD workflow.** The CI/CD workflow is divided into two
 parts: the CI tasks (blue rectangle) and the CD tasks (red rectangle).
@@ -849,7 +934,7 @@ have to be tested at each change to avoid introducing bugs and
 facilitate collaboration between developers. With this in mind,
 FastTrack follows the CI/CD philosophy
 [@shahin2017continuous][@wikstrom2019benefits] taking advantage of the
-new GitHub Actions system.
+recent GitHub Actions system.
 
 Continuous Integration (CI) is a set of practices designed to integrate
 changes quickly into the project in an automated manner. It is coupled
@@ -885,16 +970,16 @@ documentation.
 #### Documentation
 
 FastTrack offers extensive documentation that covers the installation
-and utilization of the software. Developer documentation with a
-documented API and a compilation guide is also available for users
-wanting to integrate FastTrack in their software or workflow.
+and use of the software. Developer documentation with a documented API
+and a compilation guide is also available for users wanting to integrate
+FastTrack in their software or workflow.
 
 ###### User
 
 User documentation is available at
 <https://www.fasttrack.sh/UserManual/docs/intro.html>. This
 documentation is generated from the project, and users can contribute to
-it at https://github.com/bgallois/FastTrack/. It contains all the
+it at <https://github.com/FastTrackOrg/FastTrack>. It contains all the
 information needed to use the software and instructional videos to help
 the user get started with the software.
 
@@ -905,41 +990,6 @@ Developer documentation is available at
 by the Doxygen software from the documentation in the FastTrack source
 code. It contains all the information necessary for developers who want
 to modify or contribute to FastTrack.
-
-## Movies dataset
-
-To demonstrate that FastTrack can analyze movies from various systems,
-we have compiled a database of movies named $TD^2$. This database can be
-downloaded at <https://data.ljp.upmc.fr/datasets/TD2/>. The films either
-come from data already published in the literature or provided to us by
-the authors themselves. All the movies are under a CC-BY-NC-SA license.
-Each movie is identified by a 3-letter code defining the system (e.g.,
-ACT: active matter, ZFA: zebrafish adult\...) and three digits to index
-films from an identical system. $TD^2$ currently regroups 41 films,
-including different types of objects of very different nature and size
-
--   7 species of animals from fish to flies,
-
--   cells,
-
--   active particles,
-
--   microfluidic drops,
-
--   macroscopic objects such as ultimate players or cars.
-
-A video giving a quick overview of all the systems used is available at
-<http://www.fasttrack.sh/images/illustrations/mockups/trackingExample.webm>.
-
-Another essential aspect to consider is the number of objects per film
-and their possible appearances, disappearances, and overlaps. In 22
-films out of 41, the number of objects is variable, and objects come and
-go out of the camera field during recording. In 19 films out of 41,
-objects may overlap, creating an occlusion phenomenon that the software
-has to manage to preserve the identity of the objects.
-
-![**$TD^2$** Thumbnail of the $TD^2$
-dataset.](part_1/assets/Figure_td2.png){#part_1:fig_5 width="100%"}
 
 ## Results
 
@@ -1005,8 +1055,8 @@ with $N_{swap}$ the number of swaps, $N_{undetected}$ the number of
 non-detected objects, $n_{obj}$ the number of objects, and $n_{img}$ the
 number of images. For $100Zebra$, the accuracy was computed only over
 the 200 first images. All the results are presented in
-Figure [\[part1_fig_benchmark\]](#part1_fig_benchmark){reference-type="ref"
-reference="part1_fig_benchmark"}. As expected, FastTrack is several
+Figure [\[part1:fig_benchmark\]](#part1:fig_benchmark){reference-type="ref"
+reference="part1:fig_benchmark"}. As expected, FastTrack is several
 orders of magnitude faster than idtracker.ai and significantly faster
 than ToxTrac on all tested videos. That is mainly due to the method
 used, idtracker.ai using deep learning and ToxTrac cost optimization and
@@ -1024,7 +1074,7 @@ comfortable to use. The total time spent to track a movie is globally
 lower, in some cases by orders of magnitude, without sacrificing
 tracking accuracy.
 
-### Dataset classification
+### Dataset classification {#pinc}
 
 Analyzing movies from systems as different as those compiled in $TD^2$
 is a real challenge. That is partly due to the recording conditions that
@@ -1043,11 +1093,11 @@ In $TD^2$, 23 movies have an illumination good enough to be analyzed
 directly with FastTrack. The others had to undergo a specific individual
 pre-processing before being analyzed. Two movies with too many
 occlusions were discarded (HXB_001 and ZFL_001) because they could not
-be analyzed with FastTrack. The remaining 39 films could be analyzed
-with FastTrack without difficulty. The Kuhn-Munkres algorithm being of
-complexity $O(n^3)$ the calculation time is generally quite fast. Each
-film was then manually corrected using the built-in tool to get the
-ground-truth tracking.
+be analyzed with FastTrack nor by any other software. The remaining 39
+films could be analyzed with FastTrack without difficulty. The
+Kuhn-Munkres algorithm being of complexity $O(n^3)$ the calculation time
+is generally quite fast. Each film was then manually corrected using the
+built-in tool to get the ground-truth tracking.
 
 FastTrack is designed to keep the post-processing phase as light as
 possible. However, this phase workload varies greatly depending on the
@@ -1055,7 +1105,7 @@ movie being analyzed. This workload can be quickly estimated for a given
 film by computing what we call the probability of incursion.
 
 First, we define the incursion as the exit of an object from its Voronoi
-cell (see Annexe [6](#appendix_voronoi){reference-type="ref"
+cell (see Annexe [7](#appendix_voronoi){reference-type="ref"
 reference="appendix_voronoi"}), defined at a time $t$, after a travel
 time $\tau$. The number of incursions depends on
 
@@ -1073,9 +1123,9 @@ that typically $\rho=1$ is corresponding to the length between two
 objects, and $\rho=0.5$ is the length between an object and its Voronoï
 cell boundary.
 
-Assuming that the dynamic is uncorrelated with the geometric proprieties
+Assuming that the dynamic is uncorrelated with the geometric properties
 of the Voronoï cells, we can write the incursion probability as follows:
-$$P_{inc}=\int_{0}^{\inf} R(\rho)p_{inc}(\rho) \,d \rho$$ where
+$$P_{inc}=\int_{0}^{\infty} R(\rho)p_{inc}(\rho) \,d \rho$$ where
 $R(\rho)$ the distribution of the reduced displacement at the timescale
 $\rho$, and $p_{inc}(\rho)$ the geometrical probability of incursion.
 
@@ -1091,11 +1141,11 @@ outside the Voronoï cell. That will give us
 $p(\rho)=\frac{\Sigma(\rho)}{2\pi}$ the geometric probability of
 incursion for one cell. Then, to take into account the diversity of size
 and shape of Voronoï cells, we average over all the cells of the movies
-$p_{inc}(\rho)=<p(\rho)>_{cells}$.
+$p_{inc}(\rho)=\left<p(\rho)\right>_{cells}$.
 
-Intuitively, we see that $p_{inc}$ goes from 0 when $\rho->\inf$, to 1
-when $\rho>>1$. The precise shape of the geometric probability is
-sensitive to the density of objects, compact (e.g., ACT_002), sparse
+Intuitively, we see that $p_{inc}$ goes from 0 when $\rho \to \infty$,
+to 1 when $\rho \gg 1$. The precise shape of the geometric probability
+is sensitive to the density of objects, compact (e.g., ACT_002), sparse
 (e.g., PAR_001), and to the overall size of the system when walls
 restrict it (e.g., ZFA_001).
 
@@ -1124,7 +1174,7 @@ quantifiers. As $p_{inc}(\rho)$ does not depend on $\tau$ and $R(\rho)$
 is shifted to the high values of $\rho$ when $\tau$ increases, we can
 expect that $P_{inc}(\tau)$ has a sigmoid-like shape. We thus computed
 $P_{inc}$ for various $\tau$. If $\tau>1$ we take integer values (i.e.
-keep one frame every $\tau1$), and if $\tau<1$ we linearly interpolated
+keep one frame every $\tau$), and if $\tau<1$ we linearly interpolated
 the displacements (i.e. multiplied $\rho$ by $\tau$). We represented the
 results in Figure [4.3](#part_1:fig_3){reference-type="ref"
 reference="part_1:fig_3"}.C for the 39 movies that could be tracked in
@@ -1134,25 +1184,26 @@ Strikingly, all $P_{inc}$ followed a logistic curve when $\tau$ is
 log-scaled. Therefore we used a fit of the form:
 $$Pinc=\frac{L}{1 + e^{-k(log(\tau)-x_0)}}$$ and, noting
 $\tau_0=e^{x_0}$, the fitting function can be rewritten as:
-$$P_{inc}=\frac{L}{1 + \frac{\tau_0}{\tau}^k}$$ The fits are shown in
-Figure [4.3](#part_1:fig_3){reference-type="ref"
+$$\label{eq_pinc}
+        P_{inc}=\frac{L}{1 + \frac{\tau_0}{\tau}^k}$$ The fits are shown
+in Figure [4.3](#part_1:fig_3){reference-type="ref"
 reference="part_1:fig_3"}, and are valid for all the movies in the
 dataset. We can make all fitting curves collapse on a single master
 curve. We show in Figure [4.3](#part_1:fig_3){reference-type="ref"
 reference="part_1:fig_3"}.D that $\frac{P_{inc}}{L}$ plotted as a
-function of $klog(frac{\tau}{\tau_0})$ follows the standard logistic
-sigmoid function $$f(x) =\frac{1}{1+e^{-x}}$$.
+function of $k log(\frac{\tau}{\tau_0})$ follows the standard logistic
+sigmoid function: $$f(x) =\frac{1}{1+e^{-x}}$$
 
-An exciting outcome of this approach is determining the framerate at
-which experiments should be recorded. It is indeed a recurrent
-experimental question. A high temporal resolution is preferable to
-reduce the number of incursions and ease the tracking. However, it may
-not always be accessible (e.g., limited sensor rate, intense
-illumination required as the exposure time drops) and generates large
-amounts of images to store and process. A low temporal resolution can
-make the tracking difficult by increasing the number of incursions. We
-define $\tau_1$, the timescale at which $P_{inc}$ reaches the inverse of
-the total number of objects on all frames $N_{obj}$, i.e., the
+An exciting outcome of this approach is the ability to determine the
+optimal framerate at which experiments should be recorded. It is indeed
+a recurrent experimental question: a high temporal resolution is
+preferable to reduce the number of incursions and ease the tracking. ,
+however, it may not always be accessible (e.g., limited sensor rate,
+intense illumination required as the exposure time drops) and generates
+large amounts of images to store and process. A low temporal resolution
+can make the tracking difficult by increasing the number of incursions.
+We define $\tau_1$, the timescale at which $P_{inc}$ reaches the inverse
+of the total number of objects on all frames $N_{obj}$, i.e., the
 probability of a single incursion in the whole movie. As $\tau_1$
 defines the onset of incursions and the possibility of swaps in the
 tracking procedure, it can be used to indicate each movie's sampling
@@ -1161,10 +1212,11 @@ framerate and are thus undersampled. Whereas for movies with $\tau_1>1$,
 the current framerate can be degraded without triggering incursions and
 are thus oversampled. Besides, $\tau_1$ is directly the resampling
 factor that one should use to have minimal movie size without generating
-incursions. Using [8](#){reference-type="ref" reference=""}, it reads:
+incursions. Using [\[eq_pinc\]](#eq_pinc){reference-type="ref"
+reference="eq_pinc"}, it reads:
 $$\tau_1=\tau_0(LN_{obj}-1)^{\frac{1}{k}}$$ We computed and ordered the
 values of $\tau_1$ in Figure [4.3](#part_1:fig_3){reference-type="ref"
-reference="part_1:fig_3"}.D for the whole dataset. It appears that three
+reference="part_1:fig_3"}.E for the whole dataset. It appears that three
 quarters (30) of the movies are oversampled. Any difficulty in the
 tracking should not be expected concerning incursions. On the other
 hand, nine movies are undersampled. These recordings were already known
@@ -1176,7 +1228,7 @@ Then, we tested to what extent this characterization is robust to swaps
 in the trajectories. Starting from the ground truth trajectories of
 $ACT\_002$, we degraded the tracking quality by introducing random swaps
 between neighboring objects. This process is controlled by a degradation
-rate $\delta$, defines as the number of artificial swaps divided by the
+rate $\delta$, define as the number of artificial swaps divided by the
 total number of objects on all frames. Such a degradation affects the
 small timescales more severely, and the multi-scale approach takes on
 its full interest. As depicted in
@@ -1214,12 +1266,12 @@ $ACT\_002$](part_1/assets/Figure_3.png){#part_1:fig_3 width="100%"}
 ### Parameters optimization
 
 One may also want to determine the optimal tracking parameters, i.e.,
-with a $P_{swap}$ close to 0 as possible. Provided that the ground-truth
-is known for at least one movie of a system, for example, by a careful
+with a $P_{swap}$ as close to 0 as possible. Provided that the
+ground-truth is known for at least one movie, for example, by a careful
 manual post-processing. It is possible to leverage FastTrack's speed to
 explore the parameters space and minimize $P_{swap}$. The optimized
 parameters found that way can be used to track other similar movies with
-a minimal error rate. The workflow of the method is depicted in the
+a minimal error rate. The workflow of the method is depicted in
 Figure [4.4](#part_1:fig_4){reference-type="ref"
 reference="part_1:fig_4"}-A. As the exploration of the whole parameters
 space requires to perform at least thousands of trackings, such an
@@ -1279,33 +1331,34 @@ $s_r$ (in pixels) and the normalization angle $s_\alpha$ (in degrees)
 for $PAR\_001$. Hard parameters are set to $h_r = 210$ and
 $h_t = 90$.](part_1/assets/Figure_4.png){#part_1:fig_4 width="100%"}
 
-## Perspective
+## Conclusion and perspective
 
 In these chapters, we saw how we implemented a versatile and easy to use
 tracking software using open-source tools. Taking advantage of the
 GitHub Actions system, we automated the testing and the deployment of
 the software, increasing confidence, and promoting collaboration. We
 have shown that FastTrack can compete with state-of-the-art tracking
-software for many usages. At the same time, we compile a dataset of
-movies, allowing us to benchmark tracking software on a wide variety of
-systems. We classify the dataset based on the probability of incursion
-and, doing so, highlight a criterion to determine the optimal framerate
-of acquisition. We have finally shown how to determine the best set of
-tracking parameters by leveraging FastTrack's full capabilities.
+software for many use cases. At the same time, we compiled a dataset of
+movies, allowing us to benchmark tracking software over a wide variety
+of systems. We classified the dataset based on the probability of
+incursion and, doing so, defined a criterion to determine the optimal
+framerate of acquisition. We have finally shown how to determine the
+best set of tracking parameters by leveraging FastTrack's full
+capabilities.
 
 FastTrack's original approach, shifting the workload on the
 post-processing phase while keeping the pre-processing as light as
-possible, allows the use of FastTrack without insight into the system to
-track. The post-processing phase, mainly a swift checking of the
-tracking and small corrections, can be done directly inside the software
-in an interactive and ergonomic environment. FastTrack allows users to
-track movies quickly without any computer knowledge.
+possible, allows the use of FastTrack on a wide variety of systems. The
+post-processing phase, mainly a swift checking of the tracking and small
+corrections, can be done directly inside the software in an interactive
+and ergonomic environment. FastTrack allows users to track movies
+quickly without any computer knowledge.
 
 FastTrack's approach does not prevent human inputs, mainly in the
 post-processing phase, to obtain a perfect tracking accuracy. It will be
 without inconvenience for many users who will need a human checking in
 any case. However, users who want a perfect tracking accuracy without
-human input will have to turn to other tracking software.
+human input will have to turn onto other tracking software.
 
 It is important to note that the source code of FastTrack is available
 with a fully documented API. Power users can specialize the software
@@ -1319,13 +1372,26 @@ Overall, FastTrack gives any user the power to quickly analyze their
 movies on a relatively modest computer and power-user to build a
 custom-tailored software. The feedback we have encountered more
 frequently is how to analyze the tracking results. The standardized
-output leaves the user free to choose the analysis tool that he
-preferred. An answer to this request will be to develop analysis add-ons
-integrated into FastTrack if needed. These add-ons will be thematic
-(e.g., rats behavior, soft matter, etc.), and each one will have a
-specific set of functions to compute meaningful quantities specific to
-this domain and system. Another perspective that can be envisioned is to
-include the possibility of live tracking inside the software.
+output leaves the user free to choose the analysis tool. An answer to
+this request will be to develop analysis add-ons integrated into
+FastTrack if needed. These add-ons could be thematic (e.g., rats
+behavior, soft matter, etc.), and each one will have a specific set of
+functions to compute meaningful quantities specific to this domain and
+system. Another perspective that can be envisioned is to include the
+possibility of live tracking inside the software.
+
+## FastTrack user interface preview
+
+![**FastTrack's user interface** FastTrack's main window with $ZFJ\_001$
+movie opened.](part_1/assets/ft_preview_0.png){width="100%"}
+
+![**FastTrack's user interface** FastTrack's main window with $ZFJ\_001$
+movie opened and parameters setup for the
+tracking.](part_1/assets/ft_preview_1.png){width="100%"}
+
+![**FastTrack's user interface** FastTrack's tracking review with
+$ZFJ\_001$ opened after the tracking. The user can check and correct
+tracking errors.](part_1/assets/ft_preview_2.png){width="100%"}
 
 ## Voronoï diagram {#appendix_voronoi}
 
@@ -1426,9 +1492,13 @@ $$\begin{matrix}
 In this case the total cost is 127 with the assignment $\{J1; W1\}$,
 $\{J2; W4\}$, $\{J3; W3\}$ and $\{J4; W2\}$.
 
-## Displacement distribution fitting {#part_1:annexe_chi}
+## Fitting of the distribution of displacement {#part_1:annexe_chi}
 
-The standardized $\chi$ distribution with 2 degree of freedom reads:
+The displacement is the square root of a sum of squares of two
+independent gaussian variables
+($\Delta l = \sqrt{(\Delta x)^{2} + (\Delta y)^{2}}$), thus the
+displacement follows a $\chi$ distribution with 2 degree of freedom. The
+standardized $\chi$ distribution with 2 degree of freedom reads:
 $$f_0(x)=xe^{-\frac{x^2}{2}}$$ with the mean
 $\mu_0=\frac{\sqrt{2\pi}}{2}$ and the variance
 $\sigma_0^2=2-\mu_0^2=\frac{4-\pi}{2}$

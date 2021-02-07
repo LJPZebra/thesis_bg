@@ -35,7 +35,7 @@ jobs:
         - name: Compilation
           run: |
             ./compile.sh
-            gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/prepress -dNOPAUSE -dQUIET -dBATCH -sOutputFile=gallois_thesis.pdf main.pdf
+            gs -sDEVICE=pdfwrite -dPrinted=false -dCompatibilityLevel=1.4 -dPDFSETTINGS=/prepress -dNOPAUSE -dQUIET -dBATCH -sOutputFile=gallois_thesis.pdf main.pdf
 
         - name: Linux artefact
           uses: actions/upload-artifact@v1

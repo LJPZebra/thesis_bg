@@ -1,5 +1,5 @@
 \documentclass[12pt,a4paper]{report}
-\usepackage[USenglish]{babel}
+\usepackage[french,main=USenglish]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \usepackage{caption}
@@ -19,6 +19,8 @@
     citecolor=magenta,
 }
 \usepackage[sfdefault,book]{FiraSans} %% option 'sfdefault' activates Fira Sans as the default text font
+%\usepackage{libertine}
+%\usepackage{libertinust1math}
 \usepackage[T1]{fontenc}
 \usepackage{titlesec}
 %\titleformat{\chapter}[display]{\normalfont\bfseries}{}{0pt}{\Huge}\renewcommand*\oldstylenums[1]{{\firaoldstyle #1}}\setcounter{secnumdepth}{3}
@@ -41,7 +43,7 @@
 \begin{document}
 %\maketitle
 \input{cover/cover.tex}
-\chapter*{Résumé français}
+\input{abstract.tex}
 \input{longResume.tex}
 
 %\chapter*{Dedication}
@@ -53,7 +55,7 @@
 \part{FastTrack: a general tracking software}
 \input{part_1/main.tex}
 
-\part{Dual}
+\part{Assaying chemical preference of the young zebrafish}
 \input{part_2/main.tex}
 
 \bibliography{biblio}

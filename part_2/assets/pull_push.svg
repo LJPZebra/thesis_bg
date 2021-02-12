@@ -26,7 +26,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -181,9 +181,9 @@
      fit-margin-right="0"
      fit-margin-bottom="0"
      inkscape:zoom="0.28496169"
-     inkscape:cx="877.78275"
+     inkscape:cx="3911.1367"
      inkscape:cy="1086.7399"
-     inkscape:window-x="965"
+     inkscape:window-x="2885"
      inkscape:window-y="30"
      inkscape:window-maximized="0"
      inkscape:current-layer="g3191"
@@ -213,7 +213,7 @@
        transform="translate(2233.7081,3883.1642)"><tspan
          x="1745.5059"
          y="324.50716"><tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:80px;font-family:'Fira Sans';-inkscape-font-specification:'Fira Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">Serynge</tspan></tspan></text>
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:80px;font-family:'Fira Sans';-inkscape-font-specification:'Fira Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">Syringe</tspan></tspan></text>
     <path
        style="fill:none;fill-opacity:1;stroke:#404040;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#TriangleInM-3-0-5-4)"
        d="m 3221.0035,4396.0136 h 725.9737"

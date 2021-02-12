@@ -192,14 +192,14 @@
 
   It is crucial to isolate the animal from the exterior environment and of any light sources. A box that contains the millifluidic chip and lighting system is constructed using MakerBeam rails and medium-density fibreboard sheets. A PMMA infrared transparent sheet is placed on the removable top panel to record the experiment while blocking visible light. The box contains, see Figure~\ref{dual_box}, two LEDs for visible and infrared light, a diffuser for homogeneous lighting, and a support to fix the millifluidic chip.
 
+  A structure to maintain the camera on top of the box and secure the Raspberry and the power alimentation is built using OpenBuilds rails. It is better to build Dual on top of an optical breadboard to facilitate fixation and enhanced stability. All these elements need to be fixed firmly and leveled to avoid any bias that could disturb the animal during the experiment.
+
     \begin{figure}[h!]
       \centering
       \includegraphics[width=0.75\textwidth]{part_2/assets/box.png}
       \caption{\textbf{Box} Dual box that will isolate the animal from the exterior.}
       \label{dual_box}
     \end{figure}
-
-  A structure to maintain the camera on top of the box and secure the Raspberry and the power alimentation is built using OpenBuilds rails. It is better to build Dual on top of an optical breadboard to facilitate fixation and enhanced stability. All these elements need to be fixed firmly and leveled to avoid any bias that could disturb the animal during the experiment.
 
   \subsubsection{Millifluidic}
   The millifluidic chip that serves as a tank for the fish, see Figure~\ref{dual_chip_visu} is laser cutted in PMMA plastic that is transparent and presents excellent optic properties. The different parts are bonded using acetic acid \cite{trinh2019clog}. The fish is restrained in the center by 3D printed and micro-machined nets, and profiled inputs and outputs allow a laminar flow.
@@ -213,14 +213,14 @@
 
   Sixty-milliliters syringes are fixed with 3D printed fixations on the actuator and connected with 2.2 mm diameters tubing to the microvalves circuit. Six three-ports microvalves are connected and form a circuit that allows performing cycles of filling and injection, see Figure~\ref{valves_schematic}.
 
-    \begin{figure}[h!]
+    \begin{figure}[h]
       \centering
       \includegraphics[width=0.75\textwidth]{part_2/assets/chip.png}
       \caption{\textbf{Millifluidic chip schematic.}}
       \label{dual_chip}
     \end{figure}
 
-    \begin{figure}[h!]
+    \begin{figure}[h]
       \centering
       \includegraphics[width=0.75\textwidth]{part_2/assets/chipxcf.png}
       \caption{\textbf{Millifluidic chip exploded view.}}
@@ -251,7 +251,7 @@
   \section{The Tropical River}
   Studying chemical perception and chemically-driven navigation in a turbulent aquatic environment like the one fish encounters naturally requires an experimental device capable of creating controlled flows and chemical jets. We have created an experimental device capable of delivering a temperature-controlled laminar flow while recording the fish in both visible and infrared light. An injection nozzle is used to create turbulent or laminar jets within this laminar flow.
 
-    \begin{figure}[h!]
+    \begin{figure}[h]
       \centering
       \includegraphics[width=1\textwidth]{part_2/assets/river.png}
       \caption{\textbf{The Tropical River} Schematic of the experimental setup.}
@@ -412,7 +412,7 @@
   \begin{figure}[htb]
     \centering
     \includegraphics[width=1\textwidth]{part_2/assets/pi_pb.png}
-    \caption{\textbf{Numerical simulation} Preference index $\Pi_{markov}$ (left) and $\rho_{markov}$ for 10 000 realisations with a chain size following the experimental distribution.}
+    \caption{\textbf{Numerical simulation} Preference index $\Pi_{markov}$ (left) and $\rho_{markov}$ (right) for 10 000 realisations with a chain size following the experimental distribution.}
     \label{markov_simu}
   \end{figure}
 
@@ -449,13 +449,13 @@
 
   \paragraph{Juvenile zebrafish in citric acid}
   Citric acid is known to be repulsive in many fish species. It was shown that adult zebrafish could sense their environment pH \cite{abreu2016acute,abreu2016behavioral} and display a strong aversion for acidic pH ($pH \approx 3$). As a positive control, early juveniles and larval zebrafish preference were assessed using citric acid solutions ranging from $5 \times 10^{-3} M$ to $1 \times 10^{-6} M$, ie pH from $2.8$ to $4.2$ (Figure~\ref{citric_acid}).
-    \begin{figure}[htb]
+    \begin{figure}[h!]
       \centering
       \includegraphics[width=1\textwidth]{part_2/assets/citricacid.png}
       \caption{\textbf{Citric acid: time-based preference index for juveniles} Time-based preference index (mean $\pm$ SEM, equation~\ref{mean_pi_time}), calculated pH in green.}
       \label{citric_acid}
     \end{figure}
-    \begin{figure}[htb]
+    \begin{figure}[h!]
       \centering
       \includegraphics[width=1\textwidth]{part_2/assets/citricacid_event.png}
       \caption{\textbf{Citric acid: event-based analysis for juveniles} \textbf{Top}: Mean event-based preference index (equation~\ref{mean_pi_event}). \textbf{Bottom}: Mean ratio exploration-exploitation (equation~\ref{mean_r_event}).}
@@ -467,7 +467,8 @@
   The time-based $\Pi_{time}$ (Figure~\ref{citric_acid}~top), event-based $\Pi_{event}$ (Figure~\ref{citric_acid_markov}~top) and markov-based $\Pi_{markov}$ (Figure~\ref{citric_acid}~top) mean preference indexes decrease in a concentration-dependent manner. The distributions of preference indexes by fish (Figure~\ref{dist_citric_acid}) show a decrease in variability as the concentration increase and no significant difference between P1 and P2 cycles, which tends to suggest that fish adopt the same characteristic behavior with less variability as a preference emerged.
 
   \paragraph{Zebrafish larvae in citric acid} Preliminary experiments were done to assess the effect of citric acid on zebrafish larvae (Figure~\ref{dist_citric_acid_lar}). Despite low statistics (see Section~\ref{discussion}) and strong variability, we see that citric acid seems to be repulsive as expected from juvenile results. More experiments need to be done to confirm this effect and account for the larvae inter-variability.
-    \begin{figure}[htb]
+
+    \begin{figure}[h!]
       \centering
       \includegraphics[width=0.75\textwidth]{part_2/assets/dist_citricacid_lar.png}
       \caption{\textbf{Citric acid: preference index for larvae} Time-based preference index, one point is one fish.}
@@ -478,7 +479,7 @@
 
     \paragraph{Juvenile zebrafish in quinine} Quinine is a natural alkaloid that tastes bitter, and that is a highly deterrent substance for many fish species \cite{kasumyan2003taste}. Unexpectedly, we see with the time-based preference index (Figure~\ref{dist_quinine}) that the preference seems to be mostly neutral. A slight attraction can be constated on the P1 cycle, and a neutral a slightly repulsive preference on the P2 cycle. Despite relatively good statistics ($\approx 7$ fish by concentration), no robust preference emerged as we see with a large variability in responses.
 
-    \begin{figure}[htb]
+    \begin{figure}[h!]
       \centering
       \includegraphics[width=0.75\textwidth]{part_2/assets/dist_quinine.png}
       \caption{\textbf{Quinine: preference index for juveniles} Time-based preference index. One point is one fish. }
@@ -492,7 +493,7 @@
 
   The event-based and model-based preference indexes (Figures~\ref{adenosine_event}~top and \ref{adenosine_markov}~top) show a slight repulsion for the P1 cycle and a slight attraction for the P2 cycle at the two lower concentrations.  The time-based preference index (Figures~\ref{adenosine}) displays a slight repulsive preference for the P1 cycle. There is no clear preference, and analysis from event-based and time-based preferences disagree, meaning that there is probably not enough statistic to conclude. Besides, the preference index distributions (Figure~\ref{dist_adenosine}) show great variability.
 
-    \begin{figure}[htb]
+    \begin{figure}[h!]
       \centering
       \includegraphics[width=1\textwidth]{part_2/assets/adenosine.png}
       \caption{\textbf{Adenosine: time-based preference index for juveniles} Time-based preference index (mean $\pm$ SEM, equation~\ref{mean_pi_time}).}
@@ -501,7 +502,7 @@
 
   As no clear preference emerged from the early experiments, we focused on the concentration $50 \mu M$ and increased the statistics up to $N=28$. We then saw a slight repulsion on the P1 cycle at the same level than the other concentration. However, the P2 cycle showed a clear repulsion with a median preference index equal to $-0.6$ and 2 clusters of fish, one attracted and one repulsed.
 
-    \begin{figure}[htb]
+    \begin{figure}[h!]
       \centering
       \includegraphics[width=1\textwidth]{part_2/assets/adenosine_event.png}
       \caption{\textbf{Adenosine: event-based analysis for juveniles} \textbf{Top}: Mean event-based preference index (equation~\ref{mean_pi_event}). \textbf{Bottom}: Mean ratio exploration-exploitation (equation~\ref{mean_r_event}).}
@@ -512,7 +513,7 @@
 
   \paragraph{Zebrafish larvae in adenosine} Zebrafish larvae were exposed to adenosine with the same protocol as juveniles. Preliminary results (Figure~\ref{dist_adenosine_lar}) based on the time-based preference index seem to indicate a lack of preference at all concentration.
 
-  \begin{figure}[htb]
+  \begin{figure}[h!]
       \centering
       \includegraphics[width=0.75\textwidth]{part_2/assets/dist_adenosine_lar.png}
       \caption{\textbf{Adenosine: preference index for larvae} Time-based preference index. One point is one fish, black line is the distribution median.}
@@ -521,7 +522,7 @@
 
   \paragraph{Juvenile zebrafish in ATP} Interestingly, we found that ATP, a product that was shown to be attractive on adults, produces a two phases behavior on early juvenile zebrafish (Figures~\ref{atp}~top~\ref{atp_event}A~\ref{atp_markov}~top). At low concentration, the fish do not manifest a preference, but at the highest concentration ($125 \mu  M$  and $200 \mu M$), the P1 cycle is repulsive and the P2 cycle attractive.
 
-    \begin{figure}[htb]
+    \begin{figure}[h!]
       \centering
       \includegraphics[width=1\textwidth]{part_2/assets/atp.png}
       \caption{\textbf{ATP: time-based preference index for juveniles} Time-based preference index (mean $\pm$ SEM, equation~\ref{mean_pi_time}).}
@@ -530,7 +531,7 @@
 
   Comparing the distribution of event-based and time-based preference index by fish, we see that this effect is significant at $125 \mu M$ and  $200 \mu M$, see Figure~\ref{dist_atp}.
 
-    \begin{figure}[htb]
+    \begin{figure}[h!]
       \centering
       \includegraphics[width=1\textwidth]{part_2/assets/atp_event.png}
       \caption{\textbf{ATP: event-based analysis for juveniles} \textbf{Top}: Mean event-based preference index (equation~\ref{mean_pi_event}). \textbf{Bottom}: Mean ratio exploration-exploitation (equation~\ref{mean_r_event}).}
@@ -539,7 +540,7 @@
 
   A fish-by-fish analysis, see Figure~\ref{proportion}A, revealed that the fish proportion that changes its preference towards attraction increase with the concentration. Figure~\ref{proportion}B represents the $p$ and $b$ probability from the markov chain model in function of the cycle P1 and P2. We see that many fish cross the identity line between the P1 and P2 cycle to invert their preferences.
 
-    \begin{figure}[htb]
+    \begin{figure}[h!]
       \centering
       \includegraphics[width=1\textwidth]{part_2/assets/proportion.png}
       \caption{\textbf{Cycle effect} \textbf{A}. Fish proportion changing preference between the P1 and P2 cycles. \textbf{B}. Probabilities $p$ and $b$ for $125$ and $200 \mu M$, one point is one fish analyzed by one person ($2N$ fish). Cycle are represented by the point's altitude.}
@@ -548,7 +549,7 @@
 
     \paragraph{Zebrafish larvae in ATP} Zebrafish larvae were exposed to ATP with the same protocol as juveniles. Preliminary results (Figure~\ref{dist_atp_lar}) based on the time preference index indicate a repulsion at every concentrations. High concentrations seem to produce more robust repulsive behavior with low variability.
 
-    \begin{figure}[htb]
+    \begin{figure}[h!]
       \centering
       \includegraphics[width=0.75\textwidth]{part_2/assets/dist_atp_lar.png}
       \caption{\textbf{ATP: preference index for larvae} Time-based preference index. }
@@ -589,7 +590,8 @@ For this reason, assessing the ATP effect on larvae is very challenging: reducin
 
       \begin{figure}[h]
         \centering
-        \includegraphics[width=1\textwidth]{part_2/assets/trace.png}
+        \includegraphics[width=0.5\textwidth]{part_2/assets/trace.png}
+        \includegraphics[width=0.8\textwidth]{part_2/assets/ret.png}
         \caption{\textbf{Touch-and-turn behavior} \textbf{Left}: Fish trajectory in $200 \mu M$ of ATP (red box).}
         \label{touchandturn}
       \end{figure}
@@ -631,7 +633,7 @@ For this reason, assessing the ATP effect on larvae is very challenging: reducin
     \section{Image analysis}
     Fish head position was extracted using FastTrack. Each recording was manually checked to remove low-quality movies either with imperfect flows or non-responsive fish.
 
-    A custom image processing procedure was developed to extract the interface using the contrast difference due to the dye see Figure~\ref{}. First, the maximal and minimal z-projection of the movie was calculated. For the minimal projection, the fish is masked with a white mask on each image before the projection, only keeping the flow and not projection the fish. Each image of the movie is then normalized with minimal and maximal projection. Finally, the interface was detected using an Otsu threshold.
+    A custom image processing procedure was developed to extract the interface using the contrast difference due to the dye \footnote{\url{https://github.com/LJPZebra/dual_analysis/tree/master/dual_cli}}. First, the maximal and minimal z-projection of the movie was calculated. For the minimal projection, the fish is masked with a white mask on each image before the projection, only keeping the flow and not projection the fish. Each image of the movie is then normalized with minimal and maximal projection. Finally, the interface was detected using an Otsu threshold.
 
     A python command-line interface \footnote{\url{https://github.com/LJPZebra/dual_analysis}} was created to export the relevant data in a synthetic toml file easy exportable, one experiment by file. Statistical analysis and numerical simulations were performed using Python and Julia programming language.
 
@@ -658,19 +660,19 @@ For this reason, assessing the ATP effect on larvae is very challenging: reducin
   \chapter{Preference index distributions}
     \begin{figure}[h]
       \centering
-      \includegraphics[width=0.75\textwidth]{part_2/assets/dist_citricacid.png}
+      \includegraphics[width=0.8\textwidth]{part_2/assets/dist_citricacid.png}
       \caption{\textbf{Citric acid: preference index for juveniles} Event-based preference index $\Pi_{time}$, one point is one fish (top). Event-based preference index $\Pi_{event}$, one point is one fish analyzed by one person (middle). Event-based preference index $\Pi_{markov}$, one point is one fish analyzed by one person (bottom).}
       \label{dist_citric_acid}
     \end{figure}
     \begin{figure}[h]
       \centering
-      \includegraphics[width=0.75\textwidth]{part_2/assets/dist_adenosine.png}
+      \includegraphics[width=0.8\textwidth]{part_2/assets/dist_adenosine.png}
       \caption{\textbf{Adenosine: preference index for juveniles} Event-based preference index $\Pi_{time}$, one point is one fish (top). Event-based preference index $\Pi_{event}$, one point is one fish analyzed by one person (middle). Event-based preference index $\Pi_{markov}$, one point is one fish analyzed by one person (bottom).}
       \label{dist_adenosine}
     \end{figure}
     \begin{figure}[h]
       \centering
-      \includegraphics[width=0.75\textwidth]{part_2/assets/dist_atp.png}
+      \includegraphics[width=0.8\textwidth]{part_2/assets/dist_atp.png}
       \caption{\textbf{ATP: preference index for juveniles} Event-based preference index $\Pi_{time}$, one point is one fish (top). Event-based preference index $\Pi_{event}$, one point is one fish analyzed by one person (middle). Event-based preference index $\Pi_{markov}$, one point is one fish analyzed by one person (bottom).}
       \label{dist_atp}
     \end{figure}

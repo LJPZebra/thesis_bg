@@ -18,9 +18,9 @@ Pour répondre au problème du tracking d'objets multiples, nous avons développ
 
 Le workflow de FastTrack peut être divisé en 3 étapes. La première consiste à détecter les objets. Ceci est fait en calculant et soustrayant le fond aux images puis en appliquant un seuil. FastTrack intègre les opérations d'analyses d'image usuelle pour faciliter la détection. Les objets sont ensuite triés par taille ce qui permet d'écarter les artéfacts. Dans une deuxième étape, les objets sont assignés d'une image sur l'autre ce qui permet de garder leurs identités. Ceci est fait en calculant une fonction de coût et en la minimisant pour trouver l'assignation optimale. La fonction de coût comprend le déplacement, le changement d'orientation, de taille et de périmètre des objets entre deux images successives et peut être réglé par l'utilisateur au moyen d'un ensemble de paramètres de normalisation. Deux autres paramètres de seuil permettre de définir une mémoire et une taille maximale d'assignation. La troisième et dernière étape est la correction manuelle des erreurs qui se fait dans un environnement interactif et ergonomique.
 
-    \begin{figure}[htb]
+    \begin{figure}[h!]
       \centering
-      \includegraphics[width=1\textwidth]{part_1/assets/Figure_1.png}
+      \includegraphics[width=1\textwidth]{part_1/assets/Figure_1_fr.png}
         \caption{{\bf FastTrack flux de traitement} Le flux de traitement se divise en 3 étapes: la détection, l'association, et la correction. Les \faUser indiquent les étapes nécessitant l'utilisateur (film: $ZFJ\_001$.)}
       \label{}
     \end{figure}
@@ -44,7 +44,7 @@ Pour caractériser la perception chimique chez le jeune poisson-zèbre, nous avo
 
 \paragraph{Dual} Dual est un montage expérimental permettant de quantifier la préférence des poissons vis-à-vis d'un produit chimique de concentration parfaitement contrôlé. Il permet de séparer un compartiment où est placé le poisson en deux zones distinctes, l'un avec un produit de concentration parfaitement connue, l'autre avec de l'eau. Ceci est réalisé grâce à un flux créé par un double pousse-seringue permettant de maintenir un écoulement à volume constant dans le compartiment : quand deux seringues injectent d'un côté, deux seringues aspirent de l'autre. Un système de valves permet de remplir les seringues avec le produit choisi puis d'injecter ensuite. L'aquarium est coupé de l'environnement par une boîte et l'expérience filmée en lumière infrarouge pour éviter toutes implications d'une autre modalité sensorielle, principalement la vision. L'écoulement est visualisé par un colorant infrarouge. Ce montage expérimental est open-source, flexible, et peut être reproduit pour moins de 2 000 euros avec peu de matériel (imprimante 3D et découpe laser). Un logiciel de contrôle open-source est disponible et permet de contrôler le dispositif.
 
-    \begin{figure}[htb]
+    \begin{figure}[h!]
       \centering
       \includegraphics[width=1\textwidth]{part_2/assets/resume1.png}
       \caption{\textbf{A} Schéma du compartiment où nage le poisson. \textbf{B} Image d'un écoulement typique avec en bas le produit visible à l'aide. \textbf{C} Schéma du protocol expérimental permettant de déterminer la préférence des poissons. \textbf{D} Le disposition expérimental Dual. \textbf{D} Préférence index (temps passé dans le produit moins temps passé dans l'eau divisé par le temps total) pour l'ATP en fonction de la concentrentation. On remarque une répulsion au premier cycle P1 (préférence index négatif) et une attraction au cycle P2 (préférence index positif).}

@@ -14,7 +14,10 @@
    version="1.1"
    id="svg580"
    sodipodi:docname="citricacid_markov.svg"
-   inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07, custom)">
+   inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07, custom)"
+   inkscape:export-filename="/home/benjamin/Codes/thesis_bg/part_2/assets/citricacid_markov.png"
+   inkscape:export-xdpi="300"
+   inkscape:export-ydpi="300">
   <metadata
      id="metadata584">
     <rdf:RDF>
@@ -35,17 +38,18 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="1920"
-     inkscape:window-height="1080"
+     inkscape:window-width="707"
+     inkscape:window-height="862"
      id="namedview582"
      showgrid="false"
      inkscape:zoom="0.69333333"
-     inkscape:cx="524.07692"
+     inkscape:cx="-15.843669"
      inkscape:cy="582.67005"
-     inkscape:window-x="1920"
-     inkscape:window-y="0"
+     inkscape:window-x="725"
+     inkscape:window-y="30"
      inkscape:window-maximized="0"
-     inkscape:current-layer="svg580" />
+     inkscape:current-layer="svg580"
+     inkscape:document-rotation="0" />
   <defs
      id="defs5">
     <clipPath

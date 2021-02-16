@@ -3,13 +3,13 @@
   \section{The chemical perception}
   The chemical senses are one the oldest sensory system \cite{yohe2018evolutionary}. They are the most used sensory modality and observed in a wide range of taxa, from unicellular \cite{bardwell2005walk} to mammalian. Some features and basics principles are highly conservated across phyla \cite{hildebrand1997mechanisms,yarmolinsky2009common}, and mediate several behaviors like predator avoidance, food-finding, and mating necessary to the survival of any species.
 
-  Fish are immersed in a complex chemical environment at any time and have evolved a complex sensory system to perceived and interpret these chemical stimuli. For fish, chemical perception is mediated by three organs: olfaction (smell), gustation (taste), and a common chemical sense. Unlike terrestrial species, where substances perceived by smell and taste differ by the medium of transport of the molecules, fish taste and smell through the same medium: water. The solubility of compounds in water determines the type of compounds that can be transported and perceived. Therefore, chemical perception is non-directional and persistent. The distance traveled and the perceived concentration depend on the diffusion and convection of the medium, determining the perception threshold and the compound's residence time in the environment. The chemical perception is extremely specific, being contained in the molecular structures and the complex mixture of chemicals.
+  Fish are immersed in a complex chemical environment at any time and have evolved a refined sensory system to perceived and interpret these chemical stimuli. For fish, chemical perception is mediated by three senses: olfaction (smell), gustation (taste), and a common chemical sense. Unlike terrestrial species, where substances perceived by smell and taste differ by the medium of transport of the molecules, fish taste and smell through the same medium: water. The solubility of compounds in water determines the type of compounds that can be transported and perceived. Therefore, chemical perception is non-directional and persistent. The distance traveled and the perceived concentration depend on the diffusion and convection of the medium, determining the perception threshold and the compound's residence time in the environment. The chemical perception is extremely specific, being contained in the molecular structures and the complex mixture of chemicals.
 
   Mechanisms of perception have been well studied for diverse fish species \cite{hara2012fish}, but highly complex directed behaviors like homing migration or food-finding are still poorly understood \cite{hansen2004chemosensory}. For example, fish can find food in complex environments like turbid and turbulent waters, where the perception is fragmented. Deciphering these mechanisms and their associated neural mechanisms will significantly advance the comprehension of the animal kingdom's most used sensory modality.
 
   One fish species, the zebrafish, is an emerging model for studying goal-driven behaviors. At the larval stage (6 days post-fertilization), the animal is transparent, and it is possible to observe the brain activity with cellular resolution using light-sheet microscopy \cite{panier2013fast}. The development of virtual reality assays makes it technically possible to associate some neuronal networks' activity to the observed behavior. Using this technique; it was possible to gain insights into several behaviors, such as prey capture \cite{bianco2011prey}, optomotor response \cite{naumann2016whole}, phototaxis \cite{wolf2017sensorimotor}, rheotaxis \cite{olive2016rheotaxis}, and thermotaxis\cite{haesemeyer2019convergent}.
 
-  The development and functioning of the fish sensory organs, particularly in the zebrafish, have been well characterized. However, there are few behavioral studies on chemical perception and chemically-oriented navigation. Several milestones have to be achieved before using virtual reality assays to study chemically-driven navigation. One needs to find and characterize products that elicit robust and attractive behaviors. The space of possibilities will be vast, and completing this task will necessitate a high-throughput setup to explore combinations of products, concentrations, and fish ages. In a second time, when a product that elicits a robust and attractive response will be characterized, studying realistic chemically-driven navigation will require a setup capable of reproducing turbulent flows where the fish is immersed and submitted to a complex chemical environment with fragmented perception.
+  The development and functioning of the fish sensory organs, particularly in the zebrafish, have been well characterized. However, there are few behavioral studies on chemical perception and chemically-oriented navigation. Several milestones have to be achieved before using virtual reality assays to study chemically-driven navigation. One needs to find and characterize products that elicit robust and attractive behaviors. The space of possibilities is vast, and completing this task will necessitate a high-throughput setup to explore combinations of products, concentrations, and fish ages. In a second time, when a product that elicits a robust and attractive response will be characterized, studying realistic chemically-driven navigation will require a setup capable of reproducing turbulent flows where the fish is immersed and submitted to a complex chemical environment with fragmented perception.
 
   In the next sections, we will present the fish's sensory organs and review experimental setups used in the literature to characterize the zebrafish's chemical perception at the larval and adult stage. Then we will present two experimental setups that we built to study the chemical perception of zebrafish. Finally, we will present and discuss some results that we obtain using these setups.
 
@@ -309,7 +309,7 @@
 
   \paragraph{Fish} In the following experiments, we use larval (6-8 days post-fertilization) and early juveniles (14 to 21 days post-fertilization) zebrafish. Preferences were assessed without changes in rearing condition before the experiment, except for ATP and adenosine, where fish were starved 24 hours before the experiment, a protocol inspired from \cite{wakisaka2017adenosine}. Chemicals were dissolved in a buffer the day of the experiment: E3 \footnote{\url{https://www.sc.niigata-u.ac.jp/biologyindex/natsuka/img/file26.pdf}} for larvae and degassed tap water for juveniles.
 
-  \paragraph{Flow visualization} All experiments were performed in the dark to isolate the fish from non-chemical perceptions, especially visual perception. The flow was visualized using an infrared dye: an emulsion of silicone oil, sodium dodecyl sulfate, and alginate prepared thanks to Lea-Laetitia Pontani. This emulsion contains droplets with a diameter of $5 \mu m$ with a polydispersity of $\approx 15 \%$ and is biocompatible \cite{ali2011large} at the concentration that we used ($\approx 500 \mu L/L$).
+  \paragraph{Flow visualization} All experiments were performed in the dark to isolate the fish from non-chemical perceptions, especially visual perception. The flow was visualized using an infrared dye: an emulsion of silicone oil, sodium dodecyl sulfate, and alginate prepared by Lea-Laetitia Pontani. This emulsion contains droplets with a diameter of $5 \mu m$ with a polydispersity of $\approx 15 \%$ and is biocompatible \cite{ali2011large} at the concentration that we used ($\approx 500 \mu L/L$).
 
   \subsection{Analysis}
   The project's original idea was to use FastTrack (see Part~\ref{dual}) and an automatic custom-developed image analysis pipeline to monitor the fish preference using its position, see Appendix~\ref{auto_analysis}.
@@ -381,17 +381,17 @@
 
   This model offers yet another definition of the preference index defined directly by
   \begin{equation}
-    \Pi_{markov} = p - b
+    \Pi_{Markov} = p - b
   \end{equation}
-  \noindent the proportion of time spent in the product state minus the proportion of time spent in the buffer state. If $p$ (resp. $b$) cannot be defined, we take $\Pi_{markov} = -1$ (resp. $\Pi_{markov} = 1$).
+  \noindent the proportion of states product minus the proportion of states buffer state. If $p$ (resp. $b$) cannot be defined, we take $\Pi_{Markov} = 1-2b$ (resp. $\Pi_{Markov} = -1+2p$).
 
  An indicator of the fish exploration-exploitation behavior can be derived as follows:
   \begin{equation}
-    \rho_{markov} = 2Min(p,b) - 1
+    \rho_{Markov} = 2Min(p,b) - 1
   \end{equation}
-   \noindent When $\rho_{markov} = 1$,  the  behavior is purely exploratory, when $\rho_{markov} = 0$ there is as many exploration than exploration and when $\rho_{markov} = -1$ the behavior is dominated by exploitation.
+   \noindent When $\rho_{Markov} = 1$,  the  behavior is purely exploratory, when $\rho_{Markov} = 0$ there is as many exploration than exploration and when $\rho_{Markov} = -1$ the behavior is dominated by exploitation.
 
-  We can build a numerical simulation of a two states Markov chain to explore the relationship between $p$ and $b$ probabilities, $\Pi_{markov}$, and $\rho_{markov}$. The numerical simulation produces sequences generated from a Markov chain defined with probabilities $p$, and $b$. The length of the chain is drawn from the experimental chain length distribution that follows a discrete negative binomial distribution, see Figure~\ref{chain_fit}:
+  We can build a numerical simulation of a two states Markov chain to explore the relationship between $p$ and $b$ probabilities, $\Pi_{Markov}$, and $\rho_{Markov}$. The numerical simulation produces sequences generated from a Markov chain defined with probabilities $p$, and $b$. The length of the chain is drawn from the experimental chain length distribution that follows a discrete negative binomial distribution, see Figure~\ref{chain_fit}:
   \begin{equation}
     f(k) = \begin{pmatrix}
     k+n-1\\
@@ -408,12 +408,12 @@
     \label{chain_fit}
   \end{figure}
 
-  We see in Figure~\ref{markov_simu} that there are forbidden couples of $(p,b)$ due to the definition of the probabilities $p$ and $b$ as rational numbers and the limited chain lengths. The preference indexes are distributed on either side of the identity line $p=b$ where $\Pi_{markov} = 0$ with an upper triangle repulsive and a lower triangle attractive. Looking at the map of $\rho_{markov}$, we see a right upper corner at high $p$ and $b$ dominated by exploration, and a bottom left corner by exploitation. As expected, the fish can have a neutral preference with either exploration or exploitation, but a strong preference can only happen in a regime dominated by exploitation.
+  We see in Figure~\ref{markov_simu} that there are forbidden couples of $(p,b)$ due to the definition of the probabilities $p$ and $b$ as rational numbers and the limited chain lengths. The preference indexes are distributed on either side of the identity line $p=b$ where $\Pi_{Markov} = 0$ with an upper triangle repulsive and a lower triangle attractive. Looking at the map of $\rho_{Markov}$, we see a right upper corner at high $p$ and $b$ dominated by exploration, and a bottom left corner by exploitation. As expected, the fish can have a neutral preference with either exploration or exploitation, but a strong preference can only happen in a regime dominated by exploitation.
 
   \begin{figure}[htb]
     \centering
     \includegraphics[width=1\textwidth]{part_2/assets/pi_pb.png}
-    \caption{\textbf{Numerical simulation} Preference index $\Pi_{markov}$ (left) and $\rho_{markov}$ (right) for 10 000 realisations with a chain size following the experimental distribution.}
+    \caption{\textbf{Numerical simulation} Preference index $\Pi_{Markov}$ (left) and $\rho_{Markov}$ (right) for 10 000 realisations with a chain size following the experimental distribution.}
     \label{markov_simu}
   \end{figure}
 
@@ -466,7 +466,44 @@
 
   The mean ratios exploration-exploitation (see Appendix~\ref{mean_quantities}) presented Figures~\ref{citric_acid_event}~bottom and \ref{citric_acid_markov}~bottom, showed an apparent decrease when the citric acid concentration increase. Fish can sense citric acid and reduce their exploration to the benefit of a stereotyped exploitation behavior where they often go to the interface and return in the buffer.
 
-  The time-based $\Pi_{time}$ Figure~\ref{citric_acid}~top), event-based $\Pi_{event}$ Figure~\ref{citric_acid_event}~top, and markov-based $\Pi_{markov}$ Figure~\ref{citric_acid_markov}~top mean preference indexes decrease in a concentration-dependent manner. The distributions of preference indexes by fish (Figure~\ref{dist_citric_acid}) show a decrease in variability as the concentration increase and no significant difference between P1 and P2 cycles, which tends to suggest that fish adopt the same characteristic behavior with less variability as a preference emerged.
+  The time-based $\Pi_{time}$ Figure~\ref{citric_acid}~top), event-based $\Pi_{event}$ Figure~\ref{citric_acid_event}~top, and Markov-based $\Pi_{Markov}$ Figure~\ref{citric_acid_markov}~top mean preference indexes decrease in a concentration-dependent manner. The distributions of preference indexes by fish (Figure~\ref{dist_citric_acid}) show a decrease in variability as the concentration increase and no significant difference between P1 and P2 cycles, which tends to suggest that fish adopt the same characteristic behavior with less variability as a preference emerged.
+
+  We tried to see if the bulk-behavior was able to explain the time-based preference index. We extract the  trajectory parts inside the product and the buffer during the P1 and P2 cycle and inside buffer in the B1 cycle. We discretized the trajectory by swim-bouts \cite{} and extracted three kinematic parameters: the time $\delta t$, the distance $\delta r$, and the angle $\delta \theta$, between the onset of successive bouts.
+
+  It was shown by \cite{benichou2005averaged} that the mean escape time of a domain with a mix of reflective and absorbing walls by a random walker moving with constant velocity and changing directions at random times writes :
+  \begin{equation}
+    \label{eq_t}
+    \left< t \right> = \alpha \frac{V}{vS}
+  \end{equation}
+  \noindent with $V$ the volume and $S$ the surface of the domain, $\alpha$ a numerical coefficient, and $v$ the velocity of the random walker.
+
+  Dual can be seen as a domain of characteristic size $a$ with reflective walls (Dual edge) and an absorbing wall (the interface between product and buffer), see Figure~\ref{random_dual}~left. The fish trajectory is a random walk with a reorientation at each swim-bout. We see on Figure~\ref{random_dual}~right that $\delta t$ and $\delta r$ are uncorrelated. There is a timescale $\tau$ and a lengthscale $\lambda$ such as
+  \begin{equation}
+    \left< v \right> = \frac{\lambda}{\tau}
+  \end{equation}
+  \noindent and with the Equation~\ref{eq_t} and $\frac{V}{S}=a$ in the Dual that
+  \begin{equation}
+    \left< t \right> \approx \alpha \frac{a \tau}{\lambda}
+  \end{equation}.
+
+      \begin{figure}[h!]
+        \centering
+        \includegraphics[width=0.75\textwidth]{part_2/assets/random_dual.png}
+        \caption{\textbf{Correlation $\delta t$ $\delta r$} \textbf{Left} Fish trajectory. \textbf{Right}: Correlation between $\delta t$ and $\delta r$.}
+        \label{random_dual}
+      \end{figure}
+
+  The preference index is the mean time spent in the product minus the mean time spent in the buffer divided by the total time. Therefore, we expect no influence of $\delta \theta$ distribution in the generation of a preference index.
+
+  In Figure~\ref{dist_time_bout}, we see no difference between the distributions when we increase the concentration in citric acid. We built a numerical simulation by generating random trajectories using the experimental distributions and computed the time-based preference index, see Figure~\ref{simu_pi}. We see that the bulk-behavior cannot explain the preference index by itself and that decision events at the interface are crucial.
+
+      \begin{figure}[h!]
+        \centering
+        \includegraphics[width=0.75\textwidth]{part_2/assets/simu_pi.png}
+        \caption{\textbf{Preference index numerical simulation}}
+        \label{simu_pi}
+      \end{figure}
+
 
   \paragraph{Zebrafish larvae in citric acid} Preliminary experiments were done to assess the effect of citric acid on zebrafish larvae (Figure~\ref{dist_citric_acid_lar}). Despite low statistics (see Section~\ref{discussion}) and substantial variability, we see that citric acid seems to be repulsive as expected from results with juveniles. More experiments need to be done to confirm this effect and account for the larvae variability.
 
@@ -479,9 +516,9 @@
 
   Using Dual, we were able to assess the repulsion to citric acid by zebrafish. Our analysis and model were able to capture the fish behavior changes and quantify the repulsion magnitude. As expected, the inter-fish variability is large but seems to be reduced by aversion where fish adopt a stereotyped exploitation behavior.
 
-    \paragraph{Juvenile zebrafish in quinine} Quinine is a natural alkaloid that tastes bitter, and that is a highly deterrent substance for many fish species \cite{kasumyan2003taste}. Unexpectedly, we see with the time-based preference index (Figure~\ref{dist_quinine}) that the preference seems to be mostly neutral. A slight attraction can be constated on the P1 cycle, and a neutral a slightly repulsive preference on the P2 cycle.
+  \paragraph{Juvenile zebrafish in quinine} Quinine is a natural alkaloid that tastes bitter, and that is a highly deterrent substance for many fish species \cite{kasumyan2003taste}. Unexpectedly, we see with the time-based preference index (Figure~\ref{dist_quinine}) that the preference seems to be mostly neutral. A slight attraction can be constated on the P1 cycle, and a neutral a slightly repulsive preference on the P2 cycle.
 
-Despite relatively good statistics ($\approx 7$ fish by concentration), no robust preference emerged as we see with large variability in responses.
+  Despite relatively good statistics ($\approx 7$ fish by concentration), no robust preference emerged as we see with large variability in responses.
 
     \begin{figure}[h!]
       \centering
@@ -495,7 +532,7 @@ Despite relatively good statistics ($\approx 7$ fish by concentration), no robus
 
   \paragraph{Juvenile zebrafish in adenosine} Fish can perceive adenosine as indicated by the ratios exploration-exploitation presented in Figures~\ref{adenosine_event}~bottom and \ref{adenosine_markov}~bottom that decrease with the concentration.
 
-  The event-based and markov-based preference indexes (Figures~\ref{adenosine_event}~top and \ref{adenosine_markov}~top) show a slight repulsion for the P1 cycle and a slight attraction for the P2 cycle at the two lower concentrations.  The time-based preference index (Figures~\ref{adenosine}) displays a slight repulsive preference for the P1 cycle. There is no clear preference, and analysis from event-based and time-based preferences disagree, meaning that there is probably not enough statistic to conclude. Besides, the preference index distributions (Figure~\ref{dist_adenosine}) show great variability.
+  The event-based and Markov-based preference indexes (Figures~\ref{adenosine_event}~top and \ref{adenosine_markov}~top) show a slight repulsion for the P1 cycle and a slight attraction for the P2 cycle at the two lower concentrations.  The time-based preference index (Figures~\ref{adenosine}) displays a slight repulsive preference for the P1 cycle. There is no clear preference, and analysis from event-based and time-based preferences disagree, meaning that there is probably not enough statistic to conclude. Besides, the preference index distributions (Figure~\ref{dist_adenosine}) show great variability.
 
     \begin{figure}[h!]
       \centering
@@ -533,7 +570,7 @@ Despite relatively good statistics ($\approx 7$ fish by concentration), no robus
       \label{atp}
     \end{figure}
 
-  Comparing the distribution of event-based, markov-based, and time-based preference index by fish, we see that this effect is significant at $125 \mu M$ and  $200 \mu M$, see Figure~\ref{dist_atp}.
+  Comparing the distribution of event-based, Markov-based, and time-based preference index by fish, we see that this effect is significant at $125 \mu M$ and  $200 \mu M$, see Figure~\ref{dist_atp}.
 
     \begin{figure}[h!]
       \centering
@@ -542,7 +579,7 @@ Despite relatively good statistics ($\approx 7$ fish by concentration), no robus
       \label{atp_event}
     \end{figure}
 
-  A fish-by-fish analysis, see Figure~\ref{proportion}A, revealed that the fish proportion that changes its preference towards attraction increase with the concentration. Figure~\ref{proportion}B represents the $p$ and $b$ probability from the markov chain model in function of the cycle P1 and P2. We see that many fish cross the identity line between the P1 and P2 cycle to invert their preferences.
+  A fish-by-fish analysis, see Figure~\ref{proportion}A, revealed that the fish proportion that changes its preference towards attraction increase with the concentration. Figure~\ref{proportion}B represents the $p$ and $b$ probability from the Markov chain model in function of the cycle P1 and P2. We see that many fish cross the identity line between the P1 and P2 cycle to invert their preferences.
 
     \begin{figure}[h!]
       \centering
@@ -572,7 +609,7 @@ Despite relatively good statistics ($\approx 7$ fish by concentration), no robus
 
   We successfully used Dual to assess the chemical preference of several products. We show a strong aversion to citric acid and an exciting effect with ATP where fish inverts their preferences at the second product presentation.
 
-  Adults were shown to be attracted by ATP without mention of prior exposures. Our results tend to suggest that larvae are repulsed and juveniles repulsed than attracted in a second exposition by ATP. This behavior is probably more complicated because we see variability among fish, with fish changing preference and others not. Work remains to be done to precisely characterize this effect. It would be interesting to study the proportion of fish switching preference by, for example, forcing ATP on both sides for a given duration and then check preference as a function of the first presentation time or the first presentation concentration. An interesting question would be to check what happened at the third presentation of ATP. All these experiments can be done easily by modifying the protocol in Dual. If this attractive preference persists in time, ATP could be used in The Tropical River to study chemically-driven navigation. A temporal characterization would also be of great interest. Studying the effect at a fixed concentration, like $125 \mu M$, and varying the fish age. It would help understand the development of ATP's perception from larvae to adults.
+  Adults were shown to be attracted by ATP without mention of prior exposures. Our results tend to suggest that larvae are repulsed and juveniles repulsed then attracted in a second exposition by ATP. This behavior is probably more complicated because we see variability among fish, with fish changing preference and others not. Work remains to be done to precisely characterize this effect. It would be interesting to study the proportion of fish switching preference by, for example, forcing ATP on both sides for a given duration and then check preference as a function of the first presentation time or the first presentation concentration. An interesting question would be to check what happened at the third presentation of ATP. All these experiments can be done easily by modifying the protocol in Dual. If this attractive preference persists in time, ATP could be used in The Tropical River to study chemically-driven navigation. A temporal characterization would also be of great interest. Studying the effect at a fixed concentration, like $125 \mu M$, and varying the fish age. It would help understand the development of ATP's perception from larvae to adults.
 
   Preliminary results shown with larvae need more statistics. Studying larvae poses several challenges. First, larvae tend to explore less than juveniles, and combined with their small sizes, they do not frequently cross the interface. We circumvented this problem by putting up to 4 larvae by experiment, thus increasing the statistics, but this adds work in the analysis phase. Secondly, larvae are more susceptible to fatigue and freezing than juveniles. It frequently happens that larvae stop swimming and do not recover until the end of the experiment.
 For this reason, assessing the ATP effect on larvae is very challenging: reducing cycle length to reduce fatigue would lead to fewer crossing events, but longer cycles would lead to more fish dropouts before the second cycle. Another solution would be to reduce the chamber size to increase crossing events with the same cycle length. For all these reasons, studying larvae would need many statistics, which we had not the time to do in this thesis.
@@ -622,11 +659,11 @@ For this reason, assessing the ATP effect on larvae is very challenging: reducin
       \overline{b} = \frac{\sum_{fish}^{}n_{PB}}{\sum_{fish}^{}(n_{PB} + n_{PP})}
     \end{equation}
     \begin{equation}
-      \overline{\Pi_{markov}} = \bar{p} - \bar{b}
+      \overline{\Pi_{Markov}} = \bar{p} - \bar{b}
       \label{mean_pi_markov}
     \end{equation}
     \begin{equation}
-      \overline{\rho_{markov}} = 2Min(\bar{p}, \bar{b}) - 1
+      \overline{\rho_{Markov}} = 2Min(\bar{p}, \bar{b}) - 1
       \label{mean_r_markov}
     \end{equation}
 
@@ -641,23 +678,31 @@ For this reason, assessing the ATP effect on larvae is very challenging: reducin
 
     A python command-line interface \footnote{\url{https://github.com/LJPZebra/dual_analysis}} was created to export the relevant data in a synthetic toml file easy exportable, one experiment by file. Statistical analysis and numerical simulations were performed using Python and Julia programming language.
 
+  \chapter{Kinematic parameters distributions}
+    \begin{figure}[h!]
+      \centering
+      \includegraphics[width=1\textwidth]{part_2/assets/dist_citric_random.png}
+      \caption{\textbf{Distributions of kinematic parameters} \textbf{Top}: $\delta t$. \textbf{Middle}: $\delta r$. \textbf{Bottom}: $\delta \theta$.}
+      \label{dist_time_bout}:
+    \end{figure}
+
   \chapter{Markov model results}
     \begin{figure}[h]
       \centering
       \includegraphics[width=0.8\textwidth]{part_2/assets/citricacid_markov.png}
-      \caption{\textbf{Citric acid: Markov chain analysis for juveniles} \textbf{Top}: Mean markov-based preference index (equation~\ref{mean_pi_markov}). \textbf{Bottom}: Mean markov ratio exploration-exploitation (equation~\ref{mean_r_markov}).}
+      \caption{\textbf{Citric acid: Markov chain analysis for juveniles} \textbf{Top}: Mean Markov-based preference index (equation~\ref{mean_pi_markov}). \textbf{Bottom}: Mean Markov ratio exploration-exploitation (equation~\ref{mean_r_markov}).}
       \label{citric_acid_markov}
     \end{figure}
     \begin{figure}[h]
       \centering
       \includegraphics[width=0.8\textwidth]{part_2/assets/adenosine_markov.png}
-      \caption{\textbf{Adenosine: Markov chain analysis for juveniles} \textbf{Top}: Mean markov-based preference index (equation~\ref{mean_pi_markov}). \textbf{Bottom}: Mean markov ratio exploration-exploitation (equation~\ref{mean_r_markov}).}
+      \caption{\textbf{Adenosine: Markov chain analysis for juveniles} \textbf{Top}: Mean Markov-based preference index (equation~\ref{mean_pi_markov}). \textbf{Bottom}: Mean Markov ratio exploration-exploitation (equation~\ref{mean_r_markov}).}
       \label{adenosine_markov}
     \end{figure}
     \begin{figure}[h]
       \centering
       \includegraphics[width=0.8\textwidth]{part_2/assets/atp_markov.png}
-      \caption{\textbf{ATP: Markov chain analysis for juveniles} \textbf{Top}: Mean markov-based preference index (equation~\ref{mean_pi_markov}). \textbf{Bottom}: Mean markov ratio exploration-exploitation (equation~\ref{mean_r_markov}).}
+      \caption{\textbf{ATP: Markov chain analysis for juveniles} \textbf{Top}: Mean Markov-based preference index (equation~\ref{mean_pi_markov}). \textbf{Bottom}: Mean Markov ratio exploration-exploitation (equation~\ref{mean_r_markov}).}
       \label{atp_markov}
     \end{figure}
 
@@ -665,19 +710,19 @@ For this reason, assessing the ATP effect on larvae is very challenging: reducin
     \begin{figure}[h]
       \centering
       \includegraphics[width=0.8\textwidth]{part_2/assets/dist_citricacid.png}
-      \caption{\textbf{Citric acid: preference index for juveniles} Event-based preference index $\Pi_{time}$, one point is one fish (top). Event-based preference index $\Pi_{event}$, one point is one fish analyzed by one person (middle). Event-based preference index $\Pi_{markov}$, one point is one fish analyzed by one person (bottom).}
+      \caption{\textbf{Citric acid: preference index for juveniles} Event-based preference index $\Pi_{time}$, one point is one fish (top). Event-based preference index $\Pi_{event}$, one point is one fish analyzed by one person (middle). Event-based preference index $\Pi_{Markov}$, one point is one fish analyzed by one person (bottom).}
       \label{dist_citric_acid}
     \end{figure}
     \begin{figure}[h]
       \centering
       \includegraphics[width=0.8\textwidth]{part_2/assets/dist_adenosine.png}
-      \caption{\textbf{Adenosine: preference index for juveniles} Event-based preference index $\Pi_{time}$, one point is one fish (top). Event-based preference index $\Pi_{event}$, one point is one fish analyzed by one person (middle). Event-based preference index $\Pi_{markov}$, one point is one fish analyzed by one person (bottom).}
+      \caption{\textbf{Adenosine: preference index for juveniles} Event-based preference index $\Pi_{time}$, one point is one fish (top). Event-based preference index $\Pi_{event}$, one point is one fish analyzed by one person (middle). Event-based preference index $\Pi_{Markov}$, one point is one fish analyzed by one person (bottom).}
       \label{dist_adenosine}
     \end{figure}
     \begin{figure}[h]
       \centering
       \includegraphics[width=0.8\textwidth]{part_2/assets/dist_atp.png}
-      \caption{\textbf{ATP: preference index for juveniles} Event-based preference index $\Pi_{time}$, one point is one fish (top). Event-based preference index $\Pi_{event}$, one point is one fish analyzed by one person (middle). Event-based preference index $\Pi_{markov}$, one point is one fish analyzed by one person (bottom). * $P<0.05$, ** $P<0.01$}
+      \caption{\textbf{ATP: preference index for juveniles} Event-based preference index $\Pi_{time}$, one point is one fish (top). Event-based preference index $\Pi_{event}$, one point is one fish analyzed by one person (middle). Event-based preference index $\Pi_{Markov}$, one point is one fish analyzed by one person (bottom). * $P<0.05$, ** $P<0.01$}
       \label{dist_atp}
     \end{figure}
 

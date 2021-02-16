@@ -37,7 +37,7 @@
     Any-maze is a complete solution for creating and analyzing typical behavioral experiments. It can be purchased with the experimental setup already optimized and calibrated for the software. The Any-maze suite consists of three software packages. The tracking part is available for USD 6,495 or USD 1,500 per year. The software is available for Windows only.
 
     \paragraph{ToxTrack}
-    ToxTrack \cite{rodriguez2018toxtrac} is a software that implements in a graphical interface the ToxId algorithm \cite{rodriguez2017toxid}. In short, the algorithm extracts objects from the background by applying a threshold. The pieces of trajectories between occlusions are divided into short and long trajectories based on a user-defined threshold time. A group of long trajectories where all individuals are observed simultaneously is then extracted. In this case, the assignment is made using the Hungarian algorithm Figure~\ref{appendix_hungarian}. The remaining trajectories are then assigned to the corresponding object selecting the best correlation value in a trajectory identification matrix Figure~\ref{part_1:toxId}. This matrix contains the similarity between every two trajectory fragments based on objects' features.
+    ToxTrack \cite{rodriguez2018toxtrac} is a software that implements in a graphical interface the ToxId algorithm \cite{rodriguez2017toxid}. In short, the algorithm extracts objects from the background by applying a threshold. The pieces of trajectories between occlusions are divided into short and long trajectories based on a user-defined threshold time. A group of long trajectories where all individuals are observed simultaneously is then extracted. In this case, the assignment is made using the Hungarian algorithm, see Figure~\ref{appendix_hungarian}. The remaining trajectories are then assigned to the corresponding object selecting the best correlation value in a trajectory identification matrix Figure~\ref{part_1:toxId}. This matrix contains the similarity between every two trajectory fragments based on objects' features.
     The authors report that ToxId is as powerful as other existing software, fast, and can track objects in real-time. A disadvantage that can be seen in this algorithm is that it only works for a constant number of animals. The algorithm's initialization requires to have at one moment $t$ all the objects to be tracked simultaneously detectable for a user-defined time $t+dt$. The user-interface (UI) is sometimes difficult to use: the integrated tracking reviewer does not permit to correct the tracking or to replay the tracking frame by frame.
 
     The UI includes tools to define areas of interest as well as statistical analysis of the collected data. The software is only available for Windows. The project initially open-source change to a closed-source model, but the software is still under development.
@@ -63,7 +63,7 @@
 
     DeepLabCut is directly based on the feature detection algorithm of the DeeperCut framework \cite{insafutdinov2016deepercut}, specialized in the detection of human body movements. The authors of DeepLabCut have studied this algorithm's performance applied to the field of behavioral neuroscience, such as the detection of mice snouts or drosophila legs. They have added tools to train the algorithm easily and test its robustness.
 
-    It takes advantage of deep learning to solve the so-called estimation pose problem. Deep learning is a machine learning algorithm that consists of training a neural network containing several layers \cite{Goodfellow-et-al-2016}. In DeepLabCut, the network consists of several residual neural networks (ResNets) pre-trained on the ImageNet database. The network is then fine-tuned by training on images where the parts to be detected are annotated. In the end, the algorithm gives the probability of presence of the object in the image. The authors have shown that the performance is at least as good as human detection and can be obtained with very little training data (200 annotated images).
+    DeeplabCut takes advantage of deep learning, a machine-learning algorithm that consists of training a neural network containing several layers \cite{Goodfellow-et-al-2016}. In DeepLabCut, the network consists of several residual neural networks (ResNets) pre-trained on the ImageNet database. The network is then fine-tuned by training on images where the parts to be detected are annotated. In the end, the algorithm gives the probability of presence of the object in the image. The authors have shown that the performance is at least as good as human detection and can be obtained with very little training data (200 annotated images).
 
     DeepLabCut, as previously mentioned, is a framework, and despite an excellent documentation \cite{nath2019using}, it can be challenging to use for a user with little computer skills. The installation process lasts from 10 to 60 minutes and requires a GPU installation to get the most out of the software. Besides, the algorithm requires a lot of computing power. To give an idea, images of 682x540 pixels, analyzed with a last-generation GPU, lead to an analysis speed of 30 frames per second. Without GPU, this time can be multiplied by a factor of 10 or 100 \cite{mathis2018inference}.
 
@@ -92,7 +92,7 @@
 
     \section{FastTrack: an original approach}
     We have previously listed the most used tracking software in different fields of science. We can see that a fast software requiring little computing power, versatile (i.e., that can be applied to any systems with a variable number of objects), easy to install, and open-source is missing.
-    To fill this void, we designed a software called FastTrack. This software contains two distinct parts:
+    To fill this void, we designed a software called FastTrack \cite{gallois2021fasttrack}. This software contains two distinct parts:
     \begin{itemize}
         \item An interface where standard image analysis procedures are implemented to detect objects, and a tracking algorithm that allows keeping the identity of objects from one image to another, fast and with a low error rate.
         \item An ergonomic interface where the tracking can be checked and manually corrected if necessary.
@@ -245,7 +245,7 @@
         C_{i,j} = \left\{
             \begin{array}{ll}
                 c_{i,j} & \mbox{if} r_{i,j} < h_{d} \\
-                \inf & \mbox{else}
+                \infty & \mbox{else}
             \end{array}
         \right.
     \end{equation}

@@ -375,7 +375,7 @@
   \begin{figure}[h]
     \centering
     \includegraphics[width=0.85\textwidth]{part_2/assets/model.png}
-    \caption{\textbf{Two states Markov chain model}P indicates the product state and B the buffer state.}
+    \caption{\textbf{Two states Markov chain model} P indicates the product state and B the buffer state.}
     \label{markov_model}
   \end{figure}
 
@@ -468,7 +468,7 @@
 
   The time-based $\Pi_{time}$ Figure~\ref{citric_acid}~top), event-based $\Pi_{event}$ Figure~\ref{citric_acid_event}~top, and Markov-based $\Pi_{Markov}$ Figure~\ref{citric_acid_markov}~top mean preference indexes decrease in a concentration-dependent manner. The distributions of preference indexes by fish (Figure~\ref{dist_citric_acid}) show a decrease in variability as the concentration increase and no significant difference between P1 and P2 cycles, which tends to suggest that fish adopt the same characteristic behavior with less variability as a preference emerged.
 
-  We tried to see if the bulk-behavior was able to explain the time-based preference index. We extract the  trajectory parts inside the product and the buffer during the P1 and P2 cycle and inside buffer in the B1 cycle. We discretized the trajectory by swim-bouts \cite{} and extracted three kinematic parameters: the time $\delta t$, the distance $\delta r$, and the angle $\delta \theta$, between the onset of successive bouts.
+  We tried to see if the bulk-behavior (i.e., modulation of the kinematic parameters inside the product) was able to explain the time-based preference index. We extract the parts of trajectory inside the product and the buffer during the P1 and P2 cycle and inside buffer in the B1 cycle as a control. Larvae and juveniles swim in units called bouts separated by rest periods called interbouts. We discretized the trajectory by swim-bouts and extracted three kinematic parameters: the time $\delta t$, the distance $\delta r$, and the angle $\delta \theta$, between the onset of successive bouts.
 
   It was shown by \cite{benichou2005averaged} that the mean escape time of a domain with a mix of reflective and absorbing walls by a random walker moving with constant velocity and changing directions at random times writes :
   \begin{equation}
@@ -477,11 +477,11 @@
   \end{equation}
   \noindent with $V$ the volume and $S$ the surface of the domain, $\alpha$ a numerical coefficient, and $v$ the velocity of the random walker.
 
-  Dual can be seen as a domain of characteristic size $a$ with reflective walls (Dual edge) and an absorbing wall (the interface between product and buffer), see Figure~\ref{random_dual}~left. The fish trajectory is a random walk with a reorientation at each swim-bout. We see on Figure~\ref{random_dual}~right that $\delta t$ and $\delta r$ are uncorrelated. There is a timescale $\tau$ and a lengthscale $\lambda$ such as
+  In our case, Dual can be seen as a domain of characteristic size $a$ with reflective walls (Dual edge) and an absorbing wall (the interface between product and buffer), see Figure~\ref{random_dual}~left. The fish trajectory can be seen as a random walk with a reorientation at each swim-bout. We see on Figure~\ref{random_dual}~right that $\delta t$ and $\delta r$ are uncorrelated and that there is a timescale $\tau$ and a lengthscale $\lambda$ such as:
   \begin{equation}
     \left< v \right> = \frac{\lambda}{\tau}
   \end{equation}
-  \noindent and with the Equation~\ref{eq_t} and $\frac{V}{S}=a$ in the Dual that
+  \noindent and with the Equation~\ref{eq_t} and $\frac{V}{S}=a$ in Dual we have:
   \begin{equation}
     \left< t \right> \approx \alpha \frac{a \tau}{\lambda}
   \end{equation}.
@@ -493,9 +493,9 @@
         \label{random_dual}
       \end{figure}
 
-  The preference index is the mean time spent in the product minus the mean time spent in the buffer divided by the total time. Therefore, we expect no influence of $\delta \theta$ distribution in the generation of a preference index.
+  The preference index can be computed as the mean time spent in the product minus the mean time spent in the buffer divided by the total time. Therefore, we expect no influence of the distribution of $\delta \theta$ in the generation of a preference index.
 
-  In Figure~\ref{dist_time_bout}, we see no difference between the distributions when we increase the concentration in citric acid. We built a numerical simulation by generating random trajectories using the experimental distributions and computed the time-based preference index, see Figure~\ref{simu_pi}. We see that the bulk-behavior cannot explain the preference index by itself and that decision events at the interface are crucial.
+  In Figure~\ref{dist_time_bout}, we see no difference between the distributions when we increase the concentration in citric acid. We built a numerical simulation by generating random trajectories using the experimental distributions and computed the time-based preference index, see Figure~\ref{simu_pi}. We see that the bulk-behavior cannot explain the preference index and that decision events at the interface are crucial in generating preference.
 
       \begin{figure}[h!]
         \centering
@@ -672,7 +672,7 @@ For this reason, assessing the ATP effect on larvae is very challenging: reducin
 
     \section{Image analysis}
      \label{auto_analysis}
-    Fish head position was extracted using FastTrack. Each recording was manually checked to remove low-quality movies either with imperfect flows or non-responsive fish.
+    Fish head position was extracted using FastTrack. Each recording was manually checked to remove low-quality movies either with imperfect flows or non-responsive fish. Swim-bouts were extracted using the velocity signal and a threshold.
 
     A custom image processing procedure was developed to extract the interface using the contrast difference due to the dye \footnote{\url{https://github.com/LJPZebra/dual_analysis/tree/master/dual_cli}}. First, the maximal and minimal z-projection of the movie was calculated. For the minimal projection, the fish is masked with a white mask on each image before the projection, only keeping the flow and not projection the fish. Each image of the movie is then normalized with minimal and maximal projection. Finally, the interface was detected using an Otsu threshold.
 
@@ -682,7 +682,7 @@ For this reason, assessing the ATP effect on larvae is very challenging: reducin
     \begin{figure}[h!]
       \centering
       \includegraphics[width=1\textwidth]{part_2/assets/dist_citric_random.png}
-      \caption{\textbf{Distributions of kinematic parameters} \textbf{Top}: $\delta t$. \textbf{Middle}: $\delta r$. \textbf{Bottom}: $\delta \theta$.}
+      \caption{\textbf{Distributions of kinematic parameters for juveniles in citric acid.} \textbf{Top}: $\delta t$ time between on the onset of successive bouts. \textbf{Middle}: $\delta r$ distance between on the onset of successive bouts. \textbf{Bottom}: $\delta \theta$ angle between on the onset of successive bouts. Control means kinematic parameters extracted from the B1 cycle, buffer (resp. product) are extracted from P1 and P2 cycles when the fish is in the buffer (resp. product).}
       \label{dist_time_bout}:
     \end{figure}
 

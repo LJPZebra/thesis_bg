@@ -8,16 +8,16 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="90.486252mm"
-   height="94.626953mm"
-   viewBox="0 0 90.486252 94.626952"
+   width="109.30753mm"
+   height="121.53075mm"
+   viewBox="0 0 109.30753 121.53076"
    version="1.1"
    id="svg8"
    inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07, custom)"
    sodipodi:docname="resume1.svg"
    inkscape:export-filename="/home/benjamin/Codes/thesis_bg/part_2/assets/resume1.png"
-   inkscape:export-xdpi="200"
-   inkscape:export-ydpi="200">
+   inkscape:export-xdpi="300"
+   inkscape:export-ydpi="300">
   <defs
      id="defs2">
     <rect
@@ -3328,16 +3328,16 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.979899"
-     inkscape:cx="211.00414"
-     inkscape:cy="180.4015"
+     inkscape:cx="187.36712"
+     inkscape:cy="203.33473"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
      showgrid="false"
-     inkscape:window-width="1906"
-     inkscape:window-height="1042"
-     inkscape:window-x="6"
-     inkscape:window-y="30"
+     inkscape:window-width="1920"
+     inkscape:window-height="1080"
+     inkscape:window-x="1920"
+     inkscape:window-y="0"
      inkscape:window-maximized="0"
      fit-margin-top="0"
      fit-margin-left="0"
@@ -3359,10 +3359,10 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-10.117264,-1.0480506)">
+     transform="translate(8.7040203,18.634509)">
     <g
        id="g41363"
-       transform="translate(38.520165,27.042129)">
+       transform="matrix(1.2080016,0,0,1.2080016,25.606727,12.76638)">
       <g
          id="g653"
          transform="matrix(0.89334663,0,0,0.89334663,20.002542,38.25909)"
@@ -3417,7 +3417,7 @@
     </g>
     <g
        id="g38910"
-       transform="matrix(0.2645877,0,0,0.2645877,31.289959,25.13822)">
+       transform="matrix(0.31962237,0,0,0.31962237,16.872627,10.466454)">
       <path
          style="display:inline;opacity:1;fill:#bec1fc;fill-opacity:1;stroke:none;stroke-width:0.282223;stroke-miterlimit:4;stroke-dasharray:0.282223, 3.38667;stroke-dashoffset:0;stroke-opacity:1"
          d="m -15.789694,50.889257 h 38.547586 c 0.0435,0 0.0786,0.03505 0.0786,0.07859 V 141.1589 c 0,0.0435 -0.0351,0.0786 -0.0786,0.0786 h -38.547586 c -0.04354,0 -0.07859,-0.035 -0.07859,-0.0786 V 50.96785 c 0,-0.04354 0.03505,-0.07859 0.07859,-0.07859 z"
@@ -3618,7 +3618,7 @@
     </g>
     <g
        id="g40506"
-       transform="matrix(0.29712338,0,0,0.29712338,88.410679,-12.247465)">
+       transform="matrix(0.35892552,0,0,0.35892552,85.874549,-34.695513)">
       <g
          id="flowRoot8119"
          style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -3630,7 +3630,7 @@
     </g>
     <g
        id="g41268"
-       transform="matrix(0.99213316,0,0,0.99213316,-56.020935,-2.1121438)">
+       transform="matrix(1.1984985,0,0,1.1984985,-88.599074,-22.452029)">
       <path
          id="path90"
          d="m -32.048171,62.468908 h 112.5 a 4.6874999,4.6874999 0 0 1 4.6875,4.687491 v 65.625011 a 4.6874999,4.6874999 0 0 1 -4.6875,4.6875 h -112.5 a 4.6874999,4.6874999 0 0 1 -4.687501,-4.6875 V 67.156399 a 4.6874999,4.6874999 0 0 1 4.687501,-4.687491 z"
@@ -3851,7 +3851,7 @@
     </g>
     <g
        id="g2141"
-       transform="matrix(-0.00391741,0.72173831,-0.72173831,-0.00391741,107.9746,-42.808286)"
+       transform="matrix(-0.00473224,0.87186104,-0.87186104,-0.00473224,109.5078,-71.613034)"
        style="display:inline;opacity:1;stroke-width:1.38553">
       <image
          style="stroke-width:8.56074"
@@ -3871,7 +3871,7 @@
     </g>
     <g
        id="g88384"
-       transform="matrix(0.18135136,0,0,0.18135136,30.012112,46.773636)">
+       transform="matrix(0.26895113,0,0,0.26895113,9.1973693,30.373606)">
       <path
          clip-path="url(#clip490-5)"
          d="M 0,2400 H 3200 V 0 H 0 Z"
@@ -5022,7 +5022,7 @@
        xml:space="preserve"
        id="text1944"
        style="font-size:8.46667px;line-height:1.25;font-family:'Bitstream Vera Sans';-inkscape-font-specification:'Bitstream Vera Sans, Normal';letter-spacing:0px;white-space:pre;shape-inside:url(#rect1946);"
-       transform="translate(18.424094,22.136239)"><tspan
+       transform="matrix(1.2080016,0,0,1.2080016,1.5411005,7.3681115)"><tspan
          x="-3.6933594"
          y="-15.553903"><tspan
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'Bitstream Vera Sans';-inkscape-font-specification:'Bitstream Vera Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">A</tspan></tspan></text>
@@ -5030,7 +5030,7 @@
        xml:space="preserve"
        id="text1944-9"
        style="font-size:8.46667px;line-height:1.25;font-family:'Bitstream Vera Sans';-inkscape-font-specification:'Bitstream Vera Sans, Normal';letter-spacing:0px;white-space:pre;shape-inside:url(#rect1946-8);"
-       transform="translate(74.991905,23.644741)"><tspan
+       transform="matrix(1.2080016,0,0,1.2080016,69.664648,8.6623294)"><tspan
          x="-3.6933594"
          y="-15.553903"><tspan
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'Bitstream Vera Sans';-inkscape-font-specification:'Bitstream Vera Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">B</tspan></tspan></text>
@@ -5038,9 +5038,9 @@
        xml:space="preserve"
        id="text1944-9-4"
        style="font-size:8.46667px;line-height:1.25;font-family:'Bitstream Vera Sans';-inkscape-font-specification:'Bitstream Vera Sans, Normal';letter-spacing:0px;white-space:pre;shape-inside:url(#rect1946-8-6);"
-       transform="translate(16.76331,51.752188)"
-       inkscape:transform-center-x="1.5941149"
-       inkscape:transform-center-y="3.9287103"><tspan
+       transform="matrix(1.2080016,0,0,1.2080016,1.4986514,42.616171)"
+       inkscape:transform-center-x="1.9256933"
+       inkscape:transform-center-y="4.7458889"><tspan
          x="-3.6933594"
          y="-15.553903"><tspan
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'Bitstream Vera Sans';-inkscape-font-specification:'Bitstream Vera Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">C</tspan></tspan></text>
@@ -5048,9 +5048,9 @@
        xml:space="preserve"
        id="text1944-9-8"
        style="font-size:8.46667px;line-height:1.25;font-family:'Bitstream Vera Sans';-inkscape-font-specification:'Bitstream Vera Sans, Normal';letter-spacing:0px;white-space:pre;shape-inside:url(#rect1946-8-3);"
-       transform="translate(21.698559,86.621123)"
-       inkscape:transform-center-x="-11.380264"
-       inkscape:transform-center-y="23.910664"><tspan
+       transform="matrix(1.2080016,0,0,1.2080016,1.5860466,84.737901)"
+       inkscape:transform-center-x="-13.747377"
+       inkscape:transform-center-y="28.884121"><tspan
          x="-3.6933594"
          y="-15.553903"><tspan
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'Bitstream Vera Sans';-inkscape-font-specification:'Bitstream Vera Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">E</tspan></tspan></text>
@@ -5058,9 +5058,9 @@
        xml:space="preserve"
        id="text1944-9-88"
        style="font-size:8.46667px;line-height:1.25;font-family:'Bitstream Vera Sans';-inkscape-font-specification:'Bitstream Vera Sans, Normal';letter-spacing:0px;white-space:pre;shape-inside:url(#rect1946-8-60);"
-       transform="translate(78.442053,63.999804)"
-       inkscape:transform-center-x="-12.529107"
-       inkscape:transform-center-y="36.65791"><tspan
+       transform="matrix(1.2080016,0,0,1.2080016,69.419942,57.411311)"
+       inkscape:transform-center-x="-15.135181"
+       inkscape:transform-center-y="44.282815"><tspan
          x="-3.6933594"
          y="-15.553903"><tspan
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'Bitstream Vera Sans';-inkscape-font-specification:'Bitstream Vera Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">D</tspan></tspan></text>

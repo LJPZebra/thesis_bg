@@ -237,15 +237,15 @@
 
     The soft cost is then defined as follows:
     \begin{equation}
-        c_{i,j} = \frac{r_{i,j}}{s_d} + \frac{\delta\alpha_{i,j}}{s_{\alpha}} + \frac{a_{i,j}}{s_a} + \frac{p_{i,j}}{s_p}
+        c_{i,j} = \frac{\delta r_{i,j}}{s_r} + \frac{\delta \alpha_{i,j}}{s_{\alpha}} + \frac{\delta A_{i,j}}{s_A} + \frac{\delta P_{i,j}}{s_P}
     \end{equation}
-    \noindent where $\delta\alpha_{i,j}$ is the angular difference, $\delta a_{i,j}$ the area difference and $\delta p_{i,j}$ the perimeter difference between objects i and j. To compare these quantities expressed in different dimensions and magnitudes, one need to normalize them. We define the soft normalization coefficients: $s_{d}$, $s_{a}$, $s_{p}$ and $s_{\alpha}$. These coefficients represent the typical value of the parameter that they normalize.
+    \noindent where $\delta \alpha_{i,j}$ is the angular difference, $\delta A_{i,j}$ the area difference and $\delta P_{i,j}$ the perimeter difference between objects i and j. To compare these quantities expressed in different dimensions and magnitudes, one need to normalize them. We define the soft normalization coefficients: $s_{r}$, $s_{A}$, $s_{P}$ and $s_{\alpha}$. These coefficients represent the typical value of the parameter that they normalize.
     We can construct the cost matrix:
     \begin{equation}
         C_{i,j} = \left\{
             \begin{array}{ll}
-                c_{i,j} & \mbox{if} r_{i,j} < h_{d} \\
-                \infty & \mbox{else}
+                c_{i,j} & \mbox{if } r_{i,j} < h_{d} \\
+                \infty & \mbox{else }
             \end{array}
         \right.
     \end{equation}
@@ -253,13 +253,13 @@
     We want then to find the best possible matching. This problem is called the rectangular assignment problem and can be solved exactly by using the Hungarian algorithm, see Annexe~\ref{appendix_hungarian}. FastTrack uses the Kuhn-Munkres implementation in C++ to solve it.
 
     \subsection{Automatic tracking parameters}
-    Finding the optimal tracking parameters is necessary to have a tracking accuracy as good as possible. FastTrack can automatically determine a neutral set of soft normalization factors $s_r$, $s_\alpha$, $s_a$, and $s_p$ to help the user. These factors allow comparing terms of very different nature and amplitude into a single cost function. The set of parameters automatically found by FastTrack will give each term the same weight inside the cost function. Therefore, the user must perform parameters' fine-tuning, with some system insight, to get the best set of parameters possible.
+    Finding the optimal tracking parameters is necessary to have a tracking accuracy as good as possible. FastTrack can automatically determine a neutral set of soft normalization factors $s_r$, $s_\alpha$, $s_A$, and $s_P$ to help the user. These factors allow comparing terms of very different nature and amplitude into a single cost function. The set of parameters automatically found by FastTrack will give each term the same weight inside the cost function. Therefore, the user must perform parameters' fine-tuning, with some system insight, to get the best set of parameters possible.
 
     It is intuitive to use the standard deviation of the increments of each kinematic parameter. However, some trajectories are needed to estimate the standard deviations. We set up an iterative, rapidly-converging algorithm to perform this talk.
 
     Let us use $ZFJ\_001$, a movie with many occlusions and objects of different sizes to illustrate the algorithm's details. For simplicity, let us use only the position, angle, and area as kinematic parameters. There is no gain to expect by adding the perimeter parameter because objects' shapes are very similar. The Figure~\ref{part_1:fig_5}-A. shows a snapshot of this movie.
 
-    To evaluate the distributions of $dr$, $d\alpha$, and $da$, we start by tracking the movie setting the hard parameters and random soft parameters. The resulting distributions are shown in Figure~\ref{part_1:fig_5}-C to E. For kinematic parameters whose differential values can be positive or negative, the distribution is fitted by a Gaussian function, and the soft parameter is set to the standard deviation. For instance, with the angular difference $d\alpha$ the fit reads:
+    To evaluate the distributions of $dr$, $d\alpha$, and $dA$, we start by tracking the movie setting the hard parameters and random soft parameters. The resulting distributions are shown in Figure~\ref{part_1:fig_5}-C to E. For kinematic parameters whose differential values can be positive or negative, the distribution is fitted by a Gaussian function, and the soft parameter is set to the standard deviation. For instance, with the angular difference $d\alpha$ the fit reads:
 
     \begin{equation}
     f(d\alpha) = \frac{1}{s_\alpha\sqrt{2 \pi}} \; e^{-\frac{d\alpha^2}{2 s_\alpha^2}}
